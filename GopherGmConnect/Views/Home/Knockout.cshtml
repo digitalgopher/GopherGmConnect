@@ -1,0 +1,221 @@
+﻿<div id="body">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <ul class="teamList" data-bind="foreach: teams">
+                    <li>
+                        <div class="teamContainer" data-bind="click: $root.getRoster, css: abr">
+                            <div class="logoContainer">
+                                <img data-bind="attr: { src: imageUrl }" />
+                            </div>
+                            @*<div class="nameContainer">
+                            <span data-bind="text: name"></span>
+                        </div>*@
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div id="RosterList" class="span12" data-bind="visible: showRoster">
+                <div data-bind="with: currentTeam">
+                    <div class="teamInfoContainer" data-bind="css: abr">
+                        <div class="nameContainer">
+                            <span data-bind="text: city"></span>
+                            <span data-bind="text: name"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="btn-group" data-toggle="buttons-radio">
+                    <button type="button" value="LW" class="btn btn-primary" data-bind="checked: typeToShow"></button>
+                    <button type="button" value="RW" class="btn btn-primary" data-bind="checked: typeToShow"></button>
+                    <button type="button" value="C" class="btn btn-primary" data-bind="checked: typeToShow"></button>
+                    <button type="button" value="D" class="btn btn-primary" data-bind="checked: typeToShow"></button>
+                    <button type="button" value="G" class="btn btn-primary" data-bind="checked: typeToShow"></button>
+                    <button type="button" value="all" class="btn btn-primary" data-bind="checked: typeToShow"></button>
+                    @*                <input type="radio" value="C" class="btn btn-primary" data-bind="checked: typeToShow">C</input>
+                <input type="radio" value="RW" class="btn btn-primary" data-bind="checked: typeToShow">RW</input>
+                <input type="radio" value="D" class="btn btn-primary" data-bind="checked: typeToShow">D</input>
+                <input type="radio" value="G" class="btn btn-primary" data-bind="checked: typeToShow">G</input>
+                <input type="radio" value="all" class="btn btn-primary" data-bind="checked: typeToShow">ALL</input>*@
+                </div>
+                <table class="table table-condensed table-hover">
+                    <thead>
+                        <tr class="playerTableHeaders">
+                            <td class="text-info" data-bind="click: $root.SortByName">Name <i class="icon-chevron-down" data-bind="    visible: SortedByName"></i>
+                            </td>
+                            <td class="text-info" data-bind="click: $root.SortByOverall">Overall <i class="icon-chevron-down" data-bind="    visible: SortedByOverall"></i>
+                            </td>
+                            <td class="text-info" data-bind="click: $root.SortBySalary">Salary <i class="icon-chevron-down" data-bind="    visible: SortedBySalary"></i>
+                            </td>
+                            <td class="text-info">Position</td>
+                            <td class="text-info">Potential</td>
+                            <td class="text-info" data-bind="click: $root.SortByTradeValue">Trade Value <i class="icon-chevron-down" data-bind="    visible: SortedByTradeValue"></i>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: PlayersToShow">
+                        <tr data-bind="click: $root.getPlayerInfo">
+                            <td data-bind="text: fullName"></td>
+                            <td data-bind="text: Overall"></td>
+                            <td data-bind="text: CalcSalary"></td>
+                            <td data-bind="text: Position"></td>
+                            <td><span class="badge" data-bind="text: readPotential, css: readPotentialColor">x</span>
+                            </td>
+                            <td>
+                                <div class="progress">
+                                    <div class="bar" data-bind="style: { width: tradeValuePercent() + '%' }"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="span4" data-bind="visible: showPlayer, with: currentPlayer">
+                <button class="btn" data-bind="click: $root.goToRoster">Back</button>
+                <div class="playerInfoContainer span12">
+
+                    <div class="playerBioContainer">
+                        <div class="playerImageContainer">
+                            <img class="img-polaroid" data-bind="attr: { src: imageUrl }" />
+                        </div>
+                        <div class="playerBio">
+                            <p class="playerName" data-bind="text: fullName"></p>
+                            <p class="playerName" data-bind="text: Position"></p>
+                            <p class="playerBioInfo">Age: <span data-bind="text: Age"></span></p>
+                            <p class="playerBioInfo">Shoots: <span data-bind="text: Handed"></span></p>
+                            <p class="playerBioInfo">Potential: <span data-bind="text: readPotential"></span></p>
+                            <p class="playerBioInfo">Salary: <span data-bind="text: CalcSalary"></span></p>
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="playerStatsContainer">
+
+                        <div class="offensiveStats">
+                            OFFENSIVE
+                        <dl class="dl-horizontal" data-bind="if: isPlayer">
+                            <dt>Aggressiveness</dt>
+                            <dd data-bind="text: Aggressiveness"></dd>
+                            <dt>Wrist Shot Power</dt>
+                            <dd data-bind="text: WristShotPower"></dd>
+                            <dt>Wrist Sho tAccuracy</dt>
+                            <dd data-bind="text: WristShotAccuracy"></dd>
+                            <dt>Slap Shot Power</dt>
+                            <dd data-bind="text: SlapShotPower"></dd>
+                            <dt>Slap Shot Accuracy</dt>
+                            <dd data-bind="text: SlapShotAccuracy"></dd>
+                            <dt>Puck Control</dt>
+                            <dd data-bind="text: PuckControl"></dd>
+                            <dt>Offensive Awareness</dt>
+                            <dd data-bind="text: OffAwareness"></dd>
+                            <dt>Hand Eye</dt>
+                            <dd data-bind="text: HandEye"></dd>
+                            <dt>Deking</dt>
+                            <dd data-bind="text: Deking"></dd>
+                            <dt>Passing</dt>
+                            <dd data-bind="text: Passing"></dd>
+                        </dl>
+                        </div>
+                        <div class="defensiveStats">
+                            DEFENSIVE
+                        <dl class="dl-horizontal" data-bind="if: isPlayer">
+                            <dt>Faceoffs</dt>
+                            <dd data-bind="text: Faceoffs"></dd>
+                            <dt>Discipline</dt>
+                            <dd data-bind="text: Discipline"></dd>
+                            <dt>Defensive Awareness</dt>
+                            <dd data-bind="text: DefAwareness"></dd>
+                            <dt>Body Checking</dt>
+                            <dd data-bind="text: BodyChecking"></dd>
+                            <dt>Fighting</dt>
+                            <dd data-bind="text: Fighting"></dd>
+                            <dt>Shot Blocking</dt>
+                            <dd data-bind="text: ShotBlocking"></dd>
+                            <dt>Stick Checking</dt>
+                            <dd data-bind="text: StickChecking"></dd>
+                        </dl>
+                        </div>
+                        <div class="athleticStats">
+                            ATHLETIC
+                        <dl class="dl-horizontal" data-bind="if: isPlayer">
+                            <dt>Speed</dt>
+                            <dd data-bind="text: Speed"></dd>
+                            <dt>Agility</dt>
+                            <dd data-bind="text: Agility"></dd>
+                            <dt>Endurance</dt>
+                            <dd data-bind="text: Endurance"></dd>
+                            <dt>Durability</dt>
+                            <dd data-bind="text: Durability"></dd>
+                            <dt>Acceleration</dt>
+                            <dd data-bind="text: Acceleration"></dd>
+                            <dt>Strength</dt>
+                            <dd data-bind="text: Strength"></dd>
+                            <dt>Poise</dt>
+                            <dd data-bind="text: Poise"></dd>
+                            <dt>Balance</dt>
+                            <dd data-bind="text: Balance"></dd>
+                        </dl>
+                        </div>
+
+
+                        <dl class="dl-horizontal" data-bind="if: isGoalie">
+
+                            <dt>Vision</dt>
+                            <dd data-bind="text: Vision"></dd>
+                            <dt>Poke Check</dt>
+                            <dd data-bind="text: PokeCheck"></dd>
+                            <dt>ShotRecovery</dt>
+                            <dd data-bind="text: ShotRecovery"></dd>
+                            <dt>ReboundControl</dt>
+                            <dd data-bind="text: ReboundControl"></dd>
+                            <dt>PuckPlayingFreq</dt>
+                            <dd data-bind="text: PuckPlayingFreq"></dd>
+                            <dt>StickLow</dt>
+                            <dd data-bind="text: StickHigh"></dd>
+                            <dt>StickHigh</dt>
+                            <dd data-bind="text: StickHigh"></dd>
+                            <dt>GloveLow</dt>
+                            <dd data-bind="text: GloveLow"></dd>
+                            <dt>GloveHigh</dt>
+                            <dd data-bind="text: GloveHigh"></dd>
+                            <dt>Angles</dt>
+                            <dd data-bind="text: Angles"></dd>
+                            <dt>FiveHole</dt>
+                            <dd data-bind="text: FiveHole"></dd>
+                            <dt>Breakaways</dt>
+                            <dd data-bind="text: Breakaways"></dd>
+
+                        </dl>
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+            @* <ul data-bind="foreach: players">
+                <li>
+                    <small data-bind="text: last">LOADING</small>
+                    <small>TradeValue</small>
+                    <div class="progress">
+                        <div class="bar" data-bind="style: { width: tradeValuePercent() + '%' }"></div>
+                    </div>
+                </li>
+            </ul>*@
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        alert('hi');
+        document.location("/home/ember");
+    });
+</script>

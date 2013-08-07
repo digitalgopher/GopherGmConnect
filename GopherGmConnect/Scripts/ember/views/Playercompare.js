@@ -1,0 +1,1 @@
+﻿App.PlayercompareView = Em.View.extend();
