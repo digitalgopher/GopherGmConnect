@@ -2,7 +2,15 @@
     didInsertElement: function (a, b, c) {
         var self = this;
         self.get('controller').changeNavColor(self.get('controller').get('abr'));
-    }
+       
+    },
+    scheduleLoaded: function () {
+        var self = this;
+        if(self.get('controller.scheduleIsLoaded'))
+        {
+            //console.log("SSSCCChedule" + self.get('controller').get('schedule'));
+        }
+    }.observes('controller.scheduleIsLoaded')
 
     //willDestroyElement: function () {
     //    var canvas = $("#myChart").get(0);

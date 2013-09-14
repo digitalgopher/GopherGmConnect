@@ -3,11 +3,11 @@
         return App.Team.create({ id: params.team_id });
     },
     setupController: function (controller, model) {
-        controller.set('content', model);
-        model.loadTeam();
-        controller.loadSchedule();
-        //controller.loadTeam(model.id);
         controller.get('controllers.teams').loadTeams();
+        controller.set('content', model);
+        //model.loadTeam();
+        //controller.loadSchedule();
+        controller.loadTeam();
     }
     //renderTemplate: function () {
     //    //var controller = this.controllerFor('home');

@@ -2,7 +2,7 @@
     needs: ['team'],
     playerAtPosition: function (position) {
         var self = this;
-        var position = 'Players.' + position;
+        var position = 'players.' + position;
         return this.get('controllers.team').get('roster.content').findProperty('id', this.get(position));
     },
     centre: function () {

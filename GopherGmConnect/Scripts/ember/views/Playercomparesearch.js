@@ -12,9 +12,10 @@ App.Playercomparesearch = Ember.TextField.extend({
         });
 
         this.$().on("typeahead:selected", function (a, datum) {
-            router = self.get('controller');
+            //router = self.get('controller');
             var ap = App.Player.create({
-                id: self.get('context').get('id')
+                id: self.get('targetObject.content').get('id')
+                //id: self.get('context').get('id')
             });
             var bp = App.Player.create({
                 id: datum.id
@@ -23,7 +24,9 @@ App.Playercomparesearch = Ember.TextField.extend({
             var players = Em.A();
             players.pushObject(ap);
             players.pushObject(bp);
-            router.transitionToRoute('playercompare', players);
+            //router.transitionToRoute('playercompare', players);
+            //self.transitionTo('playercompare', players);
+            self.get('targetObject').transitionToRoute('playercompare', players);
         })
     },
     attributeBindings: ['placeholder', 'style'],

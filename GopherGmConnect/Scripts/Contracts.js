@@ -14,6 +14,7 @@
 
 
 function numberWithCommas(x) {
+    if (typeof x === 'undefined') { return "ERROR" };
     var e = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return "$" + e;
 }

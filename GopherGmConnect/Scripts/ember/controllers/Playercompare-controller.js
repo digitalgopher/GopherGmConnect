@@ -1,5 +1,5 @@
 ﻿App.PlayercompareController = Ember.ObjectController.extend({
-    needs: ['player'],
+    needs: ['player', 'eatoken'],
     content: null,
     loadPlayers: function () {
         var self = this;

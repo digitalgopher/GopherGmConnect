@@ -1,5 +1,9 @@
 ﻿App.TradeController = Em.ObjectController.extend({
-    needs: ['teams', 'team'],
+    needs: ['teams', 'team', 'eatoken'],
+    sessionToken: function () {
+        var self = this;
+        return self.get('controllers.eatoken.token');
+    },
     loadTeams: function () {
         var self = this;
         if (!self.get('controllers.teams').get('teamsIsLoaded'))
@@ -97,11 +101,11 @@
     aTeamChanged: function () {
         var self = this;
         self.destroyTradeBlock('a');
-        self.aTeam.loadTeam();
+        self.aTeam.loadTeam(self.sessionToken());
     }.observes('aTeam'),
     bTeamChanged: function () {
         var self = this;
         self.destroyTradeBlock('b');
-        self.bTeam.loadTeam();
+        self.bTeam.loadTeam(self.sessionToken());
     }.observes('bTeam')
 })

@@ -2,7 +2,7 @@
 {
     /*font-family: 'Roboto', sans-serif;*/
     /*background-color: #e5e5e5;*/
-    padding-top: 50px;
+    /*padding-top: 50px;*/
 }
 
 #app-nav
@@ -672,7 +672,7 @@
 
         body {
         padding: 0;
-        padding-top: 50px;
+        /*padding-top: 50px;*/
     }
     #mobile-team-grid {
         display: none;
@@ -719,11 +719,11 @@
     }
     body {
         padding: 0;
-        padding-top: 50px;
+        /*padding-top: 50px;*/
     }
-    #teamrankTable {
+    /*#teamrankTable {
         display: none;
-    }
+    }*/
 
 
     .numberBoxValue
@@ -751,7 +751,7 @@
 
     .home-team-image
     {
-        display: none;
+        /*display: none;*/
     }
 }
 

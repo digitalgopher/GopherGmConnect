@@ -58,7 +58,30 @@
 </div>
 </div>*@
 
-    <div class="navbar navbar-inverse navbar-fixed-top" id="app-nav">
+    
+
+
+
+    @*    <div id="left-nav" class="main-left-nav">
+        <ul class="nav-list-teams">
+            <li>
+                <a href="#">LOBNHL Home</a>
+            </li>
+            {{outlet teamtest}}
+        </ul>
+    </div>*@
+    @*<div id="mainContent" class=""style="position: relative">*@
+        @*{{animatedOutlet name="main"}}*@
+       
+@*    </div>*@
+    {{render navbar}}
+         {{outlet}}
+    
+</script>
+</body>
+
+<script type="text/x-handlebars" data-template-name="navbar">
+    <div class="navbar navbar-inverse" id="app-nav">
         <div class="container">
             <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -85,17 +108,19 @@
 
                     <li>
                         <form class="navbar-form">
-                            {{view App.Playersearch}}
+                            {{view App.PlayersearchView}}
+                                
+                          
                         </form>
                     </li>
-                    <li>{{#linkTo 'trade'}}Trade Calculator{{/linkTo}}
+                    <li>{{#linkTo 'trade'}}Trade{{/linkTo}}
                     </li>
                     <li>
-                        <a href="http://issuu.com/mhenderson95/docs/mag_4f2d02299bead9">The Magazine (!)</a>
+                        <a href="http://issuu.com/mhenderson95/docs/mag_4f2d02299bead9">Magazine (!)</a>
 
                     </li>
                     <li>
-                        <a href="http://offthestanchion.wordpress.com/">The Blog</a>
+                        <a href="http://offthestanchion.wordpress.com/">Blog</a>
                     </li>
                 </ul>
             </div>
@@ -104,22 +129,8 @@
         <!-- /.container -->
     </div>
     <!-- /.navbar -->
-
-    <body>
-
-        @*    <div id="left-nav" class="main-left-nav">
-        <ul class="nav-list-teams">
-            <li>
-                <a href="#">LOBNHL Home</a>
-            </li>
-            {{outlet teamtest}}
-        </ul>
-    </div>*@
-        <div id="mainContent" class="" style="position: relative">
-            {{animatedOutlet name="main"}}
-        </div>
-    </body>
     </script>
+
     <script type="text/x-handlebars" data-template-name="tlist">
         {{#each t in controllers.teams.sortedTeams}}
     <li>{{#linkTo 'team' t}}
@@ -168,7 +179,7 @@
             </div>
         </div>
         <div class="row">
-            <div id="mobile-team-grid">
+@*            <div id="mobile-team-grid">
                 {{#each team in controllers.teams.sortedTeams}}
      
         <div class="teamGridContainer">
@@ -185,7 +196,7 @@
             {{/linkTo}}
         </div>
                 {{/each}}
-            </div>
+            </div>*@
             <div class="col-12">
                 <table id="teamrankTable" class="table table-striped">
                     <thead>
@@ -203,11 +214,23 @@
             <tbody>
                 {{#each team in controllers.teams.sortedTeams}}
                 <tr>
-                    <td>
+                    <td class="visible-lg">
+                        @*{{#linkToAnimated 'team' team animations='main:flip'}}
                         <img style="height: 28px; width: auto;" class="home-team-image" {{bindAttr src="team.imageUrl"}} />
-                        {{#linkToAnimated 'team' team animations='main:flip'}}
                         {{team.city}} {{team.name}}
-                        {{/linkToAnimated}}
+                        {{/linkToAnimated}}*@
+                        {{#linkTo 'team' team}}
+                        <img style="height: 28px; width: auto;" class="home-team-image" {{bindAttr src="team.imageUrl"}} />
+                        {{team.city}} {{team.name}}
+                        {{/linkTo}}
+                    </td>
+                    <td class="hidden-lg">
+                       @* {{#linkToAnimated 'team' team animations='main:flip'}}
+                        {{team.abr}}
+                        {{/linkToAnimated}}*@
+                        {{#linkTo 'team' team}}
+                        {{team.abr}}
+                        {{/linkTo}}
                     </td>
                     <td>{{team.wins}}</td>
                     <td>{{team.losses}}</td>
@@ -215,7 +238,7 @@
                     @* <td>{{team.regulationOvertimeWins}}</td>*@
                     <td><strong>{{team.points}}</strong></td>
                     <td>{{team.gamesPlayed}}</td>
-                    <td>{{team.twitter}}</td>
+                    <td><a style="cursor: pointer" {{bindAttr href="team.twitterLink"}}>{{team.twitter}}</a></td>
                 </tr>
                 {{/each}}
             </tbody>
@@ -369,6 +392,11 @@
 
     <!-- LINE TEMPLATE -->
 <script type="text/x-handlebars" data-template-name="line">
+
+
+
+
+
     {{#if leftW}}
     <div class="well well-small" style="display: inline-block">
        LW: {{#linkTo 'player' leftW}} {{leftW.firstName}} {{leftW.lastName}} {{/linkTo}}
@@ -442,7 +470,7 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
 
 
         <div class="row">
-                <div class="col-4">
+                <div class="col-lg-4">
                     <div class=" stats-box contract">
         <span class="stats-box-title">Record</span>
         <div class="numberBox">   
@@ -490,9 +518,9 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
             <div class="col-lg-12">
 
 
-  <ul class="nav nav-tabs">
+  <ul class="nav nav-tabs teamTabs">
     <li class="active"><a href="#tab1" data-toggle="tab">Roster</a></li>
-    <li><a href="#tab2" data-toggle="tab">Line Combinations</a></li>
+    <li><a href="#tab2" data-toggle="tab">Lines</a></li>
     <li><a href="#tab3" data-toggle="tab">Schedule</a></li>
 </ul>
 <div class="tab-content">
@@ -521,7 +549,8 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
                         @*<td class="text-info" {{action 'sortProperty' "yearsLeft"}}>Years Left</td>*@
                         <td class="text-info">Position</td>
                         <td class="text-info" {{action 'sortProperty' "potential"}}>Potential</td>
-                        <td class="text-info" {{action 'sortProperty' 'tradeValue'}}>Trade Value</td>
+                        <td class="text-info hidden-lg" {{action 'sortProperty' 'tradeValue'}}>Value</td>
+                        <td class="text-info visible-lg" {{action 'sortProperty' 'tradeValue'}}>Trade Value</td>
                         @*<td class="text-info">Contract</td>*@
                         
                     </tr>
@@ -531,20 +560,37 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
                     @*{{#each player in controllers.roster}}*@
                     {{#each player in filteredRoster}}
                     <tr>
-                        <td>
+                        <td class="hidden-lg">
+                          @*  {{#linkToAnimated 'player' player animations='main:slideLeft'}}  
+                                {{player.lastName}}
+                            {{/linkToAnimated}}*@
+                            {{#linkTo 'player' player}}
+                                {{player.lastName}}
+                            {{/linkTo}}
                             {{#if player.isInjured}}
-                            <i class="icon-ban-circle"></i>
+                            <small>(out {{player.injuryLength}} games)</small>
                             {{/if}}
-                            @*<img {{bindAttr src="player.imageUrl"}}/>*@
-                            @*                {{#linkTo 'player' player}} {{player.firstName}} {{player.LastName}}{{/linkTo}}*@
-                            {{#linkToAnimated 'player' player animations='main:slideLeft'}}{{player.firstName}} {{player.lastName}}{{/linkToAnimated}}
+                        </td>
+                        <td class="visible-lg">
+                           @* {{#linkToAnimated 'player' player animations='main:slideLeft'}}  
+                                {{player.firstName}} {{player.lastName}}
+                            {{/linkToAnimated}}*@
+
+                            {{#linkTo 'player' player}}
+                                {{player.firstName}} {{player.lastName}}
+                            {{/linkTo}}
                             {{#if player.isInjured}}
                             <small>(out {{player.injuryLength}} games)</small>
                             {{/if}}
                         </td>
                         <td>{{player.age}}</td>
                         <td>{{player.overall}}</td>
-                        <td>{{player.salaryReadable}}</td>
+                        <td class="hidden-lg">
+                            ${{player.salarySmall}}
+                        </td>
+                        <td class="visible-lg">
+                            {{player.salaryReadable}}
+                        </td>
                         @*<td>{{player.yearsLeft}}</td>*@
                         <td>{{player.position}}</td>
                         <td><span {{bindAttr class=":label player.readPotentialColor"}}>{{player.readPotential}}</span></td>
@@ -578,7 +624,7 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
             
             <ul class="nav nav-pills">
                 {{#each line in lines}}
-              <li><a {{bindAttr href="line.lineid"}} data-toggle="tab">{{line.Name}}</a></li>
+              <li><a {{bindAttr href="line.lineid"}} data-toggle="tab">{{line.name}}</a></li>
                 {{/each}}
             </ul>
         <div class="tab-content">
@@ -594,10 +640,16 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
         
         </div>
     <div class="tab-pane" id="tab3">
-        {{#each game in schedule}}
+        {{#if scheduleIsLoaded}}
+        {{render 'schedule' schedule}}
+        {{else}}
+        Schedule is loading...
+        {{/if}}
+
+      @*  {{#each game in schedule}}
         {{render "game" game}}
 
-        {{/each}}
+        {{/each}}*@
     </div>
                 </div>
             </div>
@@ -605,17 +657,27 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
     </div>
     </script>
 
+    <script type="text/x-handlebars" data-template-name="schedule">
+        <div id="calendar">
+
+        </div>
+    </script>
 
 <!-- Game TEMPALTE -->
     <script type="text/x-handlebars" data-template-name="game">
-        <img {{bindAttr src="awayImage"}} /> AT <img {{bindAttr src="homeImage"}} />
-        <br />
+@*        {{#linkToAnimated 'team' awayTeam animations='main:slideRight'}}<img {{bindAttr src="awayTeam.imageUrl"}} />{{/linkToAnimated}} ({{awayTeam.wins}}-{{awayTeam.losses}}-{{awayTeam.overtimeLosses}})
+        at 
+        {{#linkToAnimated 'team' homeTeam animations='main:slideRight'}}<img {{bindAttr src="homeTeam.imageUrl"}} />{{/linkToAnimated}} ({{homeTeam.wins}}-{{homeTeam.losses}}-{{homeTeam.overtimeLosses}})
+        Date: dd/mm/yyyy - {{day}}/{{month}}/{{year}}
+        <br />*@
     </script>
+
 
     <!-- PLAYER TEMPALTE -->
     <script type="text/x-handlebars" data-template-name="player">
-        {{#if playerIsLoaded}}
-
+         {{#if playerIsLoaded}}
+<div class="container">
+   
     <div class="player-profile">
         <div class="player-bio">
             <div class="player-image-container">
@@ -624,417 +686,354 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
             <div class="player-info">
                 <p class="player-name">{{firstName}} {{lastName}} #{{jersey}}</p>
                 <div class="player-team">
-                    {{#linkToAnimated 'team' controllers.team animations='main:slideRight'}}
-                        <img {{bindAttr src="controllers.team.imageUrl"}} />  {{controllers.team.city}} {{controllers.team.teamname}}
-                    {{/linkToAnimated}}
+
+                    {{#linkTo 'team' controllers.team}}
+                    <img {{bindAttr src="controllers.team.imageUrl"}} />  {{controllers.team.city}} {{controllers.team.teamname}}
+                    {{/linkTo}}
                 </div>
                 <p class="player-etc"><i class="icon-home"></i>{{birthPlace}}</p>
                 <p class="player-etc"><i class="icon-user"></i>Selected in Round {{draftRound}}, pick {{draftPosition}} </p>
                 <p class="player-etc">Weight: {{weight}} lbs, Height: {{height}} in</p>
-                {{view App.Playercomparesearch contextBinding="controller"}}
+                @*{{playercopmare-search data-omg=id}}*@
+
+                {{view App.Playercomparesearch}}
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-6">
-                <div class="stats-box contract">
-                    <span class="stats-box-title">Contract</span>
-                    <div class="numberBox">
-                        <span>Years</span>
-                        <div class="numberBoxValueContainer">
-                            <span class="numberBoxValue">{{yearsLeft}}</span>
-                        </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="stats-box contract">
+                <span class="stats-box-title">Contract</span>
+                <div class="numberBox">
+                    <span>Years</span>
+                    <div class="numberBoxValueContainer">
+                        <span class="numberBoxValue">{{yearsLeft}}</span>
                     </div>
-                    <div class="numberBox salary">
-                        <span>Salary</span>
-                        <div class="numberBoxValueContainer">
-                            <span class="numberBoxValue">${{salarySmall}}</span>
-                        </div>
+                </div>
+                <div class="numberBox salary">
+                    <span>Salary</span>
+                    <div class="numberBoxValueContainer">
+                        <span class="numberBoxValue">${{salarySmall}}</span>
                     </div>
+                </div>
 
-                    <div class="numberBox contracttype">   
-            <span>Type</span>
-            <div class="numberBoxValueContainer">
-                <span class="numberBoxValue">{{contractType}}</span>
-            </div>
-        </div>       
-        </div>        
-    </div>
-
-    <div class="col-6">
-        <div class="stats-box basicinfo">
-        <span class="stats-box-title">Info</span>
-        <div class="numberBox">   
-            <span>Overall</span>
-            <div class="numberBoxValueContainer">
-                {{playeroverall overall}} 
-            </div>
-        </div>      
-        <div class="numberBox">   
-            <span>Potential</span>
-            <div class="numberBoxValueContainer">
-                {{playerpotential controller}}
-            </div>
-        </div>     
-        <div class="numberBox">   
-            <span>Age</span>
-            <div class="numberBoxValueContainer">
-                {{playerage age}}
-            </div>
-        </div>     
-        
-        <div class="numberBox">   
-            <span>Position</span>
-            <div class="numberBoxValueContainer">
-                <span class="numberBoxValue">{{position}}</span>
-            </div>
+                <div class="numberBox contracttype">   
+                    <span>Type</span>
+                    <div class="numberBoxValueContainer">
+                        <span class="numberBoxValue">{{contractType}}</span>
+                    </div>
+                </div>       
+            </div>        
         </div>
-        
-        <div class="numberBox">   
-            <span>Shoots</span>
-            <div class="numberBoxValueContainer">
-                <span class="numberBoxValue">{{handed}}</span>
-            </div>
-        </div>     
-        </div>         
-    </div>
-</div>
-@*                    <div class="col-4 stats-box careerstats">
-<span class="stats-box-title">Yearly Stats</span>
-<div class="numberBox">   
-    <span>Years</span>
-    <div class="">
-        <span class="numberBoxValue">{{YearsLeft}}</span>
-    </div>
-</div>           
-</div>*@
 
-<div class="row">
-  {{#each yearStat in playerStats}}
-  <div class="col-4">
-      <div class="stats-box careerstats">
-      <span class="stats-box-title">{{yearStat.year}} Stats</span>
-      <div class="numberBox">   
-        <span>Goals</span>
-        <div class="numberBoxValueContainer">
-            <span class="numberBoxValue">{{yearStat.goals}}</span>
-        </div>
-    </div>   
+        <div class="col-lg-6">
+            <div class="stats-box basicinfo">
+                <span class="stats-box-title">Info</span>
+                <div class="numberBox">   
+                    <span>Overall</span>
+                    <div class="numberBoxValueContainer">
+                        {{playeroverall overall}} 
+                    </div>
+                </div>      
+                <div class="numberBox">   
+                    <span>Potential</span>
+                    <div class="numberBoxValueContainer">
+                        {{playerpotential controller}}
+                    </div>
+                </div>     
+                <div class="numberBox">   
+                    <span>Age</span>
+                    <div class="numberBoxValueContainer">
+                        {{playerage age}}
+                    </div>
+                </div>     
 
-    <div class="numberBox">   
-        <span>Assists</span>
-        <div class="numberBoxValueContainer">
-            <span class="numberBoxValue">{{yearStat.assists}}</span>
-        </div>
-    </div>   
+                <div class="numberBox">   
+                    <span>Position</span>
+                    <div class="numberBoxValueContainer">
+                        <span class="numberBoxValue">{{position}}</span>
+                    </div>
+                </div>
 
-    <div class="numberBox points">   
-        <span>Points</span>
-        <div class="numberBoxValueContainer">
-            <span class="numberBoxValue">{{yearStat.points}}</span>
-        </div>
-    </div>   
-
-    <div class="numberBox">   
-        <span>Games</span>
-        <div class="numberBoxValueContainer">
-            <span class="numberBoxValue">{{yearStat.gamesPlayed}}</span>
+                <div class="numberBox">   
+                    <span>Shoots</span>
+                    <div class="numberBoxValueContainer">
+                        <span class="numberBoxValue">{{handed}}</span>
+                    </div>
+                </div>     
+            </div>         
         </div>
     </div>
-      </div>
-</div>
-{{/each}}
-</div>
 
-@*<div class="row">
-<div class="col-3">
-    <ul class="nav nav-pills">
+
+
+    <div class="row">
         {{#each yearStat in playerStats}}
-        <li>
-            <a {{bindAttr href="yearStat.yearWithHash"}} data-toggle="tab">{{yearStat.Year}} Stats</a>
-        </li>
+        <div class="col-lg-4">
+            <div class="stats-box careerstats">
+                <span class="stats-box-title">{{yearStat.year}} Stats</span>
+                <div class="numberBox">   
+                    <span>Goals</span>
+                    <div class="numberBoxValueContainer">
+                        <span class="numberBoxValue">{{yearStat.goals}}</span>
+                    </div>
+                </div>   
+
+                <div class="numberBox">   
+                    <span>Assists</span>
+                    <div class="numberBoxValueContainer">
+                        <span class="numberBoxValue">{{yearStat.assists}}</span>
+                    </div>
+                </div>   
+
+                <div class="numberBox points">   
+                    <span>Points</span>
+                    <div class="numberBoxValueContainer">
+                        <span class="numberBoxValue">{{yearStat.points}}</span>
+                    </div>
+                </div>   
+
+                <div class="numberBox">   
+                    <span>Games</span>
+                    <div class="numberBoxValueContainer">
+                        <span class="numberBoxValue">{{yearStat.gamesPlayed}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
         {{/each}}
-    </ul>
-    <div class="tab-content">
-        {{#each yearStat in playerStats}}
-        <div class="tab-pane" {{bindAttr id="yearStat.Year"}}>
-            <table class="table table-condensed stats-table">
+    </div>
+
+    <hr />
+    <div class="row">
+        {{#if isGoalie}}
+        <div class="col-lg-4">
+            <table class="table table-bordered table-condensed">
+                <caption>Goalie</caption>
                 <tbody>
                     <tr>
-                        <td>Goals</td>
-                        <td>{{yearStat.Goals}}</td>
+                        <td>Vision</td>
+                        <td>{{stat playerRatings.vision}}</td>
                     </tr>
                     <tr>
-                        <td>Assists</td>
-                        <td>{{yearStat.Assists}}
-                        </td>
+                        <td>Poke Check</td>
+                        <td>{{stat playerRatings.pokeCheck}}</td>
                     </tr>
                     <tr>
-                        <td>Points</td>
-                        <td>{{yearStat.Points}}
-                        </td>
+                        <td>ShotRecovery</td>
+                        <td>{{stat playerRatings.shotRecovery}}</td>
                     </tr>
                     <tr>
-                        <td>Games Played</td>
-                        <td>{{yearStat.GamesPlayed}}</td>
+                        <td>ReboundControl</td>
+                        <td>{{stat playerRatings.reboundControl}}</td>
                     </tr>
                     <tr>
-                        <td>Points Per Game</td>
-                        <td>{{yearStat.pointspergame}}</td>
+                        <td>PuckPlayingFreq</td>
+                        <td>{{stat playerRatings.puckPlayingFreq}}</td>
+                    </tr>
+                    <tr>
+                        <td>StickLow</td>
+                        <td>{{stat playerRatings.stickHigh}}</td>
+                    </tr>
+                    <tr>
+                        <td>StickHigh</td>
+                        <td>{{stat playerRatings.stickHigh}}</td>
+                    </tr>
+                    <tr>
+                        <td>GloveLow</td>
+                        <td>{{stat playerRatings.gloveLow}}</td>
+                    </tr>
+                    <tr>
+                        <td>GloveHigh</td>
+                        <td>{{stat playerRatings.gloveHigh}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Angles</td>
+                        <td>{{stat playerRatings.angles}}</td>
+
+                    </tr>
+                    <tr>
+                        <td>FiveHole</td>
+                        <td>{{stat playerRatings.fiveHole}}</td>
+                    </tr>
+                    <tr>
+                        <td>Breakaways</td>
+                        <td>{{stat playerRatings.breakaways}}</td>
+
+                    </tr>
+                    <tr>
+                        <td>Puck Control</td>
+                        <td>{{stat playerRatings.puckControl}}</td>
+                    </tr>
+                    <tr>
+                        <td>Passing</td>
+                        <td>{{stat playerRatings.passing}}</td>
+                    </tr>
+                    <tr>
+                        <td>Aggressiveness</td>
+                        <td>{{stat playerRatings.aggressiveness}}</td>
+                    </tr>
+                    <tr>
+                        <td>Speed</td>
+                        <td>{{stat playerRatings.speed}}</td>
+                    </tr>
+                    <tr>
+                        <td>Agility</td>
+                        <td>{{stat playerRatings.agility}}</td>
+                    </tr>
+                    <tr>
+                        <td>Endurance</td>
+                        <td>{{stat playerRatings.endurance}}</td>
+                    </tr>
+                    <tr>
+                        <td>Durability</td>
+                        <td>{{stat playerRatings.durability}}</td>
+                    </tr>
+                    <tr>
+                        <td>Poise</td>
+                        <td>{{stat playerRatings.poise}}</td>
                     </tr>
                 </tbody>
-
             </table>
-
         </div>
-        {{/each}}
+        {{else}}  
+
+
+
+
+        <div class="col-lg-4">
+            <table class="table table-bordered table-condensed">
+                <caption>Offensive</caption>
+                <tbody>
+                    <tr>
+                        <td>Aggressiveness</td>
+                        <td>{{stat playerRatings.aggressiveness}}</td>
+                    </tr>
+                    <tr>
+                        <td>Wrist Shot Power</td>
+                        <td>{{stat playerRatings.wristShotPower}}</td>
+                    </tr>
+                    <tr>
+                        <td>Wrist Shot Accuracy</td>
+                        <td>{{stat playerRatings.wristShotAccuracy}}</td>
+                    </tr>
+                    <tr>
+                        <td>Slap Shot Power</td>
+                        <td>{{stat playerRatings.slapShotPower}}</td>
+                    </tr>
+                    <tr>
+                        <td>Slap Shot Accuracy</td>
+                        <td>{{stat playerRatings.slapShotAccuracy}}</td>
+                    </tr>
+                    <tr>
+                        <td>Puck Control</td>
+                        <td>{{stat playerRatings.puckControl}}</td>
+                    </tr>
+                    <tr>
+                        <td>Offensive Awareness</td>
+                        <td>{{stat playerRatings.offAwareness}}</td>
+                    </tr>
+                    <tr>
+                        <td>Hand Eye</td>
+                        <td>{{stat playerRatings.handEye}}</td>
+                    </tr>
+                    <tr>
+                        <td>Deking</td>
+                        <td>{{stat playerRatings.deking}}</td>
+                    </tr>
+                    <tr>
+                        <td>Passing</td>
+                        <td>{{stat playerRatings.passing}}</td>
+                    </tr>
+                    <tr>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-4">
+            <table class="table table-bordered table-condensed">
+                <caption>Defensive</caption>
+                <tbody>
+                    <tr>
+                        <td>Faceoffs</td>
+                        <td>{{stat playerRatings.faceoffs}}</td>
+                    </tr>
+                    <tr>
+                        <td>Discipline</td>
+                        <td>{{stat playerRatings.discipline}}</td>
+                    </tr>
+                    <tr>
+                        <td>Defensive Awareness</td>
+                        <td> {{stat playerRatings.defAwareness}}</td>
+                    </tr>
+                    <tr>
+                        <td>Body Checking</td>
+                        <td>{{stat playerRatings.bodyChecking}}</td>
+                    </tr>
+                    <tr>
+                        <td>Fighting</td>
+                        <td>{{stat playerRatings.fighting}}</td>
+                    </tr>
+                    <tr>
+                        <td>Shot Blocking</td>
+                        <td>{{stat playerRatings.shotBlocking}}</td>
+                    </tr>
+                    <tr>
+                        <td>Stick Checking</td>
+                        <td>{{stat playerRatings.stickChecking}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-4">
+            <table class="table table-bordered table-condensed">
+                <caption>Athletic</caption>
+                <tbody>
+                    <tr>
+                        <td>Speed</td>
+                        <td>{{stat playerRatings.speed}}</td>
+                    </tr>
+                    <tr>
+                        <td>Agility</td>
+                        <td>{{stat playerRatings.agility}}</td>
+                    </tr>
+                    <tr>
+                        <td>Endurance</td>
+                        <td>{{stat playerRatings.endurance}}</td>
+                    </tr>
+                    <tr>
+                        <td>Durability</td>
+                        <td>{{stat playerRatings.durability}}</td>
+                    </tr>
+                    <tr>
+                        <td>Acceleration</td>
+                        <td>{{stat playerRatings.acceleration}}</td>
+                    </tr>
+                    <tr>
+                        <td>Strength</td>
+                        <td>{{stat playerRatings.strength}}</td>
+                    </tr>
+                    <tr>
+                        <td>Poise</td>
+                        <td>{{stat playerRatings.poise}}</td>
+                    </tr>
+                    <tr>
+                        <td>Balance</td>
+                        <td>{{stat playerRatings.balance}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {{/if}}
     </div>
-</div>
-</div>*@
-
-
-
-<hr />
-    <div class="row">
-{{#if isGoalie}}
-
-    <div class="col-4">
-        <table class="table table-bordered table-condensed">
-            <caption>Goalie</caption>
-            <tbody>
-                <tr>
-                    <td>Vision</td>
-                    <td>{{stat playerRatings.vision}}</td>
-                </tr>
-                <tr>
-                    <td>Poke Check</td>
-                    <td>{{stat playerRatings.pokeCheck}}</td>
-                </tr>
-                <tr>
-                    <td>ShotRecovery</td>
-                    <td>{{stat playerRatings.shotRecovery}}</td>
-                </tr>
-                <tr>
-                    <td>ReboundControl</td>
-                    <td>{{stat playerRatings.reboundControl}}</td>
-                </tr>
-                <tr>
-                    <td>PuckPlayingFreq</td>
-                    <td>{{stat playerRatings.puckPlayingFreq}}</td>
-                </tr>
-                <tr>
-                    <td>StickLow</td>
-                    <td>{{stat playerRatings.stickHigh}}</td>
-                </tr>
-                <tr>
-                    <td>StickHigh</td>
-                    <td>{{stat playerRatings.stickHigh}}</td>
-                </tr>
-                <tr>
-                    <td>GloveLow</td>
-                    <td>{{stat playerRatings.gloveLow}}</td>
-                </tr>
-                <tr>
-                    <td>GloveHigh</td>
-                    <td>{{stat playerRatings.gloveHigh}}</td>
-                </tr>
-
-                <tr>
-                    <td>Angles</td>
-                    <td>{{stat playerRatings.angles}}</td>
-
-                </tr>
-                <tr>
-                    <td>FiveHole</td>
-                    <td>{{stat playerRatings.fiveHole}}</td>
-                </tr>
-                <tr>
-                    <td>Breakaways</td>
-                    <td>{{stat playerRatings.breakaways}}</td>
-
-                </tr>
-                <tr>
-                    <td>Puck Control</td>
-                    <td>{{stat playerRatings.puckControl}}</td>
-                </tr>
-                <tr>
-                    <td>Passing</td>
-                    <td>{{stat playerRatings.passing}}</td>
-                </tr>
-                <tr>
-                    <td>Aggressiveness</td>
-                    <td>{{stat playerRatings.aggressiveness}}</td>
-                </tr>
-                <tr>
-                    <td>Speed</td>
-                    <td>{{stat playerRatings.speed}}</td>
-                </tr>
-                <tr>
-                    <td>Agility</td>
-                    <td>{{stat playerRatings.agility}}</td>
-                </tr>
-                <tr>
-                    <td>Endurance</td>
-                    <td>{{stat playerRatings.endurance}}</td>
-                </tr>
-                <tr>
-                    <td>Durability</td>
-                    <td>{{stat playerRatings.durability}}</td>
-                </tr>
-                <tr>
-                    <td>Poise</td>
-                    <td>{{stat playerRatings.poise}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    {{else}}  
-
-@*    <table class="table">
-        <tbody>
-            {{#each rating in playerRates}}
-            <tr>
-            {{ratingsHelper rating}}
-            </tr>
-                {{/each}}
-        </tbody>
-    </table>*@
-
-
-    <div class="col-4">
-        <table class="table table-bordered table-condensed">
-            <caption>Offensive</caption>
-            <tbody>
-                <tr>
-                    <td>Aggressiveness</td>
-                    <td>{{stat playerRatings.aggressiveness}}</td>
-                </tr>
-                <tr>
-                    <td>Wrist Shot Power</td>
-                    <td>{{stat playerRatings.wristShotPower}}</td>
-                </tr>
-                <tr>
-                    <td>Wrist Shot Accuracy</td>
-                    <td>{{stat playerRatings.wristShotAccuracy}}</td>
-                </tr>
-                <tr>
-                    <td>Slap Shot Power</td>
-                    <td>{{stat playerRatings.slapShotPower}}</td>
-                </tr>
-                <tr>
-                    <td>Slap Shot Accuracy</td>
-                    <td>{{stat playerRatings.slapShotAccuracy}}</td>
-                </tr>
-                <tr>
-                    <td>Puck Control</td>
-                    <td>{{stat playerRatings.puckControl}}</td>
-                </tr>
-                <tr>
-                    <td>Offensive Awareness</td>
-                    <td>{{stat playerRatings.offAwareness}}</td>
-                </tr>
-                <tr>
-                    <td>Hand Eye</td>
-                    <td>{{stat playerRatings.handEye}}</td>
-                </tr>
-                <tr>
-                    <td>Deking</td>
-                    <td>{{stat playerRatings.deking}}</td>
-                </tr>
-                <tr>
-                    <td>Passing</td>
-                    <td>{{stat playerRatings.passing}}</td>
-                </tr>
-                <tr>
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-    <div class="col-4">
-        <table class="table table-bordered table-condensed">
-            <caption>Defensive</caption>
-            <tbody>
-                <tr>
-                    <td>Faceoffs</td>
-                    <td>{{stat playerRatings.faceoffs}}</td>
-                </tr>
-                <tr>
-                    <td>Discipline</td>
-                    <td>{{stat playerRatings.discipline}}</td>
-                </tr>
-                <tr>
-                    <td>Defensive Awareness</td>
-                    <td> {{stat playerRatings.defAwareness}}</td>
-                </tr>
-                <tr>
-                    <td>Body Checking</td>
-                    <td>{{stat playerRatings.bodyChecking}}</td>
-                </tr>
-                <tr>
-                    <td>Fighting</td>
-                    <td>{{stat playerRatings.fighting}}</td>
-                </tr>
-                <tr>
-                    <td>Shot Blocking</td>
-                    <td>{{stat playerRatings.shotBlocking}}</td>
-                </tr>
-                <tr>
-                    <td>Stick Checking</td>
-                    <td>{{stat playerRatings.stickChecking}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="col-4">
-        <table class="table table-bordered table-condensed">
-            <caption>Athletic</caption>
-            <tbody>
-                <tr>
-                    <td>Speed</td>
-                    <td>{{stat playerRatings.speed}}</td>
-                </tr>
-                <tr>
-                    <td>Agility</td>
-                    <td>{{stat playerRatings.agility}}</td>
-                </tr>
-                <tr>
-                    <td>Endurance</td>
-                    <td>{{stat playerRatings.endurance}}</td>
-                </tr>
-                <tr>
-                    <td>Durability</td>
-                    <td>{{stat playerRatings.durability}}</td>
-                </tr>
-                <tr>
-                    <td>Acceleration</td>
-                    <td>{{stat playerRatings.acceleration}}</td>
-                </tr>
-                <tr>
-                    <td>Strength</td>
-                    <td>{{stat playerRatings.strength}}</td>
-                </tr>
-                <tr>
-                    <td>Poise</td>
-                    <td>{{stat playerRatings.poise}}</td>
-                </tr>
-                <tr>
-                    <td>Balance</td>
-                    <td>{{stat playerRatings.balance}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-{{/if}}
-
-<div/>
-{{else}}
-
     
+
+
+    {{else}}
     <div class="loader">
         <div class="duo duo1">
             <div class="dot dot-a"></div>
@@ -1045,15 +1044,15 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
             <div class="dot dot-b"></div>
         </div>
     </div>
-
-
-    {{/if}}
-    </div>
+ 
+</div>
+           {{/if}}
     </script>
 
     <script type="text/x-handlebars" data-template-name="playercompare">
-        {{#if compareLoaded}}
-    <div class="container">
+        <div class="container">
+         {{#if compareLoaded}}
+   
         <div class="row">
             <div class="col-6">
                 {{render "playerprofile" aPlayer}} 
@@ -1061,8 +1060,8 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
             <div class="col-6">
                 {{render "playerprofile" bPlayer}}
             </div>
-
         </div>
+
         <div class="row">
             {{render "playerbasicinfobox" aPlayer}}
             {{render "playerbasicinfobox" bPlayer}}
@@ -1073,21 +1072,16 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
         </div>
 
         {{#each pr in aPlayer.playerRates}}
-        {{#if pr.rating}}
-            <div class="row">
-                <div class="col-lg-10 col-offset-1">
-                    <p class="text-center">{{pr.name}}</p>
-                    {{compare pr}}
+            {{#if pr.rating}}
+                <div class="row">
+                    <div class="col-lg-10 col-offset-1">
+                        <p class="text-center">{{pr.name}}</p>
+                        {{compare pr}}
+                    </div>
                 </div>
-            </div>
-        {{/if}}
-            
+            {{/if}}
         {{/each}}
 
-
-
-
-    </div>
         {{else}}
     
         <div class="loader">
@@ -1100,7 +1094,11 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
                 <div class="dot dot-b"></div>
             </div>
         </div>
-        {{/if}}
+       
+         
+         {{/if}}
+
+            </div>
     </script>
 
     <script type="text/x-handlebars" data-template-name="compareratings">

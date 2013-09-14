@@ -20,10 +20,10 @@ namespace GopherGmConnect
                         "~/Scripts/Chart.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/ember").Include(
-                        "~/Scripts/ember/handlebars.js",
-                        "~/Scripts/ember/ember-1.0.0-rc.6.js",
-                        "~/Scripts/ember/app.js",
-                        "~/Scripts/ember/ember-animated-outlet.js"));
+                        //"~/Scripts/ember/handlebars.js",
+                        //"~/Scripts/ember/ember-1.0.0-rc.6.js",
+                        "~/Scripts/ember/app.js"));
+                        //"~/Scripts/ember/ember-animated-outlet.js"
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                         "~/Scripts/teams.js",
@@ -31,7 +31,8 @@ namespace GopherGmConnect
                         "~/Scripts/Contracts.js",
                         "~/Scripts/PlayerInfo.js",
                         "~/Scripts/League.js",
-                        "~/Scripts/player_list.js"));
+                        "~/Scripts/player_list.js", 
+                        "~/Scripts/seasonSchedule.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/typeahead").Include(
                         "~/Scripts/hogan-2.0.0.js",
@@ -42,8 +43,15 @@ namespace GopherGmConnect
                         "~/Scripts/knockout.mapping-latest.js",
                         "~/Scripts/app.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/fullcalendarjs").Include(
+                        "~/Scripts/Calendar/fullcalendar.js"));
+
+
+            bundles.Add(new StyleBundle("~/Content/fullcalendar").Include(
+                        "~/Content/css/fullcalendar.css"));
+
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
-                        "~/Scripts/ember/ember-animated-outlet.css",
+                        //"~/Scripts/ember/ember-animated-outlet.css",
                         "~/Content/bootstrap.css",
                         "~/Content/bootstrap-responsive.css"));
 
@@ -51,8 +59,8 @@ namespace GopherGmConnect
                         "~/Content/css/bootstrap.css", 
                         "~/Content/css/typeahead.js-bootstrap.css"));
 
-            bundles.Add(new StyleBundle("~/Content/emberanimation").Include(
-            "~/Scripts/ember/ember-animated-outlet.css"));
+            //bundles.Add(new StyleBundle("~/Content/emberanimation").Include(
+            //"~/Scripts/ember/ember-animated-outlet.css"));
     
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(

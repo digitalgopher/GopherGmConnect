@@ -10,6 +10,7 @@ using Newtonsoft.Json.Linq;
 using GopherGmConnect.Models;
 using System.Web.Configuration;
 using System.Threading.Tasks;
+using System.Collections.Concurrent;
 
 namespace GopherGmConnect.Controllers
 {
@@ -80,16 +81,16 @@ namespace GopherGmConnect.Controllers
         }
 
         [HttpGet]
-        public object Players(string id)
+        public object Players(string id, string token)
         {
-            var token = GetEASWToken();
+            //var token = GetEASWToken();
             return Players(id, token, true);
         }
 
         [HttpGet]
-        public object GetLines(string id)
+        public object GetLines(string id, string token)
         {
-            var token = GetEASWToken();
+            //var token = GetEASWToken();
             var wb = new WebClient();
             wb.Headers.Add(HttpRequestHeader.Cookie, "EASW-Token=" + token);
             var teamId = id;
@@ -152,93 +153,93 @@ namespace GopherGmConnect.Controllers
 
 
             var lineCombos = new JObject(
-                new JProperty("Lines",
+                new JProperty("lines",
                     new JArray(
                         new JObject(
-                    new JProperty("Name", "1st Line"),
-                    new JProperty("Players",
+                    new JProperty("name", "1st Line"),
+                    new JProperty("players",
                         new JObject(
                             new JProperty("C", roster.GetValue("l1c").ToString()),
                             new JProperty("LW", roster.GetValue("l1lw").ToString()),
                             new JProperty("RW", roster.GetValue("l1rw").ToString())))),
                             new JObject(
-                    new JProperty("Name", "2nd Line"),
-                    new JProperty("Players",
+                    new JProperty("name", "2nd Line"),
+                    new JProperty("players",
                         new JObject(
                             new JProperty("C", roster.GetValue("l2c").ToString()),
                             new JProperty("LW", roster.GetValue("l2lw").ToString()),
                             new JProperty("RW", roster.GetValue("l2rw").ToString())))),
                             new JObject(
-                    new JProperty("Name", "3rd Line"),
-                    new JProperty("Players",
+                    new JProperty("name", "3rd Line"),
+                    new JProperty("players",
                         new JObject(
                             new JProperty("C", roster.GetValue("l3c").ToString()),
                             new JProperty("LW", roster.GetValue("l3lw").ToString()),
                             new JProperty("RW", roster.GetValue("l3rw").ToString())))),
                             new JObject(
-                    new JProperty("Name", "4th Line"),
-                    new JProperty("Players",
+                    new JProperty("name", "4th Line"),
+                    new JProperty("players",
                         new JObject(
                             new JProperty("C", roster.GetValue("l4c").ToString()),
                             new JProperty("LW", roster.GetValue("l4lw").ToString()),
                             new JProperty("RW", roster.GetValue("l4rw").ToString())))),
                             new JObject(
-                    new JProperty("Name", "Defense Pair 1"),
-                    new JProperty("Players",
+                    new JProperty("name", "Defense Pair 1"),
+                    new JProperty("players",
                         new JObject(
                             new JProperty("LD", roster.GetValue("l1ld").ToString()),
                             new JProperty("RD", roster.GetValue("l1rd").ToString())))),
                             new JObject(
-                    new JProperty("Name", "Defense Pair 2"),
-                    new JProperty("Players",
+                    new JProperty("name", "Defense Pair 2"),
+                    new JProperty("players",
                         new JObject(
                             new JProperty("LD", roster.GetValue("l2ld").ToString()),
                             new JProperty("RD", roster.GetValue("l2rd").ToString())))),
                             new JObject(
-                    new JProperty("Name", "Defense Pair 3"),
-                    new JProperty("Players",
+                    new JProperty("name", "Defense Pair 3"),
+                    new JProperty("players",
                         new JObject(
                             new JProperty("LD", roster.GetValue("l3ld").ToString()),
                             new JProperty("RD", roster.GetValue("l3rd").ToString())))),
                             new JObject(
-                    new JProperty("Name", "Goalies"),
-                    new JProperty("Players",
+                    new JProperty("name", "Goalies"),
+                    new JProperty("players",
                             new JObject(
                                 new JProperty("G1", roster.GetValue("g1").ToString()),
                                 new JProperty("G2", roster.GetValue("g2").ToString())))),
                                 new JObject(
-                    new JProperty("Name", "3 Man PK 1"),
-                        new JProperty("Players",
+                    new JProperty("name", "3 Man PK 1"),
+                        new JProperty("players",
                             new JObject(
                                 new JProperty("C", roster.GetValue("pk3_1c").ToString()),
                                 new JProperty("LD", roster.GetValue("pk3_1ld").ToString()),
                                 new JProperty("RD", roster.GetValue("pk3_1rd").ToString())))),
                                 new JObject(
-                    new JProperty("Name", "3 Man PK 2"),
-                    new JProperty("Players",
+                    new JProperty("name", "3 Man PK 2"),
+                    new JProperty("players",
                             new JObject(
                                 new JProperty("C", roster.GetValue("pk3_2c").ToString()),
                                 new JProperty("LD", roster.GetValue("pk3_2ld").ToString()),
                                 new JProperty("RD", roster.GetValue("pk3_2rd").ToString())))),
                                 new JObject(
-                                new JProperty("Name", "4 Man PK 1"),
-                    new JProperty("Players",
+                                new JProperty("name", "4 Man PK 1"),
+                    new JProperty("players",
                             new JObject(
                                 new JProperty("C", roster.GetValue("pk4_1c").ToString()),
                                 new JProperty("LW", roster.GetValue("pk4_1lw").ToString()),
                                 new JProperty("LD", roster.GetValue("pk4_1ld").ToString()),
                                 new JProperty("RD", roster.GetValue("pk4_1rd").ToString())))),
                                 new JObject(
-                    new JProperty("Name", "4 Man PK 2"),
-                    new JProperty("Players",
+                    new JProperty("name", "4 Man PK 2"),
+                    new JProperty("players",
                             new JObject(
                                 new JProperty("C", roster.GetValue("pk4_2c").ToString()),
                                 new JProperty("LW", roster.GetValue("pk4_2lw").ToString()),
                                 new JProperty("LD", roster.GetValue("pk4_2ld").ToString()),
                                 new JProperty("RD", roster.GetValue("pk4_2rd").ToString())))),
                                 new JObject(
-                                    new JProperty("Name", "Powerplay 1"),
-                    new JProperty("Players",
+                                    new JProperty("name", "Powerplay 1"),
+                    new JProperty("players",
                             new JObject(
                                 new JProperty("C", roster.GetValue("pp1c").ToString()),
                                 new JProperty("LW", roster.GetValue("pp1lw").ToString()),
@@ -246,8 +247,8 @@ namespace GopherGmConnect.Controllers
                                 new JProperty("LD", roster.GetValue("pp1ld").ToString()),
                                 new JProperty("RD", roster.GetValue("pp1rd").ToString())))),
                                 new JObject(
-                                    new JProperty("Name", "Powerplay 2"),
-                    new JProperty("Players",
+                                    new JProperty("name", "Powerplay 2"),
+                    new JProperty("players",
                             new JObject(
                                 new JProperty("C", roster.GetValue("pp2c").ToString()),
                                 new JProperty("LW", roster.GetValue("pp2lw").ToString()),
@@ -255,16 +256,16 @@ namespace GopherGmConnect.Controllers
                                 new JProperty("LD", roster.GetValue("pp2ld").ToString()),
                                 new JProperty("RD", roster.GetValue("pp2rd").ToString())))),
                                 new JObject(
-                                    new JProperty("Name", "4 Man PP 1"),
-                    new JProperty("Players",
+                                    new JProperty("name", "4 Man PP 1"),
+                    new JProperty("players",
                             new JObject(
                                 new JProperty("C", roster.GetValue("pp4_1c").ToString()),
                                 new JProperty("LW", roster.GetValue("pp4_1lw").ToString()),
                                 new JProperty("LD", roster.GetValue("pp4_1ld").ToString()),
                                 new JProperty("RD", roster.GetValue("pp4_1rd").ToString())))),
                                 new JObject(
-                                    new JProperty("Name", "4 Man PP 2"),
-                    new JProperty("Players",
+                                    new JProperty("name", "4 Man PP 2"),
+                    new JProperty("players",
                             new JObject(
                                 new JProperty("C", roster.GetValue("pp4_2c").ToString()),
                                 new JProperty("LW", roster.GetValue("pp4_2lw").ToString()),
@@ -300,14 +301,17 @@ namespace GopherGmConnect.Controllers
         //}
 
         [HttpGet]
-        public object Roster(string id)
+        public object Roster(string id, string token)
         {
-            var token = GetEASWToken();
+            //var token = GetEASWToken();
             var wb = new WebClient();
             wb.Headers.Add(HttpRequestHeader.Cookie, "EASW-Token=" + token);
             var url = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/team/" + id + "/roster/mobile";
             var injUrl = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/team/" + id + "/injuries/mobile";
-            string rawJson = wb.DownloadString(url);
+            
+                string rawJson = wb.DownloadString(url);
+            
+            
             string rawInjJson = wb.DownloadString(injUrl);
             JObject fullJson = JObject.Parse(rawJson);
             JObject injuryJson = JObject.Parse(rawInjJson);
@@ -317,7 +321,8 @@ namespace GopherGmConnect.Controllers
             var players = jsonPlayers as JArray;
             var counter = 0;
             //var roster = new List<Models.PartialPlayer>();
-            var roster = new List<Models.Player>();
+            //var roster = new List<Models.Player>();
+            var roster = new ConcurrentBag<Models.Player>();
             Parallel.ForEach(players, p =>
             {
                 //if ContractStatus(? labeled as 'cs') is false... skip
@@ -363,16 +368,18 @@ namespace GopherGmConnect.Controllers
                 //JObject playerJson = JObject.Parse(dlJson);
                 //roster.Add(CreatePlayer(playerJson, p));
             });
-
+            var rosterList = roster.ToList();
             if (injuredPlayers != null)
             {
+                
                 if (injuredPlayers.Count > 0)
                 {
                     foreach (var ip in injuredPlayers)
                     {
                         var fixedLastName = ip[1].ToString().ToLower();
                         fixedLastName = char.ToUpper(fixedLastName[0]) + fixedLastName.Substring(1);
-                        var p = roster.Find(x => x.LastName == fixedLastName &&  x.FirstName[0] == ip[0].ToString()[0]);
+
+                        var p = rosterList.Find(x => x.LastName == fixedLastName && x.FirstName[0] == ip[0].ToString()[0]);
                         if (p != null)
                         {
                             p.IsInjured = true;
@@ -383,14 +390,14 @@ namespace GopherGmConnect.Controllers
             }
 
 
-            return roster;
+            return rosterList;
         }
 
         [HttpGet]
-        public object Teams()
+        public object Teams(string token)
         {
             var url = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/standings/periodType/season/mobile";
-            var token = GetEASWToken();
+            //var token = GetEASWToken();
             var wb = new WebClient();
             wb.Headers.Add(HttpRequestHeader.Cookie, "EASW-Token=" + token);
             string rawJson = wb.DownloadString(url);
@@ -407,11 +414,11 @@ namespace GopherGmConnect.Controllers
         }
 
         [HttpGet]
-        public object TopPlayers()
+        public object TopPlayers(string token)
         {
             var url = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/stats/team/topranked/20/player/periodType/season/mobile";
-            var token = GetEASWToken();
-            var topplayers = new List<Player>();
+            //var token = GetEASWToken();
+            var topplayers = new ConcurrentBag<Player>();
 
             using (var wb = new WebClient())
             {
@@ -466,20 +473,15 @@ namespace GopherGmConnect.Controllers
                     player.SingleYearStats = stats;
                     topplayers.Add(player);
                 });
-
-                
-
             }
-
-
-            return topplayers;
+            return topplayers.ToList();
         }
 
         [HttpGet]
-        public object Teams(string id)
+        public object Teams(string id, string token)
         {
             var url = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/standings/periodType/season/mobile";
-            var token = GetEASWToken();
+            //var token = GetEASWToken();
             var wb = new WebClient();
             wb.Headers.Add(HttpRequestHeader.Cookie, "EASW-Token=" + token);
             string rawJson = wb.DownloadString(url);
@@ -496,17 +498,49 @@ namespace GopherGmConnect.Controllers
                 }
             }
             var returnTeam = GetTeamStats(correctTeam);
-            int[] capnums = GetSalary(id);
+            int[] capnums = GetSalary(id, token);
             returnTeam.SalaryCapSpent = capnums[0];
             returnTeam.SalaryCapTotal = capnums[1];
             returnTeam.SalaryCapRemaining = capnums[1] - capnums[0];
             return returnTeam;
         }
 
-        private int[] GetSalary(string id)
+        [HttpGet]
+        public object GetCurrentPushDate(string token)
+        {
+            //var token = GetEASWToken();
+            var url = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/info";
+            var wb = new WebClient();
+            wb.Headers.Add(HttpRequestHeader.Cookie, "EASW-Token=" + token);
+            string rawJson = wb.DownloadString(url);
+            var fullJson = JObject.Parse(rawJson);
+            return new JObject(
+                new JProperty("pushStartDay",
+                    new JValue(fullJson.Value<int>("tickStartDay"))),
+                new JProperty("pushStartMonth", 
+                    new JValue(fullJson.Value<int>("tickStartMonth"))),
+                new JProperty("pushStartYear",
+                    new JValue(fullJson.Value<int>("tickStartYear"))), 
+                new JProperty("pushEndDay",
+                    new JValue(fullJson.Value<int>("tickEndDay"))),
+                new JProperty("pushEndMonth",
+                    new JValue(fullJson.Value<int>("tickEndMonth"))),
+                new JProperty("pushEndYear",
+                    new JValue(fullJson.Value<int>("tickEndYear"))));
+             
+           //            "tickStartDay": 28,
+  //"tickStartMonth": 11,
+  //"tickStartYear": 2014,
+  //"tickEndDay": 10,
+  //"tickEndMonth": 0,
+  //"tickEndYear": 2015,
+
+        }
+
+        private int[] GetSalary(string id, string token)
         {
             var url = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/team/" + id + "/info/mobile";
-            var token = GetEASWToken();
+            //var token = GetEASWToken();
             var wb = new WebClient();
             wb.Headers.Add(HttpRequestHeader.Cookie, "EASW-Token=" + token);
             string rawJson = wb.DownloadString(url);
@@ -630,6 +664,41 @@ namespace GopherGmConnect.Controllers
                 var token = wb.ResponseHeaders.Get("EASW-Token");
                 return token;
             }
+        }
+
+        [HttpGet]
+        public string GetToken(string token)
+        {
+            if (string.IsNullOrEmpty(token))
+            {
+                return GetEASWToken();
+            }
+            else if (TokenIsValid(token))
+            {
+                return token;
+            }
+            else
+            {
+                return GetEASWToken();
+            }
+            
+        }
+
+        private bool TokenIsValid(string token)
+        {
+            var url = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/info";
+            var wb = new WebClient();
+            wb.Headers.Add(HttpRequestHeader.Cookie, "EASW-Token=" + token);
+            string rawJson = "";
+            try
+            {
+                rawJson = wb.DownloadString(url);
+            }
+            catch (WebException ex)
+            {
+                return false;
+            }
+            return true;
         }
 
         //private Models.Player CreatePlayerWithoutStats(JObject mobilePlayerInfo, JObject playerInfo)

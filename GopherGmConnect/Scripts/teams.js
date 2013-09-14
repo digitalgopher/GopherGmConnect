@@ -9,7 +9,7 @@
         city: "Winnipeg",
         name: "Jets",
         abr: "WPG",
-        twitter: "colehype"
+        twitter: "coleyhype"
     },
     team_2: {
         city: "Boston",
@@ -94,7 +94,7 @@
         city: "Montreal",
         name: "Canadiens",
         abr: "MTL",
-        twitter: "lobnhlhabs"
+        twitter: "icecoldbergevin"
     },
     team_16: {
         city: "Nashville",

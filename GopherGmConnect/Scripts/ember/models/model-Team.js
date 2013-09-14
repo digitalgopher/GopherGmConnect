@@ -2,7 +2,7 @@
 App.Team = Ember.Object.extend({
     content: null,
     tradeBlock: function () {
-       return Em.A(Em.MutableEnumerable.mixin);
+        return Em.A(Em.MutableEnumerable.mixin);
     }.property(),
     newTradeSalary: function () {
         return 0;
@@ -21,20 +21,25 @@ App.Team = Ember.Object.extend({
         self.set('tradeSalary', GetContractAmount(totalSalary));
         self.set('newTradeSalary', numberWithCommas(newSalary));
     }.observes('tradeBlock.@each'),
-    
-    loadTeam: function () {
+
+    loadTeam: function (token) {
         var self = this;
-        self.loadRoster();
+        self.loadRoster(token);
         //self.loadSchedule();
-        self.loadStats();
+        self.loadStats(token);
     },
-    loadRoster: function () {
+
+    loadRoster: function (token) {
         var loadedRoster = App.Roster.create();
         var untouchedRoster = App.Roster.create();
         var tempRoster = Em.A();
         var self = this;
         self.set('rosterIsLoaded', false);
-        $.getJSON("/api/gopher/roster", { id: self.get('id') }).then(function (playerList) {
+        var data = {
+            id: self.get('id'),
+            token: token
+        }
+        $.getJSON("/api/gopher/roster", data).then(function (playerList) {
             playerList.forEach(function (p) {
                 var player = App.Player.create();
                 player.setProperties(p);
@@ -64,13 +69,16 @@ App.Team = Ember.Object.extend({
         });
     },
     //depends on a roster being loaded. Call only when sure a roster is loaded
-    loadLines: function () {
+    loadLines: function (token) {
         var self = this;
-        if (self.get('rosterIsLoaded'))
-        {
+        if (self.get('rosterIsLoaded')) {
             var loadedLines = [];
-            $.getJSON("/api/gopher/getlines", { id: this.get('id') }).then(function (lines) {
-                lines.Lines.forEach(function (l) {
+            var data = {
+                id: self.get('id'),
+                token: token
+            }
+            $.getJSON("/api/gopher/getlines", data).then(function (lines) {
+                lines.lines.forEach(function (l) {
                     var line = App.Line.create();
                     line.setProperties(l);
                     loadedLines.pushObject(line);
@@ -79,25 +87,45 @@ App.Team = Ember.Object.extend({
                 self.set('linesIsLoaded', true);
             });
         }
-    }.observes('rosterIsLoaded'),
-
-    loadSchedule: function () {
-            var schedule = [];
-            var self = this;
-            $.getJSON("/api/gopher/GetSchedule", { id: this.get('id') }).then(function (games) {
-                games.forEach(function (g) {
-                    var game = App.Game.create();
-                    game.setProperties(g);
-                    schedule.pushObject(game);
-                });
-                self.set('schedule', schedule);
-                self.set('scheduleIsLoaded', true);
-            });
     },
+    //}.observes('rosterIsLoaded'),
 
-    loadStats: function () {
+    //loadSchedule: function () {
+    //    var schedule = [];
+    //    var self = this;
+
+    //    function containsTeam(element, index, array) {
+    //        if (element.homeTeamId == self.get('id') || element.awayTeamId == self.get('id'))
+    //        {
+    //            return element
+    //        }
+    //    }
+    //    var teamSched = SEASON_SCHEDULE.filter(containsTeam);
+    //    teamSched.forEach(function (g) {
+    //        var game = App.Game.create();
+    //        game.setProperties(g);
+    //        schedule.pushObject(game);
+    //    });
+    //    self.set('schedule', schedule);
+    //    self.set('scheduleIsLoaded', true);
+        //$.getJSON("/api/gopher/GetSchedule", { id: this.get('id') }).then(function (games) {
+        //    games.forEach(function (g) {
+        //        var game = App.Game.create();
+        //        game.setProperties(g);
+        //        schedule.pushObject(game);
+        //    });
+        //    self.set('schedule', schedule);
+        //    self.set('scheduleIsLoaded', true);
+        //});
+    //},
+
+    loadStats: function (token) {
         var self = this;
-        $.getJSON("/api/gopher/teams", { id: self.get('id') }).then(function (team) {
+        var data = {
+            id: self.get('id'),
+            token: token
+        }
+        $.getJSON("/api/gopher/teams", data).then(function (team) {
             self.setProperties(team);
             self.set('statsIsLoaded', true);
         });
@@ -106,11 +134,10 @@ App.Team = Ember.Object.extend({
 
     isLoaded: function () {
         var self = this;
-        if(self.get('linesIsLoaded') && self.get('rosterIsLoaded') && self.get('scheduleIsLoaded') && self.get('statsIsLoaded'))
-        {
-             self.set('isLoaded', true);
+        if (self.get('linesIsLoaded') && self.get('rosterIsLoaded') && self.get('scheduleIsLoaded') && self.get('statsIsLoaded')) {
+            self.set('isLoaded', true);
         }
-       
+
     }.observes('linesIsLoaded', 'rosterIsLoaded', 'scheduleIsLoaded', 'statsIsLoaded'),
 
 

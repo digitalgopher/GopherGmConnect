@@ -1,10 +1,17 @@
 ﻿App.TopplayersController = Ember.ObjectController.extend({
-    //needs: ['roster'],
+    needs: ['eatoken'],
+    sessionToken: function () {
+        var self = this;
+        return self.get('controllers.eatoken.token');
+    },
     loadPlayers: function () {
         var tempRoster = Em.A();
         var self = this;
         self.set('playersIsLoaded', false);
-        $.getJSON("/api/gopher/TopPlayers").then(function (playerList) {
+        var data = {
+            token: self.sessionToken()
+        }
+        $.getJSON("/api/gopher/TopPlayers", data).then(function (playerList) {
             playerList.forEach(function (p) {
                 var player = App.Player.create();
                 player.setProperties(p);
