@@ -32,7 +32,8 @@ namespace GopherGmConnect
                         "~/Scripts/PlayerInfo.js",
                         "~/Scripts/League.js",
                         "~/Scripts/player_list.js", 
-                        "~/Scripts/seasonSchedule.js"));
+                        "~/Scripts/seasonSchedule.js",
+                        "~/Scripts/nhl_14_players.json"));
 
             bundles.Add(new ScriptBundle("~/bundles/typeahead").Include(
                         "~/Scripts/hogan-2.0.0.js",

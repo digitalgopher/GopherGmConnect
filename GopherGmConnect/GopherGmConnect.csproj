@@ -519,6 +519,9 @@
     <Content Include="Views\Home\Update.cshtml" />
     <Content Include="Views\Update\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\nhl_14_players.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

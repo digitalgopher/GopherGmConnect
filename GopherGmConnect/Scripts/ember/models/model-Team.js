@@ -131,24 +131,13 @@ App.Team = Ember.Object.extend({
         });
     },
 
-
     isLoaded: function () {
-        var self = this;
-        if (self.get('linesIsLoaded') && self.get('rosterIsLoaded') && self.get('scheduleIsLoaded') && self.get('statsIsLoaded')) {
-            self.set('isLoaded', true);
-        }
-
+        return Ember.computed.and('linesIsLoaded', 'rosterIsLoaded', 'scheduleIsLoaded', 'statsIsLoaded');
+        //var self = this;
+        //if (self.get('linesIsLoaded') && self.get('rosterIsLoaded') && self.get('scheduleIsLoaded') && self.get('statsIsLoaded')) {
+        //    self.set('isLoaded', true);
+        //}
     }.observes('linesIsLoaded', 'rosterIsLoaded', 'scheduleIsLoaded', 'statsIsLoaded'),
-
-
-
-
-
-
-
-
-
-
 
 
     teamjsname: function () {

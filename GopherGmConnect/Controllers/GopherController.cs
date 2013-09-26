@@ -30,7 +30,7 @@ namespace GopherGmConnect.Controllers
             return "value";
         }
 
-        private Player Players(string id, string token, bool fullInfo)
+        private Player FetchPlayer(string id, string token, bool fullInfo, bool isNewNHL = false)
         {
             using (var wb = new WebClient())
             {
@@ -38,6 +38,13 @@ namespace GopherGmConnect.Controllers
                 wb.Headers.Add(HttpRequestHeader.Cookie, "EASW-Token=" + token);
                 var playerID = id;
                 var playerurl = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/player/" + playerID + "/info/mobile";
+                if(isNewNHL)
+                {
+                    System.Net.ServicePointManager.ServerCertificateValidationCallback =
+    ((sender, certificate, chain, sslPolicyErrors) => true);
+                    playerurl = "https://nhl.service.easports.com/nhl14_hm/2013/protected/competition/10562/player/" + playerID + "/info/mobile";
+                
+                }
                 var playerRawJson = wb.DownloadString(playerurl);
                 JObject playerJson = JObject.Parse(playerRawJson);
                 var aPlayer = new Player();
@@ -45,10 +52,16 @@ namespace GopherGmConnect.Controllers
                 if (fullInfo)
                 {
                     var playerfullinfo = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/player/" + playerID + "/info";
+                    if(isNewNHL)
+                    {
+                        playerfullinfo = "https://nhl.service.easports.com/nhl14_hm/2013/protected/competition/10562/player/" + playerID + "/info";
+                
+                    }
                     var fullplayerrawjson = wb.DownloadString(playerfullinfo);
                     JObject fullinfojson = JObject.Parse(fullplayerrawjson);
                     JObject bioJson = fullinfojson.GetValue("bio") as JObject;
-                    aPlayer = CreatePlayer(playerJson, bioJson);
+
+                    aPlayer = CreatePlayer(playerJson, bioJson, isNewNHL);
                 }
                 else
                 {
@@ -81,10 +94,10 @@ namespace GopherGmConnect.Controllers
         }
 
         [HttpGet]
-        public object Players(string id, string token)
+        public object Players(string id, string token, bool isNewNHL = false)
         {
             //var token = GetEASWToken();
-            return Players(id, token, true);
+            return FetchPlayer(id, token, true, isNewNHL);
         }
 
         [HttpGet]
@@ -352,7 +365,7 @@ namespace GopherGmConnect.Controllers
                 //roster.Add(partial);
 
                 var player = new Models.Player();
-                player = Players(p[0].ToString(), token, false) as Models.Player;
+                player = FetchPlayer(p[0].ToString(), token, false) as Models.Player;
                 player.Potential = Convert.ToInt32(p[10].ToString());
                 player.PotentialColor = Convert.ToInt32(p[13].ToString());
 
@@ -455,7 +468,7 @@ namespace GopherGmConnect.Controllers
 //"ta",
 //"m"
 //],
-                    var player = Players(skater[2].ToString(), token, false);
+                    var player = FetchPlayer(skater[2].ToString(), token, true, false);
                     var stats = new PlayerStats();
                     stats.GamesPlayed = skater[4].Value<int>();
                     stats.Goals = skater[5].Value<int>();
@@ -471,6 +484,7 @@ namespace GopherGmConnect.Controllers
                     stats.ShootingPercentage = Math.Round(skater[15].Value<double>() * 100, 0);
                     
                     player.SingleYearStats = stats;
+                   
                     topplayers.Add(player);
                 });
             }
@@ -478,7 +492,7 @@ namespace GopherGmConnect.Controllers
         }
 
         [HttpGet]
-        public object Teams(string id, string token)
+        public object Teams(string id, string token, bool iwNew=false)
         {
             var url = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/standings/periodType/season/mobile";
             //var token = GetEASWToken();
@@ -653,6 +667,7 @@ namespace GopherGmConnect.Controllers
             using (var wb = new WebClient())
             {
                 ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+
                 var data = new NameValueCollection();
                 data["email"] = WebConfigurationManager.AppSettings["email"];
                 data["password"] = WebConfigurationManager.AppSettings["password"];
@@ -666,7 +681,6 @@ namespace GopherGmConnect.Controllers
             }
         }
 
-        [HttpGet]
         public string GetToken(string token)
         {
             if (string.IsNullOrEmpty(token))
@@ -706,7 +720,7 @@ namespace GopherGmConnect.Controllers
 
         //}
 
-        private Models.Player CreatePlayer(JObject mobilePlayerInfo, JObject playerInfo)
+        private Models.Player CreatePlayer(JObject mobilePlayerInfo, JObject playerInfo, bool isNewNHL = false)
         {
             Models.Player player = new Models.Player();
             player.id = playerInfo.GetValue("playerId").ToString();
@@ -753,8 +767,17 @@ namespace GopherGmConnect.Controllers
 
             var artid = Convert.ToInt32(playerInfo.GetValue("playerArtID").ToString());
             player.PlayerArtID = artid;
-            player.ImageUrl = "http://cdn.content.easports.com/nhlhm_assets/assets/ios/0.0/playerheads/" + artid + "@2x.png";
+            if (isNewNHL)
+            {
+                player.ImageUrl = "http://cdn.content.easports.com/nhlhm_assets/assets/ios/14/GMC/0.0/playerheads/p" + artid + "@2x.png";
 
+            }
+            else
+            {
+                player.ImageUrl = "http://cdn.content.easports.com/nhlhm_assets/assets/ios/0.0/playerheads/" + artid + "@2x.png";
+
+            }
+            
             player.Overall = Convert.ToInt32(mobilePlayerInfo.GetValue("o").ToString());
             player.Potential = Convert.ToInt32(mobilePlayerInfo.GetValue("pp").ToString());
             player.PotentialColor = Convert.ToInt32(mobilePlayerInfo.GetValue("po").ToString());
@@ -883,6 +906,9 @@ namespace GopherGmConnect.Controllers
             player.Shoots = Convert.ToInt32(pBio.GetValue("s").ToString());
             return player;
         }
+
+
+
 
         // POST api/gopher
         public void Post([FromBody]string value)

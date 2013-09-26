@@ -1,6 +1,41 @@
 ﻿App.PlayerController = Ember.ObjectController.extend({
     content: null,
     needs: ["team", "Yearlystats", "teams", "playercompare", 'eatoken'],
+    actions: {
+        getNewRatings: function () {
+            var self = this;
+            self.set('isNewNHL', true);
+            
+            $.getJSON("Scripts/nhl_14_players.json").then(function (list) {
+                var filtered = list.filter(function (player) {
+                    return player.LastName == self.get('lastName');
+                });
+
+                if (filtered.length > 1) {
+                    console.log('found more than 1....');
+                    console.log(filtered);
+                    console.log(filtered.length);
+                    var sameLastNameList = filtered.filter(function (p) {
+                        return p.FirstName == self.get('firstName');
+                    });
+                    
+                    self.loadPlayer(parseInt(sameLastNameList[0].id));
+                }
+                else if (filtered.length == 1)
+                {
+                    console.log('found one!');
+                    self.loadPlayer(parseInt(filtered[0].id));
+                }
+                else {
+                    console.log('oh noes, ');
+                    alert('oh no! I cant find that player... sorry');
+                    return;
+                }
+            })
+
+            
+        }
+    },
     sessionToken: function () {
         var self = this;
         return self.get('controllers.eatoken.token');
@@ -18,7 +53,8 @@
             var player = App.Player.create();
             var data = {
                 id: pid,
-                token: self.sessionToken()
+                token: self.sessionToken(),
+                isNewNHL: self.get('isNewNHL')
             }
             $.getJSON("/api/gopher/players", data).then(function (p) {
                 player.setProperties(p);

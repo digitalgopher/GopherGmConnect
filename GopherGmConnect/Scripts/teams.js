@@ -178,6 +178,6 @@
         city: "Washington",
         name: "Capitals",
         abr: "WSH",
-        twitter: "crapitalslob"
+        twitter: "CapsLOBGM"
     },
 }

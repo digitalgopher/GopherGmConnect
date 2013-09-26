@@ -18,7 +18,8 @@ App.Player = Ember.Object.extend({
 
     readPotential: function () {
         var potential = this.get('potential');
-        return Potential[potential];
+        console.log(getPotential(potential));
+        return getPotential(potential);
     }.property('potential'),
 
     readPotentialColor: function () {
