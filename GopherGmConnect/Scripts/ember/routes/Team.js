@@ -1,23 +1,31 @@
 ﻿App.TeamRoute = Ember.Route.extend({
-    model: function (params) {
-        return App.Team.create({ id: params.team_id });
+    //beforeModel: function (params, transition) {
+    //    if (!this.controllerFor('application').get('teamsIsLoaded')) {
+    //        this.controllerFor('application').addObserver('teamsIsLoaded', function () {
+    //            alert('ooooomg');
+    //        });
+    //    }
+    //},
+    model: function (params, transition) {
+        return App.Team.create({
+            id: params.team_id
+        });
     },
     setupController: function (controller, model) {
-        controller.get('controllers.teams').loadTeams();
-        controller.set('content', model);
-        //model.loadTeam();
-        //controller.loadSchedule();
-        controller.loadTeam();
+        var token = this.controllerFor('application').get('token');
+        var team = this.controllerFor('application').get('teams').findBy('id', model.get('id'));
+        controller.setProperties({
+            model: team
+        });
+        App.Team.find(token, model.id).then(function (_team) {
+            controller.setProperties({
+                model: _team,
+                rosterIsLoaded: true,
+                scheduleIsLoaded: true,
+                linesIsLoaded: true,
+                isLoaded: true
+            })
+        })
+
     }
-    //renderTemplate: function () {
-    //    //var controller = this.controllerFor('home');
-    //    //// Render the `favoritePost` template into
-    //    //// the outlet `posts`, and display the `favoritePost`
-    //    //// controller.
-    //    //this.render('tlist', {
-    //    //    outlet: 'teamtest',
-    //    //    controller: controller
-    //    //});
-    //    //this.render('team');
-    //}
 });

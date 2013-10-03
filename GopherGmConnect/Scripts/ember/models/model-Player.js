@@ -16,11 +16,7 @@ App.Player = Ember.Object.extend({
         return Shoots(shoots);
     }.property('shoots'),
 
-    readPotential: function () {
-        var potential = this.get('potential');
-        console.log(getPotential(potential));
-        return getPotential(potential);
-    }.property('potential'),
+    readPotential: Ember.computed.alias('potential'),
 
     readPotentialColor: function () {
         var p = this.get('potentialColor');
@@ -45,3 +41,46 @@ App.Player = Ember.Object.extend({
         return "One";
     }.property("isTwoWay")
 });
+
+App.Player.reopenClass({
+    find: function (pid, token, isNew) {
+        var yearlyStats = [];
+        var playerRates = Em.A();
+        var player = App.Player.create();
+        var data = {
+            id: pid,
+            token: token,
+            isNewNHL: isNew
+        };
+        return $.getJSON("/api/gopher/players", data).then(function (p) {
+            player.setProperties(p);
+            p.playerStats.forEach(function (stat) {
+                var playerStat = App.Yearlystats.create();
+                playerStat.setProperties(stat);
+                yearlyStats.pushObject(playerStat);
+            });
+            for (var r in p.playerRatings) {
+                if (p.playerRatings.hasOwnProperty(r)) {
+                    var playerRate = App.Playerrating.create({ name: r, rating: p.playerRatings[r] });
+                    playerRate.setProperties(r);
+                    playerRates.pushObject(playerRate);
+                }
+            }
+            player.set('playerRates', playerRates);
+            return player;
+        });       
+    }
+});
+
+
+
+//var currentTeamid = self.get('controllers.team').get('id');
+//if (self.get('team') != currentTeamid) {
+//    //loaed team and player team are different.
+//    if (self.get("team") == -1) {
+//        //palyer doesn't currently belong to a team...
+//        return;
+//    }
+//    self.get('controllers.team').set('content', App.Team.create({ id: self.get("team") }));
+//    self.get('controllers.team').loadTeam();
+//}

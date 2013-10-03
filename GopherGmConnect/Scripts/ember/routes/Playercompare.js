@@ -7,29 +7,26 @@ App.PlayercompareRoute = Ember.Route.extend({
         }
     },
     model: function (params) {
+        var tempPlayers = App.Playercompare.create();
         var aPlayer = App.Player.create({ id: params.aplayer_id });
         var bPlayer = App.Player.create({ id: params.bplayer_id });
         var abplayers = Em.A();
         abplayers.pushObject(aPlayer);
         abplayers.pushObject(bPlayer);
-        return abplayers;
-
-        //var aPlayer = App.Player.create({ id: this.modelFor('player').id });
-        //var bPlayer = App.Player.create({ id: params.anotherplayer_id });
-        //var abplayers = Em.A();
-        //abplayers.pushObject(aPlayer);
-        //abplayers.pushObject(bPlayer);
-        //return abplayers;
-
-        //return App.Player.create({id: params.anotherplayer_id});
+        tempPlayers.set('content', abplayers);
+        return tempPlayers;
     },
     setupController: function (controller, model) {
-        //var bothPlayers = Em.A();
-        //var ap = App.Player.create({ id: controller.get('controllers.player').get('content') });
-        //bothPlayers.pushObject(model);
-        //bothPlayers.pushObject(ap);
-        //model = bothPlayers;
-        controller.set('content', model);
-        controller.loadPlayers();
+        var token = this.controllerFor('application').get('token');
+        App.Playercompare.findBoth(model.objectAt(0).id, model.objectAt(1).id, token).then(function (_bothPlayersArray) {
+            controller.setProperties({
+                aPlayer: _bothPlayersArray.objectAt(0),
+                bPlayer: _bothPlayersArray.objectAt(1),
+                compareLoaded: true,
+                isLoaded: true,
+                testing: "aaaa"
+            })
+        });
+
     }
 });

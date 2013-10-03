@@ -27,6 +27,16 @@
     margin-bottom: 0;
 }
 
+    .line .player-image-container
+    {
+        height: 90px;
+        width: 90px;
+        overflow: hidden;
+        display: inline-block;
+        border-radius: 45px;
+        background-image: url(images/pinstriped_suit.png);
+    }
+
 .player-profile
 {
     margin-bottom: 20px;

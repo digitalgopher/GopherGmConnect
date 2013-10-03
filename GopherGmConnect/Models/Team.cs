@@ -8,8 +8,6 @@ namespace GopherGmConnect.Models
     public class Team
     {
         public string id { get; set; }
-        public virtual List<Player> Players { get; set; }
-        public string Record { get; set; }
         public int SalaryCapSpent { get; set; }
         public int SalaryCapRemaining { get; set; }
         public int SalaryCapTotal { get; set; }
@@ -21,12 +19,5 @@ namespace GopherGmConnect.Models
         public int GamesPlayed { get; set; }
         public int OvertimeLosses { get; set; }
         public int RegulationOvertimeWins { get; set; }
-
-        
-
-        public Team()
-        {
-            Players = new List<Player>();
-        }
     }
 }

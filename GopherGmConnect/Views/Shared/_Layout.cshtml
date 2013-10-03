@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,900' rel='stylesheet' type='text/css'>
-    
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     @*<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">*@
     
     @*@Styles.Render("~/Content/emberanimation")*@
-    @Styles.Render("~/Content/bootstrap3")
+    @*@Styles.Render("~/Content/bootstrap3")*@
     @Styles.Render("~/Content/fullcalendar")
          @*@Styles.Render("~/Content/bootstrap")*@
 
@@ -22,21 +22,25 @@
         @*<script src="http://builds.emberjs.com.s3.amazonaws.com/stable/ember.prod.js"></script>*@
     @*<script src="http://builds.emberjs.com.s3.amazonaws.com/stable/ember.js"></script>*@
 
-    @*<script src="http://builds.emberjs.com/canary/ember.js"></script>*@
+    <script src="http://builds.emberjs.com/canary/ember.js"></script>
 
-    <script src="http://builds.emberjs.com/release/ember.min.js"></script>
+    @*PROD*@
+    @*<script src="http://builds.emberjs.com/release/ember.min.js"></script>*@
 
+    @*BOOTSTRAP*@
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 
     @*<script src="http://builds.emberjs.com.s3.amazonaws.com/stable/ember-runtime.min.js"></script>*@
     @*<script src="http://builds.emberjs.com.s3.amazonaws.com/stable/ember.min.js"></script>*@
 @Scripts.Render("~/bundles/fullcalendarjs")
+    @Scripts.Render("~/bundles/charts")
 @*    @Scripts.Render("~/bundles/knockout")*@
 @Scripts.Render("~/bundles/ember")
 
 
 @*@Scripts.Render("~/bundles/bootstrap")*@
-@Scripts.Render("~/bundles/bootstrap3")
+@*@Scripts.Render("~/bundles/bootstrap3")*@
 @Scripts.Render("~/bundles/typeahead")
 @Scripts.Render("~/bundles/app")
     

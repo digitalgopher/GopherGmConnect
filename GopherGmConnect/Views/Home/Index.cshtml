@@ -4,76 +4,6 @@
 <body>
 <script type="text/x-handlebars">
 
-        @*        <div class="navbar">
-        <div class="navbar-inner">
-            <a class="brand" href="#">#LOBNHL</a>
-            <ul class="nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="http://twitter.com/digitalgopher">With <i class="icon-heart"></i>by &#64;digitalgopher</a></li>
-                <form class="navbar-search pull-right">
-                   {{view App.Playersearch}}
-               </form>
-           </ul>
-       </div>
-   </div>*@
-  @* <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-
-          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </a>
-        
-        <!-- Be sure to leave the brand out there if you want it shown -->
-        <a class="brand" href="#">LOBNHL</a>
-        
-        <!-- Everything you want hidden at 940px or less, place within here -->
-        <div class="nav-collapse collapse">
-           <ul class="nav">
-            <li><a href="http://twitter.com/digitalgopher">With <i class="icon-heart"></i>by &#64;digitalgopher</a></li>
-             <li>
-                 <form class="navbar-search pull-left">
-                 {{view App.Playersearch}}
-                     </form></li>
-
-               
-              
-
-                 <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-      Teams
-      <b class="caret"></b>
-    </a>
-    <ul class="dropdown-menu team-dropdown">
-       {{outlet teamtest}}
-    </ul>
-    </li>
-    </ul>
-    </div>
-    
-</div>
-</div>
-</div>*@
-
-    
-
-
-
-    @*    <div id="left-nav" class="main-left-nav">
-        <ul class="nav-list-teams">
-            <li>
-                <a href="#">LOBNHL Home</a>
-            </li>
-            {{outlet teamtest}}
-        </ul>
-    </div>*@
-    @*<div id="mainContent" class=""style="position: relative">*@
-        @*{{animatedOutlet name="main"}}*@
-       
-@*    </div>*@
     {{render navbar}}
          {{outlet}}
     
@@ -81,54 +11,56 @@
 </body>
 
 <script type="text/x-handlebars" data-template-name="navbar">
-    <div class="navbar navbar-inverse" id="app-nav">
-        <div class="container">
-            <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+    <nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">LOBNHL</a>
+  </div>
 
-            <!-- Be sure to leave the brand out there if you want it shown -->
-            <a class="navbar-brand" href="#">#LOBNHL</a>
-
-            <!-- Place everything within .navbar-collapse to hide it until above 768px -->
-            <div class="nav-collapse collapse navbar-responsive-collapse">
-                <ul class="nav navbar-nav">
-                    @*             <li>
-                <a href="#">Advanced Search</a>
-            </li>
-            <li>
-                <a href="#">Trade Calculator</a>
-            </li>*@
-                    <li>{{#linkTo 'topplayers'}}League Leaders{{/linkTo}}
+  <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li>{{#linkTo 'topplayers'}}League Leaders{{/linkTo}}
                     </li>
-                    <li><a href="http://twitter.com/digitalgopher">&#64;digitalgopher</a></li>
-
-                    <li>
-                        <form class="navbar-form">
+                <li>{{#linkTo 'trade'}}Trade{{/linkTo}}
+                    </li>
+                <li>
+                    <a href="http://issuu.com/mhenderson95/docs/mag_4f2d02299bead9">Magazine (!)</a>
+                </li>
+                <li>
+                    <a href="http://offthestanchion.wordpress.com/">Blog</a>
+                </li>
+                <li>
+                    <form class="navbar-form">
                             {{view App.PlayersearchView}}
-                                
-                          
-                        </form>
+                    </form>
                     </li>
-                    <li>{{#linkTo 'trade'}}Trade{{/linkTo}}
-                    </li>
-                    <li>
-                        <a href="http://issuu.com/mhenderson95/docs/mag_4f2d02299bead9">Magazine (!)</a>
+    
+    </ul>
 
-                    </li>
-                    <li>
-                        <a href="http://offthestanchion.wordpress.com/">Blog</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.nav-collapse -->
-        </div>
-        <!-- /.container -->
-    </div>
-    <!-- /.navbar -->
+
+  </div><!-- /.navbar-collapse -->
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </script>
 
     <script type="text/x-handlebars" data-template-name="tlist">
@@ -146,29 +78,11 @@
         <div class="row">
             <div class="col-12">
             <div class="page-header">
-                <h1>Legion of Blog <small>The stats site for #LOBNHL NHL 13 GM's</small></h1>
+                <h1>Legion of Blog <small>The stats site for #LOBNHL 13 (and soon 14!) GM's</small></h1>
             </div>
                 </div>
             </div>
-         @*   {{outlet teaminfo}}*@
-
-
-            @*    <div class="btn-group">
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Sort
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <li><a tabindex="-1" href="#">Powerplay %</a></li>
-                <li><a tabindex="-1" href="#">Penalty Kill %</a></li>
-                <li><a tabindex="-1" href="#">Goals For</a></li>
-                <li class="divider"></li>
-            </ul>
-        </div>*@
-
-
-
-
-        {{#if controllers.teams.teamsIsLoaded}}
+        {{#if teamsIsLoaded}}
         <div class="row">
             <div class="col-12">
                 <div class="btn-group">
@@ -179,24 +93,6 @@
             </div>
         </div>
         <div class="row">
-@*            <div id="mobile-team-grid">
-                {{#each team in controllers.teams.sortedTeams}}
-     
-        <div class="teamGridContainer">
-            {{#linkTo 'team' team}}
-            <div {{ bindAttr class=":teamGridInner team.abr" }}>
-
-                <div class="team-info-container">
-                    {{team.abr}}
-                </div>
-                <div class="team-record-container">
-                    {{team.wins}}-{{team.losses}}-{{team.overtimeLosses}}
-                </div>
-            </div>
-            {{/linkTo}}
-        </div>
-                {{/each}}
-            </div>*@
             <div class="col-12">
                 <div class="table-responsive">
                 <table id="teamrankTable" class="table table-striped">
@@ -213,7 +109,7 @@
                         </tr>
                     </thead>
             <tbody>
-                {{#each team in controllers.teams.sortedTeams}}
+                {{#each team in teams}}
                 <tr>
                     <td class="visible-lg">
                         @*{{#linkToAnimated 'team' team animations='main:flip'}}
@@ -321,7 +217,7 @@
                     </thead>
                     <tbody>
                         @*{{#each player in controllers.roster}}*@
-                        {{#each player in roster}}
+                        {{#each player in content}}
                             <tr>
                                 <td class="hidden-lg">
                                     
@@ -408,17 +304,93 @@
 
 </script>
 
+<script type="text/x-handlebars" data-template-name="ppunit">
+    <div class="col-md-6">
+    <div class="panel panel-warning">
+  <!-- Default panel contents -->
+  <div class="panel-heading">{{name}}</div>
+        <div class="list-group">
+            <a href="#" class="list-group-item">
+                <h5 class="list-group-item-heading">{{leftW.firstName}} {{leftW.lastName}}</h5>
+                <p class="list-group-item-text">LW, OVR: {{leftW.overall}} Shoots {{leftW.handed}}</p>
+            </a>
+
+            <a href="#" class="list-group-item">
+                <h5 class="list-group-item-heading">{{center.firstName}} {{center.lastName}}</h5>
+                <p class="list-group-item-text">C, OVR: {{center.overall}} Shoots {{center.handed}}</p>
+            </a>
+
+            <a href="#" class="list-group-item">
+                <h5 class="list-group-item-heading">{{rightW.firstName}} {{rightW.lastName}}</h5>
+                <p class="list-group-item-text">RW, OVR: {{rightW.overall}} Shoots {{rightW.handed}}</p>
+            </a>
+
+            <a href="#" class="list-group-item">
+                <h5 class="list-group-item-heading">{{leftD.firstName}} {{leftD.lastName}}</h5>
+                <p class="list-group-item-text">LD, OVR: {{leftD.overall}} Shoots {{leftD.handed}}</p>
+            </a>
+
+            <a href="#" class="list-group-item">
+                <h5 class="list-group-item-heading">{{rightD.firstName}} {{rightD.lastName}}</h5>
+                <p class="list-group-item-text">RD, OVR: {{rightD.overall}} Shoots {{rightD.handed}}</p>
+            </a>
+
+        </div>
+      </div>
+    </div>
+</script>
 
 
+<script type="text/x-handlebars" data-template-name="dpair">
+    <div class="col-md-4">
+    <div class="panel panel-info">
+  <!-- Default panel contents -->
+  <div class="panel-heading">{{name}}</div>
+        <div class="list-group">
+            <a href="#" class="list-group-item">
+                <h5 class="list-group-item-heading">{{leftD.firstName}} {{leftD.lastName}}</h5>
+                <p class="list-group-item-text">LW, OVR: {{leftD.overall}} Shoots {{leftD.handed}}</p>
+            </a>
 
+            <a href="#" class="list-group-item">
+                <h5 class="list-group-item-heading">{{rightD.firstName}} {{rightD.lastName}}</h5>
+                <p class="list-group-item-text">RW, OVR: {{rightD.overall}} Shoots {{rightD.handed}}</p>
+            </a>
+
+        </div>
+      </div>
+    </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="fwdline">
+    
+    <div class="col-md-3">
+    <div class="panel panel-success">
+  <!-- Default panel contents -->
+  <div class="panel-heading">{{name}}</div>
+        <div class="list-group">
+            <a href="#" class="list-group-item">
+                <h5 class="list-group-item-heading">{{leftW.firstName}} {{leftW.lastName}}</h5>
+                <p class="list-group-item-text">LW, OVR: {{leftW.overall}} Shoots {{leftW.handed}}</p>
+            </a>
+
+            <a href="#" class="list-group-item">
+                <h5 class="list-group-item-heading">{{center.firstName}} {{center.lastName}}</h5>
+                <p class="list-group-item-text">C, OVR: {{center.overall}} Shoots {{center.handed}}</p>
+            </a>
+
+            <a href="#" class="list-group-item">
+                <h5 class="list-group-item-heading">{{rightW.firstName}} {{rightW.lastName}}</h5>
+                <p class="list-group-item-text">RW, OVR: {{rightW.overall}} Shoots {{rightW.handed}}</p>
+            </a>
+
+        </div>
+      </div>
+    </div>
+</script>
 
     <!-- LINE TEMPLATE -->
 <script type="text/x-handlebars" data-template-name="line">
-
-
-
-
-
     {{#if leftW}}
     <div class="well well-small" style="display: inline-block">
        LW: {{#linkTo 'player' leftW}} {{leftW.firstName}} {{leftW.lastName}} {{/linkTo}}
@@ -460,28 +432,15 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-@*                          <div class="jumbotron">
-              <h1>{{city}} {{teamname}}</h1>
-              <p>team stuff</p>
-            <div class="jumbotronContainer">
-                    <img {{bindAttr src="imageUrlLarge"}} />
-        
-                <div class="statsContainer">                 </div>
-                <h1>{{city}} {{teamname}} <a {{bindAttr href="twitterLink"}}>({{twitter}})</a></h1>
-            </div>*@
-
                 <div class="page-header">
                     <h1>{{city}} {{teamname}} <img {{bindAttr src="imageUrl"}} /><small><a {{bindAttr href="twitterLink"}}>({{twitter}})</a></small></h1>
-                </div>
-            
+                </div>         
         </div>
             </div>
         <div class="row">
             <div class="col-lg-12">
         <div class="well well-small">
           {{#if statsIsLoaded}} 
-@*          <small class="lead">{{wins}}-{{losses}}-{{overtimeLosses}}</small>
-          <small> Points: </small> <small class="lead">{{points}}</small> *@
           <small>Cap Space:</small> <small class="lead">{{capSpace}}</small>           
           {{else}} <small class="lead"> Loading Team Info...</small>{{/if}}
       </div>
@@ -489,7 +448,11 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
   </div>
    
 
-
+        <div class="row">
+            <div class="col-xs-4">
+            <canvas id="winloss-chart" width="100%" height="100%"></canvas>
+                </div>
+        </div>
 
         <div class="row">
                 <div class="col-lg-4">
@@ -525,22 +488,12 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
     </div>
         </div>
 
-@*        <div class="row">
-            <div class="col-6">
-                <canvas id="myChart" width="400" height="400"></canvas>
-            </div>
-            <div class="col-6">
-                <ul id="playerList">
-
-                </ul>
-            </div>
-        </div>*@
 
         <div class="row">
             <div class="col-lg-12">
 
 
-  <ul class="nav nav-tabs teamTabs">
+  <ul class="nav nav-tabs nav-justified teamTabs">
     <li class="active"><a href="#tab1" data-toggle="tab">Roster</a></li>
     <li><a href="#tab2" data-toggle="tab">Lines</a></li>
     <li><a href="#tab3" data-toggle="tab">Schedule</a></li>
@@ -578,14 +531,9 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
                     </tr>
                 </thead>
                 <tbody>
-                    @*{{#each player in filteredRoster}}*@
-                    @*{{#each player in controllers.roster}}*@
                     {{#each player in filteredRoster}}
                     <tr>
                         <td class="hidden-lg">
-                          @*  {{#linkToAnimated 'player' player animations='main:slideLeft'}}  
-                                {{player.lastName}}
-                            {{/linkToAnimated}}*@
                             {{#linkTo 'player' player}}
                                 {{player.lastName}}
                             {{/linkTo}}
@@ -643,8 +591,38 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
     <div class="tab-pane" id="tab2">
         @* LINE COMBO TAB *@
         {{#if linesIsLoaded}}
+
+
+
+            <div class="row">
+            {{#each line in lines.fwd}}
+
+            {{render "fwdline" line}}
+
+            {{/each}}
+                </div>
+
+        <div class="row">
+            {{#each line in lines.dpair}}
+
+            {{render "dpair" line}}
+
+            {{/each}}
+                </div>
+
+         <div class="row">
+            {{#each line in lines.pp}}
+
+            {{render "ppunit" line}}
+
+            {{/each}}
+                </div>
+
+        {{/if}}
+
+
             
-            <ul class="nav nav-pills">
+@*            <ul class="nav nav-pills">
                 {{#each line in lines}}
               <li><a {{bindAttr href="line.lineid"}} data-toggle="tab">{{line.name}}</a></li>
                 {{/each}}
@@ -658,7 +636,7 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
           </div>
             {{else}}
           <img class="rotating" src="/Content/images/loading.png">
-            {{/if}}
+            {{/if}}*@
         
         </div>
     <div class="tab-pane" id="tab3">
@@ -709,8 +687,8 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
                 <p class="player-name">{{firstName}} {{lastName}} #{{jersey}}</p>
                 <div class="player-team">
 
-                    {{#linkTo 'team' controllers.team}}
-                    <img {{bindAttr src="controllers.team.imageUrl"}} />  {{controllers.team.city}} {{controllers.team.teamname}}
+                    {{#linkTo 'team' team}}
+                    <img {{bindAttr src="team.imageUrl"}} />  {{team.city}} {{team.teamname}}
                     {{/linkTo}}
                 </div>
                 <p class="player-etc"><i class="icon-home"></i>{{birthPlace}}</p>
@@ -1078,20 +1056,32 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
          {{#if compareLoaded}}
    
         <div class="row">
-            <div class="col-6">
+            <div class="col-xs-6">
                 {{render "playerprofile" aPlayer}} 
             </div>
-            <div class="col-6">
+            <div class="col-xs-6">
                 {{render "playerprofile" bPlayer}}
             </div>
         </div>
 
         <div class="row">
+            <div class="hidden-lg">
+            {{aPlayer.lastName}}
+                </div>
             {{render "playerbasicinfobox" aPlayer}}
+            <div class="hidden-lg">
+            {{bPlayer.lastName}}
+                </div>
             {{render "playerbasicinfobox" bPlayer}}
         </div>
         <div class="row">
+            <div class="hidden-lg">
+            {{aPlayer.lastName}}
+                </div>
             {{render "playercontractbox" aPlayer}}
+            <div class="hidden-lg">
+            {{bPlayer.lastName}}
+                </div>
             {{render "playercontractbox" bPlayer}}
         </div>
 
@@ -1187,7 +1177,7 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
         <div class="numberBox">   
             <span>Potential</span>
             <div class="numberBoxValueContainer">
-                {{playerpotential controller}}
+                {{playerpotential potential potentialColor}}
             </div>
         </div>     
         <div class="numberBox">   
@@ -1217,34 +1207,39 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
 
     <script type="text/x-handlebars" data-template-name="trade">
         <div class="container">
+                    <div class="row">
+            <div class="col-sm-6">
+                {{aTeam.city}} {{aTeam.teamname}}
+            </div>
+            <div class="col-sm-6">
+                {{bTeam.city}} {{bTeam.teamname}}
+            </div>
+        </div>
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-sm-6">
                     @*   <h2>{{aTeam.newTradeSalary}}</h2>*@
-                    {{#if teamsIsLoaded}}
                         {{view App.Tradeteamselect
                         contentBinding="allTeams"
+                        valueBinding="randomTeam.id"
                         optionValuePath="content.id"
                         optionLabelPath="content.teamname"
                         selectionBinding="aTeam"
                         itemController="Team"
                         }}
-                    {{/if}}
                     <img {{bindAttr src="aTeam.imageUrl"}} />
-                    <h3>Current Cap: {{aTeam.capSpace}}</h3>
-                    <h4>Salary Avail After trade: {{aTeamSalaryAfterTrade}}</h4>
+                    <h3>Cap Space: {{aTeam.capSpace}}</h3>
+                    <h4>Salary After trade: {{aTeamSalaryAfterTrade}}</h4>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-sm-6">
 
-                    @*   <h2>{{aTeam.newTradeSalary}}</h2>*@
-                    {{#if teamsIsLoaded}}
                 {{view App.Tradeteamselect
                      contentBinding="allTeams"
+                    valueBinding="randomTeamB.id"
                     optionValuePath="content.id"
                     optionLabelPath="content.teamname"
                     selectionBinding="bTeam"
                     itemController="Team"
                 }}
-                           {{/if}}
                  <img {{bindAttr src="bTeam.imageUrl"}} />
                     <h3>Current Cap: {{bTeam.capSpace}}</h3>
                     <h4>Salary Avail After trade: {{bTeamSalaryAfterTrade}}</h4>
@@ -1252,101 +1247,57 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-2">
-                    {{#if aTeam.rosterIsLoaded}}
-                       <ul class="list-unstyled tradeRoster">
-                           {{#each p in aTeam.roster}}
-                       <li {{action 'aTeamAddToBlock' p}}>
-                         {{#view 'App.tradeRosterListItem'}} 
-                           {{p.firstName}} {{p.lastName}} {{p.overall}}
-                            {{/view}}
-                       </li>
-
-                           {{/each}}
-                       </ul>
-                      {{else}}
-                      LOADING...
-                      {{/if}}
-                  </div>
-            <div class="col-lg-4">
-                <h4>On Block: {{aTeam.tradeSalary}}</h4>
-
-                <ul class="list-unstyled tradeBlockList">
-                {{#each p in aTeam.tradeBlock}}
-                <li class="tradeBlockPlayer">
-                   <div>
-                       <img style="width: 50px" {{bindAttr src="p.imageUrl"}} /> {{p.lastName}} {{p.salaryReadable}} {{p.overall}}
-
-                   </div>
-                </li>
-                
-                {{/each}}
-                    </ul>            
-            </div>
-                   @*----- Bteam -----*@
-         
-            <div class="col-lg-4">
-                <h4>On Block: {{bTeam.tradeSalary}}</h4>
-                <ul class="list-unstyled tradeBlockList">
-                {{#each p in bTeam.tradeBlock}}
-                <li class="tradeBlockPlayer">
-                   <div>
-                       <img style="width: 50px" {{bindAttr src="p.imageUrl"}} /> {{p.lastName}} {{p.salaryReadable}} {{p.overall}}
-
-                   </div>
-                </li>
-                
-                {{/each}}
-                    </ul>            
-            </div>
-                   <div class="col-lg-2">
-                       <ul class="list-unstyled tradeRoster">
-                            {{#each p in bTeam.roster}}
-                       <li {{action 'bTeamAddToBlock' p}}>
-                         {{#view 'App.tradeRosterListItem'}}
-                       
-                          
-                           {{p.firstName}} {{p.lastName}} {{p.overall}}
-                            {{/view}}
-                       </li>
-                        
-                            {{/each}}
-                     </ul>
-                  </div>
-        </div>
-
-            <div class="row">
-                <div class="col-lg-6">
+                 {{#if aTeam.rosterIsLoaded}}
+                <div class="col-sm-3">
                    
+                    <div class="list-group">
+                        {{#each p in aTeam.roster}}
+                            <a {{action playerSelected p aTeam}} class="list-group-item"> {{p.firstName}} {{p.lastName}} {{p.overall}}</a>
+                        {{/each}}
                     </div>
-          @*      <div class="col-lg-6">
-                      <ul class="list-unstyled">
-                            {{#each p in bTeam.roster}}
-                       <li {{action 'bTeamAddToBlock' p}}>
-                           {{p.firstName}} {{p.lastName}}
-                       </li>
-                            {{/each}}
-                     </ul>
-                </div>*@
+                  </div>
+            <div class="col-sm-3">
+                <h4>On Block: {{aTeam.tradeSalary}}</h4>
+                                <div class="list-group">
+                    {{#each p in aTeam.tradeBlock}}
+  <a href="#" class="list-group-item">
+    <h4 class="list-group-item-heading">{{p.firstName}} {{p.lastName}}</h4>
+      <img style="width: 50px" {{bindAttr src="p.imageUrl"}} />
+    <p class="list-group-item-text"> {{p.salaryReadable}}, {{p.overall}}</p>
+  </a>
+                      {{/each}}
+</div>         
             </div>
+                {{/if}}
 
-
-
-
-        <div class="row">
-            <div class="col-lg-6">
-                {{aTeam.city}} {{aTeam.teamname}}
+          {{#if bTeam.rosterIsLoaded}}
+            <div class="col-sm-3">
+                <h4>On Block: {{bTeam.tradeSalary}}</h4>
+                <div class="list-group">
+                    {{#each p in bTeam.tradeBlock}}
+  <a href="#" class="list-group-item">
+    <h4 class="list-group-item-heading">{{p.firstName}} {{p.lastName}}</h4>
+      <img style="width: 50px" {{bindAttr src="p.imageUrl"}} />
+    <p class="list-group-item-text"> {{p.salaryReadable}}, {{p.overall}}</p>
+  </a>
+                      {{/each}}
+</div>
+         
             </div>
-            <div class="col-lg-6">
-                {{bTeam.city}} {{bTeam.teamname}}
-            </div>
+                   <div class="col-sm-3">
+                       <div class="list-group">
+                        {{#each p in bTeam.roster}}
+                            <a {{action playerSelected p bTeam}} class="list-group-item"> {{p.firstName}} {{p.lastName}} {{p.overall}}</a>
+                        {{/each}}
+                    </div>
+                  </div>
         </div>
-        <div class="row">
-            <div class="col-lg-6">
-            </div>
-            <div class="col-lg-6">
-            </div>
-        </div>
+
+            {{/if}}
+
+
+
+
     </div>
     </script>
     

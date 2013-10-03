@@ -18,3 +18,6 @@
         self.salaryChanged('b');
     }.observes('bTeam.tradeBlock.length')
 });
+
+App.Trade.reopenClass({
+})

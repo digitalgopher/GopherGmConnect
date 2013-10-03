@@ -4,7 +4,12 @@ App.TopplayersRoute = Ember.Route.extend({
         return Em.Object.create();
     },
     setupController: function (controller, model) {
-        controller.set('content', model);
-        controller.loadPlayers();
+        var token = this.controllerFor('application').get('token');
+        App.Roster.findTopPlayers(token).then(function (_loadedRoster) {
+            controller.setProperties({
+                model: _loadedRoster,
+                playersIsLoaded: true
+            })
+        });
     }
 });

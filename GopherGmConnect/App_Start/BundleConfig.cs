@@ -32,7 +32,7 @@ namespace GopherGmConnect
                         "~/Scripts/PlayerInfo.js",
                         "~/Scripts/League.js",
                         "~/Scripts/player_list.js", 
-                        "~/Scripts/seasonSchedule.js",
+                        "~/Scripts/seasonSchedule.json",
                         "~/Scripts/nhl_14_players.json"));
 
             bundles.Add(new ScriptBundle("~/bundles/typeahead").Include(

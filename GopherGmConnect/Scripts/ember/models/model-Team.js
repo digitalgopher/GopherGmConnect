@@ -8,6 +8,7 @@ App.Team = Ember.Object.extend({
         return 0;
     }.property(),
     tradeBlockChanged: function () {
+        debugger;
         var self = this;
         var totalSalary = 0;
         self.get('tradeBlock').forEach(function (item, index, enumerable) {
@@ -22,122 +23,10 @@ App.Team = Ember.Object.extend({
         self.set('newTradeSalary', numberWithCommas(newSalary));
     }.observes('tradeBlock.@each'),
 
-    loadTeam: function (token) {
-        var self = this;
-        self.loadRoster(token);
-        //self.loadSchedule();
-        self.loadStats(token);
-    },
-
-    loadRoster: function (token) {
-        var loadedRoster = App.Roster.create();
-        var untouchedRoster = App.Roster.create();
-        var tempRoster = Em.A();
-        var self = this;
-        self.set('rosterIsLoaded', false);
-        var data = {
-            id: self.get('id'),
-            token: token
-        }
-        $.getJSON("/api/gopher/roster", data).then(function (playerList) {
-            playerList.forEach(function (p) {
-                var player = App.Player.create();
-                player.setProperties(p);
-                tempRoster.pushObject(player);
-                //loadedRoster.pushObject(player);
-            });
-            var loadedRosterController = App.RosterController.create({
-                content: tempRoster
-            });
-            var filteredRosterController = App.RosterController.create({
-                content: tempRoster
-            });
-            self.set('roster', loadedRosterController);
-            self.set('filteredRoster', filteredRosterController);
-
-
-
-            //loadedRoster.set('content', tempRoster);
-            //untouchedRoster.set('content', tempRoster);
-
-
-            //self.set('roster', untouchedRoster);
-            //self.set('filteredRoster', loadedRoster);
-
-            //self.get('controllers.roster').set('content', loadedRoster);
-            self.set('rosterIsLoaded', true);
-        });
-    },
-    //depends on a roster being loaded. Call only when sure a roster is loaded
-    loadLines: function (token) {
-        var self = this;
-        if (self.get('rosterIsLoaded')) {
-            var loadedLines = [];
-            var data = {
-                id: self.get('id'),
-                token: token
-            }
-            $.getJSON("/api/gopher/getlines", data).then(function (lines) {
-                lines.lines.forEach(function (l) {
-                    var line = App.Line.create();
-                    line.setProperties(l);
-                    loadedLines.pushObject(line);
-                });
-                self.set('lines', loadedLines);
-                self.set('linesIsLoaded', true);
-            });
-        }
-    },
-    //}.observes('rosterIsLoaded'),
-
-    //loadSchedule: function () {
-    //    var schedule = [];
-    //    var self = this;
-
-    //    function containsTeam(element, index, array) {
-    //        if (element.homeTeamId == self.get('id') || element.awayTeamId == self.get('id'))
-    //        {
-    //            return element
-    //        }
-    //    }
-    //    var teamSched = SEASON_SCHEDULE.filter(containsTeam);
-    //    teamSched.forEach(function (g) {
-    //        var game = App.Game.create();
-    //        game.setProperties(g);
-    //        schedule.pushObject(game);
-    //    });
-    //    self.set('schedule', schedule);
-    //    self.set('scheduleIsLoaded', true);
-        //$.getJSON("/api/gopher/GetSchedule", { id: this.get('id') }).then(function (games) {
-        //    games.forEach(function (g) {
-        //        var game = App.Game.create();
-        //        game.setProperties(g);
-        //        schedule.pushObject(game);
-        //    });
-        //    self.set('schedule', schedule);
-        //    self.set('scheduleIsLoaded', true);
-        //});
-    //},
-
-    loadStats: function (token) {
-        var self = this;
-        var data = {
-            id: self.get('id'),
-            token: token
-        }
-        $.getJSON("/api/gopher/teams", data).then(function (team) {
-            self.setProperties(team);
-            self.set('statsIsLoaded', true);
-        });
-    },
 
     isLoaded: function () {
         return Ember.computed.and('linesIsLoaded', 'rosterIsLoaded', 'scheduleIsLoaded', 'statsIsLoaded');
-        //var self = this;
-        //if (self.get('linesIsLoaded') && self.get('rosterIsLoaded') && self.get('scheduleIsLoaded') && self.get('statsIsLoaded')) {
-        //    self.set('isLoaded', true);
-        //}
-    }.observes('linesIsLoaded', 'rosterIsLoaded', 'scheduleIsLoaded', 'statsIsLoaded'),
+    },
 
 
     teamjsname: function () {
@@ -174,7 +63,6 @@ App.Team = Ember.Object.extend({
 
     division: function () {
         return Division(this.get('division'));
-        //return this.get('Division');
     }.property('division'),
 
     imageUrl: function () {
@@ -209,4 +97,65 @@ App.Team = Ember.Object.extend({
         full = c + "-" + n;
         return "/content/images/logos/200/" + full + ".png";
     }.property('teamname', 'city', 'name')
+});
+
+
+/*
+Loads everything about the team using RSVP hashes to load all promises at the same time. 
+*/
+App.Team.reopenClass({
+    find: function (token, id) {
+        var team = App.Team.create();
+        return Ember.RSVP.hash({
+            roster: App.Roster.find(token, id),
+            lines: App.Line.findAll(token, id),
+            stats: App.Team.findStats(token, id),
+            schedule: App.Team.findSchedule(id)
+        }).then(function (results) {
+
+            var rosterController = App.RosterController.create({
+                content: results.roster
+            });
+
+            var filteredRosterController = App.RosterController.create({
+                content: results.roster
+            });
+
+            team.set('roster', rosterController);
+            team.set('filteredRoster', filteredRosterController);
+            team.set('lines', results.lines);
+            team.set('schedule', results.schedule);
+            team.setProperties(results.stats);
+            return team;
+        }).fail(function () {
+            alert('something failed;');
+        });
+
+    },
+    findStats: function (token, id) {
+        var data = {
+            id: id,
+            token: token
+        }
+        return $.getJSON("/api/gopher/teams", data).then(function (_stats) {
+            return _stats;
+        });
+    },
+    findSchedule: function (id) {
+        return $.getJSON("/scripts/seasonSchedule.json").then(function (_scheduleArray) {
+            function containsTeam(element, index, array) {
+                if (element.homeTeamId.toString() == id || element.awayTeamId.toString() == id) {
+                    return element
+                }
+            }
+            var schedule = Em.A();
+            var teamSched = _scheduleArray.filter(containsTeam);
+            teamSched.forEach(function (_game) {
+                var game = App.Game.create();
+                game.setProperties(_game);
+                schedule.pushObject(game);
+            });
+            return schedule;
+        });
+    }
 });

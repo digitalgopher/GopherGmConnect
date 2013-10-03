@@ -1,19 +1,21 @@
 ﻿App.HomeController = Ember.ObjectController.extend({
     content: null,
-    needs: ['teams', 'eatoken'],
-    loadTeams: function () {
-        var self = this;
+    needs: ['application'],
+    teams: Ember.computed.alias('controllers.application.teams'),
+    teamsIsLoaded: Ember.computed.alias('controllers.application.teamsIsLoaded'),
+    actions: {
+        filterConference: function (conf) {
+            var self = this;
+            var confInt = parseInt(conf);
+            if (confInt === 3)
+            {
+                $('#teamrankTable').removeClass('teamranks');
+            }
+            else {
+                $('#teamrankTable').addClass('teamranks');
+            }
+            self.get('teams').filterConference(confInt);
+        }
     },
 
-    filterConference: function (conf) {
-        var self = this;
-        var confInt = parseInt(conf);
-        
-        if (confInt == 3) {
-            $('#teamrankTable').removeClass('teamranks');
-            self.get('controllers.teams').set('sortedTeams', self.get('controllers.teams').get('content'));
-            return;
-        }
-        self.get('controllers.teams').set('sortedTeams', self.get('controllers.teams').get('content').filterProperty('conference', confInt));
-    }
 });

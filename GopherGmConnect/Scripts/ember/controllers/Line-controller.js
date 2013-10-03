@@ -2,8 +2,8 @@
     needs: ['team'],
     playerAtPosition: function (position) {
         var self = this;
-        var position = 'players.' + position;
-        return this.get('controllers.team').get('roster.content').findProperty('id', this.get(position));
+        debugger;
+        return self.get('controllers.team').get('roster.players').findProperty('id', self.get(position));
     },
     centre: function () {
         var self = this;
@@ -12,7 +12,7 @@
     leftW: function () {
         var self = this;
         return self.playerAtPosition('LW');
-    }.property('controllers.team'),
+    }.property(),
     rightW: function () {
         var self = this;
         return self.playerAtPosition('RW');

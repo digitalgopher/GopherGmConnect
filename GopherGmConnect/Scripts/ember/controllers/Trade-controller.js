@@ -1,27 +1,26 @@
 ﻿App.TradeController = Em.ObjectController.extend({
-    needs: ['teams', 'team', 'eatoken'],
-    sessionToken: function () {
-        var self = this;
-        return self.get('controllers.eatoken.token');
+    needs: ['application'],
+    token: Ember.computed.alias('controllers.application.token'),
+    allTeams: Ember.computed.alias('controllers.application.teams'),
+    randomTeam: {
+        id: Math.floor(Math.random() * (30 - 0) + 0).toString()     
     },
-    loadTeams: function () {
-        var self = this;
-        if (!self.get('controllers.teams').get('teamsIsLoaded'))
-        {
-            self.get('controllers.teams').loadTeams();
-        }
-        else
-        {
-            self.set('allTeams', self.get('controllers.teams').get('content'))
-            self.set('teamsIsLoaded', true);
-        }
-        var allTeams = self.get('controllers.teams').addObserver('teamsIsLoaded', function (a) {
-            console.log(a.get('teamsIsLoaded'));
-            self.set('allTeams', self.get('controllers.teams').get('content'));
-            self.set('teamsIsLoaded', true);
-        });
-        
+    randomTeamB: {
+        id: Math.floor(Math.random() * (30 - 0) + 0).toString()
     },
+    actions: {
+        playerSelected: function (player, team) {
+            var self = this;
+            if (team.get('tradeBlock').contains(player)) {
+                team.get('tradeBlock').removeObject(player);
+            }
+            else {
+                team.get('tradeBlock').pushObject(player);
+            }
+            
+        }
+    },
+    //TODO : Clean this up...
     updateAfterTradeSalaries: function () {
         var self = this;
         if (typeof self.get('aTeam.tradeSalaryEnum') == "undefined") {
@@ -43,10 +42,10 @@
         self.set('bTeamSalaryAfterTrade', numberWithCommas(bAfterTrade));
     },
     aTeamSalaryAfterTrade: function () {
-        return 100;
+        return 'Please Select a Player.';
     }.property(),
     bTeamSalaryAfterTrade: function () {
-        return 200;
+        return 'Please Select a Player.';
     }.property(),
     aTeamSalaryChange: function () {
         var self = this;
@@ -64,7 +63,7 @@
         var self = this;
         self.addToTradeBlock(player, 'a');
     },
-    addToTradeBlock: function (player, teamLetter){
+    addToTradeBlock: function (player, teamLetter) {
         var self = this;
         var teamString = teamLetter + 'Team';
         console.log(teamString);
@@ -72,12 +71,11 @@
             var existingPlayerIndex = self.get(teamString).get('tradeBlock').indexOf(player);
             self.get(teamString).get('tradeBlock').removeAt(existingPlayerIndex);
         }
-        else
-        {
+        else {
             self.get(teamString).get('tradeBlock').pushObject(player);
         }
     },
-    
+
     tradeTeamsLoaded: function () {
         var self = this;
         if (self.aTeam != null && self.bTeam != null) {
@@ -90,22 +88,31 @@
     aLoadedTeam: null,
     bLoadedTeam: null,
     destroyTradeBlock: function (block) {
-        var self = this;  
+        var self = this;
         var teamBlock = block + 'Team';
         var players = self.get(teamBlock).get('tradeBlock');
-        if (players.length > 0)
-        {
+        if (players.length > 0) {
             players.clear();
         }
     },
-    aTeamChanged: function () {
+    teamChanged: function () {
         var self = this;
-        self.destroyTradeBlock('a');
-        self.aTeam.loadTeam(self.sessionToken());
-    }.observes('aTeam'),
-    bTeamChanged: function () {
-        var self = this;
-        self.destroyTradeBlock('b');
-        self.bTeam.loadTeam(self.sessionToken());
-    }.observes('bTeam')
+        var teamChanged = arguments[1];
+        var teamid = self.get(teamChanged).get('id');
+        App.Team.find(self.get('token'), teamid).then(function (_loadedTeam) {
+            self.get(teamChanged).setProperties({
+                salaryCapSpent: _loadedTeam.get('salaryCapSpent'),
+                salaryCapRemaining: _loadedTeam.get('salaryCapRemaining'),
+                salaryCapTotal: _loadedTeam.get('salaryCapTotal'),
+                roster: _loadedTeam.get('roster'),
+                rosterIsLoaded: true
+            });
+            
+        });
+    }.observes('aTeam', 'bTeam'),
+    //bTeamChanged: function () {
+    //    var self = this;
+    //    self.destroyTradeBlock('b');
+    //    self.bTeam.loadTeam(self.sessionToken());
+    //}.observes('bTeam')
 })

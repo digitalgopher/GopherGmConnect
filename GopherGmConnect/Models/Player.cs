@@ -15,8 +15,56 @@ namespace GopherGmConnect.Models
 
         public int Aid { get; set; }
         public int Overall { get; set; }
+        /*
+         * 
+         * When a player is returned, the potential is an enum. So 
+         * we're going to emulate the enum before sending it out to the page. 
+         *                             
+         * 8 : 1,
+        7 : 1.5,
+        6 : 2,
+        5 : 2.5,
+        4 : 3,
+        3 : 3.5,
+        2 : 4,
+        1 : 4.5,
+        0 : 5
+         * 
+         * 
+         */
+        private double _potential { get; set; }
+        public double Potential
+        {
+            get
+            {
+                switch ((int)_potential)
+                {
+                    case 0:
+                return 5;
+                    case 1:
+                return 4.5;
+                    case 2:
+                return 4;
+                    case 3:
+                return 3.5;
+                    case 4:
+                return 3;
+                    case 5:
+                return 2.5;
+                    case 6:
+                return 2;
+                    case 7:
+                return 1.5;
+                    case 8:
+                return 1;
+                    default:
+                        return 9;
+                }
+            }
+            set { _potential = value; }
+        }
 
-        public int Potential { get; set; }
+
         public int PotentialColor { get; set; }
 
         public int CountryCode { get; set; }
@@ -27,6 +75,7 @@ namespace GopherGmConnect.Models
 
         public int PlayerArtID { get; set; }
         public int Team { get; set; }
+        public int TeamId { get; set; }
         //public string ImageUrl { get; set; }
 
         public List<PlayerStats> PlayerStats { get; set; }
@@ -71,6 +120,7 @@ namespace GopherGmConnect.Models
             //GetOffStats();
         }
 
+        
 
         //private void GetOffStats()
         //{
