@@ -92,7 +92,23 @@ namespace GopherGmConnect.Models
         public int DraftPosition { get; set; }
         public int Shoots { get; set; }
 
-        public int Salary {get; set;}
+        public bool IsOnMainRoster { get; set; }
+
+        private int _salary { get; set; }
+        public int Salary
+        {
+            get
+            {
+                return _salary;
+            }
+            set
+            {
+                _salary = value;
+                SalaryReadable = GetProperContract(_salary);
+            }
+        }
+
+        public int SalaryReadable { get; private set; }
         public int YearsLeft {get; set;}
         public bool IsTwoWay {get; set;}
         public int TradeValue {get; set;}
@@ -114,30 +130,22 @@ namespace GopherGmConnect.Models
         {
             PlayerStats = new List<PlayerStats>();
             PlayerRatings = new PlayerRatings();
-            //OffStats = new List<int>();
-            //DefStats = new List<int>();
-            //GoalieStats = new List<int>();
-            //GetOffStats();
         }
 
-        
-
-        //private void GetOffStats()
-        //{
-        //    OffStats.Add(Aggressiveness);
-        //    OffStats.Add(WristShotAccuracy);
-        //    OffStats.Add(WristShotPower);
-        //    OffStats.Add(SlapShotAccuracy);
-        //    OffStats.Add(SlapShotPower);
-        //    OffStats.Add(PuckControl);
-        //    OffStats.Add(OffAwareness);
-        //    OffStats.Add(HandEye);
-        //    OffStats.Add(Deking);
-        //    OffStats.Add(Passing);
-        //}
-
-        
-
-        
+        private int GetProperContract(int contractEnum)
+        {
+            if (contractEnum == 0)
+            {
+                return 0;
+            }
+            var count = 105;
+            var salary = 525000;
+            while (count != contractEnum)
+            {
+                salary += 5000;
+                count++;
+            }
+            return salary;
+        }
     }
 }

@@ -14,10 +14,12 @@ namespace GopherGmConnect
             bundles.Add(new ScriptBundle("~/bundles/ember/models").IncludeDirectory("~/Scripts/ember/models", "*.js"));
             bundles.Add(new ScriptBundle("~/bundles/ember/views").IncludeDirectory("~/Scripts/ember/views", "*.js"));
             bundles.Add(new ScriptBundle("~/bundles/ember/helpers").IncludeDirectory("~/Scripts/ember/helpers", "*.js"));
+            bundles.Add(new ScriptBundle("~/bundles/ember/components").IncludeDirectory("~/Scripts/ember/components", "*.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/charts").Include(
-                        "~/Scripts/Chart.js"));
+                        "~/Scripts/Chart.js",
+                        "~/Scripts/jquery.knob.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/ember").Include(
                         //"~/Scripts/ember/handlebars.js",
@@ -86,8 +88,9 @@ namespace GopherGmConnect
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/style").Include(
-                        "~/Content/site.css",
-                        "~/Content/loader.css"));
+                        //"~/Content/site.css",
+                        "~/Content/loader.css",
+                        "~/Content/style.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

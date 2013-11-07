@@ -3,7 +3,136 @@
     /*font-family: 'Roboto', sans-serif;*/
     /*background-color: #e5e5e5;*/
     /*padding-top: 50px;*/
+    background-color:rgba(0,0,0,.2) 
 }
+.game {
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 90px;
+}
+
+.logo-bg-image-90-DET {    
+    background-image: url("../content/images/logos/90/detroit-Red-Wings.png");
+}
+
+.logo-bg-image-90-CHI {
+    background-image: url("../content/images/logos/90/chicago-Blackhawks.png");
+}
+
+.logo-bg-image-90-CGY {    
+    background-image: url("../content/images/logos/90/calgary-Flames.png");
+}
+
+.logo-bg-image-90-FLA {
+    background-image: url("../content/images/logos/90/florida-Panthers.png");
+}
+
+.logo-bg-image-90-BUF {    
+    background-image: url("../content/images/logos/90/Buffalo-Sabres.png");
+}
+
+.logo-bg-image-90-TB {
+    background-image: url("../content/images/logos/90/tampa-bay-Lightning.png");
+}
+
+.logo-bg-image-90-PHX {    
+    background-image: url("../content/images/logos/90/phoenix-Coyotes.png");
+}
+
+.logo-bg-image-90-PHI {
+    background-image: url("../content/images/logos/90/philadelphia-flyers.png");
+}
+
+.logo-bg-image-90-COL {    
+    background-image: url("../content/images/logos/90/colorado-avalanche.png");
+}
+
+.logo-bg-image-90-NJ {
+    background-image: url("../content/images/logos/90/new-jersey-devils.png");
+}
+
+.logo-bg-image-90-STL {    
+    background-image: url("../content/images/logos/90/st-louis-blues.png");
+}
+
+.logo-bg-image-90-OTT {
+    background-image: url("../content/images/logos/90/ottawa-senators.png");
+}
+
+.logo-bg-image-90-PIT {    
+    background-image: url("../content/images/logos/90/pittsburgh-penguins.png");
+}
+
+.logo-bg-image-90-CAR {
+    background-image: url("../content/images/logos/90/carolina-hurricanes.png");
+}
+
+.logo-bg-image-90-SJS {    
+    background-image: url("../content/images/logos/90/san-jose-sharks.png");
+}
+
+.logo-bg-image-90-TOR {
+    background-image: url("../content/images/logos/90/toronto-maple-leafs.png");
+}
+
+.logo-bg-image-90-MIN {    
+    background-image: url("../content/images/logos/90/minnesota-wild.png");
+}
+
+.logo-bg-image-90-DAL {
+    background-image: url("../content/images/logos/90/dallas-stars.png");
+}
+
+.logo-bg-image-90-NYI {    
+    background-image: url("../content/images/logos/90/new-york-islanders.png");
+}
+
+.logo-bg-image-90-EDM {
+    background-image: url("../content/images/logos/90/edmonton-oilers.png");
+}
+
+.logo-bg-image-90-ANA {    
+    background-image: url("../content/images/logos/90/anaheim-ducks.png");
+}
+
+.logo-bg-image-90-VAN {
+    background-image: url("../content/images/logos/90/vancouver-canucks.png");
+}
+
+.logo-bg-image-90-WPG {    
+    background-image: url("../content/images/logos/90/winnipeg-jets.png");
+}
+
+.logo-bg-image-90-NSH {
+    background-image: url("../content/images/logos/90/nashville-predators.png");
+}
+
+.logo-bg-image-90-NYR {    
+    background-image: url("../content/images/logos/90/new-york-rangers.png");
+}
+
+.logo-bg-image-90-CBJ {
+    background-image: url("../content/images/logos/90/columbus-blue-jackets.png");
+}
+
+.logo-bg-image-90-LAK {    
+    background-image: url("../content/images/logos/90/los-angeles-kings.png");
+}
+
+.logo-bg-image-90-BOS {
+    background-image: url("../content/images/logos/90/boston-bruins.png");
+}
+
+.logo-bg-image-90-MTL {
+    background-image: url("../content/images/logos/90/montreal-canadiens.png");
+}
+
+.logo-bg-image-90-WSH {
+    background-image: url("../content/images/logos/90/washington-capitals.png");
+}
+
+
+
 
 #app-nav
 {

@@ -3,12 +3,12 @@
 }
 <body>
 <script type="text/x-handlebars">
-
+    <div class="full-wrap"></div>
     {{render navbar}}
          {{outlet}}
-    
+
 </script>
-</body>
+
 
 <script type="text/x-handlebars" data-template-name="navbar">
     <nav class="navbar navbar-default" role="navigation">
@@ -75,15 +75,15 @@
 
 <script type="text/x-handlebars" data-template-name="home">
     <div class="container">
-        <div class="row">
+@*        <div class="row">
             <div class="col-12">
             <div class="page-header">
                 <h1>Legion of Blog <small>The stats site for #LOBNHL 13 (and soon 14!) GM's</small></h1>
             </div>
                 </div>
-            </div>
+            </div>*@
         {{#if teamsIsLoaded}}
-        <div class="row">
+@*        <div class="row">
             <div class="col-12">
                 <div class="btn-group">
                     <button class="btn btn-default" {{action "filterConference" "1"}}>West</button>
@@ -91,7 +91,59 @@
                     <button class="btn btn-default" {{action "filterConference" "3"}}>All</button>
                 </div>
             </div>
+        </div>*@
+
+
+        {{#each team in teams}}
+        <div class="row teamRow">
+            <div class="col-xs-4">
+                <div class="row logo-box">
+                    <div class="col-xs-3 remove-width">
+                <div {{bindAttr class=":logo-container-team team.idWithUnderscore"}}>
+                    <img class="img-responsive" {{bindAttr src="team.imageUrl"}} />
+                </div>
+                    </div>
+                    <div class="col-xs-9">
+                            <div class="team-name city">
+                                {{team.city}} 
+                            </div>
+                            <div class="team-name name">
+                                {{team.teamname}} 
+                            </div>
+                
+                             
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                {{team.twitter}}
+
+            </div>
+            <div class="col-xs-4">
+                <div class="row">
+                    <div class="col-xs-3 numberBox wins">
+                        {{team.wins}}
+                    </div>
+                    <div class="col-xs-3 numberBox losses">
+                        {{team.losses}}
+                    </div>
+                    <div class="col-xs-3 numberBox overtimeLosses">
+                        {{team.overtimeLosses}}
+                    </div>
+                    <div class="col-xs-3 numberBox points">
+                        {{team.points}}
+                    </div>
+                </div>
+            </div> 
         </div>
+
+      
+        {{/each}}
+
+
+
+
+
         <div class="row">
             <div class="col-12">
                 <div class="table-responsive">
@@ -109,22 +161,15 @@
                         </tr>
                     </thead>
             <tbody>
-                {{#each team in teams}}
-                <tr>
+                 {{#each team in teams}}
+                     <tr>
                     <td class="visible-lg">
-                        @*{{#linkToAnimated 'team' team animations='main:flip'}}
-                        <img style="height: 28px; width: auto;" class="home-team-image" {{bindAttr src="team.imageUrl"}} />
-                        {{team.city}} {{team.name}}
-                        {{/linkToAnimated}}*@
                         {{#linkTo 'team' team}}
                         <img style="height: 28px; width: auto;" class="home-team-image" {{bindAttr src="team.imageUrl"}} />
                         {{team.city}} {{team.name}}
                         {{/linkTo}}
                     </td>
                     <td class="hidden-lg">
-                       @* {{#linkToAnimated 'team' team animations='main:flip'}}
-                        {{team.abr}}
-                        {{/linkToAnimated}}*@
                         {{#linkTo 'team' team}}
                         {{team.abr}}
                         {{/linkTo}}
@@ -137,7 +182,9 @@
                     <td>{{team.gamesPlayed}}</td>
                     <td><a style="cursor: pointer" {{bindAttr href="team.twitterLink"}}>{{team.twitter}}</a></td>
                 </tr>
+
                 {{/each}}
+              
             </tbody>
                 </table>
                     </div>
@@ -155,8 +202,13 @@
                 {{/if}}
             </div>
         </div>
-    </div>
+    </>
     </script>
+
+
+<script type="text/x-handlebars" data-template-name="homelist">
+
+</script>
 
     <script type="text/x-handlebars" data-template-name="teamgridteam">
         blah
@@ -427,8 +479,264 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
 </script>
 
 
+  <script type="text/x-handlebars" data-template-name="components/team-circularstat">
+      <input type="text" class="dial" data-width="90%" {{bindAttr value="bad" id="circleName"}}">
+      <h4>{{good}} {{bad}} {{total}}</h4>    
+      </script>
+
+  <script type="text/x-handlebars" data-template-name="components/app-loader">
+      <div class="loading spin-2"></div>
+      </script>
+
+  <script type="text/x-handlebars" data-template-name="components/team-smallplayer">
+      {{#if player}}
+     <div class="player-profile">
+         <div class="image-container picture-border-team">
+             <img {{bind-attr src="player.imageUrl"}} />
+         </div>
+         <div class="">
+             <small class="muted">{{player.firstName}} {{player.lastName}}</small>
+         </div>
+     </div>
+      {{else}}
+      {{app-loader}}
+      LOADING
+      {{/if}}
+      </script>
+
+
+  <script type="text/x-handlebars" data-template-name="components/team-tweet">
+              <div class="col-xs-1 tweet-logo">
+              <i class="fa fa-twitter"></i>
+                  </div>
+              <div class="col-xs-10 tweet-text">
+                  {{tweet.text}}<small class="tweet-date"><i class="fa fa-clock-o"></i> {{tweet.date}}</small>
+                  </div>   
+                <div class="col-xs-1 tweet-link">
+                    <a {{bindAttr href="tweet.url"}}><i class="fa fa-location-arrow"></i></a>
+                </div>
+      </script>
+
+      <script type="text/x-handlebars" data-template-name="components/team-salarychart">
+                <canvas width="400" height="400"></canvas>
+      </script>
+
+    <script type="text/x-handlebars" data-template-name="components/team-bigbutton">
+        <div class="icon">
+            <i {{bindAttr class=":fa iconName"}}></i>
+        </div>
+        <span class="value-label">
+            {{label}}
+        </span>
+    </script>
+
+        <script type="text/x-handlebars" data-template-name="components/team-stats">
+        <div class="number">
+            {{value}}
+        </div>
+        <span class="value-label">
+            {{label}}
+        </span>
+    </script>
+
+
+
 <!-- TEAM TEMPLATE -->
 <script type="text/x-handlebars" data-template-name="team">
+    
+<div class="container team-container" {{bind-attr id="idWithUnderscore"}}>
+    <div class="row">
+
+        <div class="col-sm-6">
+            <div class="row">     
+                <div class="col-xs-12 team-basic-box">
+                      <div>
+                        <img {{bindAttr src="imageUrl"}} />
+                         <h3 class="city-name">{{city}}</h3>
+                         <h3 class="team-name">{{teamname}}</h3>
+                      </div>           
+                </div>
+            </div>      
+            
+            {{#each tweet in tweets}}
+                {{team-tweet tweet=tweet}}
+            {{/each}}
+        </div>
+
+        <div class="col-sm-6 team-summary-box">
+            <div class="row">
+                <div class="col-xs-9 inner">
+                    <span class="win-box">
+                        {{wins}}
+                    </span>
+                    /
+                    <span class="loss-box">
+                        {{losses}}
+                    </span>
+                    /
+                    <span class="overtimeloss-box">
+                        {{overtimeLosses}}
+                    </span>
+                </div>
+                <div class="col-xs-3 inner">
+                    <span class="points-box">
+                        {{points}}
+                    </span>
+                    
+                </div>
+            </div>
+            <div class="row">
+                {{team-stats value=penaltyKillPercent label="Penalty Kill %" colClass="col-xs-3"}}
+                {{team-stats value=penaltyKillPercent label="Powerplay %" colClass="col-xs-3"}}
+                {{team-stats value=goalsFor label="Goals For" colClass="col-xs-3"}}
+                {{team-stats value=goalsAgainst label="Goals Against" colClass="col-xs-3"}}
+            </div>
+
+            <div class="row">
+                {{team-bigbutton designClass="roster" label="Roster" iconName="fa-group"}}
+                {{team-bigbutton designClass="schedule" label="Schedule" iconName="fa-calendar"}}
+                {{team-bigbutton designClass="lines" label="Lines" iconName="fa-rocket"}}                
+            </div>
+            <div class="row">
+                <div class="progress">
+                <div class="progress-bar" role="progressbar" {{bindAttr style="player.tradeValuePercent" aria-valuenow="player.tradeValue"}} aria-valuemin="0" aria-valuemax="1000">
+                </div>
+            </div>
+                <div class="progress">
+                <div class="progress-bar" role="progressbar" {{bindAttr style="player.tradeValuePercent" aria-valuenow="player.tradeValue"}} aria-valuemin="0" aria-valuemax="1000">
+                </div>
+            </div>
+                <div class="progress">
+                <div class="progress-bar" role="progressbar" {{bindAttr style="player.tradeValuePercent" aria-valuenow="player.tradeValue"}} aria-valuemin="0" aria-valuemax="1000">
+                </div>
+            </div>
+                <div class="progress">
+                <div class="progress-bar" role="progressbar" {{bindAttr style="player.tradeValuePercent" aria-valuenow="player.tradeValue"}} aria-valuemin="0" aria-valuemax="1000">
+                </div>
+            </div>
+                <div class="progress">
+                <div class="progress-bar" role="progressbar" {{bindAttr style="player.tradeValuePercent" aria-valuenow="player.tradeValue"}} aria-valuemin="0" aria-valuemax="1000">
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row highlighted-players">
+        <div class="col-xs-3 inner best-player-box">
+            {{team-smallplayer player=bestOverallPlayer teamid=idWithUnderscore}}
+        </div>
+        <div class="col-xs-3 inner captain-box">
+            {{team-smallplayer player=fastestPlayer teamid=idWithUnderscore}}
+        </div>
+        <div class="col-xs-3 inner best-player-box">
+            {{team-smallplayer player=strongestPlayer teamid=idWithUnderscore}}
+        </div>
+        <div class="col-xs-3 inner captain-box">
+            {{team-smallplayer player=bestShootingPlayer teamid=idWithUnderscore}}
+        </div>
+    </div>
+
+
+            <div class="btn-group">
+            <button type="button" class="btn btn-default btn-sm" {{action "filterPosition" "f"}}>F</button>
+            <button type="button" class="btn btn-default btn-sm" {{action "filterPosition" "LW"}}>LW</button>
+            <button type="button" class="btn btn-default btn-sm" {{action "filterPosition" "C"}}>C</button>
+            <button type="button" class="btn btn-default btn-sm" {{action "filterPosition" "RW"}}>RW</button>
+            <button type="button" class="btn btn-default btn-sm" {{action "filterPosition" "D"}}>D</button>
+            <button type="button" class="btn btn-default btn-sm" {{action "filterPosition" "G"}}>G</button>
+            <button type="button" class="btn btn-default btn-sm" {{action "filterPosition" "all"}}>All</button>
+            <button type="button" class="btn btn-default btn-sm" {{action 'sortProperty' "overall"}}>Overall</button>
+            </div>
+
+    <div class="row player-row">
+        <div class="col-xs-4">
+            Name            
+        </div>
+        <div class="col-xs-1">
+            Position
+        </div>
+
+        <div class="col-xs-1">
+            Overall
+        </div>
+
+        <div class="col-xs-1">
+            Age
+        </div>
+
+        <div class="col-xs-1">
+            Potential
+        </div>
+
+        <div class="col-xs-1">
+            Shoots
+        </div>
+
+        <div class="col-xs-3">
+            Value
+        </div>
+        
+    </div>
+    {{#each player in filteredRoster}}
+        {{player-listitem player=player}} 
+    
+    {{/each}}
+
+
+</div>
+
+</script>
+
+  <script type="text/x-handlebars" data-template-name="components/player-listitem">
+    <div class="row player-row">
+        <div class="col-xs-4">
+            <span class="first-name">
+                {{player.firstName}}
+            </span>
+            <span class="last-name">
+                 {{player.lastName}}
+            </span>
+            
+        </div>
+        <div class="col-xs-1">
+            {{player.position}}
+        </div>
+
+        <div class="col-xs-1">
+            {{player.overall}}
+        </div>
+
+        <div class="col-xs-1">
+            {{player.age}}
+        </div>
+
+        <div class="col-xs-1">
+            {{player.potential}}
+        </div>
+
+        <div class="col-xs-1">
+            {{player.shoots}}
+        </div>
+
+        <div class="col-xs-3">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" {{bindAttr style="player.tradeValuePercent" aria-valuenow="player.tradeValue"}} aria-valuemin="0" aria-valuemax="1000">
+                </div>
+            </div>
+        </div>
+
+    </div>
+  </script>
+
+
+<!-- TEAM TEMPLATE -->
+<script type="text/x-handlebars" data-template-name="team2">
+    <div class="row team-banner">
+                            <h1>{{city}} {{teamname}} <img {{bindAttr src="imageUrl"}} /><small><a {{bindAttr href="twitterLink"}}>({{twitter}})</a></small></h1>
+
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -675,7 +983,7 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
 
     <!-- PLAYER TEMPALTE -->
     <script type="text/x-handlebars" data-template-name="player">
-         {{#if playerIsLoaded}}
+         {{#if isLoaded}}
 <div class="container">
    
     <div class="player-profile">
@@ -717,7 +1025,8 @@ RD:  {{#linkTo 'player' rightD}} {{rightD.firstName}} {{rightD.lastName}}{{/link
                 <div class="numberBox salary">
                     <span>Salary</span>
                     <div class="numberBoxValueContainer">
-                        <span class="numberBoxValue">${{salarySmall}}</span>
+                        @*<span class="numberBoxValue">${{salarySmall}}</span>*@
+                        <span class="numberBoxValue">${{salaryReadable}}</span>
                     </div>
                 </div>
 

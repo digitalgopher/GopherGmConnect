@@ -1,10 +1,10 @@
 ﻿
 App.Player = Ember.Object.extend({
     playerIsLoaded: false,
-    salaryReadable: function () {
-        var amt = this.get('salary');
-        return GetContractAmount(amt);
-    }.property('salary'),
+    //salaryReadable: function () {
+    //    var amt = this.get('salary');
+    //    return GetContractAmount(amt);
+    //}.property('salary'),
 
     salarySmall: function () {
         var amt = this.get('salary');
@@ -69,7 +69,50 @@ App.Player.reopenClass({
             player.set('playerRates', playerRates);
             return player;
         });       
-    }
+    },
+    findAll: function (token, teamId) {
+        //var roster = App.Roster.create();
+        var allPlayers = Em.A();
+        var data = {
+            id: teamId,
+            token: token
+        }
+        return $.getJSON("/api/gopher/roster", data).then(function (playerList) {
+            playerList.forEach(function (p) {
+                var player = App.Player.create();
+                player.setProperties(p);
+                allPlayers.pushObject(player);
+            });
+            //roster.set('content', tempRoster);
+            //roster.FindBestPlayer();
+            return allPlayers;
+        });
+    },
+
+
+
+    findTopPlayers: function (token) {
+        var self = this;
+        var tempRoster = Em.A();
+        var data = {
+            token: token
+        }
+        return $.getJSON("/api/gopher/TopPlayers", data).then(function (playerList) {
+            playerList.forEach(function (p) {
+                var player = App.Player.create();
+                player.setProperties(p);
+                var _playerController = App.PlayerController.create({
+                    content: player
+                });
+                tempRoster.pushObject(_playerController);
+            });
+
+            var loadedRosterController = App.RosterController.create({
+                content: tempRoster
+            });
+            return loadedRosterController;
+        });
+    },
 });
 
 

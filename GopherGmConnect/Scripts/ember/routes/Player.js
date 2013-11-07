@@ -9,10 +9,8 @@
         App.Player.find(model.id, token).then(function (player) {
             controller.setProperties({
                 model: player,
-                playerIsLoaded: true,
-                
-            })
-            
+                isLoaded: true,              
+            }) 
         })
     }
 });

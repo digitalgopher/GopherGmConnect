@@ -2,8 +2,8 @@
     needs: ['team'],
     playerAtPosition: function (position) {
         var self = this;
-        debugger;
-        return self.get('controllers.team').get('roster.players').findProperty('id', self.get(position));
+        //debugger;
+       // return self.get('controllers.team').get('roster.players').findProperty('id', self.get(position));
     },
     centre: function () {
         var self = this;

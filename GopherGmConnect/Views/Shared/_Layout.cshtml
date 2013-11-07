@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,900' rel='stylesheet' type='text/css'>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     @*<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">*@
     
@@ -22,10 +23,12 @@
         @*<script src="http://builds.emberjs.com.s3.amazonaws.com/stable/ember.prod.js"></script>*@
     @*<script src="http://builds.emberjs.com.s3.amazonaws.com/stable/ember.js"></script>*@
 
-    <script src="http://builds.emberjs.com/canary/ember.js"></script>
+    @*<script src="http://builds.emberjs.com/canary/ember.js"></script>*@
 
     @*PROD*@
-    @*<script src="http://builds.emberjs.com/release/ember.min.js"></script>*@
+    <script src="http://builds.emberjs.com/release/ember.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
 
     @*BOOTSTRAP*@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
@@ -50,6 +53,7 @@
 @Scripts.Render("~/bundles/ember/controllers")
 @Scripts.Render("~/bundles/ember/views")
 @Scripts.Render("~/bundles/ember/helpers")
+@Scripts.Render("~/bundles/ember/components")
 
 @RenderSection("scripts", required: false)
 </html>

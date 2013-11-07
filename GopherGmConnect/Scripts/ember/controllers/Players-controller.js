@@ -1,4 +1,4 @@
-﻿App.RosterController = Ember.ArrayController.extend({
+﻿App.PlayersController = Ember.ArrayController.extend({
     sortProperties: ['Salary'],
     sortAscending: false
 })

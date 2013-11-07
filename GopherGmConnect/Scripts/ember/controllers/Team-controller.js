@@ -1,13 +1,23 @@
 ﻿App.TeamController = Ember.ObjectController.extend({
     content: null,
-    needs: ['roster', 'teams', 'eatoken', 'application', 'team'],
+    needs: [/*'roster',*/ 'teams', 'eatoken', 'application', 'team'],
     token: Ember.computed.alias('controllers.application.token'),
     team: Ember.computed.alias('controllers.team'),
+    //bestPlayer: Ember.computed.alias('roster.content.bestPlayer'),
     changeNavColor: function (teamabr) {
         $('#app-nav')
             .attr('class', 'navbar')
             .addClass(teamabr);
     },
+
+
+    tweetsLoaded: function () {
+        var self = this;
+        if (self.get('twitterIsLoaded')) {
+            $('#Team-Box').css({'max-height': 'auto'});
+            console.log('ooomog');
+        }
+    }.observes('twitterIsLoaded'),
 
     /***** Actions */
     actions: {
@@ -26,7 +36,7 @@
         filterPosition: function (position) {
             var self = this;
             if (position === 'all') {
-                self.set('filteredRoster', self.get('roster'));
+                self.set('filteredRoster.content', self.get('roster.content'));
             }
             else if(position === 'f') {
                 var forwardLines = self.get('roster.content').filter(function (p, i, e) {
@@ -38,7 +48,7 @@
                 self.set('filteredRoster.content', forwardLines);
             }
             else {
-                self.set('filteredRoster.content', self.get('roster').filterBy('position', position));
+                self.set('filteredRoster.content', self.get('roster.content').filterBy('position', position));
             }
         }
     }

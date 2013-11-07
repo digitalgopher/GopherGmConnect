@@ -1,6 +1,45 @@
 ﻿
 App.Team = Ember.Object.extend({
     content: null,
+    findFastestPlayer: function () {
+        var self = this;
+        var array = self.get('roster.content');
+        var bestOv = Math.max.apply(self, array.map(function (o) {
+            return o.playerRatings.speed;
+        }));
+
+        self.set('fastestPlayer', self.get('roster.content').findProperty('playerRatings.speed', bestOv));
+    },
+
+    findStrongestPlayer: function () {
+        var self = this;
+        var array = self.get('roster.content');
+        var bestOv = Math.max.apply(self, array.map(function (o) {
+            return o.playerRatings.strength;
+        }));
+
+        self.set('strongestPlayer', self.get('roster.content').findProperty('playerRatings.strength', bestOv));
+    },
+
+    findBestShooter: function () {
+        var self = this;
+        var array = self.get('roster.content');
+        var bestOv = Math.max.apply(self, array.map(function (o) {
+            return o.playerRatings.wristShotAccuracy;
+        }));
+
+        self.set('bestShootingPlayer', self.get('roster.content').findProperty('playerRatings.wristShotAccuracy', bestOv));
+    },
+
+    findBestOverallPlayer: function () {
+        var self = this;
+        var array = self.get('roster.content');
+        var bestOv = Math.max.apply(self, array.map(function (o) {
+            return o.overall;
+        }));
+
+        self.set('bestOverallPlayer', self.get('roster.content').findProperty('overall', bestOv));
+    },
     tradeBlock: function () {
         return Em.A(Em.MutableEnumerable.mixin);
     }.property(),
@@ -24,10 +63,13 @@ App.Team = Ember.Object.extend({
     }.observes('tradeBlock.@each'),
 
 
+
     isLoaded: function () {
         return Ember.computed.and('linesIsLoaded', 'rosterIsLoaded', 'scheduleIsLoaded', 'statsIsLoaded');
     },
-
+    idWithUnderscore: function () {
+        return "_" + this.get('id');
+    }.property(),
 
     teamjsname: function () {
         return "team_" + this.get('id');
@@ -56,14 +98,6 @@ App.Team = Ember.Object.extend({
     capSpace: function () {
         return numberWithCommas(this.get('salaryCapRemaining'));
     }.property('salaryCapRemaining'),
-
-    conference: function () {
-        return Conference(this.get('conference'));
-    }.property('conference'),
-
-    division: function () {
-        return Division(this.get('division'));
-    }.property('division'),
 
     imageUrl: function () {
         var t = this.get('teamjsname');
@@ -104,41 +138,52 @@ App.Team = Ember.Object.extend({
 Loads everything about the team using RSVP hashes to load all promises at the same time. 
 */
 App.Team.reopenClass({
-    find: function (token, id) {
+    find: function (token, id, twittername) {
         var team = App.Team.create();
         return Ember.RSVP.hash({
-            roster: App.Roster.find(token, id),
-            lines: App.Line.findAll(token, id),
-            stats: App.Team.findStats(token, id),
-            schedule: App.Team.findSchedule(id)
+            //roster: App.Player.findAll(token, id),
+            //lines: App.Line.findAll(token, id),
+            team: App.Team.findTeam(token, id),
+            schedule: App.Team.findSchedule(id),
+            tweets: App.Tweet.findAll(twittername)
         }).then(function (results) {
 
-            var rosterController = App.RosterController.create({
-                content: results.roster
+            var allPlayers = Em.A();
+            results.team.players.forEach(function (p) {
+                var player = App.Player.create();
+                player.setProperties(p);
+                allPlayers.pushObject(player);
             });
 
-            var filteredRosterController = App.RosterController.create({
-                content: results.roster
+            var rosterController = App.PlayersController.create({
+                content: allPlayers
+            });
+
+            var filteredRosterController = App.PlayersController.create({
+                content: allPlayers
             });
 
             team.set('roster', rosterController);
             team.set('filteredRoster', filteredRosterController);
-            team.set('lines', results.lines);
+            //team.set('lines', results.lines);
             team.set('schedule', results.schedule);
-            team.setProperties(results.stats);
+            team.setProperties(results.team);
+            team.set('tweets', results.tweets);
             return team;
         }).fail(function () {
             alert('something failed;');
         });
 
     },
-    findStats: function (token, id) {
+
+
+    findTeam: function (token, id) {
         var data = {
             id: id,
             token: token
         }
-        return $.getJSON("/api/gopher/teams", data).then(function (_stats) {
-            return _stats;
+        return $.getJSON("/api/gopher/teams", data).then(function (_team) {
+            return _team;
         });
     },
     findSchedule: function (id) {

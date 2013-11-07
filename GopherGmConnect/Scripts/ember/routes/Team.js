@@ -14,17 +14,24 @@
     setupController: function (controller, model) {
         var token = this.controllerFor('application').get('token');
         var team = this.controllerFor('application').get('teams').findBy('id', model.get('id'));
+        var twittername = team.get('twitter');
         controller.setProperties({
             model: team
         });
-        App.Team.find(token, model.id).then(function (_team) {
+        App.Team.find(token, model.id, twittername).then(function (_team) {
             controller.setProperties({
                 model: _team,
                 rosterIsLoaded: true,
                 scheduleIsLoaded: true,
                 linesIsLoaded: true,
-                isLoaded: true
-            })
+                isLoaded: true,
+                twitterIsLoaded: true,
+            });
+            _team.findFastestPlayer();
+            _team.findBestOverallPlayer();
+            _team.findBestShooter();
+            _team.findStrongestPlayer();
+
         })
 
     }

@@ -5,4 +5,5 @@
     this.resource("playercompare", { path: "/compare/:aplayer_id/:bplayer_id" });
     this.route("topplayers");
     this.route("trade");
+    this.route("childViewTest");
 });

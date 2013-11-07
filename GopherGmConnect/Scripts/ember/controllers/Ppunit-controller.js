@@ -1,6 +1,6 @@
 ﻿App.PpunitController = Ember.ObjectController.extend({
     needs: ['team'],
-    roster: Ember.computed.alias('controllers.team.roster'),
+    //roster: Ember.computed.alias('controllers.team.roster'),
     player: function (position) {
         return this.get('roster').findProperty('id', this.get(position));
     },

@@ -1,24 +1,24 @@
 ﻿App.TeamView = Em.View.extend({
     didInsertElement: function (a, b, c) {
-        var self = this;
-        var ctx = $("#winloss-chart").get(0).getContext("2d");
-        var myNewChart = new Chart(ctx);
-        var options = {
-            segmentStrokeWidth: 1,
-            percentageInnerCutout: 70,
-        }
-        var data = [
-            {
-                value: self.controller.get('wins'),
-                color: '#8cc474'
-            },
-            {
-                value: self.controller.get('losses'),
-                color: '#e46f61'
-            }
-        ]
+        //var self = this;
+        //var ctx = $("#winloss-chart").get(0).getContext("2d");
+        //var myNewChart = new Chart(ctx);
+        //var options = {
+        //    segmentStrokeWidth: 1,
+        //    percentageInnerCutout: 70,
+        //}
+        //var data = [
+        //    {
+        //        value: self.controller.get('wins'),
+        //        color: '#8cc474'
+        //    },
+        //    {
+        //        value: self.controller.get('losses'),
+        //        color: '#e46f61'
+        //    }
+        //]
 
-        new Chart(ctx).Doughnut(data, options);
+        //new Chart(ctx).Doughnut(data, options);
 
     },
     scheduleLoaded: function () {

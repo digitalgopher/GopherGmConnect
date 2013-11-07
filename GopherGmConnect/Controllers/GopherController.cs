@@ -38,13 +38,13 @@ namespace GopherGmConnect.Controllers
                 wb.Headers.Add(HttpRequestHeader.Cookie, "EASW-Token=" + token);
                 var playerID = id;
                 var playerurl = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/player/" + playerID + "/info/mobile";
+                ServicePointManager.ServerCertificateValidationCallback =((sender, certificate, chain, sslPolicyErrors) => true);
                 if (isNewNHL)
                 {
-                    System.Net.ServicePointManager.ServerCertificateValidationCallback =
-    ((sender, certificate, chain, sslPolicyErrors) => true);
                     playerurl = "https://nhl.service.easports.com/nhl14_hm/2013/protected/competition/10562/player/" + playerID + "/info/mobile";
 
                 }
+
                 var playerRawJson = wb.DownloadString(playerurl);
                 JObject playerJson = JObject.Parse(playerRawJson);
                 var aPlayer = new Player();
@@ -72,13 +72,13 @@ namespace GopherGmConnect.Controllers
             }
         }
 
-        private Player GetPlayerStats(Player player, JObject mobileInfo)
+        private void GetPlayerStats(Player player, JObject mobileInfo)
         {
 
             var statsArray = mobileInfo.GetValue("ss") as JArray;
             if (statsArray == null)
             {
-                return player;
+                return;
             }
             foreach (var statyear in statsArray)
             {
@@ -90,7 +90,6 @@ namespace GopherGmConnect.Controllers
                 playerstats.GamesPlayed = Convert.ToInt32(stats.GetValue("gp").ToString());
                 player.PlayerStats.Add(playerstats);
             }
-            return player;
         }
 
         private string GetTeamCaptain(JArray playerList, JArray isCaptainList)
@@ -111,7 +110,7 @@ namespace GopherGmConnect.Controllers
             else
             {
                 return playerList[captainIndex].Value<string>();
-            }    
+            }
         }
 
         [HttpGet]
@@ -318,18 +317,18 @@ namespace GopherGmConnect.Controllers
             var realLines = new JObject(
                 new JProperty("fwd", fwdArray),
                 new JProperty("dpair", dArray),
-                new JProperty("pk3", pk3Array), 
+                new JProperty("pk3", pk3Array),
                 new JProperty("pk", pk4Array),
                 new JProperty("pp", pp5Array),
                 new JProperty("pp4", pp4Array));
-            
+
 
             return realLines;
 
 
 
 
-        
+
 
 
 
@@ -482,129 +481,168 @@ namespace GopherGmConnect.Controllers
         //}
 
         [HttpGet]
-        public object Roster(string id, string token)
+        public List<Player> Roster(string id, string token)
         {
             //var token = GetEASWToken();
-            var wb = new WebClient();
-            wb.Headers.Add(HttpRequestHeader.Cookie, "EASW-Token=" + token);
-            var rosterUrl = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/team/" + id + "/roster";
-            var url = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/team/" + id + "/roster/mobile";
-            var injUrl = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/team/" + id + "/injuries/mobile";
-
-
-            string rawJson = wb.DownloadString(url);
-            string fullRosterJson = wb.DownloadString(rosterUrl);
-            string rawInjJson = wb.DownloadString(injUrl);
-            JObject rosterJson = JObject.Parse(fullRosterJson);
-            JObject fullJson = JObject.Parse(rawJson);
-            JObject injuryJson = JObject.Parse(rawInjJson);
-
-            var jsonRosterArray = rosterJson.Value<JArray>("playerID");
-            var jsonIsCaptianArray = rosterJson.Value<JArray>("isCaptain");
-
-            var jsonPlayers = fullJson.GetValue("v");
-            var injuredPlayersJson = injuryJson.GetValue("v");
-            var injuredPlayers = injuredPlayersJson as JArray;
-            var players = jsonPlayers as JArray;
-            var counter = 0;
-            //var roster = new List<Models.PartialPlayer>();
-            //var roster = new List<Models.Player>();
-            var roster = new ConcurrentBag<Models.Player>();
-            Parallel.ForEach(players, p =>
+            using (var wb = new WebClient())
             {
-                //if ContractStatus(? labeled as 'cs') is false... skip
-                if (p[9].ToString() != "0")
+                ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
+                wb.Headers.Add(HttpRequestHeader.Cookie, "EASW-Token=" + token);
+                var rosterUrl = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/team/" + id + "/roster";
+                var url = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/team/" + id + "/roster/mobile";
+                var injUrl = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/team/" + id + "/injuries/mobile";
+
+
+                string rawJson = wb.DownloadString(url);
+                string fullRosterJson = wb.DownloadString(rosterUrl);
+                string rawInjJson = wb.DownloadString(injUrl);
+                JObject rosterJson = JObject.Parse(fullRosterJson);
+                JObject fullJson = JObject.Parse(rawJson);
+                JObject injuryJson = JObject.Parse(rawInjJson);
+
+                var jsonRosterArray = rosterJson.Value<JArray>("playerID");
+                var jsonIsCaptianArray = rosterJson.Value<JArray>("isCaptain");
+
+                var jsonPlayers = fullJson.GetValue("v");
+                var injuredPlayersJson = injuryJson.GetValue("v");
+                var injuredPlayers = injuredPlayersJson as JArray;
+                var players = jsonPlayers as JArray;
+                var counter = 0;
+                //var roster = new List<Models.PartialPlayer>();
+                //var roster = new List<Models.Player>();
+                var roster = new ConcurrentBag<Models.Player>();
+                var newToken = GetEASWToken(); //becuase... i was getting 502
+                Parallel.ForEach(players, p =>
                 {
-                    return;
-                    // continue;
-                }
-                counter++;
-
-                //var partial = new Models.PartialPlayer();
-                //partial.id = p[0].ToString();
-                //partial.FirstName = p[1].ToString();
-                //partial.LastName = p[2].ToString().ToLower();
-                //partial.LastName = char.ToUpper(partial.LastName[0]) + partial.LastName.Substring(1);
-
-
-                //partial.Position = p[3].ToString();
-                //partial.TradeValue = Convert.ToInt32(p[8].ToString());
-                //partial.Age = Convert.ToInt32(p[4].ToString());
-                //partial.Salary = Convert.ToInt32(p[5].ToString());
-                //partial.YearsLeft = Convert.ToInt32(p[6].ToString());
-                //partial.Potential = Convert.ToInt32(p[10].ToString());
-                //partial.PotentialColor = Convert.ToInt32(p[13].ToString());
-                //partial.IsTwoWay = p[7].ToString() == "0" ? false : true;
-
-                //roster.Add(partial);
-
-                var player = new Models.Player();
-                player = FetchPlayer(p[0].ToString(), token, false) as Models.Player;
-                player.Potential = Convert.ToInt32(p[10].ToString());
-                player.PotentialColor = Convert.ToInt32(p[13].ToString());
-
-                player.Salary = Convert.ToInt32(p[5].ToString());
-                player.TradeValue = Convert.ToInt32(p[8].ToString());
-                player.Position = p[3].ToString();
-                roster.Add(player);
-
-
-
-                //var playerID = p[0].ToString();
-                //string dlJson = wb.DownloadString("http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/player/" + playerID + "/info/mobile");
-                //JObject playerJson = JObject.Parse(dlJson);
-                //roster.Add(CreatePlayer(playerJson, p));
-            });
-            var rosterList = roster.ToList();
-            if (injuredPlayers != null)
-            {
-                if (injuredPlayers.Count > 0)
-                {
-                    foreach (var ip in injuredPlayers)
+                    //if ContractStatus(? labeled as 'cs') is false... skip
+                    if (p[9].ToString() != "0")
                     {
-                        var fixedLastName = ip[1].ToString().ToLower();
-                        fixedLastName = char.ToUpper(fixedLastName[0]) + fixedLastName.Substring(1);
+                        return;
+                        // continue;
+                    }
+                    counter++;
 
-                        var p = rosterList.Find(x => x.LastName == fixedLastName && x.FirstName[0] == ip[0].ToString()[0]);
-                        if (p != null)
+                    //var partial = new Models.PartialPlayer();
+                    //partial.id = p[0].ToString();
+                    //partial.FirstName = p[1].ToString();
+                    //partial.LastName = p[2].ToString().ToLower();
+                    //partial.LastName = char.ToUpper(partial.LastName[0]) + partial.LastName.Substring(1);
+
+
+                    //partial.Position = p[3].ToString();
+                    //partial.TradeValue = Convert.ToInt32(p[8].ToString());
+                    //partial.Age = Convert.ToInt32(p[4].ToString());
+                    //partial.Salary = Convert.ToInt32(p[5].ToString());
+                    //partial.YearsLeft = Convert.ToInt32(p[6].ToString());
+                    //partial.Potential = Convert.ToInt32(p[10].ToString());
+                    //partial.PotentialColor = Convert.ToInt32(p[13].ToString());
+                    //partial.IsTwoWay = p[7].ToString() == "0" ? false : true;
+
+                    //roster.Add(partial);
+
+                    var player = new Models.Player();
+                    player = FetchPlayer(p[0].ToString(), newToken, false) as Models.Player;
+                    player.Potential = Convert.ToInt32(p[10].ToString());
+                    player.PotentialColor = Convert.ToInt32(p[13].ToString());
+                    player.YearsLeft = Convert.ToInt32(p[6].ToString());
+
+                    player.Salary = Convert.ToInt32(p[5].ToString());
+                    player.TradeValue = Convert.ToInt32(p[8].ToString());
+                    player.Position = p[3].ToString();
+                    roster.Add(player);
+
+
+
+                    //var playerID = p[0].ToString();
+                    //string dlJson = wb.DownloadString("http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/player/" + playerID + "/info/mobile");
+                    //JObject playerJson = JObject.Parse(dlJson);
+                    //roster.Add(CreatePlayer(playerJson, p));
+                });
+                var rosterList = roster.ToList();
+                if (injuredPlayers != null)
+                {
+                    if (injuredPlayers.Count > 0)
+                    {
+                        foreach (var ip in injuredPlayers)
                         {
-                            p.IsInjured = true;
-                            p.InjuryLength = Convert.ToInt32(ip[3].ToString());
+                            var fixedLastName = ip[1].ToString().ToLower();
+                            fixedLastName = char.ToUpper(fixedLastName[0]) + fixedLastName.Substring(1);
+
+                            var p = rosterList.Find(x => x.LastName == fixedLastName && x.FirstName[0] == ip[0].ToString()[0]);
+                            if (p != null)
+                            {
+                                p.IsInjured = true;
+                                p.InjuryLength = Convert.ToInt32(ip[3].ToString());
+                            }
                         }
                     }
                 }
+                var captainid = GetTeamCaptain(jsonRosterArray, jsonIsCaptianArray);
+                
+                int r = 0;
+                if (Int32.TryParse(captainid, out r))
+                {
+                    var captain = (from p in rosterList
+                                   where p.id == captainid
+                                   select p).First();
+                    captain.IsCaptain = true;
+                }
+
+                Parallel.ForEach(jsonRosterArray, playerId =>
+                {
+                    rosterList.First(p => p.id == playerId.ToString() ).IsOnMainRoster = true;
+                });
+
+
+                return rosterList;
             }
-            var captainid = GetTeamCaptain(jsonRosterArray, jsonIsCaptianArray);
-            int r = 0;
-            if(Int32.TryParse(captainid, out r))
-            {
-                var captain = (from p in rosterList
-                               where p.id == captainid
-                               select p).First();
-                captain.IsCaptain = true;
-            }          
-            return rosterList;
+        }
+
+        private Player GetTopRatedPlayer(List<Player> roster)
+        {
+            var bestOv = roster.Max(x => x.Overall);
+            return roster.First(p => p.Overall == bestOv);           
         }
 
         [HttpGet]
         public object Teams(string token)
         {
+
             var url = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/standings/periodType/season/mobile";
             //var token = GetEASWToken();
-            var wb = new WebClient();
-            wb.Headers.Add(HttpRequestHeader.Cookie, "EASW-Token=" + token);
-            string rawJson = wb.DownloadString(url);
-            var fullJson = JObject.Parse(rawJson);
-            var teams = fullJson.GetValue("v");
-            var teamsArray = teams as JArray;
-            var teamList = new List<Models.Team>();
-            foreach (var team in teamsArray)
+            using (var wb = new WebClient())
             {
-                var t = GetTeamStats(team as JArray);
-                teamList.Add(t);
+                wb.Headers.Add(HttpRequestHeader.Cookie, "EASW-Token=" + token);
+                ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
+                string rawJson = wb.DownloadString(url);
+                var fullJson = JObject.Parse(rawJson);
+                var teams = fullJson.GetValue("v");
+                var teamsArray = teams as JArray;
+                var teamList = new ConcurrentBag<Team>();
+                Parallel.ForEach(teamsArray, team =>
+                    {
+                        var t = new Team();
+                        GetTeamStats(t, team as JArray);
+                        //GetBasicTeamInfo(token, t);
+                        teamList.Add(t);
+                    });
+                return teamList.ToList();
             }
-            return teamList;
         }
+
+        //private void GetBasicTeamInfo(string token, Team team)
+        //{
+        //    using (var client = new WebClient())
+        //    {
+        //        client.Headers.Add(HttpRequestHeader.Cookie, "EASW-Token=" + token);
+        //        var url = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/team/" + team.id + "/info";
+        //        var rawJson = client.DownloadString(url);
+        //        var teamJson = JObject.Parse(rawJson);
+        //        team.abr = teamJson.Value<string>("artabbr");
+        //        team.city = teamJson.Value<string>("cityname");
+        //        team.fullName = teamJson.Value<string>("fullname");
+        //    }
+        //}
 
         [HttpGet]
         public object TopPlayers(string token)
@@ -691,11 +729,21 @@ namespace GopherGmConnect.Controllers
                     break;
                 }
             }
-            var returnTeam = GetTeamStats(correctTeam);
-            int[] capnums = GetSalary(id, token);
+            var returnTeam = new Team();
+            GetTeamStats(returnTeam, correctTeam);
+
+            var MobileUrl = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/team/" + id + "/info/mobile";
+            //var token = GetEASWToken();
+            string mobileRawJson = wb.DownloadString(MobileUrl);
+            var mobileFullJson = JObject.Parse(mobileRawJson);
+            //returnTeam.abr = mobileFullJson.Value<string>("a");
+
+            int[] capnums = GetSalary(mobileFullJson);
             returnTeam.SalaryCapSpent = capnums[0];
             returnTeam.SalaryCapTotal = capnums[1];
             returnTeam.SalaryCapRemaining = capnums[1] - capnums[0];
+            returnTeam.Players = Roster(id, token);
+            returnTeam.CalculateFutureSalaryCap();
             return returnTeam;
         }
 
@@ -731,14 +779,44 @@ namespace GopherGmConnect.Controllers
 
         }
 
-        private int[] GetSalary(string id, string token)
+        [HttpGet]
+        public List<Player> GetPlayersTest()
         {
-            var url = "http://easw.easports.com:8099/nhl_hm/2013/protected/competition/29169/team/" + id + "/info/mobile";
-            //var token = GetEASWToken();
-            var wb = new WebClient();
-            wb.Headers.Add(HttpRequestHeader.Cookie, "EASW-Token=" + token);
-            string rawJson = wb.DownloadString(url);
-            var fullJson = JObject.Parse(rawJson);
+            var p1 = new Player();
+            p1.id = "90";
+            p1.Overall = 99;
+            p1.Position = "C";
+            p1.LastName = "Zetterberg";
+            p1.FirstName = "Henrik";
+
+
+            var p2 = new Player();
+            p2.id = "77";
+            p2.Overall = 100;
+            p2.Position = "LW";
+            p2.LastName = "Sedin";
+            p2.FirstName = "Daniel";
+
+            var roster = new List<Player>();
+            roster.Add(p1);
+            roster.Add(p2);
+            return roster;
+        }
+
+        [HttpGet]
+        public Team GetTeamTest()
+        {
+            var t = new Team();
+            t.id = "10";
+            t.Wins = 33;
+            t.Losses = 44;
+            t.OvertimeLosses = 22;
+            t.Points = 399;
+            return t;
+        }
+
+        private int[] GetSalary(JObject fullJson)
+        {
             int scm = Convert.ToInt32(fullJson.GetValue("scm").ToString());
             int scs = Convert.ToInt32(fullJson.GetValue("scs").ToString());
             int scc = Convert.ToInt32(fullJson.GetValue("scc").ToString());
@@ -752,7 +830,7 @@ namespace GopherGmConnect.Controllers
             return capNums;
         }
 
-        private Team GetTeamStats(JArray teamToken)
+        private void GetTeamStats(Team team, JArray teamToken)
         {
             //"cg" - conference 0
             //"dg" - division
@@ -780,7 +858,6 @@ namespace GopherGmConnect.Controllers
             //"p", points 
             //"wp" ?? 24
             //],
-            var team = new Team();
             team.id = teamToken[2].ToString();
             team.Conference = Convert.ToInt32(teamToken[0].ToString());
             team.Division = Convert.ToInt32(teamToken[1].ToString());
@@ -790,7 +867,12 @@ namespace GopherGmConnect.Controllers
             team.GamesPlayed = Convert.ToInt32(teamToken[3].ToString());
             team.OvertimeLosses = Convert.ToInt32(teamToken[6].ToString());
             team.RegulationOvertimeWins = Convert.ToInt32(teamToken[7].ToString());
-            return team;
+
+            team.PowerPlayPercent = Convert.ToDouble(teamToken[15].ToString());
+            team.PenaltyKillPercent = Convert.ToDouble(teamToken[19].ToString());
+            team.GoalsAgainst = Convert.ToInt32(teamToken[9].ToString());
+            team.GoalsFor = Convert.ToInt32(teamToken[8].ToString());
+
         }
 
         private List<Game> GetSchedule()
@@ -982,6 +1064,13 @@ namespace GopherGmConnect.Controllers
             player.DraftPosition = Convert.ToInt32(pBio.GetValue("dp").ToString());
             player.Shoots = Convert.ToInt32(pBio.GetValue("s").ToString());
 
+            PopulatePlayerRatings(player, mobilePlayerInfo);
+            GetPlayerStats(player, mobilePlayerInfo);
+            return player;
+        }
+
+        private void PopulatePlayerRatings(Player player, JObject mobilePlayerInfo)
+        {
             JObject pStats = mobilePlayerInfo.GetValue("pr") as JObject;
             if (player.Position != "G")
             {
@@ -1035,8 +1124,6 @@ namespace GopherGmConnect.Controllers
                 player.PlayerRatings.Endurance = Convert.ToInt32(pStats.GetValue("ge").ToString());
                 player.PlayerRatings.Angles = Convert.ToInt32(pStats.GetValue("ga").ToString());
             }
-            player = GetPlayerStats(player, mobilePlayerInfo);
-            return player;
         }
 
         private Player CreatePlayerSmall(JObject mobilePlayerInfo)
@@ -1085,10 +1172,27 @@ namespace GopherGmConnect.Controllers
             //player.DraftTeam = Convert.ToInt32(pBio.GetValue("dt").ToString());
             //player.DraftPosition = Convert.ToInt32(pBio.GetValue("dp").ToString());
             player.Shoots = Convert.ToInt32(pBio.GetValue("s").ToString());
+            PopulatePlayerRatings(player, mobilePlayerInfo);
+            GetPlayerStats(player, mobilePlayerInfo);
             return player;
         }
 
+        [HttpGet]
+        public List<TweetinCore.Interfaces.ITweet> GetTweets(string username)
+        {
+            var token = new TwitterToken.Token(
+                WebConfigurationManager.AppSettings["token_AccessToken"],
+                WebConfigurationManager.AppSettings["token_AccessTokenSecret"],
+                WebConfigurationManager.AppSettings["token_ConsumerKey"],
+                WebConfigurationManager.AppSettings["token_ConsumerSecret"]);
 
+            Tweetinvi.User user = new Tweetinvi.User(username);
+            TweetinCore.Interfaces.IUser u = user;
+            u.PopulateUser(token);
+            var tweets = user.GetUserTimeline(false, token);
+            var lobTweets = tweets.Where(tweet => tweet.Hashtags.Any(tag => tag.Text.ToLower() == "lobnhl")).Take(7);
+            return lobTweets.ToList();
+        }
 
 
         // POST api/gopher
