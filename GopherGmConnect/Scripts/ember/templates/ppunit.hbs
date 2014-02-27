@@ -1,0 +1,37 @@
+﻿ <div class="col-md-6">
+    <div class="panel panel-warning">
+  <!-- Default panel contents -->
+  <div class="panel-heading">{{unbound name}}</div>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <h5 class="list-group-item-heading">{{unbound leftW.firstName}} {{unbound leftW.lastName}}</h5>
+                <p class="list-group-item-text">LW, OVR: {{unbound leftW.overall}} Shoots {{unbound leftW.handed}}</p>
+            </li>
+
+          <li class="list-group-item">
+                <h5 class="list-group-item-heading">{{unbound center.firstName}} {{unbound center.lastName}}</h5>
+                <p class="list-group-item-text">C, OVR: {{unbound center.overall}} Shoots {{unbound center.handed}}</p>
+            <p class="text">Faceoffs: {{unbound center.playerRatings.faceoffs}}</p>
+            </li>
+
+          <li class="list-group-item">
+                <h5 class="list-group-item-heading">{{unbound rightW.firstName}} {{unbound rightW.lastName}}</h5>
+                <p class="list-group-item-text">RW, OVR: {{unbound rightW.overall}} Shoots {{unbound rightW.handed}}</p>
+            </li>
+
+          <li class="list-group-item">
+                <h5 class="list-group-item-heading">{{unbound leftD.firstName}} {{unbound leftD.lastName}}</h5>
+                <p class="list-group-item-text">LD, OVR: {{unbound leftD.overall}} Shoots {{unbound leftD.handed}}</p>
+            <p class="text">SlapShot Power: {{unbound leftD.playerRatings.slapShotPower}}</p>
+            </li>
+
+          <li class="list-group-item">
+                <h5 class="list-group-item-heading">{{unbound rightD.firstName}} {{unbound rightD.lastName}}</h5>
+                <p class="list-group-item-text">RD, OVR: {{unbound rightD.overall}} Shoots {{unbound rightD.handed}}</p>
+            <p class="text">SlapShot Power: {{unbound rightD.playerRatings.slapShotPower}}</p>
+            </li>
+
+        
+        </ul>
+      </div>
+    </div>

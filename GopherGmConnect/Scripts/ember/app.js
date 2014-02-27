@@ -1,9 +1,21 @@
 ﻿
-
-
 var App = Ember.Application.create({
+
     LOG_TRANSITIONS: true,
-    LOG_BINDINGS: true
+    LOG_TRANSITIONS_INTERNAL: true,
+    LOG_VIEW_LOOKUPS: true,
+    LOG_ACTIVE_GENERATION: true
+
+});
+
+
+Ember.RSVP.configure('onerror', function(error) {
+    // ensure unhandled promises raise awareness.
+    // may result in false negatives, but visibility is more imporant
+    if (error instanceof Error) {
+        Ember.Logger.assert(false, error);
+        Ember.Logger.error(error.stack);
+    }
 });
 
 
@@ -16,7 +28,8 @@ var App = Ember.Application.create({
 App.ApplicationController = Ember.Controller.extend({
     token: null,
     teams: null,
-    pushdate: null
+    pushdate: null,
+    isLite: false
 });
 
 App.TeamsController = Ember.ArrayController.extend();
@@ -24,26 +37,60 @@ App.TeamsController = Ember.ArrayController.extend();
 Ember.Application.initializer({
     name: "token",
     initialize: function (container, application) {
-        console.log('App initializer...');
+        console.log('app start ' + new Date());
         App.deferReadiness();
-        //let's start nesting json calls!
-        $.getJSON("/api/gopher/GetToken", { token: sessionStorage.getItem('token') }).then(function (newToken) {
-            sessionStorage.setItem('token', newToken);
-
+        $.getJSON('Scripts/static/teams.json', function (basicTeams) {
             Ember.RSVP.hash({
-                teams: App.Teams.getTeams(newToken),
-                //pushdate: App.Pushdate.find(newToken)
+                teams: App.Team.findAll(),
+                pushdate: App.Pushdate.find()
             }).then(function (results) {
-                App.ApplicationController.reopen({
-                    token: newToken,
-                    teams: results.teams,
-                    teamsIsLoaded: true,
-                    //pushdate: results.pushdate,
-                    pushDateSet: true
+
+                basicTeams.forEach(function (_team) {
+                    results.teams.findBy('id', _team.id).setProperties(_team);
                 })
+
+                var teamsController = App.TeamsController.create();
+                teamsController.setProperties({
+                    content: results.teams
+                });
+
+                
+
+                App.ApplicationController.reopen({
+                    teams: teamsController,
+                    pushdate: results.pushdate,
+                    teamsIsLoaded: true,
+                });
+
+                console.log('app set up ' + new Date());
+                $('#initial-load').slideUp(function () {
+                    this.remove();
+                });
+
                 App.advanceReadiness();
-            })            
+
+            });
         });
+
+
+        //$.getJSON("/api/gopher/GetToken", { token: sessionStorage.getItem('token') }).then(function (newToken) {
+        //    sessionStorage.setItem('token', newToken);
+
+        //    Ember.RSVP.hash({
+        //        teams: App.Teams.getTeams(newToken),
+
+        //        //pushdate: App.Pushdate.find(newToken)
+        //    }).then(function (results) {
+        //        App.ApplicationController.reopen({
+        //            token: newToken,
+        //            teams: results.teams,
+        //            teamsIsLoaded: true,
+        //            //pushdate: results.pushdate,
+        //            pushDateSet: true
+        //        })
+        //        App.advanceReadiness();
+        //    })            
+        //});
     }
 });
 
@@ -54,6 +101,5 @@ $('body').on('click', '.teamTabs a', function (e) {
     e.preventDefault();
     $(this).tab('show');
     $('#calendar').fullCalendar('render');
-})
+});
 
-console.log('imaged credit: ' + 'http://www.flickr.com/photos/slaunay/7052882117/sizes/o/in/photolist-bKeS8P-bKeS8r-8Bqujq-7E41wf-7DZbhR-7E41h1-7DZaCp-7DZbXn-7DZbvM-7DZaqR-7DZaJp-7DZa5V-7DZbqn-7E424d-7E3Zxu-7P7a3H-7yQJU7-7yLYzH-7yLYqk-7yQJBw-7yQJsf-7yLXiF-7yLYjp-7yLXsi-7yQJJS-7z1bo4-7z4Xcj-7yLYGM-7z1bWv-7z1b8i-7z1aWk-7z1av2-7z4WTu-7z4Xpb-7z4WnS-bGrVac-btwQf1-bGrhAk-bGrJnD-bGrfXD-btwwyC-bGrcj4-btxao7-btwPPb-bGrcat-bGrYn4-bGrQyV-bGrfda-bGrB7e-bGrtk2-bGs15n/');

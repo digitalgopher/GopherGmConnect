@@ -22,11 +22,29 @@ namespace GopherGmConnect.Models
         public int FaceoffsWon { get; set; }
         public double FaceoffPercentage { get; set; }
         public int FaceoffsTaken { get; set; }
-        public int Minutes { get; set; }
+        public double Minutes { get; set; }
+        public double MinutesPerGameAverage
+        {
+            get
+            {
+                return Math.Round((double)Minutes / GamesPlayed, 1);
+            }
+        }
         public int Shots { get; set; }
         public int GameWinningGoals { get; set; }
         public int Hits { get; set; }
         public double ShootingPercentage { get; set; }
-        
+        public int PowerPlayGoals { get; set; }
+
+        public int GoalsAgainst { get; set; }
+
+        public double GoalsAgainstAverage { get; set; }
+        public int Wins { get; set; }
+        public int Losses { get; set; }
+
+        public int ShotsAgainst { get; set; }
+        public double SavePercentage { get; set; }
+        public int Shutouts { get; set; }
+
     }
 }

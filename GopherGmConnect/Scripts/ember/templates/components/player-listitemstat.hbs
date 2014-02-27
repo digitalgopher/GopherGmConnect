@@ -1,0 +1,55 @@
+﻿
+<div class="col-xs-3 visible-md visible-lg">
+    {{#link-to 'player' player}}
+    <span class="first-name">
+      {{unbound player.firstName}}
+    </span>
+    <span class="last-name">
+        {{unbound player.lastName}}
+    </span>
+
+    {{/link-to}}
+</div>
+
+
+<div class="col-xs-3 visible-xs visible-sm">
+    {{#link-to 'player' player}}
+    <span class="last-name">
+      {{unbound player.lastName}}
+    </span>
+    {{/link-to}}
+</div>
+
+
+<div {{bind-attr class=":col-xs-1 sortPoints:highlight"}}>
+  {{unbound player.singleYearStats.points}}
+</div>
+
+<div {{bind-attr class=":col-xs-1 sortGoals:highlight"}}>
+  {{unbound player.singleYearStats.goals}}
+</div>
+
+<div {{bind-attr class=":col-xs-1 sortAssists:highlight"}}>
+  {{unbound player.singleYearStats.assists}}
+</div>
+
+<div {{bind-attr class=":col-xs-1 sortGames:highlight"}}>
+  {{unbound player.singleYearStats.gamesPlayed}}
+</div>
+
+
+<div {{bind-attr class=":col-xs-1 sortMinutes:highlight"}}>
+  {{unbound player.singleYearStats.minutesPerGameAverage}}
+</div>
+
+<div {{bind-attr class=":col-xs-1 sortShotPercent:highlight"}}>
+  {{unbound player.singleYearStats.shootingPercentage}}
+</div>
+
+<div {{bind-attr class=":col-xs-1 sortFaceoffPercent:highlight"}}>
+  {{unbound player.singleYearStats.faceoffPercentage}}
+</div>
+
+<div {{bind-attr class=":col-xs-1 sortPlusMinus:highlight"}}>
+  {{unbound player.singleYearStats.plusMinus}}
+</div>

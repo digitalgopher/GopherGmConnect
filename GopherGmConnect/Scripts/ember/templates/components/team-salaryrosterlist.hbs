@@ -1,0 +1,50 @@
+﻿<div class="row player-row">
+    <div class="col-xs-4"></div>
+
+</div>
+<div class="row">
+    <div class="col-xs-12 roster-seperator">
+        Forwards
+    </div>
+</div>
+{{#each player in roster}}
+{{#if player.isForward}}
+{{#if player.isOnMainRoster}}
+{{player-salarylistitem player=player}}
+{{/if}}
+{{/if}}
+{{/each}}
+<div class="row">
+    <div class="col-xs-12 roster-seperator">
+        Defense
+    </div>
+</div>
+{{#each player in roster}}
+{{#if player.isDefence}}
+{{#if player.isOnMainRoster}}
+{{player-salarylistitem player=player}}
+{{/if}}
+{{/if}}
+{{/each}}
+<div class="row">
+    <div class="col-xs-12 roster-seperator">
+        Goalies
+    </div>
+</div>
+{{#each player in roster}}
+{{#if player.isGoalie}}
+{{#if player.isOnMainRoster}}
+{{player-salarylistitem player=player}}
+{{/if}}
+{{/if}}
+{{/each}}
+<div class="row">
+    <div class="col-xs-12 roster-seperator">
+        Prospects
+    </div>
+</div>
+{{#each player in roster}}
+{{#unless player.isOnMainRoster}}
+{{player-salarylistitem player=player}}
+{{/unless}}
+{{/each}}

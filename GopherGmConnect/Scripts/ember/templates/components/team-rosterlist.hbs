@@ -1,0 +1,147 @@
+﻿<div class="row player-row header">
+  <div class="col-xs-4">Name</div>
+  <div class="col-xs-1 visible-lg visible-md">
+    <span {{action 'sortProperty' "overall" }}>Overall</span>
+    {{#if sortOverall}}
+    <i class="fa fa-chevron-down"></i>
+    {{/if}}
+  </div>
+  <div class="col-xs-1 hidden-lg hidden-md">
+    <i class="fa fa-trophy"></i>
+    {{#if sortOverall}}
+    <i class="fa fa-chevron-down"{{action 'sortProperty' "overall" }}></i>
+    {{/if}}
+  </div>
+  <div class="col-xs-1 visible-lg visible-md" {{action 'sortProperty' "age" }}>
+    Age
+    {{#if sortAge}}
+    <i class="fa fa-chevron-down"></i>
+    {{/if}}
+  </div>
+  <div class="col-xs-1 hidden-lg hidden-md" {{action 'sortProperty' "age" }}>
+    <i class="fa fa-clock-o"></i>
+    {{#if sortAge}}
+    <i class="fa fa-chevron-down"></i>
+    {{/if}}
+  </div>
+  <div class="col-xs-2 visible-lg visible-md" {{action 'sortProperty' "potential" }}>
+    Potential
+    {{#if sortPotential}}
+    <i class="fa fa-chevron-down"></i>
+    {{/if}}
+  </div>
+  <div class="col-xs-2 hidden-lg hidden-md" {{action 'sortProperty' "potential" }}>
+    <i class="fa fa-star-half-o"></i>
+    {{#if sortPotential}}
+    <i class="fa fa-chevron-down"></i>
+    {{/if}}
+  </div>
+  <div class="col-xs-2 visible-lg visible-md" {{action 'sortProperty' "salary" }}>
+    Salary
+    {{#if sortSalary}}
+    <i class="fa fa-chevron-down"></i>
+    {{/if}}
+  </div>
+  <div class="col-xs-2 hidden-lg hidden-md" {{action 'sortProperty' "salary" }}>
+    <i class="fa fa-usd"></i>
+    {{#if sortSalary}}
+    <i class="fa fa-chevron-down"></i>
+    {{/if}}
+  </div>
+  <div class="col-xs-2 visible-lg visible-md" {{action 'sortProperty' "tradeValue" }}>
+    Value
+    {{#if sortTradeValue}}
+    <i class="fa fa-chevron-down"></i>
+    {{/if}}
+  </div>
+  <div class="col-xs-2 hidden-lg hidden-md" {{action 'sortProperty' "tradeValue" }}>
+    <i class="fa fa-thumbs-o-up"></i>
+    {{#if sortTradeValue}}
+    <i class="fa fa-chevron-down"></i>
+    {{/if}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 roster-seperator">
+    Forwards
+  </div>
+</div>
+{{#group}}
+{{#each player in roster groupedRows=true}}
+{{#if player.isOnMainRoster}}
+{{#if player.isForward}}
+
+{{player-listitem player=player
+sortAge = sortAge
+sortOverall = sortOverall
+sortPotential = sortPotential
+sortTradeValue = sortTradeValue
+sortSalary = sortSalary}}
+{{/if}}
+{{/if}}
+{{/each}}
+{{/group}}
+
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-12 roster-seperator">
+    Defense
+  </div>
+</div>
+{{#group}}
+{{#each player in roster groupedRows=true}}
+{{#if player.isOnMainRoster}}
+{{#if player.isDefence}}
+
+{{player-listitem player=player
+sortAge = sortAge
+sortOverall = sortOverall
+sortPotential = sortPotential
+sortTradeValue = sortTradeValue
+sortSalary = sortSalary}}
+{{/if}}
+{{/if}}
+{{/each}}
+{{/group}}
+
+<div class="row">
+  <div class="col-xs-12 roster-seperator">
+    Goalies
+  </div>
+</div>
+{{#group}}
+{{#each player in roster groupedRows=true}}
+{{#if player.isOnMainRoster}}
+{{#if player.isGoalie}}
+{{player-listitem player=player
+sortAge = sortAge
+sortOverall = sortOverall
+sortPotential = sortPotential
+sortTradeValue = sortTradeValue
+sortSalary = sortSalary}}
+{{/if}}
+{{/if}}
+{{/each}}
+{{/group}}
+
+<div class="row">
+  <div class="col-xs-12 roster-seperator">
+    Non-Roster Players
+  </div>
+</div>
+{{#group}}
+{{#each player in roster groupedRows=true}}
+{{#unless player.isOnMainRoster}}
+{{player-listitem player=player
+                  sortAge = sortAge
+                  sortOverall = sortOverall
+                  sortPotential = sortPotential
+                  sortTradeValue = sortTradeValue
+                  sortSalary = sortSalary}}
+{{/unless}}
+{{/each}}
+{{/group}}

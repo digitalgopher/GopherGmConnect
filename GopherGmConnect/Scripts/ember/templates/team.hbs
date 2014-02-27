@@ -1,0 +1,272 @@
+﻿<div class="team-header">
+    <div class="container">
+        <h1 class="small-name">{{city}} <span class="big-name">{{teamname}}</span></h1>
+        <p>({{wins}}/{{losses}}/{{overtimeLosses}})</p>
+    </div>
+</div>
+<div class="team-minibar">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                {{twitter}} 
+                {{#if isLoaded}} 
+                  {{salary}} <a href="http://pastebin.com/MNLpsGr8" class="salary-explanation">(How'd you get this number!?)</a>
+                {{else}}
+                  loading....
+                  {{/if}}
+            </div>
+            <div class="col-sm-6">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 team-toprow">
+            <div class="row">
+                <div class="col-md-6">
+                  {{#if twitterIsLoaded}}
+                  {{#each tweet in tweets}}
+                  {{team-tweet tweet=tweet}}
+                  {{/each}}
+                  {{else}}
+                  {{app-loader}}
+                  <h1 class="loading-text">Loading Tweets....</h1>
+                  {{/if}}
+
+                </div>
+
+                <div class="col-md-6 team-summary-box">
+                    <div class="row">
+                      {{team-bigbutton tabContentId="tab-content-roster"
+                      data-toggle="tab"
+                      designClass="roster"
+                      label="Roster"
+                      iconName="fa-group"
+                      sort="potential"
+                      isCurrent="true"
+                      tabToShow="showRoster"
+                      showTab="showTab"}}
+                      {{team-bigbutton  tabContentId="tab-content-salaries"
+                      data-toggle="tab"
+                      designClass="salaries"
+                      label="Salaries"
+                      iconName="fa-money"
+                      sort="salary"
+                      tabToShow="showSalaries"
+                      showTab="showTab"}}
+                      {{team-bigbutton  tabContentId="tab-content-schedule"
+                      data-toggle="tab"
+                      designClass="schedule"
+                      label="Schedule"
+                      iconName="fa-calendar"
+                      tabToShow="showCalendar"
+                      showTab="showTab"}}
+                      {{team-bigbutton  tabContentId="tab-content-lines"
+                      data-toggle="tab"
+                      designClass="lines"
+                      label="Lines"
+                      iconName="fa-rocket"
+                      tabToShow="showLines"
+                      showTab="showTab"}}
+                      {{team-bigbutton  tabContentId="tab-content-stats"
+                      data-toggle="tab"
+                      designClass="stats"
+                      label="Stats"
+                      iconName="fa-check"
+                      tabToShow="showStats"
+                      showTab="showTab"}}
+                      {{team-bigbutton  tabContentId="tab-content-ratings"
+                      data-toggle="tab"
+                      designClass="ratings"
+                      label="Ratings"
+                      iconName="fa-tachometer"
+                      tabToShow="showRatings"
+                      showTab="showTab"}}
+                    </div>
+                    <div class="row">
+                        {{team-stats value=penaltyKillPercent label="PK %" colClass="col-xs-3"}}
+                        {{team-stats value=powerPlayPercent label="PP %" colClass="col-xs-3"}}
+                        {{team-stats value=goalsFor label="Goals For" colClass="col-xs-3"}}
+                        {{team-stats value=goalsAgainst label="Goals Against" colClass="col-xs-3"}}
+                    </div>
+
+                    <div class="row leaders">
+                        <div class="col-xs-3">
+
+                        </div>
+                        <div class="col-xs-2">
+                            Goals
+                        </div>
+                        <div class="col-xs-2">
+                            Assists
+                        </div>
+                        <div class="col-xs-2">
+                            Points
+                        </div>
+                        <div class="col-xs-2">
+                            Games
+                        </div>
+                      <div class="col-xs-1">
+                        Minutes
+                      </div>
+                    </div>
+
+                  {{#if rosterIsLoaded}}
+                  {{#each player in leadingScorers}}
+                  {{team-leaders player=player title="Leading Scorers"}}
+                  {{/each}}
+    
+
+
+
+
+
+
+                  <div class="row leaders">
+                    <div class="col-xs-3">
+
+                    </div>
+                    <div class="col-xs-2">
+                      GAA
+                    </div>
+                    <div class="col-xs-2">
+                      Save %
+                    </div>
+                    <div class="col-xs-2">
+                      Shutouts
+                    </div>
+                    <div class="col-xs-2">
+                      Wins
+                    </div>
+                    <div class="col-xs-1">
+                      Losses
+                    </div>
+                  </div>
+
+                  {{#each player in roster}}
+                    {{#if player.isGoalie}}
+                      {{#if player.isOnMainRoster}}
+                        <div class="row leaders">
+                          <div class="col-xs-3">
+                            {{player.firstName}} {{player.lastName}}
+                          </div>
+                          <div class="col-xs-2">
+                            {{player.singleYearStats.goalsAgainstAverage}}
+                          </div>
+                          <div class="col-xs-2">
+                            {{player.singleYearStats.savePercentage}}
+                          </div>
+                          <div class="col-xs-2">
+                            {{player.singleYearStats.shutouts}}
+                          </div>
+                          <div class="col-xs-2">
+                            {{player.singleYearStats.wins}}
+                          </div>
+                          <div class="col-xs-1">
+                            {{player.singleYearStats.losses}}
+                          </div>
+                        </div>
+                      {{/if}}
+                    {{/if}}
+                  {{/each}}
+                  {{else}}
+
+                  {{app-loader}}
+                  <h1 class="loading-text">Loading Leaders...</h1>
+                  {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+
+    </div>
+    {{#if isLoaded}}
+    <div class="tab-content">
+        <div id="tab-content-roster" class="tab-pane fade in active">
+          {{#if showRoster}}
+          {{team-rosterlist roster=roster
+            sort="sortByProperty"
+          currentSort=currentSortProperty}}
+
+
+          {{/if}}
+
+        </div>
+      
+      <div id="tab-content-salaries" class="tab-pane fade">
+        {{#if showSalaries}}
+        {{team-salaryrosterlist roster=roster}}
+        {{else}}
+        {{app-loader}}
+        {{/if}}
+      </div>
+
+      <div id="tab-content-stats" class="tab-pane fade">
+        {{#if showStats}}
+        {{team-rosterliststats team=content sort="sortByStat" currentSortStat=currentSortStat}}
+        {{else}}
+        {{app-loader}}
+        {{/if}}
+      </div>
+
+      <div id="tab-content-ratings" class="tab-pane fade">
+        {{#if showRatings}}
+        {{team-rosterlistratings roster=roster sort="sortByRating" currentSortRating="speed"}}
+        {{else}}
+        {{app-loader}}
+        {{/if}}
+      </div>
+
+      <div id="tab-content-schedule" class="tab-pane fade">
+        {{#if showCalendar}}
+        {{team-calendar team=content teams=teams}}
+        {{else}}
+        {{app-loader}}
+        {{/if}}
+      </div>
+      <div id="tab-content-lines" class="tab-pane fade">
+        {{#if showLines}}
+        {{#if linesIsLoaded}}
+        <div class="row">
+          {{#each line in lines.fwd}}
+
+          {{render "fwdline" line}}
+
+          {{/each}}
+        </div>
+
+        <div class="row">
+          {{#each line in lines.dpair}}
+
+          {{render "dpair" line}}
+
+          {{/each}}
+        </div>
+
+        <div class="row">
+          {{#each line in lines.pp}}
+
+          {{render "ppunit" line}}
+
+          {{/each}}
+        </div>
+
+        {{/if}}
+        {{else}}
+        {{app-loader}}
+        {{/if}}
+      </div>
+    </div>
+    {{else}}
+    {{app-loader}}
+    <h1 class="loading-text">Loading Roster....</h1>
+    {{/if}}
+
+
+</div>

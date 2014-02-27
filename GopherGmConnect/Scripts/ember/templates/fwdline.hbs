@@ -1,0 +1,34 @@
+﻿
+<div class="col-md-3">
+    <div class="panel panel-success">
+        <!-- Default panel contents -->
+        <div class="panel-heading">{{unbound name}}</div>
+        <ul class="list-group">
+            <li  class="list-group-item">
+              {{#link-to 'player' leftW}}  
+              <h5 class="list-group-item-heading">{{unbound leftW.firstName}} {{unbound leftW.lastName}}</h5>
+              {{/link-to}}
+                <p class="list-group-item-text">LW, OVR: {{unbound leftW.overall}} Shoots {{unbound leftW.handed}}</p>
+            </li>
+
+          <li class="list-group-item">
+            {{#link-to 'player' center}}
+            <h5 class="list-group-item-heading">{{unbound center.firstName}} {{unbound center.lastName}}</h5>
+            {{/link-to}}
+                <p class="list-group-item-text">C, OVR: {{unbound center.overall}} Shoots {{unbound center.handed}} </p>
+            <p class="text">Faceoffs: {{unbound center.playerRatings.faceoffs}}</p>
+            </li>
+
+          <li class="list-group-item">
+            {{#link-to 'player' rightW}}
+            <h5 class="list-group-item-heading">{{unbound rightW.firstName}} {{unbound rightW.lastName}}</h5>
+            {{/link-to}}
+                <p class="list-group-item-text">RW, OVR: {{unbound rightW.overall}} Shoots {{unbound rightW.handed}}</p>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+
+

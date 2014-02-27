@@ -1,0 +1,91 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            {{aTeam.city}} {{aTeam.teamname}}
+        </div>
+        <div class="col-sm-6">
+            {{bTeam.city}} {{bTeam.teamname}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            {{view App.Tradeteamselect
+            contentBinding="allTeams"
+            valueBinding="randomTeam.id"
+            optionValuePath="content.id"
+            optionLabelPath="content.teamname"
+            selectionBinding="aTeam"
+            itemController="Team"
+            }}
+            <img {{bindattr src="aTeam.imageUrl" }} />
+            <h3>Cap Space: {{aTeam.capSpace}}</h3>
+            <h4>Salary After trade: {{aTeamSalaryAfterTrade}}</h4>
+        </div>
+        <div class="col-sm-6">
+            {{view App.Tradeteamselect
+            contentBinding="allTeams"
+            valueBinding="randomTeamB.id"
+            optionValuePath="content.id"
+            optionLabelPath="content.teamname"
+            selectionBinding="bTeam"
+            itemController="Team"
+            }}
+            <img {{bindattr src="bTeam.imageUrl" }} />
+            <h3>Current Cap: {{bTeam.capSpace}}</h3>
+            <h4>Salary Avail After trade: {{bTeamSalaryAfterTrade}}</h4>
+
+        </div>
+    </div>
+    <div class="row">
+        {{#if aTeam.rosterIsLoaded}}
+        <div class="col-sm-3">
+
+            <div class="list-group">
+                {{#each p in aTeam.roster}}
+                <a {{action playerselected p ateam}} class="list-group-item"> {{p.firstName}} {{p.lastName}} {{p.overall}}</a>
+                {{/each}}
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <h4>On Block: {{aTeam.tradeSalary}}</h4>
+            <div class="list-group">
+                {{#each p in aTeam.tradeBlock}}
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">{{p.firstName}} {{p.lastName}}</h4>
+                    <img style="width: 50px" {{bindattr src="p.imageUrl" }} />
+                    <p class="list-group-item-text"> {{p.salaryReadable}}, {{p.overall}}</p>
+                </a>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if bTeam.rosterIsLoaded}}
+        <div class="col-sm-3">
+            <h4>On Block: {{bTeam.tradeSalary}}</h4>
+            <div class="list-group">
+                {{#each p in bTeam.tradeBlock}}
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">{{p.firstName}} {{p.lastName}}</h4>
+                    <img style="width: 50px" {{bindattr src="p.imageUrl" }} />
+                    <p class="list-group-item-text"> {{p.salaryReadable}}, {{p.overall}}</p>
+                </a>
+                {{/each}}
+            </div>
+
+        </div>
+        <div class="col-sm-3">
+            <div class="list-group">
+                {{#each p in bTeam.roster}}
+                <a {{action playerselected p bteam}} class="list-group-item"> {{p.firstName}} {{p.lastName}} {{p.overall}}</a>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    {{/if}}
+
+
+
+
+</div>

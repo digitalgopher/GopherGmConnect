@@ -1,0 +1,128 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-offset-1">
+            {{#if playersIsLoaded}}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr class="playerTableHeaders">
+                            <td>
+                                Name
+                            </td>
+                            <td class="text-info" {{action 'sortStat' "gamesPlayed" }}>
+                                Games
+                            </td>
+                            <td class="text-info" {{action 'sortStat' "assists" }}>
+                                Assists
+                            </td>
+                            <td class="text-info" {{action 'sortStat' "goals" }}>
+                                Goals
+                                </>
+                            <td class="text-info" {{action 'sortStat' "points" }}>
+                                Points
+                            </td>
+                            <td class="text-info" {{action 'sortStat' "plusMinus" }}>
+                                +/-
+                            </td>
+                            <td class="text-info" {{action 'sortStat' "shots" }}>
+                                Shots
+                            </td>
+                            <td class="text-info" {{action 'sortStat' "shootingPercentage" }}>
+                                Shot%
+                            </td>
+                            <td class="text-info" {{action 'sortStat' "hits" }}>
+                                Hits
+                            </td>
+                            <td class="text-info" {{action 'sortStat' "faceoffPercentage" }}>
+                                FO%
+                            </td>
+                            <td class="text-info" {{action 'sortStat' "faceoffsWon" }}>
+                                FO/W
+                            </td>
+                            <td class="text-info" {{action 'sortStat' "faceoffsTaken" }}>
+                                FO/T
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each player in content}}
+                        <tr>
+                            <td class="hidden-lg">
+
+
+                                {{#linkTo 'player' player}}
+                                {{player.lastName}}
+                                {{/linkTo}}
+                                {{#if player.isInjured}}
+                                <small>(out {{player.injuryLength}} games)</small>
+                                {{/if}}
+                            </td>
+                            <td class="visible-lg">
+                                <img style="height: 22px; width: auto;" class="home-team-image" {{bindattr src="player.team.imageUrl" }} />
+
+
+
+
+                                {{#linkTo 'player' player}}
+                                {{player.firstName}} {{player.lastName}}
+                                {{/linkTo}}
+                                {{#if player.isInjured}}
+                                <small>(out {{player.injuryLength}} games)</small>
+                                {{/if}}
+                            </td>
+                            <td>
+                                {{player.singleYearStats.gamesPlayed}}
+
+                            </td>
+                            <td>
+                                {{player.singleYearStats.assists}}
+                            </td>
+                            <td>
+                                {{player.singleYearStats.goals}}
+                            </td>
+                            <td>
+                                {{player.singleYearStats.points}}
+                            </td>
+                            <td>
+                                {{player.singleYearStats.plusMinus}}
+                            </td>
+                            <td>
+                                {{player.singleYearStats.shots}}
+                            </td>
+                            <td>
+                                {{player.singleYearStats.shootingPercentage}}%
+                            </td>
+                            <td>
+                                {{player.singleYearStats.hits}}
+                            </td>
+                            <td>
+                                {{player.singleYearStats.faceoffPercentage}}%
+                            </td>
+                            <td>
+                                {{player.singleYearStats.faceoffsWon}}
+                            </td>
+                            <td>
+                                {{player.singleYearStats.faceoffsTaken}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+
+            {{else}}
+            <div class="loader">
+                <div class="duo duo1">
+                    <div class="dot dot-a"></div>
+                    <div class="dot dot-b"></div>
+                </div>
+                <div class="duo duo2">
+                    <div class="dot dot-a"></div>
+                    <div class="dot dot-b"></div>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</div>
+

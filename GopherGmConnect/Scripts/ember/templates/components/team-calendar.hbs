@@ -1,0 +1,23 @@
+﻿<div class="row schedule">
+    {{#each game in team.schedule}}
+
+    <div class="col-xs-3 schedule-game">
+        <div {{bind-attr class=":triangle game.isEstimatedNextPush game.isCurrentPush" }}></div>
+        <div class="schedule-logo">
+            {{#link-to 'team' game.opposingTeam}}
+            <img {{bind-attr src="game.opposingTeam.imageUrl" }} />
+            {{/link-to}}
+        </div>
+		<div class="schedule-name">
+			{{game.opposingTeam.teamname}}
+		</div>
+		<div class="schedule-record">
+			({{game.opposingTeam.wins}}/{{game.opposingTeam.losses}}/{{game.opposingTeam.overtimeLosses}})
+		</div>
+		<div class="schedule-twitter">
+			{{game.opposingTeam.twitter}}
+		</div>
+    </div>
+
+    {{/each}}
+</div>

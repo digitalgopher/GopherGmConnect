@@ -280,107 +280,12 @@
             font-size: medium;
         }
 
-.stats-box
-{
-    background-color: #fff;
-    border: 1px solid #e5e5e5;
-    border-radius: 2px;
-    margin: -1px;
-    /*width: 300px;*/
-    font-family: Roboto;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-    .stats-box.contract
-    {
-        border-top: 5px solid #4dbfd9;
-    }
-
-    .stats-box.basicinfo
-    {
-        border-top: 5px solid #e46f61;
-    }
-
-    .stats-box.careerstats
-    {
-        border-top: 5px solid #fbcb43;
-    }
-
-    .stats-box.contract .numberBoxValue
-    {
-        background-color: #fff;
-        color: rgba(0, 0, 0, .8);
-    }
 
 
-.numberBox
-{
-    width: 14%;
-    height: 100%;
-    display: inline-block;
-    /*border: 1px solid green;*/
-    margin-right: -4px;
-    text-align: center;
-    margin: 0 8px;
-    line-height: normal;
-    white-space: nowrap;
-    padding: 10px 0 10px 0;
-}
-
-/*.numberBox span:first-of-type {
-                width: 100%;
-                border-bottom: 1px solid red;
-                margin: 0;
-                padding: 0;
-                display: block;
-                
-            }*/
-
-.numberBoxValue
-{
-    font-weight: 300;
-    font-size: xx-large;
-    position: relative;
-    height: 100%;
-    display: block;
-    color: rgba(255, 255, 255, .9);
-    background-color: rgba(0, 0, 0, .6);
-    overflow: hidden;
-    border-radius: 5px;
-}
-
-    .numberBoxValue:before
-    {
-        content: '';
-        vertical-align: middle;
-        height: 100%;
-        display: inline-block;
-    }
-
-.numberBox.salary
-{
-    width: 30%;
-}
-
-.numberBox.contracttype
-{
-    width: 26%;
-}
-
-.numberBox.points
-{
-    width: 20%;
-}
 
 
-.stats-box-title
-{
-    font: 300 20px Roboto,arial,sans-serif;
-    display: block;
-    margin-left: 10px;
-    text-align: left;
-}
+
+.stats-box-
 
 .numberBoxValueContainer
 {
@@ -410,71 +315,6 @@
 }
 
 
-.player-great
-{
-    background-color: #8cc474;
-}
-
-.player-good
-{
-    background-color: #4dbfd9;
-}
-
-.player-okay
-{
-    background-color: #6f85bf;
-}
-
-.player-caution
-{
-    background-color: #fbcb43;
-}
-
-.player-bad
-{
-    background-color: #e46f61;
-}
-
-
-.player-yellow-potential
-{
-    background-color: #fbcb43;
-}
-
-.player-green-potential
-{
-    background-color: #8cc474;
-}
-
-.player-white-potential
-{
-    background-color: rgba(0, 0, 0, .6);
-}
-
-.player-red-potential
-{
-    background-color: #e46f61;
-}
-
-.player-age-young
-{
-    background-color: #4dbfd9;
-}
-
-.player-age-prime
-{
-    background-color: #8cc474;
-}
-
-.player-age-medium
-{
-    background-color: #f9b256;
-}
-
-.player-age-old
-{
-    background-color: #e46f61;
-}
 
 
 /*.jumbotron

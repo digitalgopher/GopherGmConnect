@@ -1,6 +1,7 @@
 ######MY STUFF
 Web.config
-
+Properties/
+Migrations/
 
 #################
 ## Eclipse

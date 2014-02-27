@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,35 +40,49 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime, Version=3.3.1.7705, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Practices.Prism">
-      <HintPath>..\packages\TweetinviAPI.0.8.3.1\lib\Microsoft.Practices.Prism.dll</HintPath>
+    <Reference Include="Microsoft.Practices.Prism, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\TweetinviAPI.0.8.3.23\lib\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>
-    <Reference Include="oAuthConnection">
-      <HintPath>..\packages\TweetinviAPI.0.8.3.1\lib\oAuthConnection.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="SearchEngine">
-      <HintPath>..\packages\TweetinviAPI.0.8.3.1\lib\SearchEngine.dll</HintPath>
+    <Reference Include="oAuthConnection, Version=0.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\TweetinviAPI.0.8.3.23\lib\oAuthConnection.dll</HintPath>
     </Reference>
-    <Reference Include="Streaminvi">
-      <HintPath>..\packages\TweetinviAPI.0.8.3.1\lib\Streaminvi.dll</HintPath>
+    <Reference Include="SearchEngine, Version=0.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\TweetinviAPI.0.8.3.23\lib\SearchEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Streaminvi, Version=0.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\TweetinviAPI.0.8.3.23\lib\Streaminvi.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Drawing" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\packages\System.Data.SQLite.1.0.89.0\lib\net45\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq">
+      <HintPath>..\packages\System.Data.SQLite.1.0.89.0\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Optimization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.2\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
@@ -75,9 +90,6 @@
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -85,9 +97,6 @@
     <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.10\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
     </Reference>
@@ -99,9 +108,6 @@
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
@@ -149,26 +155,33 @@
       <Private>True</Private>
       <HintPath>..\packages\System.Spatial.5.2.0-rc1\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
-    <Reference Include="TweetinCore">
-      <HintPath>..\packages\TweetinviAPI.0.8.3.1\lib\TweetinCore.dll</HintPath>
-    </Reference>
-    <Reference Include="Tweetinvi">
-      <HintPath>..\packages\TweetinviAPI.0.8.3.1\lib\Tweetinvi.dll</HintPath>
-    </Reference>
-    <Reference Include="TwitterToken">
-      <HintPath>..\packages\TweetinviAPI.0.8.3.1\lib\TwitterToken.dll</HintPath>
-    </Reference>
-    <Reference Include="UILibrary">
-      <HintPath>..\packages\TweetinviAPI.0.8.3.1\lib\UILibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="WebGrease, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Tools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+      <HintPath>..\packages\TweetinviAPI.0.8.3.23\lib\Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="TweetinCore, Version=0.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\TweetinviAPI.0.8.3.23\lib\TweetinCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Tweetinvi, Version=0.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\TweetinviAPI.0.8.3.23\lib\Tweetinvi.dll</HintPath>
+    </Reference>
+    <Reference Include="TwitterToken, Version=0.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\TweetinviAPI.0.8.3.23\lib\TwitterToken.dll</HintPath>
+    </Reference>
+    <Reference Include="UILibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\TweetinviAPI.0.8.3.23\lib\UILibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\DurandalBundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -192,41 +205,39 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201303260654323_InitialCreate.cs" />
-    <Compile Include="Migrations\201303260654323_InitialCreate.Designer.cs">
-      <DependentUpon>201303260654323_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201303270617026_Initial.cs" />
-    <Compile Include="Migrations\201303270617026_Initial.Designer.cs">
-      <DependentUpon>201303270617026_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201304030201301_PlayerContext.cs" />
-    <Compile Include="Migrations\201304030201301_PlayerContext.Designer.cs">
-      <DependentUpon>201304030201301_PlayerContext.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\Line.cs" />
-    <Compile Include="Models\LobPlayer.cs" />
-    <Compile Include="Models\LobPlayerData.cs" />
-    <Compile Include="Models\LoginInfo.cs" />
     <Compile Include="Models\PartialPlayer.cs" />
     <Compile Include="Models\Player.cs" />
-    <Compile Include="Models\PlayerContext.cs" />
     <Compile Include="Models\PlayerRatings.cs" />
     <Compile Include="Models\PlayerStats.cs" />
+    <Compile Include="Models\Retry.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\main.js" />
-    <Content Include="App\viewmodels\flickr.js" />
-    <Content Include="App\viewmodels\league.js" />
-    <Content Include="App\viewmodels\team.js" />
-    <Content Include="App\views\flickr.html" />
-    <Content Include="App\views\league.html" />
-    <Content Include="App\views\team.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Scripts\ember\components\component-player-listitemrating.js" />
+    <Content Include="Scripts\ember\components\component-player-listitemstat.js" />
+    <Content Include="Scripts\ember\components\component-team-calendar.js" />
+    <None Include="Scripts\ember\templates\components\player-listitemstat.hbs" />
+    <None Include="Scripts\ember\templates\components\player-listitemrating.hbs" />
+    <Content Include="Scripts\ember\templates\components\team-rosterlistratings.hbs">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Scripts\ember\templates\components\team-rosterliststats.hbs" />
+    <Content Include="Scripts\ember\components\component-team-rosterlistratings.js" />
+    <Content Include="Scripts\ember\components\component-team-rosterliststats.js" />
+    <Content Include="Scripts\ember\helpers\helper-Group.js" />
+    <Content Include="Scripts\ember\templates\templates.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x64\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="app.config" />
     <Content Include="Content\css\bootstrap-responsive2.css" />
     <Content Include="Content\css\bootstrap.css" />
@@ -238,6 +249,13 @@
     <Content Include="Content\images\bg2.jpg" />
     <Content Include="Content\images\bg3.jpg" />
     <Content Include="Content\images\fabric.png" />
+    <Content Include="Content\images\kes.jpg" />
+    <Content Include="Content\images\kesbg.jpg" />
+    <Content Include="Content\images\kronner.png" />
+    <Content Include="Content\images\lob3.png" />
+    <Content Include="Content\images\lobbg3.png" />
+    <Content Include="Content\images\lobg.png" />
+    <Content Include="Content\images\lobg2.png" />
     <Content Include="Content\images\masthead.png" />
     <Content Include="Content\images\loading.png" />
     <Content Include="Content\images\logos\200\anaheim-ducks.png" />
@@ -343,6 +361,16 @@
     <Content Include="Content\style.min.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
+    <Content Include="Content\teamColors.css">
+      <DependentUpon>teamColors.less</DependentUpon>
+    </Content>
+    <Content Include="Content\teamColors.less" />
+    <Content Include="Content\teamColors.min.css">
+      <DependentUpon>teamColors.less</DependentUpon>
+    </Content>
+    <Content Include="Scripts\ember\components\component-team-teamleaders.js" />
+    <Content Include="Scripts\ember\controllers\controller-navbar.js" />
+    <Content Include="Scripts\ember\helpers\helper-reverse-word.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Content\js\bootstrap2.js" />
     <Content Include="Content\js\bootstrap.min2.js" />
@@ -426,93 +454,127 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <None Include="Properties\PublishProfiles\lobnhl - FTP %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\lobnhl - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\loblite - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\loblite - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\lobnhl - Web Deploy %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\lobnhl - Web Deploy.pubxml" />
+    <Content Include="Scripts\ember\templates\home.hbs">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\ember\templates\navbar.hbs" />
+    <Content Include="Scripts\ember\templates\components\team-salarychart.hbs" />
+    <Content Include="Scripts\ember\templates\components\team-bigbutton.hbs" />
+    <Content Include="Scripts\ember\templates\components\team-stats.hbs" />
+    <Content Include="Scripts\ember\templates\components\team-leaders.hbs" />
+    <Content Include="Scripts\ember\templates\topplayers.hbs" />
+    <Content Include="Scripts\ember\templates\ppunit.hbs" />
+    <Content Include="Scripts\ember\templates\dpair.hbs" />
+    <Content Include="Scripts\ember\templates\fwdline.hbs" />
+    <Content Include="Scripts\ember\templates\line.hbs" />
+    <Content Include="Scripts\ember\templates\team.hbs">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\ember\templates\components\team-salaryrosterlist.hbs" />
+    <Content Include="Scripts\ember\templates\components\team-rosterlist.hbs">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\ember\templates\components\player-salarylistitem.hbs">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\ember\templates\components\team-circularstat.hbs" />
+    <Content Include="Scripts\ember\templates\components\app-loader.hbs" />
+    <Content Include="Scripts\ember\templates\components\team-smallplayer.hbs" />
+    <Content Include="Scripts\ember\templates\components\team-tweet.hbs" />
+    <Content Include="Scripts\ember\templates\components\player-listitem.hbs" />
+    <Content Include="Scripts\ember\templates\team2.hbs" />
+    <Content Include="Scripts\ember\templates\player.hbs" />
+    <Content Include="Scripts\ember\templates\playercompare.hbs" />
+    <Content Include="Scripts\ember\templates\compareratings.hbs" />
+    <Content Include="Scripts\ember\templates\playercontractbox.hbs" />
+    <Content Include="Scripts\ember\templates\playerprofile.hbs" />
+    <Content Include="Scripts\ember\templates\playerbasicinfobox.hbs" />
+    <Content Include="Scripts\ember\templates\trade.hbs" />
+    <Content Include="Scripts\ember\templates\tradeteaminfo.hbs" />
+    <Content Include="Scripts\ember\templates\components\team-calendar.hbs" />
+    <Content Include="Scripts\ember\templates\components\player-search.hbs" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\app.js" />
-    <Content Include="Scripts\bootstrap3\bootstrap.js" />
     <Content Include="Scripts\Calendar\fullcalendar.js" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\Contracts.js" />
     <Content Include="Scripts\ember\app.js" />
+    <Content Include="Scripts\ember\components\component-player-listitem.js" />
+    <Content Include="Scripts\ember\components\component-player-salarylistitem.js" />
+    <Content Include="Scripts\ember\components\component-team-big-button.js" />
     <Content Include="Scripts\ember\components\component-team-circularstat.js" />
+    <Content Include="Scripts\ember\components\component-team-rosterlist.js" />
+    <Content Include="Scripts\ember\components\component-team-salaryrosterlist.js" />
+    <Content Include="Scripts\ember\components\component-team-smallplayer.js" />
+    <Content Include="Scripts\ember\components\component-team-stats.js" />
     <Content Include="Scripts\ember\components\component-team-tweet.js" />
-    <Content Include="Scripts\ember\controllers\Application-controller.js" />
-    <Content Include="Scripts\ember\controllers\Dpair-controller.js" />
-    <Content Include="Scripts\ember\controllers\EAToken-controller.js" />
-    <Content Include="Scripts\ember\controllers\Fwdline-controller.js" />
-    <Content Include="Scripts\ember\controllers\Game-controller.js" />
-    <Content Include="Scripts\ember\controllers\Home-controller.js" />
-    <Content Include="Scripts\ember\controllers\Line-controller.js" />
-    <Content Include="Scripts\ember\controllers\Player-controller.js" />
-    <Content Include="Scripts\ember\controllers\Playercompare-controller.js" />
-    <Content Include="Scripts\ember\controllers\Playersearch-controller.js" />
-    <Content Include="Scripts\ember\controllers\Ppunit-controller.js" />
-    <Content Include="Scripts\ember\controllers\Players-controller.js" />
-    <Content Include="Scripts\ember\controllers\Schedule-controller.js" />
-    <Content Include="Scripts\ember\controllers\Team-controller.js" />
-    <Content Include="Scripts\ember\controllers\Teams-controller.js" />
-    <Content Include="Scripts\ember\controllers\Topplayers-controller.js" />
-    <Content Include="Scripts\ember\controllers\Trade-controller.js" />
-    <Content Include="Scripts\ember\controllers\Tweets-controller.js" />
-    <Content Include="Scripts\ember\controllers\Yearlystats-controller.js" />
-    <Content Include="Scripts\ember\ember-1.0.0-rc.2.js" />
-    <Content Include="Scripts\ember\ember-1.0.0-rc.4.js" />
-    <Content Include="Scripts\ember\ember-1.0.0-rc.6.js" />
-    <Content Include="Scripts\ember\ember-1.0.0-rc.6.min.js" />
-    <Content Include="Scripts\ember\ember-animated-outlet.css" />
-    <Content Include="Scripts\ember\ember-animated-outlet.js" />
-    <Content Include="Scripts\ember\ember-data-latest.js" />
-    <Content Include="Scripts\ember\handlebars-1.0.0-rc.3.js" />
-    <Content Include="Scripts\ember\handlebars.js" />
-    <Content Include="Scripts\ember\helpers\Compare.js" />
-    <Content Include="Scripts\ember\helpers\Playerage.js" />
-    <Content Include="Scripts\ember\helpers\Playeroverall.js" />
-    <Content Include="Scripts\ember\helpers\Playerpotential.js" />
-    <Content Include="Scripts\ember\helpers\stat.js" />
+    <Content Include="Scripts\ember\controllers\controller-application.js" />
+    <Content Include="Scripts\ember\controllers\controller-dpair.js" />
+    <Content Include="Scripts\ember\controllers\controller-eatoken.js" />
+    <Content Include="Scripts\ember\controllers\controller-fwdline.js" />
+    <Content Include="Scripts\ember\controllers\controller-game.js" />
+    <Content Include="Scripts\ember\controllers\controller-home.js" />
+    <Content Include="Scripts\ember\controllers\controller-line.js" />
+    <Content Include="Scripts\ember\controllers\controller-player.js" />
+    <Content Include="Scripts\ember\controllers\controller-playercompare.js" />
+    <Content Include="Scripts\ember\controllers\controller-playersearch.js" />
+    <Content Include="Scripts\ember\controllers\controller-ppunit.js" />
+    <Content Include="Scripts\ember\controllers\controller-players.js" />
+    <Content Include="Scripts\ember\controllers\controller-schedule.js" />
+    <Content Include="Scripts\ember\controllers\controller-team.js" />
+    <Content Include="Scripts\ember\controllers\controller-teams.js" />
+    <Content Include="Scripts\ember\controllers\controller-topplayers.js" />
+    <Content Include="Scripts\ember\controllers\controller-trade.js" />
+    <Content Include="Scripts\ember\controllers\controller-tweets.js" />
+    <Content Include="Scripts\ember\controllers\controller-yearlystats.js" />
+    <Content Include="Scripts\ember\helpers\helper-Compare.js" />
+    <Content Include="Scripts\ember\helpers\helper-Playerage.js" />
+    <Content Include="Scripts\ember\helpers\helper-Playeroverall.js" />
+    <Content Include="Scripts\ember\helpers\helper-Playerpotential.js" />
+    <Content Include="Scripts\ember\helpers\helper-stat.js" />
     <Content Include="Scripts\ember\mixins\ajax-mixin.js" />
     <Content Include="Scripts\ember\models\model-childviewtest.js" />
-    <Content Include="Scripts\ember\models\model-EAToken.js" />
-    <Content Include="Scripts\ember\models\model-Game.js" />
-    <Content Include="Scripts\ember\models\model-Line.js" />
-    <Content Include="Scripts\ember\models\model-Partialteam.js" />
-    <Content Include="Scripts\ember\models\model-Player.js" />
-    <Content Include="Scripts\ember\models\model-Playercompare.js" />
-    <Content Include="Scripts\ember\models\model-Playerrating.js" />
-    <Content Include="Scripts\ember\models\model-PushDate.js" />
-    <Content Include="Scripts\ember\models\model-Roster.js" />
+    <Content Include="Scripts\ember\models\model-eatoken.js" />
+    <Content Include="Scripts\ember\models\model-game.js" />
+    <Content Include="Scripts\ember\models\model-line.js" />
+    <Content Include="Scripts\ember\models\model-partialteam.js" />
+    <Content Include="Scripts\ember\models\model-player.js" />
+    <Content Include="Scripts\ember\models\model-playercompare.js" />
+    <Content Include="Scripts\ember\models\model-playerrating.js" />
+    <Content Include="Scripts\ember\models\model-pushdate.js" />
+    <Content Include="Scripts\ember\models\model-roster.js" />
     <Content Include="Scripts\ember\models\model-schedule.js" />
-    <Content Include="Scripts\ember\models\model-Team.js" />
-    <Content Include="Scripts\ember\models\model-Teams.js" />
+    <Content Include="Scripts\ember\models\model-team.js" />
+    <Content Include="Scripts\ember\models\model-teams.js" />
     <Content Include="Scripts\ember\models\model-topplayers.js" />
-    <Content Include="Scripts\ember\models\model-Trade.js" />
-    <Content Include="Scripts\ember\models\model-Tweet.js" />
-    <Content Include="Scripts\ember\models\model-Yearlystats.js" />
-    <Content Include="Scripts\ember\routes\Application.js" />
-    <Content Include="Scripts\ember\routes\Home.js" />
-    <Content Include="Scripts\ember\routes\Index.js" />
-    <Content Include="Scripts\ember\routes\Player.js" />
-    <Content Include="Scripts\ember\routes\Playercompare.js" />
-    <Content Include="Scripts\ember\routes\Route-Application.js" />
+    <Content Include="Scripts\ember\models\model-trade.js" />
+    <Content Include="Scripts\ember\models\model-tweet.js" />
+    <Content Include="Scripts\ember\models\model-yearlystats.js" />
+    <Content Include="Scripts\ember\routes\route-Application.js" />
+    <Content Include="Scripts\ember\routes\route-Home.js" />
+    <Content Include="Scripts\ember\routes\route-Index.js" />
+    <Content Include="Scripts\ember\routes\route-Player.js" />
+    <Content Include="Scripts\ember\routes\route-Playercompare.js" />
     <Content Include="Scripts\ember\routes\Router.js" />
-    <Content Include="Scripts\ember\routes\Team.js" />
-    <Content Include="Scripts\ember\routes\Topplayers.js" />
-    <Content Include="Scripts\ember\routes\Trade.js" />
-    <Content Include="Scripts\ember\views\Home.js" />
-    <Content Include="Scripts\ember\views\homelist-view.js" />
-    <Content Include="Scripts\ember\views\Player.js" />
-    <Content Include="Scripts\ember\views\Playercompare.js" />
-    <Content Include="Scripts\ember\views\Playercomparesearch.js" />
-    <Content Include="Scripts\ember\views\Playersearch.js" />
-    <Content Include="Scripts\ember\views\Schedule.js" />
-    <Content Include="Scripts\ember\views\Team.js" />
-    <Content Include="Scripts\ember\views\Topplayers.js" />
-    <Content Include="Scripts\ember\views\trade.js" />
-    <Content Include="Scripts\ember\views\tradeRosterListItem.js" />
-    <Content Include="Scripts\ember\views\Tradeteamselect.js" />
+    <Content Include="Scripts\ember\routes\route-Team.js" />
+    <Content Include="Scripts\ember\routes\route-Topplayers.js" />
+    <Content Include="Scripts\ember\routes\route-Trade.js" />
+    <Content Include="Scripts\ember\views\view-Home.js" />
+    <Content Include="Scripts\ember\views\view-homelist-view.js" />
+    <Content Include="Scripts\ember\views\view-Player.js" />
+    <Content Include="Scripts\ember\views\view-Playercompare.js" />
+    <Content Include="Scripts\ember\views\view-Playercomparesearch.js" />
+    <Content Include="Scripts\ember\components\component-player-search.js" />
+    <Content Include="Scripts\ember\views\view-Schedule.js" />
+    <Content Include="Scripts\ember\views\view-Team.js" />
+    <Content Include="Scripts\ember\views\view-Topplayers.js" />
+    <Content Include="Scripts\ember\views\view-trade.js" />
+    <Content Include="Scripts\ember\views\view-tradeRosterListItem.js" />
+    <Content Include="Scripts\ember\views\view-Tradeteamselect.js" />
     <Content Include="Scripts\FullSchedule.js" />
     <Content Include="Scripts\hogan-2.0.0.js" />
     <Content Include="Scripts\jquery.knob.js" />
@@ -522,7 +584,7 @@
     <Content Include="Scripts\player_list.js" />
     <Content Include="Scripts\Potential.js" />
     <None Include="Scripts\seasonSchedule.json" />
-    <Content Include="Scripts\teams.js" />
+    <Content Include="Scripts\static\teams.json" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
@@ -566,35 +628,24 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Knockout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Update.cshtml" />
     <Content Include="Views\Update\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\nhl_14_players.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\Home\Angular-Index.cshtml" />
+    <Content Include="Scripts\static\seasonSchedule.json" />
+    <Content Include="Scripts\static\players.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\App_LocalResources\" />
-    <Folder Include="Scripts\ember\templates\" />
-    <Folder Include="Views\Home\NewFolder1\" />
+    <Folder Include="Scripts\Grunt\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201303260654323_InitialCreate.resx">
-      <DependentUpon>201303260654323_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201303270617026_Initial.resx">
-      <DependentUpon>201303270617026_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201304030201301_PlayerContext.resx">
-      <DependentUpon>201304030201301_PlayerContext.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

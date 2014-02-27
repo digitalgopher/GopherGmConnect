@@ -1,0 +1,6 @@
+install node
+install grunt
+
+run grunt watch. 
+
+This will automatically compile templates for ember! 

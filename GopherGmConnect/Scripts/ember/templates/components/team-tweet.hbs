@@ -1,0 +1,9 @@
+﻿<div class="col-xs-1 tweet-logo">
+    <i class="fa fa-twitter"></i>
+</div>
+<div class="col-xs-10 tweet-text">
+    {{tweet.text}}<small class="tweet-date"><i class="fa fa-clock-o"></i> {{tweet.date}}</small>
+</div>
+<div class="col-xs-1 tweet-link">
+    <a {{bind-attr href="tweet.url" }}><i class="fa fa-location-arrow"></i></a>
+</div>

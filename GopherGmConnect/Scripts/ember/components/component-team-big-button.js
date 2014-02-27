@@ -1,5 +1,17 @@
 ﻿App.TeamBigbuttonComponent = Ember.Component.extend({
-    tagName: ['div'],
-    classNames: ['col-sm-4', 'team-info-button'],
-    classNameBindings: ['designClass'],
+    tagName: ['a'],
+    classNames: ['team-info-button'],
+    attributeBindings: ['data-toggle', 'href'],
+    href: function () {
+        return '#' + this.tabContentId;
+    }.property(),
+    actions: {
+        mycoolaction: function (sorter) {
+            this.sendAction('mycoolaction', sorter);       
+        },
+
+        showTab: function () {
+            this.sendAction('showTab', this.get('tabToShow'));
+        }
+    }
 });

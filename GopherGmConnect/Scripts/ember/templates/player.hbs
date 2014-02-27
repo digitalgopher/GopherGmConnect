@@ -1,0 +1,390 @@
+﻿<div class="player-header">
+    <div class="container">
+        <div class="player-profile">
+            <div class="image-container">
+                <img {{bind-attr src="imageUrl" }} />
+            </div>
+        </div>
+        <h1 class="small-name">{{team.city}} #{{jersey}} {{firstName}} <span class="big-name">{{lastName}}</span></h1>
+
+
+    </div>
+</div>
+        {{#if isLoaded}}
+<div class="container">
+
+
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="stats-box contract">
+                <span class="title">Contract</span>
+                <div class="numberBox">
+                    <span>Years</span>
+                    <div class="numberBoxValueContainer">
+                        <span class="numberBoxValue">{{yearsLeft}}</span>
+                    </div>
+                </div>
+                <div class="numberBox salary">
+                    <span>Salary</span>
+                    <div class="numberBoxValueContainer">
+                        <span class="numberBoxValue">${{salarySmall}}</span>
+                    </div>
+                </div>
+
+                <div class="numberBox contracttype">
+                    <span>Type</span>
+                    <div class="numberBoxValueContainer">
+                        <span class="numberBoxValue">{{contractType}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="stats-box basicinfo">
+                <span class="title">Info</span>
+                <div class="numberBox">
+                    <span>Overall</span>
+                    <div class="numberBoxValueContainer">
+                        {{playeroverall overall}}
+                    </div>
+                </div>
+                <div class="numberBox">
+                    <span>Potential</span>
+                    <div class="numberBoxValueContainer">
+                      {{playerpotential potential potentialColorString}}
+                    </div>
+                </div>
+                <div class="numberBox">
+                    <span>Age</span>
+                    <div class="numberBoxValueContainer">
+                        {{playerage age}}
+                    </div>
+                </div>
+
+                <div class="numberBox">
+                    <span>Position</span>
+                    <div class="numberBoxValueContainer">
+                        <span class="numberBoxValue">{{position}}</span>
+                    </div>
+                </div>
+
+                <div class="numberBox">
+                    <span>Shoots</span>
+                    <div class="numberBoxValueContainer">
+                        <span class="numberBoxValue">{{handed}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        {{#each yearStat in playerStats}}
+        <div class="col-lg-4">
+            <div class="stats-box careerstats">
+                <span class="title">{{yearStat.year}} Stats</span>
+              {{#if isGoalie}}
+              
+              <div class="numberBox">
+              <span>Wins</span>
+              <div class="numberBoxValueContainer">
+                <span class="numberBoxValue">{{yearStat.wins}}</span>
+              </div>
+            </div>
+
+              <div class="numberBox">
+                <span>Losses</span>
+                <div class="numberBoxValueContainer">
+                  <span class="numberBoxValue">{{yearStat.losses}}</span>
+                </div>
+              </div>
+
+              <div class="numberBox">
+                <span>GAA</span>
+                <div class="numberBoxValueContainer">
+                  <span class="numberBoxValue">{{yearStat.goalsAgainstAverage}}</span>
+                </div>
+              </div>
+              
+              
+              
+              
+              {{else}}
+              
+              <div class="numberBox">
+                    <span>Goals</span>
+                    <div class="numberBoxValueContainer">
+                        <span class="numberBoxValue">{{yearStat.goals}}</span>
+                    </div>
+                </div>
+
+                <div class="numberBox">
+                    <span>Assists</span>
+                    <div class="numberBoxValueContainer">
+                        <span class="numberBoxValue">{{yearStat.assists}}</span>
+                    </div>
+                </div>
+
+                <div class="numberBox points">
+                    <span>Points</span>
+                    <div class="numberBoxValueContainer">
+                        <span class="numberBoxValue">{{yearStat.points}}</span>
+                    </div>
+                </div>
+
+              {{/if}}
+                <div class="numberBox">
+                    <span>Games</span>
+                    <div class="numberBoxValueContainer">
+                        <span class="numberBoxValue">{{yearStat.gamesPlayed}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+    <hr />
+    <div class="row">
+        {{#if isGoalie}}
+        <div class="col-lg-4">
+            <table class="table table-bordered table-condensed">
+                <caption>Goalie</caption>
+                <tbody>
+                    <tr>
+                        <td>Vision</td>
+                        <td>{{stat playerRatings.vision}}</td>
+                    </tr>
+                    <tr>
+                        <td>Poke Check</td>
+                        <td>{{stat playerRatings.pokeCheck}}</td>
+                    </tr>
+                    <tr>
+                        <td>ShotRecovery</td>
+                        <td>{{stat playerRatings.shotRecovery}}</td>
+                    </tr>
+                    <tr>
+                        <td>ReboundControl</td>
+                        <td>{{stat playerRatings.reboundControl}}</td>
+                    </tr>
+                    <tr>
+                        <td>PuckPlayingFreq</td>
+                        <td>{{stat playerRatings.puckPlayingFreq}}</td>
+                    </tr>
+                    <tr>
+                        <td>StickLow</td>
+                        <td>{{stat playerRatings.stickHigh}}</td>
+                    </tr>
+                    <tr>
+                        <td>StickHigh</td>
+                        <td>{{stat playerRatings.stickHigh}}</td>
+                    </tr>
+                    <tr>
+                        <td>GloveLow</td>
+                        <td>{{stat playerRatings.gloveLow}}</td>
+                    </tr>
+                    <tr>
+                        <td>GloveHigh</td>
+                        <td>{{stat playerRatings.gloveHigh}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Angles</td>
+                        <td>{{stat playerRatings.angles}}</td>
+
+                    </tr>
+                    <tr>
+                        <td>FiveHole</td>
+                        <td>{{stat playerRatings.fiveHole}}</td>
+                    </tr>
+                    <tr>
+                        <td>Breakaways</td>
+                        <td>{{stat playerRatings.breakaways}}</td>
+
+                    </tr>
+                    <tr>
+                        <td>Puck Control</td>
+                        <td>{{stat playerRatings.puckControl}}</td>
+                    </tr>
+                    <tr>
+                        <td>Passing</td>
+                        <td>{{stat playerRatings.passing}}</td>
+                    </tr>
+                    <tr>
+                        <td>Aggressiveness</td>
+                        <td>{{stat playerRatings.aggressiveness}}</td>
+                    </tr>
+                    <tr>
+                        <td>Speed</td>
+                        <td>{{stat playerRatings.speed}}</td>
+                    </tr>
+                    <tr>
+                        <td>Agility</td>
+                        <td>{{stat playerRatings.agility}}</td>
+                    </tr>
+                    <tr>
+                        <td>Endurance</td>
+                        <td>{{stat playerRatings.endurance}}</td>
+                    </tr>
+                    <tr>
+                        <td>Durability</td>
+                        <td>{{stat playerRatings.durability}}</td>
+                    </tr>
+                    <tr>
+                        <td>Poise</td>
+                        <td>{{stat playerRatings.poise}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {{else}}
+
+
+
+
+        <div class="col-lg-4">
+            <table class="table table-bordered table-condensed">
+                <caption>Offensive</caption>
+                <tbody>
+                    <tr>
+                        <td>Aggressiveness</td>
+                        <td>{{stat playerRatings.aggressiveness}}</td>
+                    </tr>
+                    <tr>
+                        <td>Wrist Shot Power</td>
+                        <td>{{stat playerRatings.wristShotPower}}</td>
+                    </tr>
+                    <tr>
+                        <td>Wrist Shot Accuracy</td>
+                        <td>{{stat playerRatings.wristShotAccuracy}}</td>
+                    </tr>
+                    <tr>
+                        <td>Slap Shot Power</td>
+                        <td>{{stat playerRatings.slapShotPower}}</td>
+                    </tr>
+                    <tr>
+                        <td>Slap Shot Accuracy</td>
+                        <td>{{stat playerRatings.slapShotAccuracy}}</td>
+                    </tr>
+                    <tr>
+                        <td>Puck Control</td>
+                        <td>{{stat playerRatings.puckControl}}</td>
+                    </tr>
+                    <tr>
+                        <td>Offensive Awareness</td>
+                        <td>{{stat playerRatings.offAwareness}}</td>
+                    </tr>
+                    <tr>
+                        <td>Hand Eye</td>
+                        <td>{{stat playerRatings.handEye}}</td>
+                    </tr>
+                    <tr>
+                        <td>Deking</td>
+                        <td>{{stat playerRatings.deking}}</td>
+                    </tr>
+                    <tr>
+                        <td>Passing</td>
+                        <td>{{stat playerRatings.passing}}</td>
+                    </tr>
+                    <tr></tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-4">
+            <table class="table table-bordered table-condensed">
+                <caption>Defensive</caption>
+                <tbody>
+                    <tr>
+                        <td>Faceoffs</td>
+                        <td>{{stat playerRatings.faceoffs}}</td>
+                    </tr>
+                    <tr>
+                        <td>Discipline</td>
+                        <td>{{stat playerRatings.discipline}}</td>
+                    </tr>
+                    <tr>
+                        <td>Defensive Awareness</td>
+                        <td> {{stat playerRatings.defAwareness}}</td>
+                    </tr>
+                    <tr>
+                        <td>Body Checking</td>
+                        <td>{{stat playerRatings.bodyChecking}}</td>
+                    </tr>
+                    <tr>
+                        <td>Fighting</td>
+                        <td>{{stat playerRatings.fighting}}</td>
+                    </tr>
+                    <tr>
+                        <td>Shot Blocking</td>
+                        <td>{{stat playerRatings.shotBlocking}}</td>
+                    </tr>
+                    <tr>
+                        <td>Stick Checking</td>
+                        <td>{{stat playerRatings.stickChecking}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-4">
+            <table class="table table-bordered table-condensed">
+                <caption>Athletic</caption>
+                <tbody>
+                    <tr>
+                        <td>Speed</td>
+                        <td>{{stat playerRatings.speed}}</td>
+                    </tr>
+                    <tr>
+                        <td>Agility</td>
+                        <td>{{stat playerRatings.agility}}</td>
+                    </tr>
+                    <tr>
+                        <td>Endurance</td>
+                        <td>{{stat playerRatings.endurance}}</td>
+                    </tr>
+                    <tr>
+                        <td>Durability</td>
+                        <td>{{stat playerRatings.durability}}</td>
+                    </tr>
+                    <tr>
+                        <td>Acceleration</td>
+                        <td>{{stat playerRatings.acceleration}}</td>
+                    </tr>
+                    <tr>
+                        <td>Strength</td>
+                        <td>{{stat playerRatings.strength}}</td>
+                    </tr>
+                    <tr>
+                        <td>Poise</td>
+                        <td>{{stat playerRatings.poise}}</td>
+                    </tr>
+                    <tr>
+                        <td>Balance</td>
+                        <td>{{stat playerRatings.balance}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {{/if}}
+    </div>
+
+
+
+    {{else}}
+    <div class="loader">
+        <div class="duo duo1">
+            <div class="dot dot-a"></div>
+            <div class="dot dot-b"></div>
+        </div>
+        <div class="duo duo2">
+            <div class="dot dot-a"></div>
+            <div class="dot dot-b"></div>
+        </div>
+    </div>
+
+</div>
+           {{/if}}

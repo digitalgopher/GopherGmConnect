@@ -2,6 +2,7 @@
     tagName: ['div'],
     classNames: ['row tweet'],
     didInsertElement: function () {
-
+        this.$().hide();
+        this.$().slideDown();
     },
 });

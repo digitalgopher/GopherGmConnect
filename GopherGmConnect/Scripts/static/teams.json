@@ -1,0 +1,210 @@
+﻿[{
+    "id": "0",
+    "city": "Anaheim",
+    "name": "Ducks",
+    "abr": "ANA",
+    "twitter": "LOBDUCKS"
+
+}, {
+    "id": "1",
+    "city": "Winnipeg",
+    "name": "Jets",
+    "abr": "WPG",
+    "twitter": "sleggett7"
+
+}, {
+    "id": "2",
+    "city": "Boston",
+    "name": "Bruins",
+    "abr": "BOS",
+    "twitter": "LOBNHLboston"
+
+}, {
+    "id": "3",
+    "city": "Buffalo",
+    "name": "Sabres",
+    "abr": "BUF",
+    "twitter": "BaryGettmanLOB"
+
+}, {
+    "id": "5",
+    "city": "Carolina",
+    "name": "Hurricanes",
+    "abr": "CAR",
+    "twitter": "burrdon"
+}, {
+    "id": "8",
+    "city": "Columbus",
+    "name": "Blue Jackets",
+    "abr": "CBJ",
+    "twitter": "ColeNuck"
+
+}, {
+    "id": "4",
+    "city": "Calgary",
+    "name": "Flames",
+    "abr": "CGY",
+    "twitter": "BrownToBure"
+
+}, {
+    "id": "6",
+    "city": "Chicago",
+    "name": "Blackhawks",
+    "abr": "CHI",
+    "twitter": "RockyWirtzLOB"
+
+}, {
+    "id": "7",
+    "city": "Colorado",
+    "name": "Avalanche",
+    "abr": "COL",
+    "twitter": "ThePhiIosopher"
+
+}, {
+    "id": "9",
+    "city": "Dallas",
+    "name": "Stars",
+    "abr": "DAL",
+    "twitter": "seanjuan1984"
+
+}, {
+    "id": "10",
+    "city": "Detroit",
+    "name": "Red Wings",
+    "abr": "DET",
+    "twitter": "digitalgopher"
+
+}, {
+    "id": "11",
+    "city": "Edmonton",
+    "name": "Oilers",
+    "abr": "EDM",
+    "twitter": "OilersLOB"
+
+}, {
+    "id": "12",
+    "city": "Florida",
+    "name": "Panthers",
+    "abr": "FLA",
+    "twitter": "justen8"
+
+}, {
+    "id": "13",
+    "city": "Los Angeles",
+    "name": "Kings",
+    "abr": "LAK",
+    "twitter": "bobakm"
+
+}, {
+    "id": "14",
+    "city": "Minnesota",
+    "name": "Wild",
+    "abr": "MIN",
+    "twitter": "LOBNHLwild"
+
+}, {
+    "id": "15",
+    "city": "Montreal",
+    "name": "Canadiens",
+    "abr": "MTL",
+    "twitter": "icecoldbergevin"
+
+}, {
+    "id": "16",
+    "city": "Nashville",
+    "name": "Predators",
+    "abr": "NSH",
+    "twitter": "krazykrokes"
+
+}, {
+    "id": "17",
+    "city": "New Jersey",
+    "name": "Devils",
+    "abr": "NJ",
+    "twitter": "LOBNHLNJDevils"
+
+}, {
+    "id": "18",
+    "city": "New York",
+    "name": "Islanders",
+    "abr": "NYI",
+    "twitter": "ryanbiech"
+
+}, {
+    "id": "19",
+    "city": "New York",
+    "name": "Rangers",
+    "abr": "NYR",
+    "twitter": "MrManhattanLOB"
+
+}, {
+    "id": "20",
+    "city": "Ottawa",
+    "name": "Senators",
+    "abr": "OTT",
+    "twitter": "InderN"
+
+}, {
+    "id": "21",
+    "city": "Philadelphia",
+    "name": "Flyers",
+    "abr": "PHI",
+    "twitter": "vancityjc"
+
+}, {
+    "id": "22",
+    "city": "Phoenix",
+    "name": "Coyotes",
+    "abr": "PHX",
+    "twitter": "bmah03"
+
+}, {
+    "id": "23",
+    "city": "Pittsburgh",
+    "name": "Penguins",
+    "abr": "PIT",
+    "twitter": "slybeedunkin"
+
+}, {
+    "id": "24",
+    "city": "St Louis",
+    "name": "Blues",
+    "abr": "STL",
+    "twitter": "gfulmore77"
+
+}, {
+    "id": "25",
+    "city": "San Jose",
+    "name": "Sharks",
+    "abr": "SJS",
+    "twitter": "browsebean"
+
+}, {
+    "id": "26",
+    "city": "Tampa Bay",
+    "name": "Lightning",
+    "abr": "TB",
+    "twitter": "harry1619"
+
+}, {
+    "id": "27",
+    "city": "Toronto",
+    "name": "Maple Leafs",
+    "abr": "TOR",
+    "twitter": "kierangunn"
+
+}, {
+    "id": "28",
+    "city": "Vancouver",
+    "name": "Canucks",
+    "abr": "VAN",
+    "twitter": "vh_96"
+
+}, {
+    "id": "29",
+    "city": "Washington",
+    "name": "Capitals",
+    "abr": "WSH",
+    "twitter": "LOBCAPS"
+
+}]

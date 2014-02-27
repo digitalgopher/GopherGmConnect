@@ -10,6 +10,7 @@ namespace GopherGmConnect.Controllers
     {
         public ActionResult Index()
         {
+
             return View();
             //return RedirectToAction("Ember"); 
         }

@@ -1,0 +1,16 @@
+﻿<div class="col-xs-2">
+    {{#link-to 'player' player}}
+    <span class="last-name">
+        {{unbound player.lastName}}
+    </span>
+    {{/link-to}}
+</div>
+
+    {{#each year in player.salaryYears}}
+<div class="col-xs-2 visible-md visible-lg">
+    <span {{bind-attr class=":contractStatus year.salaryClass" }}>{{unbound year.salary}}</span>
+</div>
+<div class="col-xs-2 visible-xs visible-sm">
+    <span {{bind-attr class=":contractStatus year.salaryClass" }}>{{unbound year.salarySmall}}</span>
+</div>
+    {{/each}}

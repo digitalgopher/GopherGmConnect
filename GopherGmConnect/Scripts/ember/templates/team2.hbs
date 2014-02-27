@@ -1,0 +1,182 @@
+﻿ <div class="row team-banner">
+                            <h1>{{city}} {{teamname}} <img {{bindAttr src="imageUrl"}} /><small><a {{bindAttr href="twitterLink"}}>({{twitter}})</a></small></h1>
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-header">
+                    <h1>{{city}} {{teamname}} <img {{bindAttr src="imageUrl"}} /><small><a {{bindAttr href="twitterLink"}}>({{twitter}})</a></small></h1>
+                </div>         
+        </div>
+            </div>
+        <div class="row">
+            <div class="col-lg-12">
+        <div class="well well-small">
+          {{#if statsIsLoaded}} 
+          <small>Cap Space:</small> <small class="lead">{{capSpace}}</small>           
+          {{else}} <small class="lead"> Loading Team Info...</small>{{/if}}
+      </div>
+</div>
+  </div>
+   
+
+        <div class="row">
+            <div class="col-xs-4">
+            <canvas id="winloss-chart" width="100%" height="100%"></canvas>
+                </div>
+        </div>
+
+        <div class="row">
+                <div class="col-lg-4">
+                    <div class=" stats-box contract">
+        <span class="stats-box-title">Record</span>
+        <div class="numberBox">   
+            <span>Wins</span>
+            <div class="numberBoxValueContainer">
+                <span class="numberBoxValue">{{wins}}</span>
+            </div>
+        </div>  
+        <div class="numberBox">   
+            <span>Losses</span>
+            <div class="numberBoxValueContainer">
+                <span class="numberBoxValue">{{losses}}</span>
+            </div>
+        </div> 
+        
+        <div class="numberBox">   
+            <span>OTL</span>
+            <div class="numberBoxValueContainer">
+                <span class="numberBoxValue">{{overtimeLosses}}</span>
+            </div>
+        </div>    
+                    
+                    <div class="numberBox">   
+            <span>Points</span>
+            <div class="numberBoxValueContainer">
+                <span class="numberBoxValue">{{points}}</span>
+            </div>
+        </div>  
+                    </div>           
+    </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+
+
+  <ul class="nav nav-tabs nav-justified teamTabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">Roster</a></li>
+    <li><a href="#tab2" data-toggle="tab">Lines</a></li>
+    <li><a href="#tab3" data-toggle="tab">Schedule</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+        {{#if rosterIsLoaded}}
+
+        <p class="lead">Filter by Position</p> 
+        <div class="btn-group">
+            <button type="button" class="btn btn-default btn-sm" {{action "filterPosition" "f"}}>F</button>
+            <button type="button" class="btn btn-default btn-sm" {{action "filterPosition" "LW"}}>LW</button>
+            <button type="button" class="btn btn-default btn-sm" {{action "filterPosition" "C"}}>C</button>
+            <button type="button" class="btn btn-default btn-sm" {{action "filterPosition" "RW"}}>RW</button>
+            <button type="button" class="btn btn-default btn-sm" {{action "filterPosition" "D"}}>D</button>
+            <button type="button" class="btn btn-default btn-sm" {{action "filterPosition" "G"}}>G</button>
+            <button type="button" class="btn btn-default btn-sm" {{action "filterPosition" "all"}}>All</button>
+            </div>
+
+            <table class="table table-responsive">
+                <thead>
+                    <tr class="playerTableHeaders">
+                        <td class="text-info">Name</td>
+                        <td class="text-info" {{action 'sortProperty' "age"}}>Age</td>
+                        <td class="text-info" {{action 'sortProperty' "overall"}}>Overall</td>
+                        <td class="text-info" {{action 'sortProperty' "salary"}}>Salary</td>
+                        <td class="text-info">Position</td>
+                        <td class="text-info" {{action 'sortProperty' "potential"}}>Potential</td>
+                        <td class="text-info hidden-lg" {{action 'sortProperty' 'tradeValue'}}>Value</td>
+                        <td class="text-info visible-lg" {{action 'sortProperty' 'tradeValue'}}>Trade Value</td>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each player in filteredRoster}}
+                    <tr>
+                        <td class="hidden-lg">
+                            {{#linkTo 'player' player}}
+                                {{player.lastName}}
+                            {{/linkTo}}
+                            {{#if player.isInjured}}
+                            <small>(out {{player.injuryLength}} games)</small>
+                            {{/if}}
+                        </td>
+                        <td class="visible-lg">
+                  
+
+                            {{#linkTo 'player' player}}
+                                {{player.firstName}} {{player.lastName}}
+                            {{/linkTo}}
+                            {{#if player.isInjured}}
+                            <small>(out {{player.injuryLength}} games)</small>
+                            {{/if}}
+                        </td>
+                        <td>{{player.age}}</td>
+                        <td>{{player.overall}}</td>
+                        <td class="hidden-lg">
+                            ${{player.salarySmall}}
+                        </td>
+                        <td class="visible-lg">
+                            {{player.salaryReadable}}
+                        </td>
+                        <td>{{player.position}}</td>
+                        <td><span {{bindAttr class=":label player.readPotentialColor"}}>{{player.readPotential}}</span></td>
+                        <td>
+                            <div class="progress progress-info">
+                                <div class="progress-bar" {{ bindAttr style="player.tradeValuePercent"}}></div>
+                            </div>
+                        </td>
+                        <td></td>
+                        
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        {{else}}
+            <div class="loader">
+                <div class="duo duo1">
+                    <div class="dot dot-a"></div>
+                    <div class="dot dot-b"></div>
+                </div>
+                <div class="duo duo2">
+                    <div class="dot dot-a"></div>
+                    <div class="dot dot-b"></div>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+    <div class="tab-pane" id="tab2">
+ 
+
+
+        
+        </div>
+    <div class="tab-pane" id="tab3">
+        {{#if scheduleIsLoaded}}
+        {{render 'schedule' schedule}}
+        {{else}}
+        Schedule is loading...
+        {{/if}}
+
+
+    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="schedule">
+        <div id="calendar">
+
+        </div>
