@@ -5,17 +5,17 @@
     //currentSort: 'overall',
     //currentSortStat: 'minutes',
 
-    //forwards: Ember.computed.filter('roster', function (player) {
-    //        return player.isForward && player.isOnMainRoster     
-    //}),
-    //dmen: Ember.computed.filter('roster', function (player) {
-    //    return player.isDefence && player.isOnMainRoster;
-    //}),
-    //goalies: Ember.computed.filter('roster', function (player) {
-    //    return player.isGoalie && player.isOnMainRoster;
-    //}),
-    //prospects: Ember.computed.filterBy('roster', 'isOnMainRoster', false),
-    //mainRoster: Ember.computed.filterBy('roster', 'isOnMainRoster', true),
+    forwards: Ember.computed.filter('roster', function (player) {
+            return player.isForward && player.isOnMainRoster     
+    }),
+    dmen: Ember.computed.filter('roster', function (player) {
+        return player.isDefence && player.isOnMainRoster;
+    }),
+    goalies: Ember.computed.filter('roster', function (player) {
+        return player.isGoalie && player.isOnMainRoster;
+    }),
+    prospects: Ember.computed.filterBy('roster', 'isOnMainRoster', false),
+    mainRoster: Ember.computed.filterBy('roster', 'isOnMainRoster', true),
 
     leadingScorers: function () {
         if (typeof this.get('roster') != 'undefined') {

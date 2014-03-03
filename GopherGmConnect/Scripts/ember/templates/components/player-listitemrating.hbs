@@ -1,5 +1,5 @@
 ﻿
-<div class="col-xs-4 visible-md visible-lg">
+<div class="col-xs-4">
     {{#link-to 'player' player}}
     <span class="first-name">
         {{player.firstName}}
@@ -11,48 +11,37 @@
     {{/link-to}}
 </div>
 
-
-<div class="col-xs-4 visible-xs visible-sm">
-    {{#link-to 'player' player}}
-    <span class="last-name">
-        {{player.lastName}}
-    </span>
-
-    {{/link-to}}
-</div>
-
-
 <div {{bind-attr class=":col-xs-1 sortHandEye:highlight"}}>
-    {{player.playerRatings.handEye}}
+    {{unbound player.playerRatings.handEye}}
 </div>
 
 <div {{bind-attr class=":col-xs-1 sortSpeed:highlight"}}>
-    {{player.playerRatings.speed}}
+  {{unbound player.playerRatings.speed}}
 </div>
 
 <div {{bind-attr class=":col-xs-1 sortPassing:highlight"}}>
-    {{player.playerRatings.passing}}
+  {{unbound player.playerRatings.passing}}
 </div>
 
 <div {{bind-attr class=":col-xs-1 sortFaceoffs:highlight"}}>
-    {{player.playerRatings.faceoffs}}
+  {{unbound player.playerRatings.faceoffs}}
 </div>
 
 
 <div {{bind-attr class=":col-xs-1 sortDeking:highlight"}}>
-    {{player.playerRatings.deking}}
+  {{unbound player.playerRatings.deking}}
 </div>
 
 <div {{bind-attr class=":col-xs-1 sortWristPower:highlight"}}>
-    {{player.playerRatings.wristShotPower}}
+  {{unbound player.playerRatings.wristShotPower}}
 </div>
 
 <div {{bind-attr class=":col-xs-1 sortWristAcc:highlight"}}>
-    {{player.playerRatings.wristShotAccuracy}}
+  {{unbound player.playerRatings.wristShotAccuracy}}
 </div>
 
 <div {{bind-attr class=":col-xs-1 sortPuckControl:highlight"}}>
-    {{player.playerRatings.puckControl}}
+  {{unbound player.playerRatings.puckControl}}
 </div>
 
 

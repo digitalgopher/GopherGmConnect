@@ -43,8 +43,8 @@ Ember.Application.initializer({
             Ember.RSVP.hash({
                 teams: App.Team.findAll(),
                 pushdate: App.Pushdate.find()
-            }).then(function (results) {
-
+            }).then(function (results)
+            {
                 basicTeams.forEach(function (_team) {
                     results.teams.findBy('id', _team.id).setProperties(_team);
                 })

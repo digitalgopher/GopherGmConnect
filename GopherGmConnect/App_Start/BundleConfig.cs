@@ -24,25 +24,13 @@ namespace GopherGmConnect
             bundles.Add(new ScriptBundle("~/bundles/templates").Include(
                         "~/Scripts/ember/templates/templates.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/charts").Include(
-                        "~/Scripts/Chart.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/ember").Include(
                         "~/Scripts/ember/app.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
-                        //"~/Scripts/teams.js",
-                        "~/Scripts/Potential.js",
                         "~/Scripts/Contracts.js",
-                        "~/Scripts/PlayerInfo.js",
                         "~/Scripts/League.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/fullcalendarjs").Include(
-                        "~/Scripts/Calendar/fullcalendar.js"));
-
-
-            bundles.Add(new StyleBundle("~/Content/fullcalendar").Include(
-                        "~/Content/css/fullcalendar.css"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

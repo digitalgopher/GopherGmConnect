@@ -31,7 +31,11 @@ body {
 
 
 
-
+.hideForMobile() {
+    @media only screen and (max-width: 720px) {
+            display: none;
+        }
+}
 
 
 
@@ -242,6 +246,9 @@ body {
         font-size: small;
     }
 }
+
+
+
 
 .player-header {
     .team-header(@darkblue);
@@ -609,6 +616,9 @@ body {
         > div {
             cursor: pointer;
         }
+        .text {
+            .hideForMobile();
+        }
     }
 
     a {
@@ -636,12 +646,22 @@ body {
     }
 
     .first-name {
+        .hideForMobile();
         font-weight: 300;
     }
 
     .last-name {
         font-weight: 900;
         color: @secondaryFontColor;
+    }
+
+    .position-tick {
+        @lightColor: rgba(90, 90, 90, .4);
+
+        font-weight: 100;
+        border-radius: 3px;
+        padding: 4px;
+        font-size: .6em;
     }
 
     &.salary-view {
@@ -915,16 +935,17 @@ body {
 }
 
 
-.roster-seperator (@teamColor) {
+.roster-seperator {
     background-color: rgba(0, 0, 0, .7);
     font-family: @siteFont;
     font-weight: 500;
     padding: 3px 0;
     line-height: 1.4;
+    font-size: 1em;
     color: white;
     /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
     text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-    margin: 0;
+    /*margin: 0;*/
 }
 
 
@@ -942,9 +963,9 @@ body {
         .team-header(#333)
     }
 
-    .roster-seperator {
+    /*.roster-seperator {
         .roster-seperator(@theTeamColor)
-    }
+    }*/
 
     .progress-bar {
         background-color: lighten(@theTeamColor, 5%);

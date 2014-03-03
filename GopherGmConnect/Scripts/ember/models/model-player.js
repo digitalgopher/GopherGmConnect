@@ -50,7 +50,10 @@ App.Player = Ember.Object.extend({
 
     handed: function () {
         var shoots = this.get('shoots');
-        return Shoots(shoots);
+        if (shoots == 0) {
+            return "L";
+        }
+        return "R";
     }.property('shoots'),
 
     readPotential: Ember.computed.alias('potential'),

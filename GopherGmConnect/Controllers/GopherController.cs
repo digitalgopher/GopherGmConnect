@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Net.Http;
 using System.Web.Http;
 using System.Collections.Specialized;
@@ -17,6 +18,8 @@ namespace GopherGmConnect.Controllers
 {
     public class GopherController : ApiController
     {
+
+
         private string DownloadFromServer(string url)
         {
             bool isValidToken = false;
@@ -315,6 +318,38 @@ namespace GopherGmConnect.Controllers
             return realLines;
         }
 
+
+        private int TeamSalary(int id)
+        {
+            var leagueID = WebConfigurationManager.AppSettings["leagueid"];
+            var url = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + leagueID + "/team/" + id + "/roster/mobile";
+            var rosterUrl = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + leagueID + "/team/" + id + "/roster";
+
+            string rawJson = DownloadFromServer(url);
+            string fullRosterJson = DownloadFromServer(rosterUrl);
+
+            JObject rosterJson = JObject.Parse(fullRosterJson);
+            var mainRosterIds = rosterJson.Value<JArray>("playerID").ToObject<List<string>>();
+
+            JObject fullJson = JObject.Parse(rawJson);
+            var jsonPlayers = fullJson.GetValue("v");
+            var players = jsonPlayers as JArray;
+
+            var team = new Team();
+            var cPlayers = new ConcurrentBag<Player>();
+            Parallel.ForEach(players, p =>
+            {
+                var player = new Player();
+                player.id = p[0].ToString();
+                player.Salary = Convert.ToInt32(p[5].ToString());
+                player.IsOnMainRoster = mainRosterIds.Contains(player.id);
+                cPlayers.Add(player);
+            });
+
+            team.Players = cPlayers.ToList();
+            return doSomeMath(team);
+        }
+
         [HttpGet]
         public List<Player> Roster(string id)
         {
@@ -335,7 +370,10 @@ namespace GopherGmConnect.Controllers
             //JObject injuryJson = JObject.Parse(rawInjJson);
             JObject statsJson = JObject.Parse(rawStatsJson);
 
-            var jsonRosterArray = rosterJson.Value<JArray>("playerID");
+            //var jsonRosterArray = rosterJson.Value<JArray>("playerID");
+            var jsonRosterArray = rosterJson.Value<JArray>("playerID").ToObject<List<string>>();
+            //var mainRosterList = jsonRosterArray.ToObject<List<string>>();
+
             var jsonIsCaptianArray = rosterJson.Value<JArray>("isCaptain");
 
             var playerStatsArray = statsJson.GetValue("s").ToObject<JObject>().GetValue("v");
@@ -352,14 +390,21 @@ namespace GopherGmConnect.Controllers
             Parallel.ForEach(players, p =>
             {
                 System.Web.HttpContext.Current = httpContext;
+                
+                
+
+                var player = FetchPlayer(p[0].ToString(), false);
+
                 //if ContractStatus(? labeled as 'cs') is false... skip
                 if (p[9].ToString() != "0")
                 {
-                    return;
-                    // continue;
+                    player.IsSigned = false;
+                    //return;
                 }
-
-                var player = FetchPlayer(p[0].ToString(), false);
+                else
+                {
+                    player.IsSigned = true;
+                }
 
                 if (playerStatsArray.Any(x => x[2].ToString() == p[0].ToString()))
                 {
@@ -371,9 +416,6 @@ namespace GopherGmConnect.Controllers
                     var correctStatArray = goalieStatsArray.First(x => x[2].ToString() == p[0].ToString());
                     player.GetFullPlayerSeasonStats(correctStatArray as JArray, false);
                 }
-                
-
-                
 
                 player.Potential = Convert.ToInt32(p[10].ToString());
                 player.PotentialColor = Convert.ToInt32(p[13].ToString());
@@ -383,6 +425,8 @@ namespace GopherGmConnect.Controllers
                 player.Salary = Convert.ToInt32(p[5].ToString());
                 player.TradeValue = Convert.ToInt32(p[8].ToString());
                 player.Position = p[3].ToString();
+
+                player.IsOnMainRoster = jsonRosterArray.Contains(player.id);
                 roster.Add(player);
             });
             var rosterList = roster.ToList();
@@ -415,10 +459,10 @@ namespace GopherGmConnect.Controllers
             //    captain.IsCaptain = true;
             //}
 
-            Parallel.ForEach(jsonRosterArray, playerId =>
-            {
-                rosterList.First(p => p.id == playerId.ToString()).IsOnMainRoster = true;
-            });
+            //Parallel.ForEach(jsonRosterArray, playerId =>
+            //{
+            //    rosterList.First(p => p.id == playerId.ToString()).IsOnMainRoster = true;
+            //});
             return rosterList;
         }
 
@@ -444,6 +488,8 @@ namespace GopherGmConnect.Controllers
             {
                 var t = new Team();
                 t.GetTeamStats(team as JArray);
+                int id = int.Parse(t.id);
+                //t.SalaryCapSpent = TeamSalary(id);
                 teamList.Add(t);
             }
             return teamList;
@@ -894,18 +940,28 @@ namespace GopherGmConnect.Controllers
         [HttpGet]
         public List<TweetinCore.Interfaces.ITweet> GetTweets(string username)
         {
-            var token = new TwitterToken.Token(
-                WebConfigurationManager.AppSettings["token_AccessToken"],
-                WebConfigurationManager.AppSettings["token_AccessTokenSecret"],
-                WebConfigurationManager.AppSettings["token_ConsumerKey"],
-                WebConfigurationManager.AppSettings["token_ConsumerSecret"]);
+            try
+            {
+                var token = new TwitterToken.Token(
+                    WebConfigurationManager.AppSettings["token_AccessToken"],
+                    WebConfigurationManager.AppSettings["token_AccessTokenSecret"],
+                    WebConfigurationManager.AppSettings["token_ConsumerKey"],
+                    WebConfigurationManager.AppSettings["token_ConsumerSecret"]);
 
-            Tweetinvi.User user = new Tweetinvi.User(username);
-            TweetinCore.Interfaces.IUser u = user;
-            u.PopulateUser(token);
-            var tweets = user.GetUserTimeline(false, token);
-            var lobTweets = tweets.Where(tweet => tweet.Hashtags.Any(tag => tag.Text.ToLower() == "lobnhl")).Take(7);
-            return lobTweets.ToList();
+                Tweetinvi.User user = new Tweetinvi.User(username);
+                TweetinCore.Interfaces.IUser u = user;
+                u.PopulateUser(token);
+                var tweets = user.GetUserTimeline(false, token);
+                var lobTweets = tweets.Where(tweet => tweet.Hashtags.Any(tag => tag.Text.ToLower() == "lobnhl")).Take(7);
+                return lobTweets.ToList();
+            }
+            catch (Exception ex)
+            {
+                TweetinCore.Interfaces.ITweet x = new Tweetinvi.Tweet("Cannot get tweets");
+                var list = new List<TweetinCore.Interfaces.ITweet>();
+                list.Add(x);
+                return list;
+            }
         }
 
     }

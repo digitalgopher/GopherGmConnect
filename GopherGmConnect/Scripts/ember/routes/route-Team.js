@@ -28,8 +28,10 @@
             isLoaded: false,
             linesIsLoaded: false,
             currentTab: 'showRoster',
-            //currentSortProperty: 'potential',
-            //currentSortStat: 'points'
+            currentSortProperty: null,
+            currentSortRating: null,
+            currentSortStat: null,
+            roster: null,
         })
 
 

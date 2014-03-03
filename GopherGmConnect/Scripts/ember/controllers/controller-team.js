@@ -14,6 +14,8 @@
     showStats: Ember.computed.equal('currentTab', 'showStats'),
     showLines: Ember.computed.equal('currentTab', 'showLines'),
     showRatings: Ember.computed.equal('currentTab', 'showRatings'),
+
+    
     
 
     updateSchedule: function () {
@@ -28,8 +30,9 @@
         this.set('roster', this.get('roster').sortBy('playerRatings.' + this.get('currentSortRating')).reverse());
     }.observes('currentSortRating'),
 
-     propertySort: function () {
-        if (typeof this.get('roster') == 'undefined') {
+    propertySort: function () {
+        var r = this.get('roster');
+        if (r === null) {
             return;
         }
 

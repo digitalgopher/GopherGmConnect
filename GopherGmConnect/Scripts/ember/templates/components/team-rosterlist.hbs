@@ -1,75 +1,57 @@
-﻿<div class="row player-row header">
-  <div class="col-xs-4">Name</div>
-  <div class="col-xs-1 visible-lg visible-md">
-    <span {{action 'sortProperty' "overall" }}>Overall</span>
+﻿<div class="row player-row header roster-seperator">
+  <div class="col-xs-4">{{header}}</div>
+  <div class="col-xs-1" {{action 'sortProperty' "overall" }}>
+    <i class="fa fa-trophy"> </i>
+    <span class="text">Ovr</span>
     {{#if sortOverall}}
-    <i class="fa fa-chevron-down"></i>
+    <i class="fa fa-caret-down"></i>
     {{/if}}
   </div>
-  <div class="col-xs-1 hidden-lg hidden-md">
-    <i class="fa fa-trophy"></i>
-    {{#if sortOverall}}
-    <i class="fa fa-chevron-down"{{action 'sortProperty' "overall" }}></i>
-    {{/if}}
-  </div>
-  <div class="col-xs-1 visible-lg visible-md" {{action 'sortProperty' "age" }}>
-    Age
-    {{#if sortAge}}
-    <i class="fa fa-chevron-down"></i>
-    {{/if}}
-  </div>
-  <div class="col-xs-1 hidden-lg hidden-md" {{action 'sortProperty' "age" }}>
+
+
+  <div class="col-xs-1" {{action 'sortProperty' "age" }}>
+
     <i class="fa fa-clock-o"></i>
+    <span class="text">Age</span>
     {{#if sortAge}}
-    <i class="fa fa-chevron-down"></i>
+    <i class="fa fa-caret-down"> </i>
     {{/if}}
   </div>
-  <div class="col-xs-2 visible-lg visible-md" {{action 'sortProperty' "potential" }}>
-    Potential
-    {{#if sortPotential}}
-    <i class="fa fa-chevron-down"></i>
-    {{/if}}
-  </div>
-  <div class="col-xs-2 hidden-lg hidden-md" {{action 'sortProperty' "potential" }}>
+
+
+  <div class="col-xs-2" {{action 'sortProperty' "potential" }}>
     <i class="fa fa-star-half-o"></i>
+    <span class="text">Potential</span>
     {{#if sortPotential}}
-    <i class="fa fa-chevron-down"></i>
+    <i class="fa fa-caret-down"> </i>
     {{/if}}
   </div>
-  <div class="col-xs-2 visible-lg visible-md" {{action 'sortProperty' "salary" }}>
-    Salary
+
+
+
+
+  <div class="col-xs-2" {{action 'sortProperty' "salary" }}>
+    <i class="fa fa-usd"> </i>
+    <span class="text">Salary</span>
     {{#if sortSalary}}
-    <i class="fa fa-chevron-down"></i>
+    <i class="fa fa-caret-down"> </i>
     {{/if}}
   </div>
-  <div class="col-xs-2 hidden-lg hidden-md" {{action 'sortProperty' "salary" }}>
-    <i class="fa fa-usd"></i>
-    {{#if sortSalary}}
-    <i class="fa fa-chevron-down"></i>
-    {{/if}}
-  </div>
-  <div class="col-xs-2 visible-lg visible-md" {{action 'sortProperty' "tradeValue" }}>
-    Value
+
+
+  <div class="col-xs-2" {{action 'sortProperty' "tradeValue" }}>
+    <i class="fa fa-thumbs-o-up"> </i>
+    <span class="text">Value</span>
     {{#if sortTradeValue}}
-    <i class="fa fa-chevron-down"></i>
-    {{/if}}
-  </div>
-  <div class="col-xs-2 hidden-lg hidden-md" {{action 'sortProperty' "tradeValue" }}>
-    <i class="fa fa-thumbs-o-up"></i>
-    {{#if sortTradeValue}}
-    <i class="fa fa-chevron-down"></i>
+    <i class="fa fa-caret-down"> </i>
     {{/if}}
   </div>
 </div>
-<div class="row">
-  <div class="col-xs-12 roster-seperator">
-    Forwards
-  </div>
-</div>
-{{#group}}
-{{#each player in roster groupedRows=true}}
-{{#if player.isOnMainRoster}}
-{{#if player.isForward}}
+
+  
+
+{{#each player in roster }}
+
 
 {{player-listitem player=player
 sortAge = sortAge
@@ -77,71 +59,6 @@ sortOverall = sortOverall
 sortPotential = sortPotential
 sortTradeValue = sortTradeValue
 sortSalary = sortSalary}}
-{{/if}}
-{{/if}}
+
 {{/each}}
-{{/group}}
 
-
-
-
-
-
-<div class="row">
-  <div class="col-xs-12 roster-seperator">
-    Defense
-  </div>
-</div>
-{{#group}}
-{{#each player in roster groupedRows=true}}
-{{#if player.isOnMainRoster}}
-{{#if player.isDefence}}
-
-{{player-listitem player=player
-sortAge = sortAge
-sortOverall = sortOverall
-sortPotential = sortPotential
-sortTradeValue = sortTradeValue
-sortSalary = sortSalary}}
-{{/if}}
-{{/if}}
-{{/each}}
-{{/group}}
-
-<div class="row">
-  <div class="col-xs-12 roster-seperator">
-    Goalies
-  </div>
-</div>
-{{#group}}
-{{#each player in roster groupedRows=true}}
-{{#if player.isOnMainRoster}}
-{{#if player.isGoalie}}
-{{player-listitem player=player
-sortAge = sortAge
-sortOverall = sortOverall
-sortPotential = sortPotential
-sortTradeValue = sortTradeValue
-sortSalary = sortSalary}}
-{{/if}}
-{{/if}}
-{{/each}}
-{{/group}}
-
-<div class="row">
-  <div class="col-xs-12 roster-seperator">
-    Non-Roster Players
-  </div>
-</div>
-{{#group}}
-{{#each player in roster groupedRows=true}}
-{{#unless player.isOnMainRoster}}
-{{player-listitem player=player
-                  sortAge = sortAge
-                  sortOverall = sortOverall
-                  sortPotential = sortPotential
-                  sortTradeValue = sortTradeValue
-                  sortSalary = sortSalary}}
-{{/unless}}
-{{/each}}
-{{/group}}

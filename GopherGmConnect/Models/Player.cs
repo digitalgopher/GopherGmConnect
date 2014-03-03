@@ -188,6 +188,7 @@ namespace GopherGmConnect.Models
         public int YearsLeft {get; set;}
         public bool IsTwoWay {get; set;}
         public int TradeValue {get; set;}
+        public bool IsSigned { get; set; }
         public int ContractSigned {get; set; }
         public int PlayerType { get; set; }
 

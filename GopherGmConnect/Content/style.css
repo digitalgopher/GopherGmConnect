@@ -1,4 +1,4 @@
-html {
+﻿html {
   /*background: url(images/kronner.png) no-repeat center center fixed; 
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -484,6 +484,11 @@ body {
 .player-row.header > div {
   cursor: pointer;
 }
+@media only screen and (max-width: 720px) {
+  .player-row.header .text {
+    display: none;
+  }
+}
 .player-row a {
   /*color: #333;*/
   color: #333333;
@@ -504,9 +509,20 @@ body {
 .player-row .first-name {
   font-weight: 300;
 }
+@media only screen and (max-width: 720px) {
+  .player-row .first-name {
+    display: none;
+  }
+}
 .player-row .last-name {
   font-weight: 900;
   color: #333333;
+}
+.player-row .position-tick {
+  font-weight: 100;
+  border-radius: 3px;
+  padding: 4px;
+  font-size: .6em;
 }
 .player-row.salary-view .contractStatus {
   width: 80%;
@@ -529,6 +545,23 @@ body {
 }
 .player-row.salary-view .contractStatus.rfa {
   background-color: #e46f61;
+}
+.roster-seperator {
+  background-color: rgba(0, 0, 0, 0.7);
+  font-family: "Oswald";
+  font-weight: 500;
+  padding: 3px 0;
+  line-height: 1.4;
+  font-size: 1em;
+  color: white;
+  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
+    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
+  /*margin: 0;*/
+}
+.team-container._29 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
 }
 .team-container._29 .team-minibar {
   background-color: #cf132b;
@@ -620,17 +653,6 @@ body {
 }
 .team-container._29 .team-header .container {
   position: relative;
-}
-.team-container._29 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._29 .progress-bar {
   background-color: #e61530;
@@ -783,6 +805,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._28 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._28 .team-minibar {
   background-color: #07346f;
   padding: 10px 0;
@@ -873,17 +900,6 @@ body {
 }
 .team-container._28 .team-header .container {
   position: relative;
-}
-.team-container._28 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._28 .progress-bar {
   background-color: #093f87;
@@ -1036,6 +1052,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._27 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._27 .team-minibar {
   background-color: #003777;
   padding: 10px 0;
@@ -1126,17 +1147,6 @@ body {
 }
 .team-container._27 .team-header .container {
   position: relative;
-}
-.team-container._27 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._27 .progress-bar {
   background-color: #004391;
@@ -1289,6 +1299,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._26 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._26 .team-minibar {
   background-color: #013e7d;
   padding: 10px 0;
@@ -1379,17 +1394,6 @@ body {
 }
 .team-container._26 .team-header .container {
   position: relative;
-}
-.team-container._26 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._26 .progress-bar {
   background-color: #014b96;
@@ -1542,6 +1546,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._25 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._25 .team-minibar {
   background-color: #05535d;
   padding: 10px 0;
@@ -1632,17 +1641,6 @@ body {
 }
 .team-container._25 .team-header .container {
   position: relative;
-}
-.team-container._25 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._25 .progress-bar {
   background-color: #066975;
@@ -1795,6 +1793,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._24 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._24 .team-minibar {
   background-color: #0546a0;
   padding: 10px 0;
@@ -1885,17 +1888,6 @@ body {
 }
 .team-container._24 .team-header .container {
   position: relative;
-}
-.team-container._24 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._24 .progress-bar {
   background-color: #0651b9;
@@ -2048,6 +2040,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._23 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._23 .team-minibar {
   background-color: #d1bd80;
   padding: 10px 0;
@@ -2138,17 +2135,6 @@ body {
 }
 .team-container._23 .team-header .container {
   position: relative;
-}
-.team-container._23 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._23 .progress-bar {
   background-color: #d8c793;
@@ -2301,6 +2287,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._22 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._22 .team-minibar {
   background-color: #8e0028;
   padding: 10px 0;
@@ -2391,17 +2382,6 @@ body {
 }
 .team-container._22 .team-header .container {
   position: relative;
-}
-.team-container._22 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._22 .progress-bar {
   background-color: #a8002f;
@@ -2554,6 +2534,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._21 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._21 .team-minibar {
   background-color: #f47940;
   padding: 10px 0;
@@ -2644,17 +2629,6 @@ body {
 }
 .team-container._21 .team-header .container {
   position: relative;
-}
-.team-container._21 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._21 .progress-bar {
   background-color: #f58a58;
@@ -2807,6 +2781,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._20 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._20 .team-minibar {
   background-color: #e4173e;
   padding: 10px 0;
@@ -2897,17 +2876,6 @@ body {
 }
 .team-container._20 .team-header .container {
   position: relative;
-}
-.team-container._20 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._20 .progress-bar {
   background-color: #ea2b4f;
@@ -3060,6 +3028,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._19 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._19 .team-minibar {
   background-color: #0161ab;
   padding: 10px 0;
@@ -3150,17 +3123,6 @@ body {
 }
 .team-container._19 .team-header .container {
   position: relative;
-}
-.team-container._19 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._19 .progress-bar {
   background-color: #016fc4;
@@ -3313,6 +3275,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._18 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._18 .team-minibar {
   background-color: #f57d31;
   padding: 10px 0;
@@ -3403,17 +3370,6 @@ body {
 }
 .team-container._18 .team-header .container {
   position: relative;
-}
-.team-container._18 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._18 .progress-bar {
   background-color: #f68c49;
@@ -3566,6 +3522,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._17 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._17 .team-minibar {
   background-color: #e03a3e;
   padding: 10px 0;
@@ -3656,17 +3617,6 @@ body {
 }
 .team-container._17 .team-header .container {
   position: relative;
-}
-.team-container._17 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._17 .progress-bar {
   background-color: #e35054;
@@ -3819,6 +3769,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._16 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._16 .team-minibar {
   background-color: #fdbb2f;
   padding: 10px 0;
@@ -3909,17 +3864,6 @@ body {
 }
 .team-container._16 .team-header .container {
   position: relative;
-}
-.team-container._16 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._16 .progress-bar {
   background-color: #fdc348;
@@ -4072,6 +4016,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._15 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._15 .team-minibar {
   background-color: #bf2f38;
   padding: 10px 0;
@@ -4162,17 +4111,6 @@ body {
 }
 .team-container._15 .team-header .container {
   position: relative;
-}
-.team-container._15 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._15 .progress-bar {
   background-color: #ce3942;
@@ -4325,6 +4263,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._14 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._14 .team-minibar {
   background-color: #025736;
   padding: 10px 0;
@@ -4415,17 +4358,6 @@ body {
 }
 .team-container._14 .team-header .container {
   position: relative;
-}
-.team-container._14 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._14 .progress-bar {
   background-color: #037045;
@@ -4578,6 +4510,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._13 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._13 .team-minibar {
   background-color: #000000;
   padding: 10px 0;
@@ -4668,17 +4605,6 @@ body {
 }
 .team-container._13 .team-header .container {
   position: relative;
-}
-.team-container._13 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._13 .progress-bar {
   background-color: #0d0d0d;
@@ -4831,6 +4757,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._12 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._12 .team-minibar {
   background-color: #c8213f;
   padding: 10px 0;
@@ -4921,17 +4852,6 @@ body {
 }
 .team-container._12 .team-header .container {
   position: relative;
-}
-.team-container._12 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._12 .progress-bar {
   background-color: #db2748;
@@ -5084,6 +5004,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._11 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._11 .team-minibar {
   background-color: #e66a20;
   padding: 10px 0;
@@ -5174,17 +5099,6 @@ body {
 }
 .team-container._11 .team-header .container {
   position: relative;
-}
-.team-container._11 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._11 .progress-bar {
   background-color: #e97937;
@@ -5337,6 +5251,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._10 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._10 .team-minibar {
   background-color: #ec1f26;
   padding: 10px 0;
@@ -5427,17 +5346,6 @@ body {
 }
 .team-container._10 .team-header .container {
   position: relative;
-}
-.team-container._10 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._10 .progress-bar {
   background-color: #ee373d;
@@ -5590,6 +5498,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._9 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._9 .team-minibar {
   background-color: #006a4e;
   padding: 10px 0;
@@ -5680,17 +5593,6 @@ body {
 }
 .team-container._9 .team-header .container {
   position: relative;
-}
-.team-container._9 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._9 .progress-bar {
   background-color: #008461;
@@ -5843,6 +5745,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._8 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._8 .team-minibar {
   background-color: #00285c;
   padding: 10px 0;
@@ -5933,17 +5840,6 @@ body {
 }
 .team-container._8 .team-header .container {
   position: relative;
-}
-.team-container._8 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._8 .progress-bar {
   background-color: #003376;
@@ -6096,6 +5992,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._7 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._7 .team-minibar {
   background-color: #8b2942;
   padding: 10px 0;
@@ -6186,17 +6087,6 @@ body {
 }
 .team-container._7 .team-header .container {
   position: relative;
-}
-.team-container._7 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._7 .progress-bar {
   background-color: #9f2f4b;
@@ -6349,6 +6239,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._6 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._6 .team-minibar {
   background-color: #e3263a;
   padding: 10px 0;
@@ -6439,17 +6334,6 @@ body {
 }
 .team-container._6 .team-header .container {
   position: relative;
-}
-.team-container._6 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._6 .progress-bar {
   background-color: #e63d4f;
@@ -6602,6 +6486,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._5 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._5 .team-minibar {
   background-color: #e03a3e;
   padding: 10px 0;
@@ -6692,17 +6581,6 @@ body {
 }
 .team-container._5 .team-header .container {
   position: relative;
-}
-.team-container._5 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._5 .progress-bar {
   background-color: #e35054;
@@ -6855,6 +6733,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._4 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._4 .team-minibar {
   background-color: #e03a3e;
   padding: 10px 0;
@@ -6945,17 +6828,6 @@ body {
 }
 .team-container._4 .team-header .container {
   position: relative;
-}
-.team-container._4 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._4 .progress-bar {
   background-color: #e35054;
@@ -7108,6 +6980,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._3 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._3 .team-minibar {
   background-color: #fdbb2f;
   padding: 10px 0;
@@ -7198,17 +7075,6 @@ body {
 }
 .team-container._3 .team-header .container {
   position: relative;
-}
-.team-container._3 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._3 .progress-bar {
   background-color: #fdc348;
@@ -7361,6 +7227,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._2 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._2 .team-minibar {
   background-color: #ffc422;
   padding: 10px 0;
@@ -7451,17 +7322,6 @@ body {
 }
 .team-container._2 .team-header .container {
   position: relative;
-}
-.team-container._2 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._2 .progress-bar {
   background-color: #ffcb3c;
@@ -7614,6 +7474,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._1 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._1 .team-minibar {
   background-color: #0168ab;
   padding: 10px 0;
@@ -7704,17 +7569,6 @@ body {
 }
 .team-container._1 .team-header .container {
   position: relative;
-}
-.team-container._1 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._1 .progress-bar {
   background-color: #0177c4;
@@ -7867,6 +7721,11 @@ body {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._0 {
+  /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+}
 .team-container._0 .team-minibar {
   background-color: #ef5225;
   padding: 10px 0;
@@ -7957,17 +7816,6 @@ body {
 }
 .team-container._0 .team-header .container {
   position: relative;
-}
-.team-container._0 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
-  font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  margin: 0;
 }
 .team-container._0 .progress-bar {
   background-color: #f1653d;

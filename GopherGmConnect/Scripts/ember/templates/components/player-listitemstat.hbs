@@ -1,24 +1,21 @@
 ﻿
-<div class="col-xs-3 visible-md visible-lg">
+<div class="col-xs-3">
     {{#link-to 'player' player}}
-    <span class="first-name">
+    <span class="first-name text">
       {{unbound player.firstName}}
     </span>
     <span class="last-name">
         {{unbound player.lastName}}
     </span>
+  <span class="position-tick">
+    {{unbound player.position}}
+  </span>
 
     {{/link-to}}
 </div>
 
 
-<div class="col-xs-3 visible-xs visible-sm">
-    {{#link-to 'player' player}}
-    <span class="last-name">
-      {{unbound player.lastName}}
-    </span>
-    {{/link-to}}
-</div>
+
 
 
 <div {{bind-attr class=":col-xs-1 sortPoints:highlight"}}>

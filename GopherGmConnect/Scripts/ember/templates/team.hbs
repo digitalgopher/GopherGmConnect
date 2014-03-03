@@ -190,9 +190,26 @@
     <div class="tab-content">
         <div id="tab-content-roster" class="tab-pane fade in active">
           {{#if showRoster}}
-          {{team-rosterlist roster=roster
-            sort="sortByProperty"
-          currentSort=currentSortProperty}}
+          {{team-rosterlist roster=forwards
+                            sort="sortByProperty"
+                            header="Forwards"
+                            currentSort=currentSortProperty}}
+
+
+          {{team-rosterlist roster=dmen
+                            header="Defence"
+                            sort="sortByProperty"
+                            currentSort=currentSortProperty}}
+
+          {{team-rosterlist roster=goalies
+                            header="Goalies"
+                            sort="sortByProperty"
+                            currentSort=currentSortProperty}}
+
+          {{team-rosterlist roster=prospects
+                            header="Non-Roster"
+                            sort="sortByProperty"
+                            currentSort=currentSortProperty}}
 
 
           {{/if}}
@@ -201,9 +218,12 @@
       
       <div id="tab-content-salaries" class="tab-pane fade">
         {{#if showSalaries}}
-        {{team-salaryrosterlist roster=roster}}
+          {{team-salaryrosterlist roster=forwards header="Forwards"}}
+          {{team-salaryrosterlist roster=dmen header="Defence"}}
+          {{team-salaryrosterlist roster=goalies header="Goalies"}}
+          {{team-salaryrosterlist roster=prospects header="Non-Roster Players"}}
         {{else}}
-        {{app-loader}}
+          {{app-loader}}
         {{/if}}
       </div>
 
