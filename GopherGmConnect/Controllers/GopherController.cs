@@ -937,32 +937,33 @@ namespace GopherGmConnect.Controllers
                                          .ToList();
         }
 
-        [HttpGet]
-        public List<TweetinCore.Interfaces.ITweet> GetTweets(string username)
-        {
-            try
-            {
-                var token = new TwitterToken.Token(
-                    WebConfigurationManager.AppSettings["token_AccessToken"],
-                    WebConfigurationManager.AppSettings["token_AccessTokenSecret"],
-                    WebConfigurationManager.AppSettings["token_ConsumerKey"],
-                    WebConfigurationManager.AppSettings["token_ConsumerSecret"]);
+        //[HttpGet]
+        //public List<TweetinviCore.Interfaces.ITweet> GetTweets(string username)
+        //{
+        //    try
+        //    {
+        //        var x = new 
+        //        var token = new TwitterToken.Token(
+        //            WebConfigurationManager.AppSettings["token_AccessToken"],
+        //            WebConfigurationManager.AppSettings["token_AccessTokenSecret"],
+        //            WebConfigurationManager.AppSettings["token_ConsumerKey"],
+        //            WebConfigurationManager.AppSettings["token_ConsumerSecret"]);
 
-                Tweetinvi.User user = new Tweetinvi.User(username);
-                TweetinCore.Interfaces.IUser u = user;
-                u.PopulateUser(token);
-                var tweets = user.GetUserTimeline(false, token);
-                var lobTweets = tweets.Where(tweet => tweet.Hashtags.Any(tag => tag.Text.ToLower() == "lobnhl")).Take(7);
-                return lobTweets.ToList();
-            }
-            catch (Exception ex)
-            {
-                TweetinCore.Interfaces.ITweet x = new Tweetinvi.Tweet("Cannot get tweets");
-                var list = new List<TweetinCore.Interfaces.ITweet>();
-                list.Add(x);
-                return list;
-            }
-        }
+        //        Tweetinvi.User user = new Tweetinvi.User(username);
+        //        TweetinviCore.Interfaces.IUser u = user;
+        //        u.PopulateUser(token);
+        //        var tweets = user.GetUserTimeline(false, token);
+        //        var lobTweets = tweets.Where(tweet => tweet.Hashtags.Any(tag => tag.Text.ToLower() == "lobnhl")).Take(7);
+        //        return lobTweets.ToList();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        TweetinviCore.Interfaces.ITweet x = new Tweetinvi.Tweet("Cannot get tweets");
+        //        var list = new List<TweetinviCore.Interfaces.ITweet>();
+        //        list.Add(x);
+        //        return list;
+        //    }
+        //}
 
     }
 }
