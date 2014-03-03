@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Web.Optimization</id>
+    <version>1.0.0-beta2</version>
+    <title>Microsoft.Web.Optimization</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/web_optimization_beta.htm</licenseUrl>
+    <iconUrl>https://download-codeplex.sec.s-msft.com/Download?ProjectName=aspnetwebstack&amp;DownloadId=360555</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Legacy package, Microsoft.Web.Optimization is now included in the 'Microsoft.AspNet.Web.Optimization' package.</description>
+    <summary>Legacy package, Microsoft.Web.Optimization is now included in the 'Microsoft.AspNet.Web.Optimization' package.</summary>
+    <releaseNotes />
+    <dependencies>
+      <dependency id="Microsoft.AspNet.Web.Optimization" version="1.0.0-beta2" />
+    </dependencies>
+  </metadata>
+</package>
