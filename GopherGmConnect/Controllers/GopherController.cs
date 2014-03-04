@@ -469,6 +469,7 @@ namespace GopherGmConnect.Controllers
         [HttpGet]
         public object Teams()
         {
+            
             var url = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + WebConfigurationManager.AppSettings["leagueid"] + "/standings/periodType/season/mobile";
             string rawJson = DownloadFromServer(url);
             var fullJson = JObject.Parse(rawJson);
