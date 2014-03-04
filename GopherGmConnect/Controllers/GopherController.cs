@@ -937,33 +937,39 @@ namespace GopherGmConnect.Controllers
                                          .ToList();
         }
 
-        //[HttpGet]
-        //public List<TweetinviCore.Interfaces.ITweet> GetTweets(string username)
-        //{
-        //    try
-        //    {
-        //        var x = new 
-        //        var token = new TwitterToken.Token(
-        //            WebConfigurationManager.AppSettings["token_AccessToken"],
-        //            WebConfigurationManager.AppSettings["token_AccessTokenSecret"],
-        //            WebConfigurationManager.AppSettings["token_ConsumerKey"],
-        //            WebConfigurationManager.AppSettings["token_ConsumerSecret"]);
+        [HttpGet]
+        public List<TweetinviCore.Interfaces.ITweet> GetTweets(string username)
+        {
+            try
+            {
 
-        //        Tweetinvi.User user = new Tweetinvi.User(username);
-        //        TweetinviCore.Interfaces.IUser u = user;
-        //        u.PopulateUser(token);
-        //        var tweets = user.GetUserTimeline(false, token);
-        //        var lobTweets = tweets.Where(tweet => tweet.Hashtags.Any(tag => tag.Text.ToLower() == "lobnhl")).Take(7);
-        //        return lobTweets.ToList();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        TweetinviCore.Interfaces.ITweet x = new Tweetinvi.Tweet("Cannot get tweets");
-        //        var list = new List<TweetinviCore.Interfaces.ITweet>();
-        //        list.Add(x);
-        //        return list;
-        //    }
-        //}
+                var cc = Tweetinvi.CredentialsCreator.GenerateApplicationCredentials(WebConfigurationManager.AppSettings["token_ConsumerKey"],
+                                                                                     WebConfigurationManager.AppSettings["token_ConsumerSecret"]);
+                
+
+                
+                //var token = new TwitterToken.Token(
+                //    WebConfigurationManager.AppSettings["token_AccessToken"],
+                //    WebConfigurationManager.AppSettings["token_AccessTokenSecret"],
+                //    WebConfigurationManager.AppSettings["token_ConsumerKey"],
+                //    WebConfigurationManager.AppSettings["token_ConsumerSecret"]);
+
+                var user = Tweetinvi.User.GetUserFromScreenName(username);
+                var twts = user.Timeline;
+                //TweetinviCore.Interfaces.IUser u = user;
+                //u.PopulateUser(token);
+                //var tweets = user.GetUserTimeline(false, token);
+                var lobTweets = twts.Where(tweet => tweet.Hashtags.Any(tag => tag.Text.ToLower() == "lobnhl")).Take(5);
+                return lobTweets.ToList();
+            }
+            catch (Exception ex)
+            {
+                TweetinviCore.Interfaces.ITweet x = new Tweetinvi.Tweet("Cannot get tweets");
+                var list = new List<TweetinviCore.Interfaces.ITweet>();
+                list.Add(x);
+                return list;
+            }
+        }
 
     }
 }
