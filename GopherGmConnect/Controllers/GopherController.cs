@@ -944,10 +944,7 @@ namespace GopherGmConnect.Controllers
             {
 
                 var cc = Tweetinvi.CredentialsCreator.GenerateApplicationCredentials(WebConfigurationManager.AppSettings["token_ConsumerKey"],
-                                                                                     WebConfigurationManager.AppSettings["token_ConsumerSecret"]);
-                
-
-                
+                                                                                     WebConfigurationManager.AppSettings["token_ConsumerSecret"]);      
                 //var token = new TwitterToken.Token(
                 //    WebConfigurationManager.AppSettings["token_AccessToken"],
                 //    WebConfigurationManager.AppSettings["token_AccessTokenSecret"],
@@ -961,12 +958,13 @@ namespace GopherGmConnect.Controllers
                 //var tweets = user.GetUserTimeline(false, token);
                 var lobTweets = twts.Where(tweet => tweet.Hashtags.Any(tag => tag.Text.ToLower() == "lobnhl")).Take(5);
                 return lobTweets.ToList();
+                
             }
             catch (Exception ex)
             {
-                TweetinviCore.Interfaces.ITweet x = new Tweetinvi.Tweet("Cannot get tweets");
+                var tweet = Tweetinvi.Tweet.CreateTweet(string.Format("Error getting Tweets: {0}", ex.Message));
                 var list = new List<TweetinviCore.Interfaces.ITweet>();
-                list.Add(x);
+                list.Add(tweet);
                 return list;
             }
         }
