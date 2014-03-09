@@ -61,6 +61,7 @@
             game.set('opposingTeam', self.get('teams').findBy('id', opposingTeam));
         })
     },
+
     sortRating: function () {
         //this.get('roster').set('sortProperties', ['playerRatings.' + this.get('currentSortRating')]);
         this.set('roster', this.get('roster').sortBy('playerRatings.' + this.get('currentSortRating')).reverse());
@@ -75,13 +76,14 @@
         var self = this;
         var property = self.get('currentSortProperty');
         self.propertyWillChange('roster');
-        if (property == 'potential') {
-            //self.get('roster').sortBy('potential', 'potentialColor').reverse();
-            self.set('roster', this.get('rosterFull').sortBy('potential', 'potentialColor').reverse());
+        if (property == 'potential') {       
+            self.set('roster.sortProperties', ['potential', 'potentialColor']);
+            //self.set('roster', this.get('rosterFull').sortBy('potential', 'potentialColor').reverse());
         }
         else {
+            self.set('roster.sortProperties', [property]);
             //self.get('roster').sortBy(property).reverse();
-            self.set('roster', this.get('rosterFull').sortBy(property).reverse());
+            //self.set('roster', this.get('rosterFull').sortBy(property).reverse());
         }
         self.get('roster').forEach(function (item) {
             item.set('displayStatValue', property);

@@ -215,6 +215,7 @@
     <Content Include="Scripts\ember\components\component-team-calendar.js" />
     <None Include="Scripts\ember\templates\components\player-listitemstat.hbs" />
     <None Include="Scripts\ember\templates\components\player-listitemrating.hbs" />
+    <Content Include="Scripts\ember\models\model-rosterarrayproxy.js" />
     <Content Include="Scripts\ember\templates\components\team-rosterlistratings.hbs">
       <SubType>Designer</SubType>
     </Content>
@@ -471,6 +472,7 @@
     <Content Include="Scripts\ember\views\view-Playercompare.js" />
     <Content Include="Scripts\ember\views\view-Playercomparesearch.js" />
     <Content Include="Scripts\ember\components\component-player-search.js" />
+    <Content Include="Scripts\ember\views\view-roster.js" />
     <Content Include="Scripts\ember\views\view-Schedule.js" />
     <Content Include="Scripts\ember\views\view-Team.js" />
     <Content Include="Scripts\ember\views\view-Topplayers.js" />

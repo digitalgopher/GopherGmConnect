@@ -61,7 +61,8 @@
             //team.setProperties(model);
             controller.set('model', team);
             controller.setProperties({
-                roster: App.PlayersController.create({ content: team.roster })
+                roster: App.PlayersController.create({ content: team.roster }),
+                testRoster: App.RosterArrayProxy.create({content: team.roster })
             })
             //controller.setProperties(team);
             controller.updateSchedule();
