@@ -1872,7 +1872,7 @@ function program4(depth0,data) {
   data.buffer.push(">Value</li>\r\n	<li ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortByProperty", "position", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
   data.buffer.push(">Position</li>\r\n</ul>\r\n\r\n\r\n\r\n");
-  stack1 = helpers.each.call(depth0, "player", "in", "roster", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
+  stack1 = helpers.each.call(depth0, "player", "in", "forwards", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   return buffer;
   
