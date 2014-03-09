@@ -1,25 +1,53 @@
 ﻿
 App.Player = Ember.Object.extend({
     playerIsLoaded: false,
+
+    displayStatValue: 'position',
+    displayStat: function () {
+        var stat = this.get('displayStatValue');
+        return this.get(stat);
+    }.property('displayStatValue'),
+
+    potentialStars: function () {
+        var pt = this.get('potential');
+        var color = this.get('potentialColorString');
+        var totalStars = Math.ceil(pt);
+        var isHalfStar = pt % 1 != 0;
+        var starArray = [];
+        for (var i = 0; i < totalStars; i++) {
+            var star = {
+                color: color,
+                isFullStar: true,
+            }
+            starArray.push(star);
+        }
+        if (isHalfStar) {
+            starArray[totalStars - 1].isFullStar = false;
+        }
+        return starArray;
+    }.property(),
+
+
     salaryYears: function () {
         var years = Em.A();
         var yearsLeft = this.get('yearsLeft');
+        var moreThanFive = false;
         if (yearsLeft > 5) {
             yearsLeft = 5;
+            moreThanFive = true;
         }
 
         for (var i = 1; i <= yearsLeft ; i++)
         {
             if (yearsLeft === 0) break;
+
             var yearSalaryObject = {
                 salary: this.get('salaryString'),
                 salaryClass: "salaryNumber",
-                salarySmall: '$' + this.get('salarySmall')
+                salarySmall: '$' + this.get('salarySmall'),
+                moreThanFive: moreThanFive,
             }
 
-            if (i === yearsLeft && i != 5) {
-
-            }
             years.pushObject(yearSalaryObject);
 
             if (i === yearsLeft && i != 5) {
@@ -75,7 +103,8 @@ App.Player = Ember.Object.extend({
     }.property('salaryReadable'),
 
     tradeValuePercent: function () {
-        return "width: " + (this.get('tradeValue') / 1000) * 100 + "%;";
+        return (this.get('tradeValue') / 1000) * 100;
+        //return "width: " + (this.get('tradeValue') / 1000) * 100 + "%;";
     }.property('tradeValue'),
 
     contractType: function () {

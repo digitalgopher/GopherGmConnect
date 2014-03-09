@@ -264,7 +264,8 @@ namespace GopherGmConnect.Models
             _playerStats = new List<Models.PlayerStats>();
             Overall = Convert.ToInt32(mobilePlayerInfo.GetValue("o").ToString());
             Aid = Convert.ToInt32(mobilePlayerInfo.GetValue("aid").ToString());
-            ImageUrl = "http://cdn.content.easports.com/nhlhm_assets/assets/ios/0.0/playerheads/" + Aid + "@2x.png";
+            //ImageUrl = "http://cdn.content.easports.com/nhlhm_assets/assets/ios/0.0/playerheads/" + Aid + "@2x.png";
+            ImageUrl = "http://cdn.content.easports.com/nhlhm_assets/assets/ios/14/GMC/0.0/playerheads/p" + Aid + "@2x.png";
 
             JObject pBio = mobilePlayerInfo.GetValue("pb") as JObject;
 

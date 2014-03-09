@@ -1,35 +1,36 @@
-﻿<nav class="navbar navbar-default" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="#">{{title}}</a>
-  </div>
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav">
+﻿<nav class="top-bar" data-topbar="">
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        {{#link-to 'home'}}Home{{/link-to}}
+      </h1>
+    </li>
+    <li class="toggle-topbar menu-icon">
+      <a href="#">Menu</a>
+    </li>
+  </ul>
 
-      <li>
-        <a href="http://issuu.com/mhenderson95/docs/mag_4f2d02299bead9">Magazine (!)</a>
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="active">
+        <a href="#">Right Button Active</a>
       </li>
-      <li>
-        <a href="http://offthestanchion.wordpress.com/">Blog</a>
+      <li class="has-dropdown">
+        <a href="#">Right Button with Dropdown</a>
+        <ul class="dropdown">
+          <li>
+            <a href="#">First link in dropdown</a>
+          </li>
+        </ul>
       </li>
-
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          {{player-search}}
-        </div>
-        <!--<button type="submit" class="btn btn-default">Submit</button>-->
-      </form>
-
-
     </ul>
 
-
-  </div>
-  <!-- /.navbar-collapse -->
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li>
+        <a href="#">Left Nav Button</a>
+      </li>
+    </ul>
+  </section>
 </nav>

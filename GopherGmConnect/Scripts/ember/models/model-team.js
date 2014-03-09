@@ -1,9 +1,11 @@
 ﻿App.Team = Ember.Object.extend({
-    needs: ['application'],
-    teams: Ember.computed.alias('controllers.application.teams'),
     content: null,
     //currentSort: 'overall',
     //currentSortStat: 'minutes',
+
+    
+
+
 
     forwards: Ember.computed.filter('roster', function (player) {
             return player.isForward && player.isOnMainRoster     
@@ -21,9 +23,30 @@
         if (typeof this.get('roster') != 'undefined') {
             var self = this;
             var leadingScorers = self.get('roster').sortBy('singleYearStats.points').reverse();
-            return leadingScorers.slice(0, 5);
+            return leadingScorers.slice(0, 3);
         }
     }.property(),
+
+    startingGoalie: function () {
+        if (typeof this.get('roster') != 'undefined') {
+            var self = this;
+            var goalie = self.get('goalies').sortBy('singleYearStats.gamesPlayed').reverse()[0];
+            return goalie;
+        }
+    }.property(),
+
+    lastTenWins: function () {
+        return this.get('lastTenRecord').split('-')[0];
+    }.property(),
+
+    lastTenLosses: function () {
+        return this.get('lastTenRecord').split('-')[1];
+    }.property(),
+
+    lastTenOvertimeLosses: function () {
+        return this.get('lastTenRecord').split('-')[2];
+    }.property(),
+
 
     salary: function () {
         return numberWithCommas(this.get('salaryCapSpent'));

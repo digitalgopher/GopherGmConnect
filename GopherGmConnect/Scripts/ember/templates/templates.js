@@ -1380,16 +1380,18 @@ function program17(depth0,data) {
 Ember.TEMPLATES["navbar"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1;
+  var buffer = '', stack1, helper, options, self=this, helperMissing=helpers.helperMissing;
 
+function program1(depth0,data) {
+  
+  
+  data.buffer.push("Home");
+  }
 
-  data.buffer.push("<nav class=\"navbar navbar-default\" role=\"navigation\">\n  <!-- Brand and toggle get grouped for better mobile display -->\n  <div class=\"navbar-header\">\n    <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-ex1-collapse\">\n      <span class=\"sr-only\">Toggle navigation</span>\n      <span class=\"icon-bar\"></span>\n      <span class=\"icon-bar\"></span>\n      <span class=\"icon-bar\"></span>\n    </button>\n    <a class=\"navbar-brand\" href=\"#\">");
-  stack1 = helpers._triageMustache.call(depth0, "title", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  data.buffer.push("<nav class=\"top-bar\" data-topbar=\"\">\r\n  <ul class=\"title-area\">\r\n    <li class=\"name\">\r\n      <h1>\r\n        ");
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "home", options) : helperMissing.call(depth0, "link-to", "home", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</a>\n  </div>\n  <div class=\"collapse navbar-collapse navbar-ex1-collapse\">\n    <ul class=\"nav navbar-nav\">\n\n      <li>\n        <a href=\"http://issuu.com/mhenderson95/docs/mag_4f2d02299bead9\">Magazine (!)</a>\n      </li>\n      <li>\n        <a href=\"http://offthestanchion.wordpress.com/\">Blog</a>\n      </li>\n\n      <form class=\"navbar-form navbar-left\" role=\"search\">\n        <div class=\"form-group\">\n          ");
-  stack1 = helpers._triageMustache.call(depth0, "player-search", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n        </div>\n        <!--<button type=\"submit\" class=\"btn btn-default\">Submit</button>-->\n      </form>\n\n\n    </ul>\n\n\n  </div>\n  <!-- /.navbar-collapse -->\n</nav>");
+  data.buffer.push("\r\n      </h1>\r\n    </li>\r\n    <li class=\"toggle-topbar menu-icon\">\r\n      <a href=\"#\">Menu</a>\r\n    </li>\r\n  </ul>\r\n\r\n  <section class=\"top-bar-section\">\r\n    <!-- Right Nav Section -->\r\n    <ul class=\"right\">\r\n      <li class=\"active\">\r\n        <a href=\"#\">Right Button Active</a>\r\n      </li>\r\n      <li class=\"has-dropdown\">\r\n        <a href=\"#\">Right Button with Dropdown</a>\r\n        <ul class=\"dropdown\">\r\n          <li>\r\n            <a href=\"#\">First link in dropdown</a>\r\n          </li>\r\n        </ul>\r\n      </li>\r\n    </ul>\r\n\r\n    <!-- Left Nav Section -->\r\n    <ul class=\"left\">\r\n      <li>\r\n        <a href=\"#\">Left Nav Button</a>\r\n      </li>\r\n    </ul>\r\n  </section>\r\n</nav>");
   return buffer;
   
 });
@@ -1589,23 +1591,20 @@ function program11(depth0,data) {
   data.buffer.push("\n    <div class=\"loader\">\n        <div class=\"duo duo1\">\n            <div class=\"dot dot-a\"></div>\n            <div class=\"dot dot-b\"></div>\n        </div>\n        <div class=\"duo duo2\">\n            <div class=\"dot dot-a\"></div>\n            <div class=\"dot dot-b\"></div>\n        </div>\n    </div>\n\n</div>\n           ");
   }
 
-  data.buffer.push("<div class=\"player-header\">\n    <div class=\"container\">\n        <div class=\"player-profile\">\n            <div class=\"image-container\">\n                <img ");
+  data.buffer.push("\n\n\n<div class=\"row\" >\n  <div class=\"small-4 columns\">\n    <div class=\"player-image\">\n      <img ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
     'src': ("imageUrl")
   },hashTypes:{'src': "STRING"},hashContexts:{'src': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push(" />\n            </div>\n        </div>\n        <h1 class=\"small-name\">");
-  stack1 = helpers._triageMustache.call(depth0, "team.city", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push(" #");
+  data.buffer.push(" />\n    </div>\n  </div>\n  <div class=\"small-8 columns player-basic-block\">\n    <div class=\"row\">\n      <div class=\"small-3 columns jersey\">\n        ");
   stack1 = helpers._triageMustache.call(depth0, "jersey", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push(" ");
+  data.buffer.push("\n      </div>\n      <div class=\"small-9 columns name\">\n        <div class=\"first-name\">\n          ");
   stack1 = helpers._triageMustache.call(depth0, "firstName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push(" <span class=\"big-name\">");
+  data.buffer.push("\n        </div>\n        <div class=\"last-name\">\n          ");
   stack1 = helpers._triageMustache.call(depth0, "lastName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</span></h1>\n\n\n    </div>\n</div>\n        ");
+  data.buffer.push("\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n\n\n\n\n        ");
   stack1 = helpers['if'].call(depth0, "isLoaded", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(11, program11, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   return buffer;
@@ -1811,460 +1810,95 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   
 });
 
-Ember.TEMPLATES["team"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+Ember.TEMPLATES["roster"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
+  var buffer = '', stack1, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
   var buffer = '', stack1;
-  data.buffer.push(" \n                  ");
-  stack1 = helpers._triageMustache.call(depth0, "salary", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push(" <a href=\"http://pastebin.com/MNLpsGr8\" class=\"salary-explanation\">(How'd you get this number!?)</a>\n                ");
-  return buffer;
-  }
-
-function program3(depth0,data) {
-  
-  
-  data.buffer.push("\n                  loading....\n                  ");
-  }
-
-function program5(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n                  ");
-  stack1 = helpers.each.call(depth0, "tweet", "in", "tweets", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(6, program6, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                  ");
-  return buffer;
-  }
-function program6(depth0,data) {
-  
-  var buffer = '', helper, options;
-  data.buffer.push("\n                  ");
-  data.buffer.push(escapeExpression((helper = helpers['team-tweet'] || (depth0 && depth0['team-tweet']),options={hash:{
-    'tweet': ("tweet")
-  },hashTypes:{'tweet': "ID"},hashContexts:{'tweet': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-tweet", options))));
-  data.buffer.push("\n                  ");
-  return buffer;
-  }
-
-function program8(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n                  ");
-  stack1 = helpers._triageMustache.call(depth0, "app-loader", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                  <h1 class=\"loading-text\">Loading Tweets....</h1>\n                  ");
-  return buffer;
-  }
-
-function program10(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n                  ");
-  stack1 = helpers.each.call(depth0, "player", "in", "leadingScorers", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(11, program11, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n    \n\n\n\n\n\n\n                  <div class=\"row leaders\">\n                    <div class=\"col-xs-3\">\n\n                    </div>\n                    <div class=\"col-xs-2\">\n                      GAA\n                    </div>\n                    <div class=\"col-xs-2\">\n                      Save %\n                    </div>\n                    <div class=\"col-xs-2\">\n                      Shutouts\n                    </div>\n                    <div class=\"col-xs-2\">\n                      Wins\n                    </div>\n                    <div class=\"col-xs-1\">\n                      Losses\n                    </div>\n                  </div>\n\n                  ");
-  stack1 = helpers.each.call(depth0, "player", "in", "roster", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(13, program13, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                  ");
-  return buffer;
-  }
-function program11(depth0,data) {
-  
-  var buffer = '', helper, options;
-  data.buffer.push("\n                  ");
-  data.buffer.push(escapeExpression((helper = helpers['team-leaders'] || (depth0 && depth0['team-leaders']),options={hash:{
-    'player': ("player"),
-    'title': ("Leading Scorers")
-  },hashTypes:{'player': "ID",'title': "STRING"},hashContexts:{'player': depth0,'title': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-leaders", options))));
-  data.buffer.push("\n                  ");
-  return buffer;
-  }
-
-function program13(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n                    ");
-  stack1 = helpers['if'].call(depth0, "player.isGoalie", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(14, program14, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                  ");
-  return buffer;
-  }
-function program14(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n                      ");
-  stack1 = helpers['if'].call(depth0, "player.isOnMainRoster", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(15, program15, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                    ");
-  return buffer;
-  }
-function program15(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n                        <div class=\"row leaders\">\n                          <div class=\"col-xs-3\">\n                            ");
-  stack1 = helpers._triageMustache.call(depth0, "player.firstName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n<div class=\"row roster-player-row\">\r\n    <div class=\"small-2 columns player-image-list\">\r\n        <div class=\"circle-image\" style=\"background-image: url('");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "player.imageUrl", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("')\"></div>\r\n\r\n    </div>\r\n    <div class=\"small-8 columns\">\r\n        <div class=\"row\">\r\n            <div class=\"small-12 columns player-name\">\r\n                ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "player.displayStat", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
   data.buffer.push(" ");
-  stack1 = helpers._triageMustache.call(depth0, "player.lastName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "player.firstName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("  ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "player.lastName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"small-12 columns\">\r\n                <div class=\"progress\">\r\n                    <span class=\"meter\" style=\"width: ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "player.tradeValuePercent", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("%\"></span>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"small-12 columns potentialColor\">\r\n                ");
+  stack1 = helpers.each.call(depth0, "player.potentialStars", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                          </div>\n                          <div class=\"col-xs-2\">\n                            ");
-  stack1 = helpers._triageMustache.call(depth0, "player.singleYearStats.goalsAgainstAverage", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  data.buffer.push("\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"small-12 columns salary\">\r\n                ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "player.salaryString", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n                ");
+  stack1 = helpers.each.call(depth0, "player.salaryYears", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(4, program4, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                          </div>\n                          <div class=\"col-xs-2\">\n                            ");
-  stack1 = helpers._triageMustache.call(depth0, "player.singleYearStats.savePercentage", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                          </div>\n                          <div class=\"col-xs-2\">\n                            ");
-  stack1 = helpers._triageMustache.call(depth0, "player.singleYearStats.shutouts", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                          </div>\n                          <div class=\"col-xs-2\">\n                            ");
-  stack1 = helpers._triageMustache.call(depth0, "player.singleYearStats.wins", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                          </div>\n                          <div class=\"col-xs-1\">\n                            ");
-  stack1 = helpers._triageMustache.call(depth0, "player.singleYearStats.losses", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                          </div>\n                        </div>\n                      ");
+  data.buffer.push("\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"small-2 columns link-arrow\">\r\n        <i class=\"fa fa-chevron-right\"></i>\r\n    </div>\r\n</div>\r\n");
+  return buffer;
+  }
+function program2(depth0,data) {
+  
+  var buffer = '';
+  data.buffer.push("\r\n                <i ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'class': (":fa isFullStar:fa-star:fa-star-half-o color")
+  },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push("></i>\r\n                ");
   return buffer;
   }
 
-function program17(depth0,data) {
+function program4(depth0,data) {
   
-  var buffer = '', stack1;
-  data.buffer.push("\n\n                  ");
-  stack1 = helpers._triageMustache.call(depth0, "app-loader", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                  <h1 class=\"loading-text\">Loading Leaders...</h1>\n                  ");
+  var buffer = '';
+  data.buffer.push("\r\n                <i class=\"fa fa-circle-o ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "salaryClass", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\"></i>\r\n                ");
   return buffer;
   }
 
-function program19(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n    <div class=\"tab-content\">\n        <div id=\"tab-content-roster\" class=\"tab-pane fade in active\">\n          ");
-  stack1 = helpers['if'].call(depth0, "showRoster", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(20, program20, data),contexts:[depth0],types:["ID"],data:data});
+  data.buffer.push("\r\n\r\n<ul class=\"inline-list\">\r\n	<li ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortByProperty", "overall", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
+  data.buffer.push(">Overall</li>\r\n	<li ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortByProperty", "potential", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
+  data.buffer.push(">Potential</li>\r\n	<li ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortByProperty", "salary", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
+  data.buffer.push(">Salary</li>\r\n	<li ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortByProperty", "age", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
+  data.buffer.push(">Age</li>\r\n	<li ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortByProperty", "tradeValue", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
+  data.buffer.push(">Value</li>\r\n	<li ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortByProperty", "position", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
+  data.buffer.push(">Position</li>\r\n</ul>\r\n\r\n\r\n\r\n");
+  stack1 = helpers.each.call(depth0, "player", "in", "roster", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n\n        </div>\n      \n      <div id=\"tab-content-salaries\" class=\"tab-pane fade\">\n        ");
-  stack1 = helpers['if'].call(depth0, "showSalaries", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(24, program24, data),fn:self.program(22, program22, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n      </div>\n\n      <div id=\"tab-content-stats\" class=\"tab-pane fade\">\n        ");
-  stack1 = helpers['if'].call(depth0, "showStats", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(28, program28, data),fn:self.program(26, program26, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n      </div>\n\n      <div id=\"tab-content-ratings\" class=\"tab-pane fade\">\n        ");
-  stack1 = helpers['if'].call(depth0, "showRatings", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(28, program28, data),fn:self.program(30, program30, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n      </div>\n\n      <div id=\"tab-content-schedule\" class=\"tab-pane fade\">\n        ");
-  stack1 = helpers['if'].call(depth0, "showCalendar", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(28, program28, data),fn:self.program(32, program32, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n      </div>\n      <div id=\"tab-content-lines\" class=\"tab-pane fade\">\n        ");
-  stack1 = helpers['if'].call(depth0, "showLines", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(28, program28, data),fn:self.program(34, program34, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n      </div>\n    </div>\n    ");
   return buffer;
-  }
-function program20(depth0,data) {
   
-  var buffer = '', helper, options;
-  data.buffer.push("\n          ");
-  data.buffer.push(escapeExpression((helper = helpers['team-rosterlist'] || (depth0 && depth0['team-rosterlist']),options={hash:{
-    'roster': ("forwards"),
-    'sort': ("sortByProperty"),
-    'header': ("Forwards"),
-    'currentSort': ("currentSortProperty")
-  },hashTypes:{'roster': "ID",'sort': "STRING",'header': "STRING",'currentSort': "ID"},hashContexts:{'roster': depth0,'sort': depth0,'header': depth0,'currentSort': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-rosterlist", options))));
-  data.buffer.push("\n\n\n          ");
-  data.buffer.push(escapeExpression((helper = helpers['team-rosterlist'] || (depth0 && depth0['team-rosterlist']),options={hash:{
-    'roster': ("dmen"),
-    'header': ("Defence"),
-    'sort': ("sortByProperty"),
-    'currentSort': ("currentSortProperty")
-  },hashTypes:{'roster': "ID",'header': "STRING",'sort': "STRING",'currentSort': "ID"},hashContexts:{'roster': depth0,'header': depth0,'sort': depth0,'currentSort': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-rosterlist", options))));
-  data.buffer.push("\n\n          ");
-  data.buffer.push(escapeExpression((helper = helpers['team-rosterlist'] || (depth0 && depth0['team-rosterlist']),options={hash:{
-    'roster': ("goalies"),
-    'header': ("Goalies"),
-    'sort': ("sortByProperty"),
-    'currentSort': ("currentSortProperty")
-  },hashTypes:{'roster': "ID",'header': "STRING",'sort': "STRING",'currentSort': "ID"},hashContexts:{'roster': depth0,'header': depth0,'sort': depth0,'currentSort': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-rosterlist", options))));
-  data.buffer.push("\n\n          ");
-  data.buffer.push(escapeExpression((helper = helpers['team-rosterlist'] || (depth0 && depth0['team-rosterlist']),options={hash:{
-    'roster': ("prospects"),
-    'header': ("Non-Roster"),
-    'sort': ("sortByProperty"),
-    'currentSort': ("currentSortProperty")
-  },hashTypes:{'roster': "ID",'header': "STRING",'sort': "STRING",'currentSort': "ID"},hashContexts:{'roster': depth0,'header': depth0,'sort': depth0,'currentSort': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-rosterlist", options))));
-  data.buffer.push("\n\n\n          ");
-  return buffer;
+});
+
+Ember.TEMPLATES["team"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', stack1, helper, options, self=this, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+
+function program1(depth0,data) {
+  
+  
+  data.buffer.push("<i class=\"fa fa-chevron-left\"></i>");
   }
 
-function program22(depth0,data) {
-  
-  var buffer = '', helper, options;
-  data.buffer.push("\n          ");
-  data.buffer.push(escapeExpression((helper = helpers['team-salaryrosterlist'] || (depth0 && depth0['team-salaryrosterlist']),options={hash:{
-    'roster': ("forwards"),
-    'header': ("Forwards")
-  },hashTypes:{'roster': "ID",'header': "STRING"},hashContexts:{'roster': depth0,'header': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-salaryrosterlist", options))));
-  data.buffer.push("\n          ");
-  data.buffer.push(escapeExpression((helper = helpers['team-salaryrosterlist'] || (depth0 && depth0['team-salaryrosterlist']),options={hash:{
-    'roster': ("dmen"),
-    'header': ("Defence")
-  },hashTypes:{'roster': "ID",'header': "STRING"},hashContexts:{'roster': depth0,'header': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-salaryrosterlist", options))));
-  data.buffer.push("\n          ");
-  data.buffer.push(escapeExpression((helper = helpers['team-salaryrosterlist'] || (depth0 && depth0['team-salaryrosterlist']),options={hash:{
-    'roster': ("goalies"),
-    'header': ("Goalies")
-  },hashTypes:{'roster': "ID",'header': "STRING"},hashContexts:{'roster': depth0,'header': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-salaryrosterlist", options))));
-  data.buffer.push("\n          ");
-  data.buffer.push(escapeExpression((helper = helpers['team-salaryrosterlist'] || (depth0 && depth0['team-salaryrosterlist']),options={hash:{
-    'roster': ("prospects"),
-    'header': ("Non-Roster Players")
-  },hashTypes:{'roster': "ID",'header': "STRING"},hashContexts:{'roster': depth0,'header': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-salaryrosterlist", options))));
-  data.buffer.push("\n        ");
-  return buffer;
-  }
-
-function program24(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n          ");
-  stack1 = helpers._triageMustache.call(depth0, "app-loader", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  data.buffer.push("<div class=\"row\">\n  <div class=\"small-3 columns team-tab-button\">\n    ");
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "home", options) : helperMissing.call(depth0, "link-to", "home", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n        ");
-  return buffer;
-  }
-
-function program26(depth0,data) {
-  
-  var buffer = '', helper, options;
-  data.buffer.push("\n        ");
-  data.buffer.push(escapeExpression((helper = helpers['team-rosterliststats'] || (depth0 && depth0['team-rosterliststats']),options={hash:{
-    'team': ("content"),
-    'sort': ("sortByStat"),
-    'currentSortStat': ("currentSortStat")
-  },hashTypes:{'team': "ID",'sort': "STRING",'currentSortStat': "ID"},hashContexts:{'team': depth0,'sort': depth0,'currentSortStat': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-rosterliststats", options))));
-  data.buffer.push("\n        ");
-  return buffer;
-  }
-
-function program28(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n        ");
-  stack1 = helpers._triageMustache.call(depth0, "app-loader", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n        ");
-  return buffer;
-  }
-
-function program30(depth0,data) {
-  
-  var buffer = '', helper, options;
-  data.buffer.push("\n        ");
-  data.buffer.push(escapeExpression((helper = helpers['team-rosterlistratings'] || (depth0 && depth0['team-rosterlistratings']),options={hash:{
-    'roster': ("roster"),
-    'sort': ("sortByRating"),
-    'currentSortRating': ("speed")
-  },hashTypes:{'roster': "ID",'sort': "STRING",'currentSortRating': "STRING"},hashContexts:{'roster': depth0,'sort': depth0,'currentSortRating': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-rosterlistratings", options))));
-  data.buffer.push("\n        ");
-  return buffer;
-  }
-
-function program32(depth0,data) {
-  
-  var buffer = '', helper, options;
-  data.buffer.push("\n        ");
-  data.buffer.push(escapeExpression((helper = helpers['team-calendar'] || (depth0 && depth0['team-calendar']),options={hash:{
-    'team': ("content"),
-    'teams': ("teams")
-  },hashTypes:{'team': "ID",'teams': "ID"},hashContexts:{'team': depth0,'teams': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-calendar", options))));
-  data.buffer.push("\n        ");
-  return buffer;
-  }
-
-function program34(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n        ");
-  stack1 = helpers['if'].call(depth0, "linesIsLoaded", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(35, program35, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n        ");
-  return buffer;
-  }
-function program35(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n        <div class=\"row\">\n          ");
-  stack1 = helpers.each.call(depth0, "line", "in", "lines.fwd", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(36, program36, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n        </div>\n\n        <div class=\"row\">\n          ");
-  stack1 = helpers.each.call(depth0, "line", "in", "lines.dpair", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(38, program38, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n        </div>\n\n        <div class=\"row\">\n          ");
-  stack1 = helpers.each.call(depth0, "line", "in", "lines.pp", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(40, program40, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n        </div>\n\n        ");
-  return buffer;
-  }
-function program36(depth0,data) {
-  
-  var buffer = '', helper, options;
-  data.buffer.push("\n\n          ");
-  data.buffer.push(escapeExpression((helper = helpers.render || (depth0 && depth0.render),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "fwdline", "line", options) : helperMissing.call(depth0, "render", "fwdline", "line", options))));
-  data.buffer.push("\n\n          ");
-  return buffer;
-  }
-
-function program38(depth0,data) {
-  
-  var buffer = '', helper, options;
-  data.buffer.push("\n\n          ");
-  data.buffer.push(escapeExpression((helper = helpers.render || (depth0 && depth0.render),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "dpair", "line", options) : helperMissing.call(depth0, "render", "dpair", "line", options))));
-  data.buffer.push("\n\n          ");
-  return buffer;
-  }
-
-function program40(depth0,data) {
-  
-  var buffer = '', helper, options;
-  data.buffer.push("\n\n          ");
-  data.buffer.push(escapeExpression((helper = helpers.render || (depth0 && depth0.render),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "ppunit", "line", options) : helperMissing.call(depth0, "render", "ppunit", "line", options))));
-  data.buffer.push("\n\n          ");
-  return buffer;
-  }
-
-function program42(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n    ");
-  stack1 = helpers._triageMustache.call(depth0, "app-loader", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n    <h1 class=\"loading-text\">Loading Roster....</h1>\n    ");
-  return buffer;
-  }
-
-  data.buffer.push("<div class=\"team-header\">\n    <div class=\"container\">\n        <h1 class=\"small-name\">");
-  stack1 = helpers._triageMustache.call(depth0, "city", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push(" <span class=\"big-name\">");
-  stack1 = helpers._triageMustache.call(depth0, "teamname", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</span></h1>\n        <p>(");
-  stack1 = helpers._triageMustache.call(depth0, "wins", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("/");
-  stack1 = helpers._triageMustache.call(depth0, "losses", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("/");
-  stack1 = helpers._triageMustache.call(depth0, "overtimeLosses", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push(")</p>\n    </div>\n</div>\n<div class=\"team-minibar\">\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-sm-6\">\n                ");
-  stack1 = helpers._triageMustache.call(depth0, "twitter", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push(" \n                ");
-  stack1 = helpers['if'].call(depth0, "isLoaded", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n            </div>\n            <div class=\"col-sm-6\">\n\n            </div>\n        </div>\n    </div>\n</div>\n<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-xs-12 team-toprow\">\n            <div class=\"row\">\n                <div class=\"col-md-6\">\n                  ");
-  stack1 = helpers['if'].call(depth0, "twitterIsLoaded", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(8, program8, data),fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n\n                </div>\n\n                <div class=\"col-md-6 team-summary-box\">\n                    <div class=\"row\">\n                      ");
-  data.buffer.push(escapeExpression((helper = helpers['team-bigbutton'] || (depth0 && depth0['team-bigbutton']),options={hash:{
-    'tabContentId': ("tab-content-roster"),
-    'data-toggle': ("tab"),
-    'designClass': ("roster"),
-    'label': ("Roster"),
-    'iconName': ("fa-group"),
-    'sort': ("potential"),
-    'isCurrent': ("true"),
-    'tabToShow': ("showRoster"),
-    'showTab': ("showTab")
-  },hashTypes:{'tabContentId': "STRING",'data-toggle': "STRING",'designClass': "STRING",'label': "STRING",'iconName': "STRING",'sort': "STRING",'isCurrent': "STRING",'tabToShow': "STRING",'showTab': "STRING"},hashContexts:{'tabContentId': depth0,'data-toggle': depth0,'designClass': depth0,'label': depth0,'iconName': depth0,'sort': depth0,'isCurrent': depth0,'tabToShow': depth0,'showTab': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-bigbutton", options))));
-  data.buffer.push("\n                      ");
-  data.buffer.push(escapeExpression((helper = helpers['team-bigbutton'] || (depth0 && depth0['team-bigbutton']),options={hash:{
-    'tabContentId': ("tab-content-salaries"),
-    'data-toggle': ("tab"),
-    'designClass': ("salaries"),
-    'label': ("Salaries"),
-    'iconName': ("fa-money"),
-    'sort': ("salary"),
-    'tabToShow': ("showSalaries"),
-    'showTab': ("showTab")
-  },hashTypes:{'tabContentId': "STRING",'data-toggle': "STRING",'designClass': "STRING",'label': "STRING",'iconName': "STRING",'sort': "STRING",'tabToShow': "STRING",'showTab': "STRING"},hashContexts:{'tabContentId': depth0,'data-toggle': depth0,'designClass': depth0,'label': depth0,'iconName': depth0,'sort': depth0,'tabToShow': depth0,'showTab': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-bigbutton", options))));
-  data.buffer.push("\n                      ");
-  data.buffer.push(escapeExpression((helper = helpers['team-bigbutton'] || (depth0 && depth0['team-bigbutton']),options={hash:{
-    'tabContentId': ("tab-content-schedule"),
-    'data-toggle': ("tab"),
-    'designClass': ("schedule"),
-    'label': ("Schedule"),
-    'iconName': ("fa-calendar"),
-    'tabToShow': ("showCalendar"),
-    'showTab': ("showTab")
-  },hashTypes:{'tabContentId': "STRING",'data-toggle': "STRING",'designClass': "STRING",'label': "STRING",'iconName': "STRING",'tabToShow': "STRING",'showTab': "STRING"},hashContexts:{'tabContentId': depth0,'data-toggle': depth0,'designClass': depth0,'label': depth0,'iconName': depth0,'tabToShow': depth0,'showTab': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-bigbutton", options))));
-  data.buffer.push("\n                      ");
-  data.buffer.push(escapeExpression((helper = helpers['team-bigbutton'] || (depth0 && depth0['team-bigbutton']),options={hash:{
-    'tabContentId': ("tab-content-lines"),
-    'data-toggle': ("tab"),
-    'designClass': ("lines"),
-    'label': ("Lines"),
-    'iconName': ("fa-rocket"),
-    'tabToShow': ("showLines"),
-    'showTab': ("showTab")
-  },hashTypes:{'tabContentId': "STRING",'data-toggle': "STRING",'designClass': "STRING",'label': "STRING",'iconName': "STRING",'tabToShow': "STRING",'showTab': "STRING"},hashContexts:{'tabContentId': depth0,'data-toggle': depth0,'designClass': depth0,'label': depth0,'iconName': depth0,'tabToShow': depth0,'showTab': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-bigbutton", options))));
-  data.buffer.push("\n                      ");
-  data.buffer.push(escapeExpression((helper = helpers['team-bigbutton'] || (depth0 && depth0['team-bigbutton']),options={hash:{
-    'tabContentId': ("tab-content-stats"),
-    'data-toggle': ("tab"),
-    'designClass': ("stats"),
-    'label': ("Stats"),
-    'iconName': ("fa-check"),
-    'tabToShow': ("showStats"),
-    'showTab': ("showTab")
-  },hashTypes:{'tabContentId': "STRING",'data-toggle': "STRING",'designClass': "STRING",'label': "STRING",'iconName': "STRING",'tabToShow': "STRING",'showTab': "STRING"},hashContexts:{'tabContentId': depth0,'data-toggle': depth0,'designClass': depth0,'label': depth0,'iconName': depth0,'tabToShow': depth0,'showTab': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-bigbutton", options))));
-  data.buffer.push("\n                      ");
-  data.buffer.push(escapeExpression((helper = helpers['team-bigbutton'] || (depth0 && depth0['team-bigbutton']),options={hash:{
-    'tabContentId': ("tab-content-ratings"),
-    'data-toggle': ("tab"),
-    'designClass': ("ratings"),
-    'label': ("Ratings"),
-    'iconName': ("fa-tachometer"),
-    'tabToShow': ("showRatings"),
-    'showTab': ("showTab")
-  },hashTypes:{'tabContentId': "STRING",'data-toggle': "STRING",'designClass': "STRING",'label': "STRING",'iconName': "STRING",'tabToShow': "STRING",'showTab': "STRING"},hashContexts:{'tabContentId': depth0,'data-toggle': depth0,'designClass': depth0,'label': depth0,'iconName': depth0,'tabToShow': depth0,'showTab': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-bigbutton", options))));
-  data.buffer.push("\n                    </div>\n                    <div class=\"row\">\n                        ");
-  data.buffer.push(escapeExpression((helper = helpers['team-stats'] || (depth0 && depth0['team-stats']),options={hash:{
-    'value': ("penaltyKillPercent"),
-    'label': ("PK %"),
-    'colClass': ("col-xs-3")
-  },hashTypes:{'value': "ID",'label': "STRING",'colClass': "STRING"},hashContexts:{'value': depth0,'label': depth0,'colClass': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-stats", options))));
-  data.buffer.push("\n                        ");
-  data.buffer.push(escapeExpression((helper = helpers['team-stats'] || (depth0 && depth0['team-stats']),options={hash:{
-    'value': ("powerPlayPercent"),
-    'label': ("PP %"),
-    'colClass': ("col-xs-3")
-  },hashTypes:{'value': "ID",'label': "STRING",'colClass': "STRING"},hashContexts:{'value': depth0,'label': depth0,'colClass': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-stats", options))));
-  data.buffer.push("\n                        ");
-  data.buffer.push(escapeExpression((helper = helpers['team-stats'] || (depth0 && depth0['team-stats']),options={hash:{
-    'value': ("goalsFor"),
-    'label': ("Goals For"),
-    'colClass': ("col-xs-3")
-  },hashTypes:{'value': "ID",'label': "STRING",'colClass': "STRING"},hashContexts:{'value': depth0,'label': depth0,'colClass': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-stats", options))));
-  data.buffer.push("\n                        ");
-  data.buffer.push(escapeExpression((helper = helpers['team-stats'] || (depth0 && depth0['team-stats']),options={hash:{
-    'value': ("goalsAgainst"),
-    'label': ("Goals Against"),
-    'colClass': ("col-xs-3")
-  },hashTypes:{'value': "ID",'label': "STRING",'colClass': "STRING"},hashContexts:{'value': depth0,'label': depth0,'colClass': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "team-stats", options))));
-  data.buffer.push("\n                    </div>\n\n                    <div class=\"row leaders\">\n                        <div class=\"col-xs-3\">\n\n                        </div>\n                        <div class=\"col-xs-2\">\n                            Goals\n                        </div>\n                        <div class=\"col-xs-2\">\n                            Assists\n                        </div>\n                        <div class=\"col-xs-2\">\n                            Points\n                        </div>\n                        <div class=\"col-xs-2\">\n                            Games\n                        </div>\n                      <div class=\"col-xs-1\">\n                        Minutes\n                      </div>\n                    </div>\n\n                  ");
-  stack1 = helpers['if'].call(depth0, "rosterIsLoaded", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(17, program17, data),fn:self.program(10, program10, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                </div>\n            </div>\n        </div>\n    </div>\n\n\n\n    <div class=\"row\">\n\n    </div>\n    ");
-  stack1 = helpers['if'].call(depth0, "isLoaded", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(42, program42, data),fn:self.program(19, program19, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n\n\n</div>");
+  data.buffer.push("\n  </div>\n  <div ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "selectTab", "teamstats", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
+  data.buffer.push(" class=\"small-3 columns team-tab-button\">\n    <i class=\"fa fa-bar-chart-o\"></i>\n  </div>\n  <div ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "selectTab", "roster", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
+  data.buffer.push(" class=\"small-3 columns team-tab-button\">\n    <i class=\"fa fa-group\"></i>\n  </div>\n  <div class=\"small-3 columns team-tab-button\">\n    <i class=\"fa fa-calendar-o\"></i>\n  </div>\n</div>\r\n\r\n");
+  data.buffer.push(escapeExpression((helper = helpers.outlet || (depth0 && depth0.outlet),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data},helper ? helper.call(depth0, "teammain", options) : helperMissing.call(depth0, "outlet", "teammain", options))));
+  data.buffer.push("\r\n\r\n");
   return buffer;
   
 });
@@ -2479,6 +2113,90 @@ function program17(depth0,data) {
   stack1 = helpers['if'].call(depth0, "scheduleIsLoaded", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(17, program17, data),fn:self.program(15, program15, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n\n\n    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    </script>\n\n    <script type=\"text/x-handlebars\" data-template-name=\"schedule\">\n        <div id=\"calendar\">\n\n        </div>");
+  return buffer;
+  
+});
+
+Ember.TEMPLATES["teamstats"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', stack1, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
+
+function program1(depth0,data) {
+  
+  var buffer = '';
+  data.buffer.push("\r\n            ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "salary", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n			");
+  return buffer;
+  }
+
+function program3(depth0,data) {
+  
+  
+  data.buffer.push("\r\n			Loading...\r\n            ");
+  }
+
+function program5(depth0,data) {
+  
+  var buffer = '', stack1, helper, options;
+  data.buffer.push("\r\n\r\n<div class=\"row\">\r\n    <div class=\"small-2 columns\">\r\n        <img class=\"player-image-crop\" ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'src': ("startingGoalie.imageUrl")
+  },hashTypes:{'src': "STRING"},hashContexts:{'src': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push(" />\r\n    </div>\r\n    <div class=\"small-6 columns\">\r\n        ");
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(6, program6, data),contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "player", "startingGoalie", options) : helperMissing.call(depth0, "link-to", "player", "startingGoalie", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n    </div>\r\n    <div class=\"small-4 columns\">\r\n        ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "startingGoalie.singleYearStats.goalsAgainstAverage", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n");
+  return buffer;
+  }
+function program6(depth0,data) {
+  
+  var buffer = '';
+  data.buffer.push("\r\n        ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "startingGoalie.lastName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n        ");
+  return buffer;
+  }
+
+  data.buffer.push("\r\n\r\n\r\n<div class=\"row stat-row\">\r\n    <div class=\"small-4 columns\">\r\n        <div class=\"stat-box\">\r\n            <img src=\"");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "imageUrl", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\"></img>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"small-8 columns stat-box\">\r\n        <div class=\"stat-box\">\r\n            ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "twitter", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n        </div>\r\n    </div>\r\n\r\n\r\n\r\n\r\n\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<div class=\"row stat-row\">\r\n    <div class=\"small-3 columns stat-box\">\r\n        <div class=\"team-number\">\r\n            ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "points", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n        </div>\r\n        <div class=\"team-number-label\">\r\n            Points\r\n        </div>\r\n    </div>\r\n    <div class=\"small-3 columns stat-box\">\r\n        <div class=\"team-number\">\r\n            ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "rankOverall", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n        </div>\r\n        <div class=\"team-number-label\">\r\n            Overall\r\n        </div>\r\n    </div>\r\n    <div class=\"small-3 columns stat-box\">\r\n        <div class=\"team-number\">\r\n            ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "rankConference", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n        </div>\r\n        <div class=\"team-number-label\">\r\n            conf\r\n        </div>\r\n    </div>\r\n    <div class=\"small-3 columns stat-box\">\r\n        <div class=\"team-number\">\r\n            ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "rankDivision", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n        </div>\r\n        <div class=\"team-number-label\">\r\n            Div\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"row stat-row\">\r\n    <div class=\"small-12 columns stat-box\">\r\n        <div class=\"team-number \">\r\n            ");
+  stack1 = helpers['if'].call(depth0, "isLoaded", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n        </div>\r\n        <div class=\"team-number-label\">\r\n            team salary\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"row stat-row\">\r\n    <div class=\"small-3 columns\">\r\n        <div class=\"row\">\r\n            <div class=\"small-12 columns stat-box\">\r\n                <div class=\"team-number\">\r\n                    ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "wins", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n                </div>\r\n                <div class=\"team-number-label\">\r\n                    wins\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"small-12 columns stat-box\">\r\n                <div class=\"team-number\">\r\n                    ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "losses", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n                </div>\r\n                <div class=\"team-number-label\">\r\n                    losses\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"small-12 columns stat-box\">\r\n                <div class=\"team-number\">\r\n                    ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "overtimeLosses", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n                </div>\r\n                <div class=\"team-number-label\">\r\n                    OTL\r\n                </div>\r\n            </div>\r\n        </div>\r\n		<div class=\"row\">\r\n            <div class=\"small-12 columns stat-box\">\r\n                <div class=\"team-number\">\r\n                    ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "gamesPlayed", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n                </div>\r\n                <div class=\"team-number-label\">\r\n                    Games\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"small-9 columns chart-container\">\r\n        <ul class=\"hide\" data-pie-id=\"my-cool-pie-chart\">\r\n            <li data-value=\"");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "lastTenWins", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\">Wins</li>\r\n            <li data-value=\"");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "lastTenLosses", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\">Losses</li>\r\n            <li data-value=\"");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "lastTenOvertimeLosses", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\">OTL</li>\r\n        </ul>\r\n		<h2>Last Ten Games</h2>\r\n        <div class=\"chart-main\" id=\"my-cool-pie-chart\"></div>\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"row\">\r\n    <div class=\"small-6 columns\">\r\n        <div class=\"stats-bar-container\">\r\n            <span class=\"stats-bar wins\" style=\"width: 70%\">\r\n\r\n            </span>\r\n            <span class=\"stats-bar losses\" style=\"width: 20%\">\r\n\r\n            </span>\r\n            <span class=\"stats-bar otl\" style=\"width: 10%\">\r\n\r\n            </span>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row stat-row\">\r\n    <div class=\"small-6 columns stat-box\">\r\n        <div class=\"team-number\">\r\n			");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "goalsAgainstPerGame", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n        </div>\r\n        <div class=\"team-number-label\">\r\n            Goals Against / Game\r\n        </div>\r\n    </div>\r\n	    <div class=\"small-6 columns stat-box\">\r\n        <div class=\"team-number\">\r\n			");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "goalsForPerGame", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n        </div>\r\n        <div class=\"team-number-label\">\r\n            Goals For / game\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n");
+  stack1 = helpers['if'].call(depth0, "isLoaded", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   return buffer;
   
 });

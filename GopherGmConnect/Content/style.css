@@ -8,7 +8,7 @@
 body {
   /*background-color: #070E1A;*/
   color: #333333;
-  background-color: none;
+  background-color: #F5F6F8;
 }
 .twitter-typeahead {
   width: 100%;
@@ -88,8 +88,8 @@ body {
 .salary-explanation {
   font-weight: 300;
   color: rgba(255, 255, 255, 0.7);
-  -webkit-text-shadow: 2px 2px 2px 0 2px 0 rgba(0, 0, 0, 0.2);
-  text-shadow: 2px 2px 2px 0 2px 0 rgba(0, 0, 0, 0.2);
+  -webkit-text-shadow: 2px 2px 2px 0 2px 0 rgba(100, 100, 100, 0.4);
+  text-shadow: 2px 2px 2px 0 2px 0 rgba(100, 100, 100, 0.4);
   font-size: 14px;
 }
 .loading-text {
@@ -456,11 +456,94 @@ body {
   background-repeat: repeat-x;
   opacity: .5;
 }
-.leaders .name {
-  text-align: left;
+ul[data-pie-id] li:nth-child(1) {
+  color: #8cc474;
 }
-.leaders .points {
-  font-weight: 900;
+ul[data-pie-id] li:nth-child(2) {
+  color: #e46f61;
+}
+ul[data-pie-id] li:nth-child(3) {
+  color: #fbcb43;
+}
+ul[data-pie-id] li:nth-child(4) {
+  color: #ffaa55 16;
+}
+ul[data-pie-id] li:nth-child(5) {
+  color: rgba(100, 100, 100, 0.4);
+}
+ul[data-pie-id] li:nth-child(6) {
+  color: #70cbaa;
+}
+.player-image-crop {
+  margin-bottom: -11%;
+}
+.stats-bar-container {
+  display: block;
+  width: 100%;
+  height: auto;
+  line-height: 12px;
+  white-space: nowrap;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  overflow: hidden;
+}
+.stats-bar-container .stats-bar.wins {
+  background-color: #8cc474;
+}
+.stats-bar-container .stats-bar.losses {
+  background-color: #e46f61;
+}
+.stats-bar-container .stats-bar.otl {
+  background-color: #fbcb43;
+}
+.circle-image {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  margin: .5em auto;
+  -moz-background-size: 5rem;
+  -o-background-size: 5rem;
+  -webkit-background-size: 5rem;
+  background-size: 5rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-border-radius: 99em;
+  -moz-border-radius: 99em;
+  border-radius: 99em;
+  border: 3px solid #eee;
+  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
+}
+.stat-row {
+  border-bottom: 1px solid rgba(100, 100, 100, 0.4);
+}
+.stat-row .stat-box {
+  font-family: "Roboto";
+  font-size: 2rem;
+  line-height: 3rem;
+  text-align: center;
+  color: #525254;
+  border-right: 1px solid rgba(100, 100, 100, 0.4);
+}
+.stat-row .stat-box:last-child {
+  border-right: none;
+}
+.team-number {
+  line-height: 2rem;
+  font-weight: 700;
+}
+.team-number-label {
+  font-family: "Oswald";
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 400;
+  line-height: 1rem;
+  text-transform: uppercase;
+  color: #6cc131;
+  padding: 0 0 5px 0;
+  margin-top: 5px;
+}
+.potentialColor {
+  line-height: 1rem;
 }
 .potentialColor .fa.green {
   color: #8cc474;
@@ -474,77 +557,90 @@ body {
 .potentialColor .fa.white {
   color: rgba(0, 0, 0, 0.4);
 }
-.player-row {
+.player-image-list {
+  padding: 0;
+}
+.roster-player-row {
   font-family: "Oswald";
-  font-weight: 300;
-  font-size: 1.2em;
+  line-height: 2.8rem;
+  font-size: 1.2rem;
   border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
-@potential Color;
-.player-row.header > div {
-  cursor: pointer;
-}
-@media only screen and (max-width: 720px) {
-  .player-row.header .text {
-    display: none;
-  }
-}
-.player-row a {
-  /*color: #333;*/
-  color: #333333;
-  display: block;
-  width: 100%;
-}
-.player-row .highlight {
-  font-weight: 900;
-}
-.player-row > div {
-  /*background-color: white;*/
-  padding: 3px 0;
-}
-.player-row > div .progress {
-  height: 24px;
+.roster-player-row .progress {
   margin: 0;
+  padding: 0;
+  line-height: 1rem;
+  height: 1rem;
 }
-.player-row .first-name {
-  font-weight: 300;
+.roster-player-row .player-name {
+  font-size: 1rem;
+  line-height: 1.7rem;
 }
-@media only screen and (max-width: 720px) {
-  .player-row .first-name {
-    display: none;
-  }
+.roster-player-row .columns {
+  /*padding: 0;*/
 }
-.player-row .last-name {
+.roster-player-row .stat {
   font-weight: 900;
+  font-size: 1.7rem;
+  background-color: #303a53;
+  color: #f5f6f8;
+  text-align: center;
+}
+.roster-player-row .salary {
+  font-family: "Roboto";
+  font-weight: 400;
+  line-height: 1rem;
+  font-size: 1rem;
+}
+.roster-player-row .salary .salaryNumber {
   color: #333333;
 }
-.player-row .position-tick {
-  font-weight: 100;
-  border-radius: 3px;
-  padding: 4px;
-  font-size: .6em;
+.roster-player-row .salary .rfa {
+  color: #e46f61;
 }
-.player-row.salary-view .contractStatus {
-  width: 80%;
-  display: block;
-  border-radius: 9px;
-  font-weight: 900;
+.roster-player-row .salary .ufa {
+  color: #8cc474;
+}
+.chart-container .chart-main {
+  max-height: 230px;
+  margin-top: -1.4rem;
+}
+.chart-container h2 {
+  font-family: "Oswald";
   text-align: center;
-  color: white;
-  -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
-  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
 }
-.player-row.salary-view .contractStatus.salaryNumber {
-  color: rgba(0, 0, 0, 0.7);
-  font-weight: 400;
-  -webkit-text-shadow: none;
-  text-shadow: none;
+.team-tab-button {
+  background-color: rgba(100, 100, 100, 0.5);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.9rem;
+  font-size: 59px;
 }
-.player-row.salary-view .contractStatus.ufa {
-  background-color: #8cc474;
+.team-tab-button.active {
+  background-color: #646464;
+  color: rgba(255, 255, 255, 0.8);
 }
-.player-row.salary-view .contractStatus.rfa {
-  background-color: #e46f61;
+.player-basic-block .jersey {
+  font-weight: 900;
+  font-size: 1.7rem;
+  background-color: #303a53;
+  color: #f5f6f8;
+  text-align: center;
+  padding: 0;
+  font-size: 4rem;
+}
+.player-basic-block .name {
+  padding: 0;
+}
+.player-basic-block .name .first-name {
+  font-weight: 100;
+  font-size: 1.2rem;
+}
+.player-basic-block .name .last-name {
+  font-weight: 900;
+  font-size: 1.9rem;
+}
+.player-image {
+  background-color: red;
 }
 .roster-seperator {
   background-color: rgba(0, 0, 0, 0.7);

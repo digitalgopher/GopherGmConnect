@@ -31,6 +31,10 @@ namespace GopherGmConnect
                         "~/Scripts/Contracts.js",
                         "~/Scripts/League.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/pizza").Include(
+                        "~/Scripts/Pizza/js/pizza.js"
+                ));
+
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -39,6 +43,9 @@ namespace GopherGmConnect
 
             bundles.Add(new StyleBundle("~/Content/style").Include(
                         "~/Content/style.css"));
+
+            bundles.Add(new StyleBundle("~/Content/Pizza").Include(
+                        "~/Scripts/Pizza/css/pizza.css"));
 
 
         }

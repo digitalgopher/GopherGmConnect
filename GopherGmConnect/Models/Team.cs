@@ -24,6 +24,8 @@ namespace GopherGmConnect.Models
         public int OvertimeLosses { get; set; }
         public int RegulationOvertimeWins { get; set; }
 
+        public double GoalsAgainstPerGame { get; set; }
+        public double GoalsForPerGame { get; set; }
         private List<Player> _players { get; set; }
         public List<Player> Players
         {
@@ -72,6 +74,8 @@ namespace GopherGmConnect.Models
             GoalsAgainst = Convert.ToInt32(teamToken[9].ToString());
             GoalsFor = Convert.ToInt32(teamToken[8].ToString());
             LastTenRecord = teamToken[22].ToString();
+            GoalsAgainstPerGame = Convert.ToDouble(teamToken[11].ToString());
+            GoalsForPerGame = Convert.ToDouble(teamToken[10].ToString());
 
         }
 

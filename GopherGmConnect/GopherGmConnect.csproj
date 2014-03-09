@@ -477,6 +477,8 @@
     <Content Include="Scripts\ember\views\view-trade.js" />
     <Content Include="Scripts\ember\views\view-tradeRosterListItem.js" />
     <Content Include="Scripts\ember\views\view-Tradeteamselect.js" />
+    <Content Include="Scripts\ember\templates\teamstats.hbs" />
+    <Content Include="Scripts\ember\templates\roster.hbs" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
@@ -484,6 +486,9 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\League.js" />
     <Content Include="Scripts\modernizr-2.7.1.js" />
+    <Content Include="Scripts\Pizza\css\pizza.css" />
+    <Content Include="Scripts\Pizza\js\pizza.js" />
+    <Content Include="Scripts\Pizza\js\pizza.min.js" />
     <Content Include="Scripts\static\teams.json" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

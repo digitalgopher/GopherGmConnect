@@ -11,9 +11,11 @@ html {
 body {
     /*background-color: #070E1A;*/
     color: @baseFontColor;
-    background-color: none;
+    background-color: #F5F6F8;
 }
 
+@background-color: #F5F6F8;
+@font-color: #303A53;
 
 @green: #8cc474;
 @red: #e46f61;
@@ -22,11 +24,13 @@ body {
 @pink: #FA516;
 @teal: #70CBAA;
 @darkblue: #6270AB;
+@linghtgreen: #6CC131;
 
 @baseFontColor: #333;
 @secondaryFontColor: #333;
-@textShadow: 0 2px 0 rgba(0,0,0,.2);
+@textShadow: 0 2px 0 rgba(100,100,100,.4);
 @siteFont: "Oswald";
+@lightBorder: rgba(100,100,100,.4);
 
 
 
@@ -573,17 +577,118 @@ body {
     }
 }
 
-.leaders {
-    .name {
-        text-align: left;
-    }
+ul[data-pie-id] li:nth-child(1) {
+  color: @green;
+}
+ul[data-pie-id] li:nth-child(2) {
+  color: @red;
+}
+ul[data-pie-id] li:nth-child(3) {
+  color: @yellow;
+}
+ul[data-pie-id] li:nth-child(4) {
+  color: @pink;
+}
+ul[data-pie-id] li:nth-child(5) {
+  color: @lightBorder;
+}
+ul[data-pie-id] li:nth-child(6) {
+  color: @teal;
+}
 
-    .points {
-        font-weight: 900;
+.player-image-crop {
+    margin-bottom: -11%;
+}
+
+
+
+
+.stats-bar-container {
+    display: block;
+    width: 100%;
+    height: auto;
+    line-height: 12px;
+    white-space: nowrap;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    overflow: hidden;
+
+    .stats-bar {
+        &.wins {
+            background-color: @green;
+        }
+        &.losses {
+            background-color: @red;
+        }
+        &.otl {
+            background-color: @yellow;
+        }
     }
 }
 
+
+.circle-image {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    margin: .5em auto;
+    -moz-background-size: 5rem;
+    -o-background-size: 5rem;
+    -webkit-background-size: 5rem;
+    background-size: 5rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-border-radius: 99em;
+    -moz-border-radius: 99em;
+    border-radius: 99em;
+    border: 3px solid #eee;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+.subtle-number () {
+    font-family: "Roboto";
+    font-weight: 400; 
+    line-height: 1rem;
+    font-size: 1rem; 
+}
+
+
+.stat-row {
+    border-bottom: 1px solid @lightBorder;
+    .stat-box {
+        font-family: "Roboto";
+        font-size: 2rem;
+        line-height: 3rem;
+        text-align: center;
+        color: #525254;
+        border-right: 1px solid @lightBorder;
+        &:last-child {
+            border-right: none;
+        }
+    }
+
+}
+
+.team-number {
+    line-height: 2rem;
+    font-weight: 700;
+}
+
+.team-number-label {
+    font-family: "Oswald";
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 400;
+    line-height: 1rem;
+    text-transform: uppercase;
+    color: @linghtgreen;
+    padding: 0 0 5px 0;
+    margin-top: 5px;
+}
+
 .potentialColor {
+    line-height: 1rem;
         .fa {
             &.green {
                 color: @green;
@@ -604,93 +709,113 @@ body {
     }
 
 
+.player-image-list {
+    padding: 0;
+}
 
 
-.player-row {
+.roster-player-row {
     font-family: "Oswald";
-    font-weight: 300;
-    font-size: 1.2em;
+    line-height: 2.8rem;
+    font-size: 1.2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 
-    &.header {
-        > div {
-            cursor: pointer;
+    .progress {
+        margin: 0;
+        padding: 0; 
+        line-height: 1rem;
+        height: 1rem;
+    }
+
+    .player-name {
+        font-size: 1rem;
+        line-height: 1.7rem;
+    }
+
+    .columns {
+        /*padding: 0;*/
+    }
+
+    .stat {
+        .block-stat();
+    }
+
+    .salary {
+        .subtle-number();
+        .salaryNumber {
+            color: @baseFontColor;
         }
-        .text {
-            .hideForMobile();
+        .rfa {
+            color: @red;
+        }
+        .ufa {
+            color: @green;
         }
     }
+}
 
-    a {
-        /*color: #333;*/
-        color: @baseFontColor;
-        display: block;
-        width: 100%;
+
+.chart-container {
+    .chart-main {
+        .chart-main();
+    }
+    h2 {
+        font-family: @siteFont;
+        text-align: center;
+    }
+}
+
+.chart-main () {
+    max-height: 230px;
+    margin-top: -1.4rem;
+}
+
+.block-stat() {
+    font-weight: 900;
+    font-size: 1.7rem;
+    background-color: @font-color;
+    color: @background-color;
+    text-align: center;
     }
 
-    
-    @potentialColor;
-
-    .highlight {
-        font-weight: 900;
+.team-tab-button {
+    @color: rgba(100, 100, 100, .5);
+    background-color: @color;
+    color: rgba(255, 255, 255, .6);
+    font-size: 1.9rem;
+    font-size: 59px; //Same size as the logo image... 
+    &.active {
+        background-color: rgba(100, 100, 100, 1);
+        color: rgba(255, 255, 255, .8);
     }
+}
 
-    > div {
-        /*background-color: white;*/
-        padding: 3px 0;
-
-        .progress {
-            height: 24px;
-            margin: 0;
+.player-basic-block {
+    .jersey {
+        .block-stat();
+        .zero-column-padding();
+        font-size: 4rem;
+    }
+    .name { 
+        .zero-column-padding();
+        .first-name {
+            font-weight: 100;
+            font-size: 1.2rem;
         }
-    }
-
-    .first-name {
-        .hideForMobile();
-        font-weight: 300;
-    }
-
-    .last-name {
-        font-weight: 900;
-        color: @secondaryFontColor;
-    }
-
-    .position-tick {
-        @lightColor: rgba(90, 90, 90, .4);
-
-        font-weight: 100;
-        border-radius: 3px;
-        padding: 4px;
-        font-size: .6em;
-    }
-
-    &.salary-view {
-        .contractStatus {
-            width: 80%;
-            display: block;
-            border-radius: 9px;
+        .last-name {
             font-weight: 900;
-            text-align: center;
-            color: white;
-            -webkit-text-shadow: 0 2px 0 rgba(0,0,0,.2);
-            text-shadow: @textShadow;
-
-            &.salaryNumber {
-                color: rgba(0, 0, 0, .7);
-                font-weight: 400;
-                -webkit-text-shadow: none;
-                text-shadow: none;
-            }
-
-            &.ufa {
-                background-color: @green;
-            }
-
-            &.rfa {
-                background-color: @red;
-            }
+            font-size: 1.9rem;
         }
     }
+}
+
+.zero-column-padding () {
+    padding: 0;
+}
+
+
+.player-image {
+    background-color: red;
 }
 
 

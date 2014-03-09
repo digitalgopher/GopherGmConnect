@@ -1,0 +1,53 @@
+﻿
+
+<ul class="inline-list">
+	<li {{action 'sortByProperty' 'overall'}}>Overall</li>
+	<li {{action 'sortByProperty' 'potential'}}>Potential</li>
+	<li {{action 'sortByProperty' 'salary'}}>Salary</li>
+	<li {{action 'sortByProperty' 'age'}}>Age</li>
+	<li {{action 'sortByProperty' 'tradeValue'}}>Value</li>
+	<li {{action 'sortByProperty' 'position'}}>Position</li>
+</ul>
+
+
+
+{{#each player in roster}}
+<div class="row roster-player-row">
+    <div class="small-2 columns player-image-list">
+        <div class="circle-image" style="background-image: url('{{unbound player.imageUrl}}')"></div>
+
+    </div>
+    <div class="small-8 columns">
+        <div class="row">
+            <div class="small-12 columns player-name">
+                {{unbound player.displayStat}} {{unbound player.firstName}}  {{unbound player.lastName}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                <div class="progress">
+                    <span class="meter" style="width: {{unbound player.tradeValuePercent}}%"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns potentialColor">
+                {{#each player.potentialStars}}
+                <i {{bind-attr class=":fa isFullStar:fa-star:fa-star-half-o color" }}></i>
+                {{/each}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns salary">
+                {{unbound player.salaryString}}
+                {{#each player.salaryYears}}
+                <i class="fa fa-circle-o {{unbound salaryClass}}"></i>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="small-2 columns link-arrow">
+        <i class="fa fa-chevron-right"></i>
+    </div>
+</div>
+{{/each}}

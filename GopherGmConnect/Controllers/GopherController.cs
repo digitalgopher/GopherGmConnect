@@ -319,6 +319,10 @@ namespace GopherGmConnect.Controllers
         }
 
 
+
+
+
+
         private int TeamSalary(int id)
         {
             var leagueID = WebConfigurationManager.AppSettings["leagueid"];
@@ -938,37 +942,35 @@ namespace GopherGmConnect.Controllers
                                          .ToList();
         }
 
-        [HttpGet]
-        public List<TweetinviCore.Interfaces.ITweet> GetTweets(string username)
-        {
-            try
-            {
+        //[HttpGet]
+        //public List<TweetinviCore.Interfaces.ITweet> GetTweets(string username)
+        //{
+        //    try
+        //    {
 
-                var cc = Tweetinvi.CredentialsCreator.GenerateApplicationCredentials(WebConfigurationManager.AppSettings["token_ConsumerKey"],
-                                                                                     WebConfigurationManager.AppSettings["token_ConsumerSecret"]);      
-                //var token = new TwitterToken.Token(
-                //    WebConfigurationManager.AppSettings["token_AccessToken"],
-                //    WebConfigurationManager.AppSettings["token_AccessTokenSecret"],
-                //    WebConfigurationManager.AppSettings["token_ConsumerKey"],
-                //    WebConfigurationManager.AppSettings["token_ConsumerSecret"]);
+        //        if (Tweetinvi.TwitterCredentials.ApplicationCredentials == null)
+        //        {
+        //            Tweetinvi.TwitterCredentials.ApplicationCredentials = Tweetinvi.TwitterCredentials.CreateCredentials(
+        //            WebConfigurationManager.AppSettings["token_AccessToken"],
+        //            WebConfigurationManager.AppSettings["token_AccessTokenSecret"],
+        //            WebConfigurationManager.AppSettings["token_ConsumerKey"],
+        //            WebConfigurationManager.AppSettings["token_ConsumerSecret"]
+        //            );
+        //        }
 
-                var user = Tweetinvi.User.GetUserFromScreenName(username);
-                var twts = user.Timeline;
-                //TweetinviCore.Interfaces.IUser u = user;
-                //u.PopulateUser(token);
-                //var tweets = user.GetUserTimeline(false, token);
-                var lobTweets = twts.Where(tweet => tweet.Hashtags.Any(tag => tag.Text.ToLower() == "lobnhl")).Take(5);
-                return lobTweets.ToList();
+        //        var twts = Tweetinvi.Timeline.GetUserTimeline(username);
+        //        var lobTweets = twts.Where(tweet => tweet.Hashtags.Any(tag => tag.Text.ToLower() == "lobnhl")).Take(5);
+        //        return lobTweets;
                 
-            }
-            catch (Exception ex)
-            {
-                var tweet = Tweetinvi.Tweet.CreateTweet(string.Format("Error getting Tweets: {0}", ex.Message));
-                var list = new List<TweetinviCore.Interfaces.ITweet>();
-                list.Add(tweet);
-                return list;
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var tweet = Tweetinvi.Tweet.CreateTweet(string.Format("Error getting Tweets: {0}", ex.Message));
+        //        var list = new List<TweetinviCore.Interfaces.ITweet>();
+        //        list.Add(tweet);
+        //        return list;
+        //    }
+        //}
 
     }
 }

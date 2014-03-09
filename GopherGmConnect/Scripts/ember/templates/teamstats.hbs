@@ -1,0 +1,193 @@
+﻿
+
+
+<div class="row stat-row">
+    <div class="small-4 columns">
+        <div class="stat-box">
+            <img src="{{unbound imageUrl}}"></img>
+        </div>
+    </div>
+
+    <div class="small-8 columns stat-box">
+        <div class="stat-box">
+            {{unbound twitter}}
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="row stat-row">
+    <div class="small-3 columns stat-box">
+        <div class="team-number">
+            {{unbound points}}
+        </div>
+        <div class="team-number-label">
+            Points
+        </div>
+    </div>
+    <div class="small-3 columns stat-box">
+        <div class="team-number">
+            {{unbound rankOverall}}
+        </div>
+        <div class="team-number-label">
+            Overall
+        </div>
+    </div>
+    <div class="small-3 columns stat-box">
+        <div class="team-number">
+            {{unbound rankConference}}
+        </div>
+        <div class="team-number-label">
+            conf
+        </div>
+    </div>
+    <div class="small-3 columns stat-box">
+        <div class="team-number">
+            {{unbound rankDivision}}
+        </div>
+        <div class="team-number-label">
+            Div
+        </div>
+    </div>
+</div>
+
+
+<div class="row stat-row">
+    <div class="small-12 columns stat-box">
+        <div class="team-number ">
+            {{#if isLoaded}}
+            {{unbound salary}}
+			{{else}}
+			Loading...
+            {{/if}}
+        </div>
+        <div class="team-number-label">
+            team salary
+        </div>
+    </div>
+</div>
+
+
+<div class="row stat-row">
+    <div class="small-3 columns">
+        <div class="row">
+            <div class="small-12 columns stat-box">
+                <div class="team-number">
+                    {{unbound wins}}
+                </div>
+                <div class="team-number-label">
+                    wins
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns stat-box">
+                <div class="team-number">
+                    {{unbound losses}}
+                </div>
+                <div class="team-number-label">
+                    losses
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns stat-box">
+                <div class="team-number">
+                    {{unbound overtimeLosses}}
+                </div>
+                <div class="team-number-label">
+                    OTL
+                </div>
+            </div>
+        </div>
+		<div class="row">
+            <div class="small-12 columns stat-box">
+                <div class="team-number">
+                    {{unbound gamesPlayed}}
+                </div>
+                <div class="team-number-label">
+                    Games
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="small-9 columns chart-container">
+        <ul class="hide" data-pie-id="my-cool-pie-chart">
+            <li data-value="{{unbound lastTenWins}}">Wins</li>
+            <li data-value="{{unbound lastTenLosses}}">Losses</li>
+            <li data-value="{{unbound lastTenOvertimeLosses}}">OTL</li>
+        </ul>
+		<h2>Last Ten Games</h2>
+        <div class="chart-main" id="my-cool-pie-chart"></div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="small-6 columns">
+        <div class="stats-bar-container">
+            <span class="stats-bar wins" style="width: 70%">
+
+            </span>
+            <span class="stats-bar losses" style="width: 20%">
+
+            </span>
+            <span class="stats-bar otl" style="width: 10%">
+
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="row stat-row">
+    <div class="small-6 columns stat-box">
+        <div class="team-number">
+			{{unbound goalsAgainstPerGame}}
+        </div>
+        <div class="team-number-label">
+            Goals Against / Game
+        </div>
+    </div>
+	    <div class="small-6 columns stat-box">
+        <div class="team-number">
+			{{unbound goalsForPerGame}}
+        </div>
+        <div class="team-number-label">
+            Goals For / game
+        </div>
+    </div>
+</div>
+
+
+
+
+{{#if isLoaded}}
+
+<div class="row">
+    <div class="small-2 columns">
+        <img class="player-image-crop" {{bind-attr src="startingGoalie.imageUrl" }} />
+    </div>
+    <div class="small-6 columns">
+        {{#link-to 'player' startingGoalie}}
+        {{unbound startingGoalie.lastName}}
+        {{/link-to}}
+    </div>
+    <div class="small-4 columns">
+        {{unbound startingGoalie.singleYearStats.goalsAgainstAverage}}
+    </div>
+</div>
+
+
+
+{{/if}}
