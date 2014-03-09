@@ -67,29 +67,7 @@
         this.set('roster', this.get('roster').sortBy('playerRatings.' + this.get('currentSortRating')).reverse());
     }.observes('currentSortRating'),
 
-    propertySort: function () {
-        var r = this.get('roster');
-        if (r === null) {
-            return;
-        }
-
-        var self = this;
-        var property = self.get('currentSortProperty');
-        self.propertyWillChange('roster');
-        if (property == 'potential') {       
-            self.set('roster.sortProperties', ['potential', 'potentialColor']);
-            //self.set('roster', this.get('rosterFull').sortBy('potential', 'potentialColor').reverse());
-        }
-        else {
-            self.set('roster.sortProperties', [property]);
-            //self.get('roster').sortBy(property).reverse();
-            //self.set('roster', this.get('rosterFull').sortBy(property).reverse());
-        }
-        self.get('roster').forEach(function (item) {
-            item.set('displayStatValue', property);
-        });
-        self.propertyDidChange('roster');
-     }.observes('currentSortProperty'),
+    
 
      sortStat: function () {
          if (typeof this.get('rosterFull') == 'undefined') {
@@ -101,19 +79,7 @@
         self.set('roster', rosterContent.sortBy(fixedStat).reverse());
     }.observes('currentSortStat'),
 
-    actions: {
-        sortByStat: function (stat) {
-            this.set('currentSortStat', stat);
-        },
-
-        sortByRating: function (rating) {
-            var self = this;
-            self.set('currentSortRating', rating);
-        },
-
-        sortByProperty: function (property) {
-            this.set('currentSortProperty', property);
-        },
+   
 
         showTab: function (tab) {
             switch (tab) {

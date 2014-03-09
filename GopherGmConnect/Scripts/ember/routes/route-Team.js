@@ -1,9 +1,10 @@
 ﻿App.TeamRoute = Ember.Route.extend({
 
     model: function (params, transition) {
-        return App.Team.create({
-            id: params.team_id
-        });
+        //return App.Team.create({
+        //    id: params.team_id
+        //});
+        return App.Team.find(params.team_id);
     },
 
 
@@ -40,6 +41,9 @@
         //    });
         //});
 
+        if (model.get('isLoaded')) {
+            return;
+        }
 
 
         App.Team.find(team.id).then(function (_team) {
@@ -57,14 +61,11 @@
                 })
             });
 
-            //model.setProperties(team);
-            //team.setProperties(model);
             controller.set('model', team);
             controller.setProperties({
                 roster: App.PlayersController.create({ content: team.roster }),
                 testRoster: App.RosterArrayProxy.create({content: team.roster })
             })
-            //controller.setProperties(team);
             controller.updateSchedule();
         })
     }

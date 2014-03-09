@@ -130,11 +130,15 @@ App.Team.reopenClass({
             //tweets: App.Tweet.findAll(twittername)
         }).then(function (results) {
 
-            var allPlayers = Em.A();
-            results.team.players.forEach(function (p) {
-                var player = App.Player.create();
-                player.setProperties(p);
-                allPlayers.pushObject(player);
+            //var allPlayers = Em.A();
+            //results.team.players.forEach(function (p) {
+            //    var player = App.Player.create();
+            //    player.setProperties(p);
+            //    allPlayers.pushObject(player);
+            //});
+
+            var allPlayers = results.team.players.map(function (player) {
+                return App.Player.create().setProperties(player);
             });
 
             //var rosterController = App.PlayersController.create({
@@ -149,10 +153,9 @@ App.Team.reopenClass({
 
             team.set('roster', allPlayers);
             team.set('rosterFull', allPlayers);
-            //team.set('lines', results.lines);
             team.set('schedule', results.schedule);
+            team.set('isLoaded', true);
             team.setProperties(results.team);
-            //team.set('tweets', results.tweets);
             return team;
         }).fail(function () {
             alert('something failed;');

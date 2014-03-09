@@ -9,38 +9,36 @@
 	<li {{action 'sortByProperty' 'position'}}>Position</li>
 </ul>
 
-
-
-{{#each player in forwards}}
+{{#each}} 
 <div class="row roster-player-row">
     <div class="small-2 columns player-image-list">
-        <div class="circle-image" style="background-image: url('{{unbound player.imageUrl}}')"></div>
+        <div class="circle-image" style="background-image: url('{{unbound imageUrl}}')"></div>
 
     </div>
     <div class="small-8 columns">
         <div class="row">
             <div class="small-12 columns player-name">
-                {{unbound player.displayStat}} {{unbound player.firstName}}  {{unbound player.lastName}}
+                {{unbound displayStat}} {{unbound firstName}}  {{unbound lastName}}
             </div>
         </div>
         <div class="row">
             <div class="small-12 columns">
                 <div class="progress">
-                    <span class="meter" style="width: {{unbound player.tradeValuePercent}}%"></span>
+                    <span class="meter" style="width: {{unbound tradeValuePercent}}%"></span>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="small-12 columns potentialColor">
-                {{#each player.potentialStars}}
+                {{#each potentialStars}}
                 <i {{bind-attr class=":fa isFullStar:fa-star:fa-star-half-o color" }}></i>
                 {{/each}}
             </div>
         </div>
         <div class="row">
             <div class="small-12 columns salary">
-                {{unbound player.salaryString}}
-                {{#each player.salaryYears}}
+                {{unbound salaryString}}
+                {{#each salaryYears}}
                 <i class="fa fa-circle-o {{unbound salaryClass}}"></i>
                 {{/each}}
             </div>

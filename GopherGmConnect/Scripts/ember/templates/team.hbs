@@ -5,13 +5,13 @@
   <div {{action "selectTab" "teamstats"}} class="small-3 columns team-tab-button">
     <i class="fa fa-bar-chart-o"></i>
   </div>
-  <div {{action "selectTab" "roster"}} class="small-3 columns team-tab-button">
-    <i class="fa fa-group"></i>
+  <div class="small-3 columns team-tab-button">
+    {{#link-to 'team.players' this}}<i class="fa fa-group"></i>{{/link-to}}
   </div>
   <div class="small-3 columns team-tab-button">
     <i class="fa fa-calendar-o"></i>
   </div>
 </div>
 
-{{outlet teammain}}
+{{outlet}}
 

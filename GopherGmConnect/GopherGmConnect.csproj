@@ -215,7 +215,9 @@
     <Content Include="Scripts\ember\components\component-team-calendar.js" />
     <None Include="Scripts\ember\templates\components\player-listitemstat.hbs" />
     <None Include="Scripts\ember\templates\components\player-listitemrating.hbs" />
+    <Content Include="Scripts\ember\controllers\controller-TeamPlayers.js" />
     <Content Include="Scripts\ember\models\model-rosterarrayproxy.js" />
+    <Content Include="Scripts\ember\routes\route-TeamPlayers.js" />
     <Content Include="Scripts\ember\templates\components\team-rosterlistratings.hbs">
       <SubType>Designer</SubType>
     </Content>
@@ -480,7 +482,7 @@
     <Content Include="Scripts\ember\views\view-tradeRosterListItem.js" />
     <Content Include="Scripts\ember\views\view-Tradeteamselect.js" />
     <Content Include="Scripts\ember\templates\teamstats.hbs" />
-    <Content Include="Scripts\ember\templates\roster.hbs" />
+    <Content Include="Scripts\ember\templates\team\players.hbs" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
