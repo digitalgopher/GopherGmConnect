@@ -15,7 +15,7 @@
     showLines: Ember.computed.equal('currentTab', 'showLines'),
     showRatings: Ember.computed.equal('currentTab', 'showRatings'),
 
-    
+
     rankOverall: function () {
         //var allTeams = this.get('teams');
         //allTeams = allTeams.sortBy('points').reverse();
@@ -45,8 +45,7 @@
     rank: function (rankBy, filterBy) {
         var allTeams = this.get('teams');
         filterBy = typeof filterBy !== 'undefined' ? filterBy : false;
-        if (filterBy)
-        {
+        if (filterBy) {
             allTeams = allTeams.filterBy(filterBy, this.get(filterBy));
         }
         allTeams = allTeams.sortBy(rankBy).reverse();
@@ -67,20 +66,20 @@
         this.set('roster', this.get('roster').sortBy('playerRatings.' + this.get('currentSortRating')).reverse());
     }.observes('currentSortRating'),
 
-    
 
-     sortStat: function () {
-         if (typeof this.get('rosterFull') == 'undefined') {
-             return;
-         }
+
+    sortStat: function () {
+        if (typeof this.get('rosterFull') == 'undefined') {
+            return;
+        }
         var self = this;
         var fixedStat = 'singleYearStats.' + this.get('currentSortStat');
         var rosterContent = self.get('rosterFull').filterBy('isOnMainRoster', true);
         self.set('roster', rosterContent.sortBy(fixedStat).reverse());
     }.observes('currentSortStat'),
 
-   
 
+    actions: {
         showTab: function (tab) {
             switch (tab) {
                 case 'showRoster':
