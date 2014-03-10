@@ -210,9 +210,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\ember\components\component-app-modal.js" />
     <Content Include="Scripts\ember\components\component-player-listitemrating.js" />
     <Content Include="Scripts\ember\components\component-player-listitemstat.js" />
     <Content Include="Scripts\ember\components\component-team-calendar.js" />
+    <Content Include="Scripts\ember\controllers\controller-modal.js" />
+    <Content Include="Scripts\ember\templates\components\app-modal.hbs" />
     <None Include="Scripts\ember\templates\components\player-listitemstat.hbs" />
     <None Include="Scripts\ember\templates\components\player-listitemrating.hbs" />
     <Content Include="Scripts\ember\controllers\controller-TeamPlayers.js" />
@@ -461,6 +464,7 @@
     <Content Include="Scripts\ember\routes\route-Trade.js" />
     <Content Include="Scripts\ember\views\view-Home.js" />
     <Content Include="Scripts\ember\views\view-homelist-view.js" />
+    <Content Include="Scripts\ember\views\view-modal.js" />
     <Content Include="Scripts\ember\views\view-Player.js" />
     <Content Include="Scripts\ember\views\view-Playercompare.js" />
     <Content Include="Scripts\ember\views\view-Playercomparesearch.js" />
@@ -475,6 +479,7 @@
     <Content Include="Scripts\ember\views\view-Tradeteamselect.js" />
     <Content Include="Scripts\ember\templates\team\stats.hbs" />
     <Content Include="Scripts\ember\templates\team\players.hbs" />
+    <Content Include="Scripts\ember\templates\modal.hbs" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />

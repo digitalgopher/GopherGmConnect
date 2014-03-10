@@ -3,33 +3,33 @@
     //currentSort: 'overall',
     //currentSortStat: 'minutes',
 
-    forwards: Ember.computed.filter('roster', function (player) {
-            return player.isForward && player.isOnMainRoster     
-    }),
-    dmen: Ember.computed.filter('roster', function (player) {
-        return player.isDefence && player.isOnMainRoster;
-    }),
-    goalies: Ember.computed.filter('roster', function (player) {
-        return player.isGoalie && player.isOnMainRoster;
-    }),
-    prospects: Ember.computed.filterBy('roster', 'isOnMainRoster', false),
-    mainRoster: Ember.computed.filterBy('roster', 'isOnMainRoster', true),
+    //forwards: Ember.computed.filter('roster', function (player) {
+    //        return player.isForward && player.isOnMainRoster     
+    //}),
+    //dmen: Ember.computed.filter('roster', function (player) {
+    //    return player.isDefence && player.isOnMainRoster;
+    //}),
+    //goalies: Ember.computed.filter('roster', function (player) {
+    //    return player.isGoalie && player.isOnMainRoster;
+    //}),
+    //prospects: Ember.computed.filterBy('roster', 'isOnMainRoster', false),
+    //mainRoster: Ember.computed.filterBy('roster', 'isOnMainRoster', true),
 
-    leadingScorers: function () {
-        if (typeof this.get('roster') != 'undefined') {
-            var self = this;
-            var leadingScorers = self.get('roster').sortBy('singleYearStats.points').reverse();
-            return leadingScorers.slice(0, 3);
-        }
-    }.property(),
+    //leadingScorers: function () {
+    //    if (typeof this.get('roster') != 'undefined') {
+    //        var self = this;
+    //        var leadingScorers = self.get('roster').sortBy('singleYearStats.points').reverse();
+    //        return leadingScorers.slice(0, 3);
+    //    }
+    //}.property(),
 
-    startingGoalie: function () {
-        if (typeof this.get('roster') != 'undefined') {
-            var self = this;
-            var goalie = self.get('goalies').sortBy('singleYearStats.gamesPlayed').reverse()[0];
-            return goalie;
-        }
-    }.property(),
+    //startingGoalie: function () {
+    //    if (typeof this.get('roster') != 'undefined') {
+    //        var self = this;
+    //        var goalie = self.get('goalies').sortBy('singleYearStats.gamesPlayed').reverse()[0];
+    //        return goalie;
+    //    }
+    //}.property(),
 
     lastTenWins: function () {
         return this.get('lastTenRecord').split('-')[0];
@@ -51,6 +51,7 @@
     //isLoaded: function () {
     //    return Ember.computed.and('linesIsLoaded', 'rosterIsLoaded', 'scheduleIsLoaded', 'statsIsLoaded');
     //},
+
     idWithUnderscore: function () {
         return "_" + this.get('id');
     }.property(),

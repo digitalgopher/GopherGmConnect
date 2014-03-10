@@ -26,5 +26,28 @@
             });
         }
         controller.set('model', model);
+    },
+
+    actions: {
+        openModal: function (modalName) {
+            return this.render(modalName, {
+                into: 'application',
+                outlet: 'modal'
+            })
+        },
+        closeModal: function () {
+            return this.disconnectOutlet({
+                outlet: 'modal',
+                parentView: 'application'
+            });
+        },
+        sortRoster: function (property) {
+            this.controllerFor('teamPlayers').send('sortByProperty', property);
+            return this.disconnectOutlet({
+                outlet: 'modal',
+                parentView: 'application'
+            });
+        }
+
     }
 });

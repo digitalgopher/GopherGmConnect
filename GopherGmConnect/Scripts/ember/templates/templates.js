@@ -8,6 +8,31 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   
 });
 
+Ember.TEMPLATES["components/app-modal"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', escapeExpression=this.escapeExpression;
+
+
+  data.buffer.push("<div id=\"myModal\" class=\"reveal-modal tiny\" data-reveal=\"\">\r\n\r\n\r\n  <ul>\r\n    <li>\r\n      <button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortProp", "overall", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
+  data.buffer.push(">Overall</button>\r\n    </li>\r\n    <li>\r\n      <button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortProp", "potential", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
+  data.buffer.push(">Potential</button>\r\n    </li>\r\n    <li>\r\n      <button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortProp", "salary", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
+  data.buffer.push(">Salary</button>\r\n    </li>\r\n    <li>\r\n      <button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortProp", "age", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
+  data.buffer.push(">Age</button>\r\n    </li>\r\n    <li>\r\n      <button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortProp", "tradeValue", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
+  data.buffer.push(">Value</button>\r\n    </li>\r\n    <li>\r\n      <button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortProp", "position", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
+  data.buffer.push(">Position</button>\r\n    </li>\r\n\r\n  </ul>\r\n\r\n\r\n\r\n  <a ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "closeThisModal", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
+  data.buffer.push("class=\"close-reveal-modal\">&#215;</a>\r\n</div>");
+  return buffer;
+  
+});
+
 Ember.TEMPLATES["components/player-listitem"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
@@ -1074,6 +1099,19 @@ function program4(depth0,data) {
   
 });
 
+Ember.TEMPLATES["modal"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+
+
+  data.buffer.push(escapeExpression((helper = helpers['app-modal'] || (depth0 && depth0['app-modal']),options={hash:{
+    'closeThisModal': ("close"),
+    'sortProp': ("sortByProperty")
+  },hashTypes:{'closeThisModal': "STRING",'sortProp': "STRING"},hashContexts:{'closeThisModal': depth0,'sortProp': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "app-modal", options))));
+  
+});
+
 Ember.TEMPLATES["navbar"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
@@ -1492,7 +1530,7 @@ function program7(depth0,data) {
   data.buffer.push("\n  </div>\n</div>\r\n\r\n");
   stack1 = helpers._triageMustache.call(depth0, "outlet", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\r\n\r\n");
+  data.buffer.push("\r\n\r\n\r\n");
   return buffer;
   
 });
@@ -1546,19 +1584,9 @@ function program4(depth0,data) {
   return buffer;
   }
 
-  data.buffer.push("\r\n\r\n<ul class=\"inline-list\">\r\n	<li ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortByProperty", "overall", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
-  data.buffer.push(">Overall</li>\r\n	<li ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortByProperty", "potential", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
-  data.buffer.push(">Potential</li>\r\n	<li ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortByProperty", "salary", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
-  data.buffer.push(">Salary</li>\r\n	<li ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortByProperty", "age", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
-  data.buffer.push(">Age</li>\r\n	<li ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortByProperty", "tradeValue", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
-  data.buffer.push(">Value</li>\r\n	<li ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortByProperty", "position", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
-  data.buffer.push(">Position</li>\r\n</ul>\r\n\r\n");
+  data.buffer.push("\r\n\r\n\r\n\r\n\r\n<button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "openModal", "modal", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
+  data.buffer.push(" class=\"button\">Default Button</button>\r\n \r\n");
   stack1 = helpers.each.call(depth0, {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\r\n");

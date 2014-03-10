@@ -1,14 +1,10 @@
 ﻿
 
-<ul class="inline-list">
-	<li {{action 'sortByProperty' 'overall'}}>Overall</li>
-	<li {{action 'sortByProperty' 'potential'}}>Potential</li>
-	<li {{action 'sortByProperty' 'salary'}}>Salary</li>
-	<li {{action 'sortByProperty' 'age'}}>Age</li>
-	<li {{action 'sortByProperty' 'tradeValue'}}>Value</li>
-	<li {{action 'sortByProperty' 'position'}}>Position</li>
-</ul>
 
+
+
+<button {{action 'openModal' 'modal'}} class="button">Default Button</button>
+ 
 {{#each}} 
 <div class="row roster-player-row">
     <div class="small-2 columns player-image-list">
