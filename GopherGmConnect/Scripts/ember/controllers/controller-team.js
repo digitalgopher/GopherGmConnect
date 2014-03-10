@@ -8,12 +8,12 @@
     pushdate: Ember.computed.readOnly('controllers.application.pushdate'),
     teams: Ember.computed.readOnly('controllers.application.teams'),
 
-    showRoster: Ember.computed.equal('currentTab', 'showRoster'),
-    showCalendar: Ember.computed.equal('currentTab', 'showCalendar'),
-    showSalaries: Ember.computed.equal('currentTab', 'showSalaries'),
-    showStats: Ember.computed.equal('currentTab', 'showStats'),
-    showLines: Ember.computed.equal('currentTab', 'showLines'),
-    showRatings: Ember.computed.equal('currentTab', 'showRatings'),
+    //showRoster: Ember.computed.equal('currentTab', 'showRoster'),
+    //showCalendar: Ember.computed.equal('currentTab', 'showCalendar'),
+    //showSalaries: Ember.computed.equal('currentTab', 'showSalaries'),
+    //showStats: Ember.computed.equal('currentTab', 'showStats'),
+    //showLines: Ember.computed.equal('currentTab', 'showLines'),
+    //showRatings: Ember.computed.equal('currentTab', 'showRatings'),
 
 
 
@@ -29,8 +29,6 @@
         //this.get('roster').set('sortProperties', ['playerRatings.' + this.get('currentSortRating')]);
         this.set('roster', this.get('roster').sortBy('playerRatings.' + this.get('currentSortRating')).reverse());
     }.observes('currentSortRating'),
-
-
 
     sortStat: function () {
         if (typeof this.get('rosterFull') == 'undefined') {

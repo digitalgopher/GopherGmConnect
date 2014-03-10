@@ -84,19 +84,19 @@ App.Player = Ember.Object.extend({
         return "R";
     }.property('shoots'),
 
-    readPotential: Ember.computed.alias('potential'),
+    //readPotential: Ember.computed.alias('potential'),
 
     //readPotentialColor: function () {
     //    var p = this.get('potentialColor');
     //    return PotentialColor[p];
     //}.property('potenticalColor'),
 
-    isGoalie: function () {
-        if (this.get('position') == "G") {
-            return true;
-        }
-        return false;
-    }.property('position'),
+    //isGoalie: function () {
+    //    if (this.get('position') == "G") {
+    //        return true;
+    //    }
+    //    return false;
+    //}.property('position'),
 
     salaryString: function () {
         return numberWithCommas(this.get('salaryReadable'));

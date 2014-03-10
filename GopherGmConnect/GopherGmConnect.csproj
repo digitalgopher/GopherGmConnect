@@ -216,17 +216,10 @@
     <Content Include="Scripts\ember\components\component-team-calendar.js" />
     <Content Include="Scripts\ember\controllers\controller-modal.js" />
     <Content Include="Scripts\ember\templates\components\app-modal.hbs" />
-    <None Include="Scripts\ember\templates\components\player-listitemstat.hbs" />
-    <None Include="Scripts\ember\templates\components\player-listitemrating.hbs" />
     <Content Include="Scripts\ember\controllers\controller-TeamPlayers.js" />
     <Content Include="Scripts\ember\controllers\controller-TeamStats.js" />
-    <Content Include="Scripts\ember\models\model-rosterarrayproxy.js" />
     <Content Include="Scripts\ember\routes\route-TeamPlayers.js" />
     <Content Include="Scripts\ember\routes\route-TeamStats.js" />
-    <Content Include="Scripts\ember\templates\components\team-rosterlistratings.hbs">
-      <SubType>Designer</SubType>
-    </Content>
-    <None Include="Scripts\ember\templates\components\team-rosterliststats.hbs" />
     <Content Include="Scripts\ember\components\component-team-rosterlistratings.js" />
     <Content Include="Scripts\ember\components\component-team-rosterliststats.js" />
     <Content Include="Scripts\ember\helpers\helper-Group.js" />
@@ -376,31 +369,11 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Scripts\ember\templates\navbar.hbs" />
-    <Content Include="Scripts\ember\templates\components\team-salarychart.hbs" />
-    <Content Include="Scripts\ember\templates\components\team-bigbutton.hbs" />
-    <Content Include="Scripts\ember\templates\components\team-stats.hbs" />
-    <Content Include="Scripts\ember\templates\components\team-leaders.hbs" />
-    <Content Include="Scripts\ember\templates\topplayers.hbs" />
     <Content Include="Scripts\ember\templates\team.hbs">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Scripts\ember\templates\components\team-salaryrosterlist.hbs" />
-    <Content Include="Scripts\ember\templates\components\team-rosterlist.hbs">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Scripts\ember\templates\components\player-salarylistitem.hbs">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Scripts\ember\templates\components\team-circularstat.hbs" />
     <Content Include="Scripts\ember\templates\components\app-loader.hbs" />
-    <Content Include="Scripts\ember\templates\components\team-smallplayer.hbs" />
-    <Content Include="Scripts\ember\templates\components\team-tweet.hbs" />
-    <Content Include="Scripts\ember\templates\components\player-listitem.hbs" />
     <Content Include="Scripts\ember\templates\player.hbs" />
-    <Content Include="Scripts\ember\templates\playercompare.hbs" />
-    <Content Include="Scripts\ember\templates\playercontractbox.hbs" />
-    <Content Include="Scripts\ember\templates\playerprofile.hbs" />
-    <Content Include="Scripts\ember\templates\playerbasicinfobox.hbs" />
     <Content Include="Scripts\ember\templates\components\team-calendar.hbs" />
     <Content Include="Scripts\ember\templates\components\player-search.hbs" />
     <Content Include="Scripts\Contracts.js" />
@@ -436,8 +409,6 @@
     <Content Include="Scripts\ember\helpers\helper-Playerpotential.js" />
     <Content Include="Scripts\ember\helpers\helper-stat.js" />
     <Content Include="Scripts\ember\mixins\ajax-mixin.js" />
-    <Content Include="Scripts\ember\models\model-childviewtest.js" />
-    <Content Include="Scripts\ember\models\model-eatoken.js" />
     <Content Include="Scripts\ember\models\model-game.js" />
     <Content Include="Scripts\ember\models\model-line.js" />
     <Content Include="Scripts\ember\models\model-partialteam.js" />
@@ -449,10 +420,6 @@
     <Content Include="Scripts\ember\models\model-schedule.js" />
     <Content Include="Scripts\ember\models\model-team.js" />
     <Content Include="Scripts\ember\models\model-teams.js" />
-    <Content Include="Scripts\ember\models\model-topplayers.js" />
-    <Content Include="Scripts\ember\models\model-trade.js" />
-    <Content Include="Scripts\ember\models\model-tweet.js" />
-    <Content Include="Scripts\ember\models\model-yearlystats.js" />
     <Content Include="Scripts\ember\routes\route-Application.js" />
     <Content Include="Scripts\ember\routes\route-Home.js" />
     <Content Include="Scripts\ember\routes\route-Index.js" />
@@ -474,7 +441,6 @@
     <Content Include="Scripts\ember\views\view-Team.js" />
     <Content Include="Scripts\ember\views\view-TeamPlayers.js" />
     <Content Include="Scripts\ember\views\view-TeamStats.js" />
-    <Content Include="Scripts\ember\views\view-Topplayers.js" />
     <Content Include="Scripts\ember\views\view-trade.js" />
     <Content Include="Scripts\ember\views\view-tradeRosterListItem.js" />
     <Content Include="Scripts\ember\views\view-Tradeteamselect.js" />

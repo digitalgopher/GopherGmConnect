@@ -1,6 +1,9 @@
 ﻿App.TeamPlayersController = Ember.ArrayController.extend({
     sortProperties: ['overall'],
     sortAscending: false,
+
+    goalies: Ember.computed.filterBy('arrangedContent', 'isGoalie', true),
+    defence: Ember.computed.filterBy('arrangedContent', 'isDefence', true),
     propertySort: function () {
         var self = this;
         var property = self.get('currentSortProperty');
