@@ -9,8 +9,7 @@
             });
             Ember.run.scheduleOnce('afterRender', this, function () {
                 Pizza.init();
-            })
-            
+            })           
         },
     },
 })

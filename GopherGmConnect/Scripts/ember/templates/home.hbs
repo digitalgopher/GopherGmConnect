@@ -47,13 +47,13 @@
   <div {{bind-attr class=":row :team-row team.idWithUnderscore"}}>
     
     <div class="col-xs-2 col-sm-1 logo-box">
-      {{#link-to "team" team}}
+      {{#link-to "team.stats" team}}
       <img style="width: 39px; height: 39px;"{{bind-attr src="team.imageUrl"}}></img>
       {{/link-to}}
     </div>
 
     <div class="col-xs-4 team-name-box">
-      {{#link-to "team" team}}
+      {{#link-to "team.stats" team}}
       <h1>{{team.twitter}}</h1>
       <p>{{team.teamname}}</p>
       {{/link-to}}

@@ -1,72 +1,30 @@
 ﻿App.TeamRoute = Ember.Route.extend({
+    
 
     model: function (params, transition) {
-        //return App.Team.create({
-        //    id: params.team_id
-        //});
         return App.Team.find(params.team_id);
     },
 
 
-
     setupController: function (controller, model) {
-        var team = this.controllerFor('application').get('teams').findBy('id', model.get('id'));
-
-        //team.setProperties(model);
-        var twittername = team.get('twitter');
-
-        controller.set('model', team);
-
-        
-
-        controller.setProperties({
-            twitterIsLoaded: false,
-            rosterIsLoaded: false,
-            scheduleIsLoaded: false,
-            isLoaded: false,
-            linesIsLoaded: false,
-            currentTab: 'showRoster',
-            currentSortProperty: null,
-            currentSortRating: null,
-            currentSortStat: null,
-            roster: null,
-        })
-
-
-
-        //App.Tweet.findAll(twittername).then(function (result) {
-        //    team.setProperties({
-        //        tweets: result,
-        //        twitterIsLoaded: true
-        //    });
-        //});
-
-        if (model.get('isLoaded')) {
-            return;
+        var isDownloadTeam = model.get('isLoaded');
+        if (isDownloadTeam) {
+            var team = this.controllerFor('application').get('teams').findBy('id', model.get('id'));
+            model.setProperties
+                ({
+                    city: team.get('city'),
+                    name: team.get('name'),
+                    abr: team.get('abr'),
+                    twitter: team.get('twitter'),
+                    isFullyLoaded: true,
+                });
         }
-
-
-        App.Team.find(team.id).then(function (_team) {
-            team.setProperties(_team);
-            team.setProperties({
-                rosterIsLoaded: true,
-                scheduleIsLoaded: true,
-                isLoaded: true,
+        else {
+            App.Team.find(model.get('id')).then(function (_team) {
+                model.setProperties(_team);
+                model.set('isFullyLoaded', true);
             });
-
-            App.Line.findAll(team.id).then(function (lines) {
-                team.setProperties({
-                    linesIsLoaded: true,
-                    lines: lines,
-                })
-            });
-
-            controller.set('model', team);
-            controller.setProperties({
-                roster: App.PlayersController.create({ content: team.roster }),
-                testRoster: App.RosterArrayProxy.create({content: team.roster })
-            })
-            controller.updateSchedule();
-        })
+        }
+        controller.set('model', model);
     }
 });

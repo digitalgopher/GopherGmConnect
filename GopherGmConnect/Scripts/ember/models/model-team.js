@@ -3,10 +3,6 @@
     //currentSort: 'overall',
     //currentSortStat: 'minutes',
 
-    
-
-
-
     forwards: Ember.computed.filter('roster', function (player) {
             return player.isForward && player.isOnMainRoster     
     }),
@@ -52,9 +48,9 @@
         return numberWithCommas(this.get('salaryCapSpent'));
     }.property('salaryCapSpent'),
 
-    isLoaded: function () {
-        return Ember.computed.and('linesIsLoaded', 'rosterIsLoaded', 'scheduleIsLoaded', 'statsIsLoaded');
-    },
+    //isLoaded: function () {
+    //    return Ember.computed.and('linesIsLoaded', 'rosterIsLoaded', 'scheduleIsLoaded', 'statsIsLoaded');
+    //},
     idWithUnderscore: function () {
         return "_" + this.get('id');
     }.property(),
@@ -151,11 +147,13 @@ App.Team.reopenClass({
 
             //allPlayers = allPlayers.sortBy('overall').reverse();
 
-            team.set('roster', allPlayers);
-            team.set('rosterFull', allPlayers);
-            team.set('schedule', results.schedule);
-            team.set('isLoaded', true);
+            
+            //team.set('roster', allPlayers);
+            //team.set('rosterFull', allPlayers);
+            //team.set('schedule', results.schedule);           
             team.setProperties(results.team);
+            team.set('players', allPlayers);
+            team.set('isLoaded', true);
             return team;
         }).fail(function () {
             alert('something failed;');

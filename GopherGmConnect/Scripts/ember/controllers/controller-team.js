@@ -16,50 +16,14 @@
     showRatings: Ember.computed.equal('currentTab', 'showRatings'),
 
 
-    rankOverall: function () {
-        //var allTeams = this.get('teams');
-        //allTeams = allTeams.sortBy('points').reverse();
-        //var place = allTeams.indexOf(this.content);
-        //return ++place;
-        return this.rank('points');
-    }.property('id'),
 
-    rankConference: function () {
-        //var allTeams = this.get('teams');
-        //allTeams = allTeams.filterBy('conference', this.get('conference'));
-        //allTeams = allTeams.sortBy('points').reverse();    
-        //var place = allTeams.indexOf(this.content);
-        //return ++place;
-        return this.rank('points', 'conference');
-    }.property('id'),
-
-    rankDivision: function () {
-        //var allTeams = this.get('teams');
-        //allTeams = allTeams.filterBy('division', this.get('division'));
-        //allTeams = allTeams.sortBy('points').reverse();
-        //var place = allTeams.indexOf(this.content);
-        //return ++place;
-        return this.rank('points', 'division');
-    }.property('id'),
-
-    rank: function (rankBy, filterBy) {
-        var allTeams = this.get('teams');
-        filterBy = typeof filterBy !== 'undefined' ? filterBy : false;
-        if (filterBy) {
-            allTeams = allTeams.filterBy(filterBy, this.get(filterBy));
-        }
-        allTeams = allTeams.sortBy(rankBy).reverse();
-        var place = allTeams.indexOf(this.content);
-        return ++place;
-    },
-
-    updateSchedule: function () {
-        var self = this;
-        self.get('schedule').forEach(function (game) {
-            var opposingTeam = game.get('opposingTeam');
-            game.set('opposingTeam', self.get('teams').findBy('id', opposingTeam));
-        })
-    },
+    //updateSchedule: function () {
+    //    var self = this;
+    //    self.get('schedule').forEach(function (game) {
+    //        var opposingTeam = game.get('opposingTeam');
+    //        game.set('opposingTeam', self.get('teams').findBy('id', opposingTeam));
+    //    })
+    //},
 
     sortRating: function () {
         //this.get('roster').set('sortProperties', ['playerRatings.' + this.get('currentSortRating')]);

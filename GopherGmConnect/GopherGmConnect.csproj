@@ -216,8 +216,10 @@
     <None Include="Scripts\ember\templates\components\player-listitemstat.hbs" />
     <None Include="Scripts\ember\templates\components\player-listitemrating.hbs" />
     <Content Include="Scripts\ember\controllers\controller-TeamPlayers.js" />
+    <Content Include="Scripts\ember\controllers\controller-TeamStats.js" />
     <Content Include="Scripts\ember\models\model-rosterarrayproxy.js" />
     <Content Include="Scripts\ember\routes\route-TeamPlayers.js" />
+    <Content Include="Scripts\ember\routes\route-TeamStats.js" />
     <Content Include="Scripts\ember\templates\components\team-rosterlistratings.hbs">
       <SubType>Designer</SubType>
     </Content>
@@ -376,10 +378,6 @@
     <Content Include="Scripts\ember\templates\components\team-stats.hbs" />
     <Content Include="Scripts\ember\templates\components\team-leaders.hbs" />
     <Content Include="Scripts\ember\templates\topplayers.hbs" />
-    <Content Include="Scripts\ember\templates\ppunit.hbs" />
-    <Content Include="Scripts\ember\templates\dpair.hbs" />
-    <Content Include="Scripts\ember\templates\fwdline.hbs" />
-    <Content Include="Scripts\ember\templates\line.hbs" />
     <Content Include="Scripts\ember\templates\team.hbs">
       <SubType>Designer</SubType>
     </Content>
@@ -395,15 +393,11 @@
     <Content Include="Scripts\ember\templates\components\team-smallplayer.hbs" />
     <Content Include="Scripts\ember\templates\components\team-tweet.hbs" />
     <Content Include="Scripts\ember\templates\components\player-listitem.hbs" />
-    <Content Include="Scripts\ember\templates\team2.hbs" />
     <Content Include="Scripts\ember\templates\player.hbs" />
     <Content Include="Scripts\ember\templates\playercompare.hbs" />
-    <Content Include="Scripts\ember\templates\compareratings.hbs" />
     <Content Include="Scripts\ember\templates\playercontractbox.hbs" />
     <Content Include="Scripts\ember\templates\playerprofile.hbs" />
     <Content Include="Scripts\ember\templates\playerbasicinfobox.hbs" />
-    <Content Include="Scripts\ember\templates\trade.hbs" />
-    <Content Include="Scripts\ember\templates\tradeteaminfo.hbs" />
     <Content Include="Scripts\ember\templates\components\team-calendar.hbs" />
     <Content Include="Scripts\ember\templates\components\player-search.hbs" />
     <Content Include="Scripts\Contracts.js" />
@@ -418,8 +412,6 @@
     <Content Include="Scripts\ember\components\component-team-stats.js" />
     <Content Include="Scripts\ember\components\component-team-tweet.js" />
     <Content Include="Scripts\ember\controllers\controller-application.js" />
-    <Content Include="Scripts\ember\controllers\controller-dpair.js" />
-    <Content Include="Scripts\ember\controllers\controller-eatoken.js" />
     <Content Include="Scripts\ember\controllers\controller-fwdline.js" />
     <Content Include="Scripts\ember\controllers\controller-game.js" />
     <Content Include="Scripts\ember\controllers\controller-home.js" />
@@ -434,7 +426,6 @@
     <Content Include="Scripts\ember\controllers\controller-teams.js" />
     <Content Include="Scripts\ember\controllers\controller-topplayers.js" />
     <Content Include="Scripts\ember\controllers\controller-trade.js" />
-    <Content Include="Scripts\ember\controllers\controller-tweets.js" />
     <Content Include="Scripts\ember\controllers\controller-yearlystats.js" />
     <Content Include="Scripts\ember\helpers\helper-Compare.js" />
     <Content Include="Scripts\ember\helpers\helper-Playerage.js" />
@@ -477,11 +468,12 @@
     <Content Include="Scripts\ember\views\view-roster.js" />
     <Content Include="Scripts\ember\views\view-Schedule.js" />
     <Content Include="Scripts\ember\views\view-Team.js" />
+    <Content Include="Scripts\ember\views\view-TeamStats.js" />
     <Content Include="Scripts\ember\views\view-Topplayers.js" />
     <Content Include="Scripts\ember\views\view-trade.js" />
     <Content Include="Scripts\ember\views\view-tradeRosterListItem.js" />
     <Content Include="Scripts\ember\views\view-Tradeteamselect.js" />
-    <Content Include="Scripts\ember\templates\teamstats.hbs" />
+    <Content Include="Scripts\ember\templates\team\stats.hbs" />
     <Content Include="Scripts\ember\templates\team\players.hbs" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
