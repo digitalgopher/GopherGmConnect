@@ -597,7 +597,7 @@ function program7(depth0,data) {
   data.buffer.push("<i class=\"fa fa-chevron-right\"></i>");
   }
 
-  data.buffer.push("\r\n\r\n\r\n\r\n\r\n<button ");
+  data.buffer.push("\r\n\r\n<button ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "openModal", "modal", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
   data.buffer.push(" class=\"button\">Sort Players</button>\r\n\r\n");
   stack1 = helpers.each.call(depth0, {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],data:data});
