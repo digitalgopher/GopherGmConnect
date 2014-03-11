@@ -2,7 +2,8 @@
 
 <button {{action 'openModal' 'modal'}} class="button">Sort Players</button>
 
-{{#each}}
+{{#group}}
+{{#each groupedRows=true}}
 {{#if isOnMainRoster}}
 <div class="row roster-player-row">
     <div class="small-2 columns player-image-list">
@@ -44,3 +45,4 @@
 </div>
 {{/if}}
 {{/each}}
+{{/group}}
