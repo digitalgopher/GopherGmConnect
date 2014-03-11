@@ -3,8 +3,8 @@
     sorter: 'points',
     conferenceFilter: '3',
     needs: ['application'],
-    appteams: Ember.computed.readOnly('controllers.application.teams'),
-    teamsIsLoaded: Ember.computed.readOnly('controllers.application.teamsIsLoaded'),
+    appteams: Ember.computed.oneWay('controllers.application.teams'),
+    teamsIsLoaded: Ember.computed.oneWay('controllers.application.teamsIsLoaded'),
 
     pointsSort: Ember.computed.equal('sorter', 'points'),
     lossesSort: Ember.computed.equal('sorter', 'losses'),

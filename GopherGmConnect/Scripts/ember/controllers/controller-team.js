@@ -5,8 +5,8 @@
     currentSortRating: null,
     currentTab: 'showRoster',
     currentSortStat: null,
-    pushdate: Ember.computed.readOnly('controllers.application.pushdate'),
-    teams: Ember.computed.readOnly('controllers.application.teams'),
+    pushdate: Ember.computed.oneWay('controllers.application.pushdate'),
+    teams: Ember.computed.oneWay('controllers.application.teams'),
 
     //showRoster: Ember.computed.equal('currentTab', 'showRoster'),
     //showCalendar: Ember.computed.equal('currentTab', 'showCalendar'),

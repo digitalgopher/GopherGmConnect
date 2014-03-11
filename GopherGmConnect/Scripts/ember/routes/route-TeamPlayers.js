@@ -4,6 +4,5 @@
     },
     setupController: function (controller, model) {
         this._super(controller, model);
-       
     }
 })

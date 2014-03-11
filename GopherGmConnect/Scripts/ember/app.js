@@ -1,4 +1,22 @@
-﻿Ember.STRUCTURED_PROFILE = true;
+﻿//Ember.STRUCTURED_PROFILE = true;
+
+Ember.subscribe('render', {
+    before: function (name, start, payload) {
+        return start;
+    },
+    after: function (name, end, payload, start) {
+        var duration = Math.round(end - start);
+        var template = payload.template || '';
+        //console.log(Ember.inspect(payload));
+        //var title;
+        var view = payload.object.toString();
+        console.log('rendered', template, view, 'took', duration, 'ms');
+    }
+});
+
+
+
+
 
 var App = Ember.Application.create({
     LOG_TRANSITIONS: true,

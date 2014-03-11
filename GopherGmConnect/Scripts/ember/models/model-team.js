@@ -134,9 +134,9 @@ App.Team.reopenClass({
             //    allPlayers.pushObject(player);
             //});
 
-            var allPlayers = results.team.players.map(function (player) {
-                return App.Player.create().setProperties(player);
-            });
+            //var allPlayers = results.team.players.map(function (player) {
+            //    return App.Player.create().setProperties(player);
+            //});
 
             //var rosterController = App.PlayersController.create({
             //    content: allPlayers
@@ -153,7 +153,7 @@ App.Team.reopenClass({
             //team.set('rosterFull', allPlayers);
             //team.set('schedule', results.schedule);           
             team.setProperties(results.team);
-            team.set('players', allPlayers);
+            //team.set('players', allPlayers);
             team.set('isLoaded', true);
             return team;
         }).fail(function () {

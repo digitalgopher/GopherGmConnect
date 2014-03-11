@@ -1,6 +1,6 @@
 ﻿App.TeamStatsController = Ember.ObjectController.extend({
     needs: ['application'],
-    teams: Ember.computed.readOnly('controllers.application.teams'),
+    teams: Ember.computed.oneWay('controllers.application.teams'),
 
     rankOverall: function () {
         return this.rank('points');

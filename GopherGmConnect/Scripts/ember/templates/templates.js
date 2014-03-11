@@ -537,6 +537,15 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 
 function program1(depth0,data) {
   
+  var buffer = '', stack1;
+  data.buffer.push("\r\n");
+  stack1 = helpers['if'].call(depth0, "isOnMainRoster", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n");
+  return buffer;
+  }
+function program2(depth0,data) {
+  
   var buffer = '', stack1, helper, options;
   data.buffer.push("\r\n<div class=\"row roster-player-row\">\r\n    <div class=\"small-2 columns player-image-list\">\r\n        <div class=\"circle-image\" style=\"background-image: url('");
   data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "imageUrl", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
@@ -549,20 +558,20 @@ function program1(depth0,data) {
   data.buffer.push("\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"small-12 columns\">\r\n                <div class=\"progress\">\r\n                    <span class=\"meter\" style=\"width: ");
   data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "tradeValuePercent", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
   data.buffer.push("%\"></span>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"small-12 columns potentialColor\">\r\n                ");
-  stack1 = helpers.each.call(depth0, "potentialStars", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0],types:["ID"],data:data});
+  stack1 = helpers.each.call(depth0, "potentialStars", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"small-12 columns salary\">\r\n                ");
   data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "salaryString", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
   data.buffer.push("\r\n                ");
-  stack1 = helpers.each.call(depth0, "salaryYears", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(4, program4, data),contexts:[depth0],types:["ID"],data:data});
+  stack1 = helpers.each.call(depth0, "salaryYears", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"small-2 columns link-arrow\">\r\n        ");
-  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(6, program6, data),contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "player", "", options) : helperMissing.call(depth0, "link-to", "player", "", options));
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "player", "", options) : helperMissing.call(depth0, "link-to", "player", "", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\r\n    </div>\r\n</div>\r\n");
   return buffer;
   }
-function program2(depth0,data) {
+function program3(depth0,data) {
   
   var buffer = '';
   data.buffer.push("\r\n                <i ");
@@ -573,7 +582,7 @@ function program2(depth0,data) {
   return buffer;
   }
 
-function program4(depth0,data) {
+function program5(depth0,data) {
   
   var buffer = '';
   data.buffer.push("\r\n                <i class=\"fa fa-circle-o ");
@@ -582,7 +591,7 @@ function program4(depth0,data) {
   return buffer;
   }
 
-function program6(depth0,data) {
+function program7(depth0,data) {
   
   
   data.buffer.push("<i class=\"fa fa-chevron-right\"></i>");
@@ -591,7 +600,7 @@ function program6(depth0,data) {
   data.buffer.push("\r\n\r\n\r\n\r\n\r\n<button ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "openModal", "modal", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
   data.buffer.push(" class=\"button\">Sort Players</button>\r\n\r\n");
-  stack1 = helpers.each.call(depth0, "defence", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
+  stack1 = helpers.each.call(depth0, {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\r\n");
   return buffer;
