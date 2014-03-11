@@ -1,7 +1,7 @@
 ﻿App.PlayerController = Ember.ObjectController.extend({
     isLoaded: null,
     needs: ['application'],
-    allTeams: Ember.computed.oneWay('controllers.application.teams'),
+ //   allTeams: Ember.computed.oneWay('controllers.application.teams'),
     displayStatValue: 'position',
     displayStat: function () {
         var stat = this.get('displayStatValue');

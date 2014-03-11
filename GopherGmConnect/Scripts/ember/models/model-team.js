@@ -31,6 +31,9 @@
     //    }
     //}.property(),
 
+
+
+
     lastTenWins: function () {
         return this.get('lastTenRecord').split('-')[0];
     }.property(),

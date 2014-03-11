@@ -25,6 +25,68 @@
     //    })
     //},
 
+    rankOverall: function () {
+        return this.rank('points');  
+    }.property('id'),
+
+    rankConference: function () {
+        return this.rank('points', 'conference');
+    }.property('id'),
+
+    rankDivision: function () {
+        return this.rank('points', 'division');
+    }.property('id'),
+
+    rankPowerPlay: function () {
+        return this.rank('powerPlayPercent');
+    }.property('id'),
+
+    rankPenaltyKill: function (withSuffix) {
+        return this.rank('penaltyKillPercent');
+    }.property('id'),
+
+    rankGoalsForPerGame: function () {
+        return this.rank('goalsForPerGame');
+    }.property('id'),
+
+    rankGoalsAgainstPerGame: function () {
+        return this.rank('goalsAgainstPerGame', false, false);
+    }.property('id'),
+
+    rank: function (rankBy, filterBy, sortDesc) {
+        var allTeams = this.get('teams');
+        filterBy = typeof filterBy !== 'undefined' ? filterBy : false;
+        sortDesc = typeof sortDesc !== 'undefined' ? sortDesc : true;
+        if (filterBy) {
+            allTeams = allTeams.filterBy(filterBy, this.get(filterBy));
+        }
+        allTeams = allTeams.sortBy(rankBy);
+        if (sortDesc) {
+            allTeams = allTeams.reverse();
+        }
+        var team = allTeams.findBy('id', this.get('id'));
+        var place = allTeams.indexOf(team);
+        return (++place);
+    },
+
+
+    //projectedPlayoffMatchup: function () {
+    //    var rankConf = this.get('rankConference');
+    //    if(rankConf > 8) 
+    //    {
+    //        return "Not in playoffs";
+    //    }
+    //    else
+    //    {
+    //        var isConfLeader = rankConf === 1 ? true : false;
+    //        if (isConfLeader)
+    //        {
+
+    //        }
+    //    }
+    //}.property('id'),
+
+
     sortRating: function () {
         //this.get('roster').set('sortProperties', ['playerRatings.' + this.get('currentSortRating')]);
         this.set('roster', this.get('roster').sortBy('playerRatings.' + this.get('currentSortRating')).reverse());

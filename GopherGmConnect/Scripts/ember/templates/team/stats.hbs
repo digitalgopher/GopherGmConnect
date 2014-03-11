@@ -38,7 +38,7 @@
     </div>
     <div class="small-3 columns stat-box">
         <div class="team-number">
-            {{unbound rankOverall}}
+          {{unbound ranksuffix controllers.team.rankOverall}}
         </div>
         <div class="team-number-label">
             Overall
@@ -46,7 +46,7 @@
     </div>
     <div class="small-3 columns stat-box">
         <div class="team-number">
-            {{unbound rankConference}}
+          {{unbound ranksuffix controllers.team.rankConference}}
         </div>
         <div class="team-number-label">
             conf
@@ -54,7 +54,7 @@
     </div>
     <div class="small-3 columns stat-box">
         <div class="team-number">
-            {{unbound rankDivision}}
+          {{unbound ranksuffix controllers.team.rankDivision}}
         </div>
         <div class="team-number-label">
             Div
@@ -170,10 +170,10 @@
 </div>
 
 
-PKRANK {{unbound rankPenaltyKill}}
-PPRANK {{unbound rankPowerPlay}}
-GFRANK {{unbound rankGoalsForPerGame}}
-GARANK {{unbound rankGoalsAgainstPerGame}}
+PKRANK {{unbound controllers.team.rankPenaltyKill}}
+PPRANK {{unbound controllers.team.rankPowerPlay}}
+GFRANK {{unbound controllers.team.rankGoalsForPerGame}}
+GARANK {{unbound controllers.team.rankGoalsAgainstPerGame}}
 
 {{#if isLoaded}}
 

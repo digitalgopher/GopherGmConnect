@@ -215,6 +215,7 @@
     <Content Include="Scripts\ember\components\component-player-listitemstat.js" />
     <Content Include="Scripts\ember\components\component-team-calendar.js" />
     <Content Include="Scripts\ember\controllers\controller-modal.js" />
+    <Content Include="Scripts\ember\helpers\helper-RankSuffix.js" />
     <Content Include="Scripts\ember\templates\components\app-modal.hbs" />
     <Content Include="Scripts\ember\controllers\controller-TeamPlayers.js" />
     <Content Include="Scripts\ember\controllers\controller-TeamStats.js" />
@@ -352,7 +353,6 @@
     </Content>
     <Content Include="Scripts\ember\components\component-team-teamleaders.js" />
     <Content Include="Scripts\ember\controllers\controller-navbar.js" />
-    <Content Include="Scripts\ember\helpers\helper-reverse-word.js" />
     <Content Include="Content\lob-less-css.css">
       <DependentUpon>lob-less-css.less</DependentUpon>
     </Content>

@@ -3,7 +3,7 @@
     sortAscending: false,
     itemController: 'player',
 
-    //goalies: Ember.computed.filterBy('arrangedContent', 'isGoalie', true),
+    goalies: Ember.computed.filterBy('arrangedContent', 'isGoalie', true),
     //defence: Ember.computed.filterBy('arrangedContent', 'isDefence', true),
 
     propertySort: function () {
