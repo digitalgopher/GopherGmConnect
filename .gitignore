@@ -3,6 +3,8 @@
 Migrations/
 !.nuget/NuGet.exe
 
+GopherGmConnect/Web.config
+
 #################
 ## Eclipse
 #################
