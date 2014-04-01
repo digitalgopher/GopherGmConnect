@@ -3,8 +3,7 @@
 Migrations/
 !.nuget/NuGet.exe
 
-
-#################
+################   #
 ## Eclipse
 #################
 
@@ -168,4 +167,4 @@ pip-log.txt
 # Mac crap
 .DS_Store
 GopherGmConnect/Scripts/Grunt/node_modules/
-GopherGmConnect/Web.config
+

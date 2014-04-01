@@ -106,7 +106,7 @@
         var linesArray = Em.A();
 
         var populatedLines = Em.A();
-        var topLine = this.get('lines.topPair');
+        var topLine = this.get('lines.topPair');       
         var secondLine = this.get('lines.secondPair');
         var thirdLine = this.get('lines.bottomPair');
 
