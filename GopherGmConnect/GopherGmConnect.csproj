@@ -459,7 +459,6 @@
     <Content Include="Scripts\ember\views\view-Schedule.js" />
     <Content Include="Scripts\ember\views\view-Team.js" />
     <Content Include="Scripts\ember\views\view-TeamPlayers.js" />
-    <Content Include="Scripts\ember\views\view-TeamPlayersItem.js" />
     <Content Include="Scripts\ember\views\view-TeamStats.js" />
     <Content Include="Scripts\ember\views\view-trade.js" />
     <Content Include="Scripts\ember\views\view-tradeRosterListItem.js" />

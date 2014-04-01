@@ -579,7 +579,7 @@ function program1(depth0,data) {
 function program2(depth0,data) {
   
   var buffer = '';
-  data.buffer.push("\r\n\r\n");
+  data.buffer.push(" \r\n\r\n");
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "App.TeamplayersitemView", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
   data.buffer.push("\r\n\r\n");
   return buffer;
