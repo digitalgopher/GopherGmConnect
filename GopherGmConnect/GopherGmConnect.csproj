@@ -210,12 +210,32 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\flags\AUT.png" />
+    <Content Include="Content\images\flags\BLR.png" />
+    <Content Include="Content\images\flags\CAN.png" />
+    <Content Include="Content\images\flags\CRO.png" />
+    <Content Include="Content\images\flags\CZE.png" />
+    <Content Include="Content\images\flags\FIN.png" />
+    <Content Include="Content\images\flags\FRA.png" />
+    <Content Include="Content\images\flags\GER.png" />
+    <Content Include="Content\images\flags\LAT.png" />
+    <Content Include="Content\images\flags\NED.png" />
+    <Content Include="Content\images\flags\NOR.png" />
+    <Content Include="Content\images\flags\RUS.png" />
+    <Content Include="Content\images\flags\SLO.png" />
+    <Content Include="Content\images\flags\SUI.png" />
+    <Content Include="Content\images\flags\SVK.png" />
+    <Content Include="Content\images\flags\SWE.png" />
+    <Content Include="Content\images\flags\USA.png" />
     <Content Include="Scripts\ember\components\component-app-modal.js" />
     <Content Include="Scripts\ember\components\component-player-listitemrating.js" />
     <Content Include="Scripts\ember\components\component-player-listitemstat.js" />
     <Content Include="Scripts\ember\components\component-team-calendar.js" />
     <Content Include="Scripts\ember\controllers\controller-modal.js" />
+    <Content Include="Scripts\ember\controllers\controller-PlayerStats.js" />
+    <Content Include="Scripts\ember\helpers\ember-cloaking.js" />
     <Content Include="Scripts\ember\helpers\helper-RankSuffix.js" />
+    <Content Include="Scripts\ember\routes\route-PlayerStats.js" />
     <Content Include="Scripts\ember\templates\components\app-modal.hbs" />
     <Content Include="Scripts\ember\controllers\controller-TeamPlayers.js" />
     <Content Include="Scripts\ember\controllers\controller-TeamStats.js" />
@@ -373,7 +393,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Scripts\ember\templates\components\app-loader.hbs" />
-    <Content Include="Scripts\ember\templates\player.hbs" />
     <Content Include="Scripts\ember\templates\components\team-calendar.hbs" />
     <Content Include="Scripts\ember\templates\components\player-search.hbs" />
     <Content Include="Scripts\Contracts.js" />
@@ -440,6 +459,7 @@
     <Content Include="Scripts\ember\views\view-Schedule.js" />
     <Content Include="Scripts\ember\views\view-Team.js" />
     <Content Include="Scripts\ember\views\view-TeamPlayers.js" />
+    <Content Include="Scripts\ember\views\view-TeamPlayersItem.js" />
     <Content Include="Scripts\ember\views\view-TeamStats.js" />
     <Content Include="Scripts\ember\views\view-trade.js" />
     <Content Include="Scripts\ember\views\view-tradeRosterListItem.js" />
@@ -447,6 +467,10 @@
     <Content Include="Scripts\ember\templates\team\stats.hbs" />
     <Content Include="Scripts\ember\templates\team\players.hbs" />
     <Content Include="Scripts\ember\templates\modal.hbs" />
+    <Content Include="Scripts\ember\templates\player\stats.hbs" />
+    <Content Include="Scripts\ember\templates\player\ratings.hbs" />
+    <Content Include="Scripts\ember\templates\player.hbs" />
+    <Content Include="Scripts\ember\templates\teamplayersitem.hbs" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />

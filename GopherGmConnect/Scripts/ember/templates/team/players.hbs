@@ -1,46 +1,78 @@
 ﻿
 
-<button {{action 'openModal' 'modal'}} class="button">Sort Players</button>
+<button {{action 'openModal' 'modal' }} class="button">Sort Players</button>
 
-{{#group}}
-{{#each itemController="player" groupedRows=true}}
-<div class="row roster-player-row">
-    <div class="small-2 columns player-image-list">
-        <div class="circle-image" style="background-image: url('{{unbound imageUrl}}')"></div>
+<button {{action 'toggleView' }}>Switch View</button>
 
-    </div>
-    <div class="small-8 columns">
-        <div class="row">
-            <div class="small-12 columns player-name">
-                {{unbound displayStat}} {{unbound firstName}}  {{unbound lastName}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 columns">
-                <div class="progress">
-                    <span class="meter" style="width: {{unbound tradeValuePercent}}%"></span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 columns potentialColor">
-                {{#each potentialStars}}
-                <i {{bind-attr class=":fa isFullStar:fa-star:fa-star-half-o color" }}></i>
-                {{/each}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 columns salary">
-                {{unbound salaryString}}
-                {{#each salaryYears}}
-                <i class="fa fa-circle-o {{unbound salaryClass}}"></i>
-                {{/each}}
-            </div>
-        </div>
-    </div>
-    <div class="small-2 columns link-arrow">
-        {{#link-to 'player' this}}<i class="fa fa-chevron-right"></i>{{/link-to}}
-    </div>
-</div>
+{{#if showBasicInfo}}
+
+{{#each}}
+
+{{view App.TeamplayersitemView}}
+
 {{/each}}
-{{/group}}
+
+{{/if}}
+
+
+
+{{#if showStats}}
+	{{#each forwardLines}}
+<div class="row">
+		{{#each itemController="player"}}
+			<div class="small-12 medium-4 columns">
+				<span class="overall-box">
+					{{unbound overall}}
+				</span>
+				<span class="first-name">
+					{{unbound lastName}}
+				</span>
+				<span>
+					{{unbound linePosition}}
+				</span>
+				<div class="star-container">
+				{{#each potentialStars}}
+					<i class="fa {{unbound starClass}} {{unbound color}}"></i>
+				{{/each}}
+					</div>
+
+				<div class="small-progress">
+					<span class="value-meter" style="width: {{unbound tradeValuePercent}}%"></span>
+				</div>
+			</div>			
+		{{/each}}
+	</div>
+	{{/each}}
+
+
+
+{{#each controllers.team.dpairs}}
+<div class="row">
+		{{#each itemController="player"}}
+			<div class="small-6 columns">
+				<span class="overall-box">
+					{{unbound overall}}
+				</span>
+				<span class="first-name">
+					{{unbound lastName}}
+				</span>
+				<span>
+					{{unbound linePosition}}
+				</span>
+					<div class="star-container">
+				{{#each potentialStars}}
+					<i class="fa {{unbound starClass}} {{unbound color}}"></i>
+				{{/each}}
+					</div>
+
+
+				<div class="small-progress">
+					<span class="value-meter" style="width: {{unbound tradeValuePercent}}%"></span>
+				</div>
+			</div>			
+		{{/each}}
+	</div>
+	{{/each}}
+{{/if}}
+
+

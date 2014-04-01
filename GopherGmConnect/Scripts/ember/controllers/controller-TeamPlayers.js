@@ -1,10 +1,16 @@
 ﻿App.TeamPlayersController = Ember.ArrayController.extend({
+    needs: ['team'],
     sortProperties: ['overall'],
     sortAscending: false,
     itemController: 'player',
+    showUnsigned: false,
+    showStats: true,
+    showBasicInfo: false,
+    forwardLines: Ember.computed.oneWay('controllers.team.forwardLines'),
 
     goalies: Ember.computed.filterBy('arrangedContent', 'isGoalie', true),
-    //defence: Ember.computed.filterBy('arrangedContent', 'isDefence', true),
+    defence: Ember.computed.filterBy('arrangedContent', 'isDefence', true),
+    forwards: Ember.computed.filterBy('arrangedContent', 'isForward', true),
 
     propertySort: function () {
         var self = this;
@@ -36,5 +42,13 @@
         sortByProperty: function (property) {
             this.set('currentSortProperty', property);
         },
+
+        toggleView: function () {
+            this.toggleProperty('showStats');
+            this.toggleProperty('showBasicInfo');
+        },
+
+
+
     }
 });

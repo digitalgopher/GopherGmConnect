@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace GopherGmConnect.Models
 {
@@ -46,5 +48,50 @@ namespace GopherGmConnect.Models
         public double SavePercentage { get; set; }
         public int Shutouts { get; set; }
 
+        public PlayerStats()
+        {
+            
+        }
+        public PlayerStats(JArray statsObject, bool isSkater)
+        {
+            /*SKATER: "fn", "ln", "pid", "p", "gp","g", 5
+           "a", "pts", "pim", "pm", "ppg",10
+           "shg", "gwg", "gtg", "s", "sp",15
+           "fow", "fot", "fop", "h", "ga",20
+           "ta", "m"*/
+
+            /* GOALIE"fn", "ln", "pid",
+            "p", "gp", "w",
+            "l", "so", "gaa",
+            "ga","sp",  "sa",
+            "m", "pim","g",
+            "a"*/
+
+
+            var statArray = statsObject.ToList();
+            if (isSkater)
+            {
+                GamesPlayed = statArray[4].ToObject<int>();
+                FaceoffsTaken = statArray[17].ToObject<int>();
+                Assists = statArray[6].ToObject<int>();
+                Goals = statArray[5].ToObject<int>();
+                Minutes = Math.Round(statArray[22].ToObject<double>() / 60, 0);
+                PlusMinus = statArray[9].ToObject<int>();
+                PowerPlayGoals = statArray[10].ToObject<int>();
+                FaceoffPercentage = Math.Round(statArray[18].Value<double>() * 100, 0);
+                ShootingPercentage = Math.Round(statArray[15].Value<double>() * 100, 0);
+            }
+            else
+            {
+                GamesPlayed = statArray[4].ToObject<int>();
+                Wins = statArray[5].ToObject<int>();
+                Shutouts = statArray[7].ToObject<int>();
+                SavePercentage = statArray[10].ToObject<double>();
+                ShotsAgainst = statArray[11].ToObject<int>();
+                GoalsAgainst = statArray[9].ToObject<int>();
+                Losses = statArray[6].ToObject<int>();
+                GoalsAgainstAverage = statArray[8].ToObject<double>();
+            }
+        }
     }
 }

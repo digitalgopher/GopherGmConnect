@@ -1,28 +1,14 @@
 ﻿//Ember.STRUCTURED_PROFILE = true;
 
-Ember.subscribe('render', {
-    before: function (name, start, payload) {
-        return start;
-    },
-    after: function (name, end, payload, start) {
-        var duration = Math.round(end - start);
-        var template = payload.template || '';
-        //console.log(Ember.inspect(payload));
-        //var title;
-        var view = payload.object.toString();
-        console.log('rendered', template, view, 'took', duration, 'ms');
-    }
-});
-
-
 
 
 
 var App = Ember.Application.create({
-    LOG_TRANSITIONS: true,
-    LOG_TRANSITIONS_INTERNAL: true,
-    LOG_VIEW_LOOKUPS: true,
-    LOG_ACTIVE_GENERATION: true
+    //LOG_TRANSITIONS: true,
+    ////LOG_TRANSITIONS_INTERNAL: true,
+    //LOG_VIEW_LOOKUPS: true,
+    //LOG_ACTIVE_GENERATION: true,
+    LOG_BINDINGS: true,
 });
 
 
@@ -68,27 +54,22 @@ Ember.Application.initializer({
                     results.teams.findBy('id', _team.id).setProperties(_team);
                 })
 
-                NProgress.set(0.5);
+                NProgress.set(0.7);
 
-                var teamsController = App.TeamsController.create();
-                teamsController.setProperties({
-                    content: results.teams
-                });
+                //var teamsController = App.TeamsController.create();
+                //teamsController.setProperties({
+                //    content: results.teams
+                //});
 
 
 
                 App.ApplicationController.reopen({
-                    teams: teamsController,
+                    teams: results.teams,
                     pushdate: results.pushdate,
                     teamsIsLoaded: true,
                 });
 
-                console.log('app set up ' + new Date());
-                $('#initial-load').slideUp(function () {
-                    this.remove();
-                });
-
-                NProgress.done();
+             
                 App.advanceReadiness();
 
             });
@@ -116,12 +97,22 @@ Ember.Application.initializer({
     }
 });
 
+
+App.ready = function () {
+    console.log('app set up ' + new Date());
+    $('#initial-load').slideUp(function () {
+        this.remove();
+    });
+
+    NProgress.done();
+}
+
 //App.register('controller:roster', App.RosterController, { singleton: false });
 
 
-$('body').on('click', '.teamTabs a', function (e) {
-    e.preventDefault();
-    $(this).tab('show');
-    $('#calendar').fullCalendar('render');
-});
+//$('body').on('click', '.teamTabs a', function (e) {
+//    e.preventDefault();
+//    $(this).tab('show');
+//    $('#calendar').fullCalendar('render');
+//});
 

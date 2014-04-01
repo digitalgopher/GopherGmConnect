@@ -3,6 +3,7 @@
     needs: ['application'],
  //   allTeams: Ember.computed.oneWay('controllers.application.teams'),
     displayStatValue: 'position',
+    showDetails: false,
     displayStat: function () {
         var stat = this.get('displayStatValue');
         return this.get(stat);
@@ -18,16 +19,23 @@
             var star = {
                 color: color,
                 isFullStar: true,
+                starClass: 'fa-star'
             }
             starArray.push(star);
         }
         if (isHalfStar) {
             starArray[totalStars - 1].isFullStar = false;
+            starArray[totalStars - 1].starClass = 'fa-star-half';
         }
         return starArray;
     }.property(),
 
-
+    contractTypeString: function (){
+        if (this.get('isTwoWay')) {
+            return 'rfa';
+        }
+        return 'ufa';
+    }.property(),
     salaryYears: function () {
         var years = Em.A();
         var yearsLeft = this.get('yearsLeft');
@@ -111,10 +119,13 @@
             return "Two";
         }
         return "One";
-    }.property("isTwoWay")
+    }.property("isTwoWay"),
 
 
-
+    flagImage: function () {
+        var country = this.get('country');
+        return '/content/images/flags/' + country + '.png';
+    }.property('country'),
 
 
 

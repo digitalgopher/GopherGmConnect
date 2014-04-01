@@ -11,11 +11,17 @@ html {
 body {
     /*background-color: #070E1A;*/
     color: @baseFontColor;
-    background-color: #F5F6F8;
+    background-color: @background-color;
+    font-family: @siteFont;
+    /*background: url("http://i.imgur.com/kefwgCE.jpg") no-repeat center center fixed;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;*/
 }
 
-@background-color: #F5F6F8;
-@font-color: #303A53;
+@background-color: #1c1d22;
+
 
 @green: #8cc474;
 @red: #e46f61;
@@ -26,10 +32,10 @@ body {
 @darkblue: #6270AB;
 @linghtgreen: #6CC131;
 
-@baseFontColor: #333;
+@baseFontColor: rgba(240, 240, 240, .9);
 @secondaryFontColor: #333;
 @textShadow: 0 2px 0 rgba(100,100,100,.4);
-@siteFont: "Oswald";
+@siteFont: "Roboto";
 @lightBorder: rgba(100,100,100,.4);
 
 
@@ -171,9 +177,10 @@ body {
     }
     .logo-box {
         text-align: center;
-        background-color: lighten(@myTeamColor, 10%);
-        padding: 3px 0;
+        background-color: darken(@myTeamColor, 10%);
+        padding: 6px 0;
         margin: 0;
+        border-bottom: 1px solid @myTeamColor;
     }
 
     .team-name-box {
@@ -206,8 +213,9 @@ body {
 }
 
 .team-stat() {
-    text-align: right;
+    text-align: left;
     line-height: 3.2;
+    padding-left: 4px;
 }
 
 .active () {
@@ -216,7 +224,7 @@ body {
 
 
 .team-name-box () {
-    padding: 0;
+    padding: 1px;
 
     h1 {
 
@@ -262,15 +270,17 @@ body {
 
 
 .stats-box {
-    background-color: #fff;
+    background-color: @baseFontColor;
     border: 1px solid #e5e5e5;
     border-radius: 2px;
-    font-family: Oswald;
+    /*font-family: Oswald;*/
     margin-bottom: 20px;
     text-align: center;
 
     .title {
-        font: 300 20px Oswald,arial,sans-serif;
+        /*font: 300 20px Oswald,arial,sans-serif;*/
+        font-weight: 300;
+        font-size: 20px;
         display: block;
         margin-left: 10px;
     }
@@ -444,7 +454,7 @@ body {
         margin: 0;
         padding: 0;
         display: inline-block;
-        font-family: "Oswald";
+        /*font-family: "Oswald";*/
         color: @baseFontColor;
 
         &.city-name {
@@ -469,7 +479,7 @@ body {
 .value-label {
     width: 100%;
     font-size: 1.4em;
-    font-family: "Oswald";
+    /*font-family: "Oswald";*/
     font-weight: 100;
     padding-bottom: 5px;
 }
@@ -512,7 +522,7 @@ body {
 
 .team-summary-box {
     text-align: center;
-    font-family: "Oswald";
+    /*font-family: "Oswald";*/
 
     .team-stats-box {
         .number {
@@ -520,7 +530,7 @@ body {
                 font-size: 1.5em; 
                 font-weight: 400px;
             }
-            color: rgba(0, 0, 0, 0.5);
+            color: @baseFontColor;
             width: 100%;
             font-weight: 900;
             font-size: 2.2em;
@@ -672,11 +682,12 @@ ul[data-pie-id] li:nth-child(6) {
 
 .team-number {
     line-height: 2rem;
-    font-weight: 700;
+    font-weight: 300;
+    color: @baseFontColor;
 }
 
 .team-number-label {
-    font-family: "Oswald";
+    /*font-family: "Oswald";*/
     font-size: 1rem;
     text-align: center;
     font-weight: 400;
@@ -713,13 +724,80 @@ ul[data-pie-id] li:nth-child(6) {
     padding: 0;
 }
 
+.small-progress {
+    height: 1px;
+    background-color: rgba(50, 50, 50, 0.7);
+    content: '';
+    width: 100%;
+    margin-bottom: 0.33333333rem;
+    margin-top: 2px;
+    .value-meter {
+        display: block;
+        height: 100%;
+        background-color: @blue;
+    }
+}
+.star-container {
+    .four-colors();
+    font-size: .7rem;
+    margin: 0;
+    padding: 0;
+}
+
+.star-dash {
+    width: 18%;
+    padding: 0;
+    content: '';
+    height: 1px;
+    background-color: rgba(50, 50, 50, 0.7);
+    margin-bottom: 0.11111rem;
+    display: inline-block;
+    .full-star {
+        .base-star-dash();
+        .four-colors();
+        width: 100%;
+    }
+    .half-star {
+        width: 50%;
+        .base-star-dash();
+        .four-colors();
+    }
+}
+
+.base-star-dash() {
+    height: 100%;
+    display: block;
+}
+
+.four-colors() {
+    .green {
+        color: @green;
+    }
+    .yellow {
+        color: @yellow;
+    }
+    .white {
+        color: @baseFontColor;
+    }
+    .red {
+        color: @red;
+    }
+}
 
 .roster-player-row {
-    font-family: "Oswald";
+    /*font-family: "Oswald";*/
     line-height: 2.8rem;
     font-size: 1.2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
+    .flag-container {
+        line-height: 0;
+        padding-right: 0.2rem;
+        margin: 0 0 3px 0;
 
+    }
+    .value-container {
+        padding-left: 0;
+    }
     .progress {
         margin: 0;
         padding: 0; 
@@ -728,8 +806,17 @@ ul[data-pie-id] li:nth-child(6) {
     }
 
     .player-name {
-        font-size: 1rem;
+        font-size: 1.2rem;
         line-height: 1.7rem;
+        font-weight: 300;
+        
+        .first-name {
+            font-size: 1rem;
+            letter-spacing: 0px;
+        }
+        .last-name {
+            font-weight: 400;
+        }
     }
 
     .columns {
@@ -755,6 +842,20 @@ ul[data-pie-id] li:nth-child(6) {
 }
 
 
+.rating() {
+    line-height: 1.8rem;
+    font-size: 1.5rem;
+}
+
+.rating-label {
+    .rating();
+}
+
+.rating-number {
+    .rating();
+}
+
+
 .chart-container {
     .chart-main {
         .chart-main();
@@ -773,7 +874,7 @@ ul[data-pie-id] li:nth-child(6) {
 .block-stat() {
     font-weight: 900;
     font-size: 1.7rem;
-    background-color: @font-color;
+    background-color: @baseFontColor;
     color: @background-color;
     text-align: center;
     }
@@ -930,7 +1031,7 @@ ul[data-pie-id] li:nth-child(6) {
 
 .player-profile (@myTeam) {
     text-align: left;
-    font-family: "Oswald";
+    /*font-family: "Oswald";*/
     padding: 4px 0;
     color: white;
     -webkit-text-shadow: 0 2px 0 rgba(0,0,0,.2);
@@ -969,7 +1070,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-minibar (@teamColor) {
     background-color: @teamColor;
     padding: 10px 0;
-    font-family: "Oswald";
+    /*font-family: "Oswald";*/
     font-size: 1.5em;
     color: #fff;
     -webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
@@ -1038,7 +1139,7 @@ ul[data-pie-id] li:nth-child(6) {
         color: #fff;
 
         &.small-name {
-            font-family: "Oswald";
+            /*font-family: "Oswald";*/
             font-weight: 100;
 
             .big-name {
@@ -1048,7 +1149,7 @@ ul[data-pie-id] li:nth-child(6) {
     }
 
     p {
-        font-family: "Oswald";
+        /*font-family: "Oswald";*/
         font-weight: 100;
         line-height: 1.5;
         font-size: 1.4em;

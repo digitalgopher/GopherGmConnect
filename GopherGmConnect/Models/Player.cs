@@ -43,31 +43,31 @@ namespace GopherGmConnect.Models
                 switch ((int)_potential)
                 {
                     case 0:
-                return 5;
+                        return 5;
                     case 1:
-                return 4.5;
+                        return 4.5;
                     case 2:
-                return 4;
+                        return 4;
                     case 3:
-                return 3.5;
+                        return 3.5;
                     case 4:
-                return 3;
+                        return 3;
                     case 5:
-                return 2.5;
+                        return 2.5;
                     case 6:
-                return 2;
+                        return 2;
                     case 7:
-                return 1.5;
+                        return 1.5;
                     case 8:
-                return 1;
+                        return 1;
                     default:
                         return 9;
                 }
             }
-            set 
+            set
             {
                 PotentialEnum = (int)value;
-                _potential = value; 
+                _potential = value;
             }
         }
         public string PotentialColorString { get; set; }
@@ -79,14 +79,54 @@ namespace GopherGmConnect.Models
                 return _potentialColor;
             }
             set
-            { 
+            {
                 PotentialColorString = GetPotentialColor(value);
                 _potentialColor = FixPotentialColorNumber(value);
             }
         }
 
-        public int CountryCode { get; set; }
-
+        private int _countryCode { get; set; }
+        public string Country
+        {
+            get
+            {
+                string cntry = "";
+                switch (_countryCode)
+                {
+                    case 0:
+                        cntry = "CAN";
+                        break;
+                    case 14:
+                        cntry = "USA";
+                        break;
+                    case 69:
+                        cntry = "SWE";
+                        break;
+                    case 82:
+                        cntry = "CZE";
+                        break;
+                    case 76:
+                        cntry = "RUS";
+                        break;
+                    case 95:
+                        cntry = "SVK";
+                        break;
+                    case 85:
+                        cntry = "GER";
+                        break;
+                    case 86:
+                        cntry = "NOR";
+                        break;
+                    case 96:
+                        cntry = "SLO";
+                        break;
+                    default:
+                        cntry = "XXX";
+                        break;
+                }
+                return cntry;
+            }
+        }
         public bool IsInjured { get; set; }
         public int InjuryType { get; set; }
         public int InjuryLength { get; set; }
@@ -109,7 +149,7 @@ namespace GopherGmConnect.Models
         {
             get
             {
-                return _position; 
+                return _position;
             }
             set
             {
@@ -185,12 +225,13 @@ namespace GopherGmConnect.Models
         }
 
         public int SalaryReadable { get; private set; }
-        public int YearsLeft {get; set;}
-        public bool IsTwoWay {get; set;}
-        public int TradeValue {get; set;}
+        public int YearsLeft { get; set; }
+        public bool IsTwoWay { get; set; }
+        public int TradeValue { get; set; }
         public bool IsSigned { get; set; }
-        public int ContractSigned {get; set; }
-        public int PlayerType { get; set; }
+        public int ContractSigned { get; set; }
+
+        //public int PlayerType { get; set; }
 
         private PlayerRatings _playerRatings { get; set; }
         public PlayerRatings PlayerRatings
@@ -226,7 +267,7 @@ namespace GopherGmConnect.Models
             Team = Convert.ToInt32(playerInfo.GetValue("proTeamID").ToString());
             TeamId = Convert.ToInt32(playerInfo.GetValue("proTeamID").ToString());
             Jersey = Convert.ToInt32(playerInfo.GetValue("jerseyorg").ToString());
-            CountryCode = Convert.ToInt32(playerInfo.GetValue("intlCountry").ToString());
+            _countryCode = Convert.ToInt32(playerInfo.GetValue("intlCountry").ToString());
 
             var artid = Convert.ToInt32(playerInfo.GetValue("playerArtID").ToString());
             ImageUrl = "http://cdn.content.easports.com/nhlhm_assets/assets/ios/14/GMC/0.0/playerheads/p" + artid + "@2x.png";
@@ -258,7 +299,7 @@ namespace GopherGmConnect.Models
             PopulatePlayerRatings(mobilePlayerInfo);
         }
 
-        public Player (JObject mobilePlayerInfo)
+        public Player(JObject mobilePlayerInfo)
         {
             _playerRatings = new PlayerRatings();
             _playerStats = new List<Models.PlayerStats>();
@@ -283,6 +324,13 @@ namespace GopherGmConnect.Models
             GetPlayerStats(mobilePlayerInfo);
             PopulatePlayerRatings(mobilePlayerInfo);
         }
+
+        //public Player(JObject basicPlayerInfo)
+        //{
+
+        //}
+
+
 
         private void PopulatePlayerRatings(JObject mobilePlayerInfo)
         {
@@ -419,7 +467,7 @@ namespace GopherGmConnect.Models
                 {
                     playerstats.Goals = Convert.ToInt32(stats.GetValue("g").ToString());
                     playerstats.Assists = Convert.ToInt32(stats.GetValue("a").ToString());
-                    
+
                 }
                 else
                 {
@@ -430,11 +478,26 @@ namespace GopherGmConnect.Models
                 }
                 playerstats.Year = Convert.ToInt32(stats.GetValue("y").ToString());
                 playerstats.GamesPlayed = Convert.ToInt32(stats.GetValue("gp").ToString());
-                
+
                 _playerStats.Add(playerstats);
             }
         }
 
+        public static int FixContractNumber(int contractEnum)
+        {
+            if (contractEnum == 0)
+            {
+                return 0;
+            }
+            var count = 105;
+            var salary = 525000;
+            while (count != contractEnum)
+            {
+                salary += 5000;
+                count++;
+            }
+            return salary;
+        }
         private int GetProperContract(int contractEnum)
         {
             if (contractEnum == 0)
@@ -454,23 +517,24 @@ namespace GopherGmConnect.Models
         private string GetPotentialColor(int potentialColorEnum)
         {
             var color = "";
-            switch(potentialColorEnum) {
-                case 0: 
+            switch (potentialColorEnum)
+            {
+                case 0:
                     color = "green";
                     break;
-                case 1: 
+                case 1:
                     color = "yellow";
                     break;
-                case 2: 
+                case 2:
                     color = "red";
                     break;
-                case 3: 
+                case 3:
                     color = "red";
                     break;
-                case 4: 
+                case 4:
                     color = "white";
                     break;
-                default: 
+                default:
                     color = "blue";
                     break;
             }

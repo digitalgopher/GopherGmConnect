@@ -1,12 +1,6 @@
 ﻿
 App.Line = Ember.Object.extend({
 
-
-
-
-
-
-
 });
 
 /*

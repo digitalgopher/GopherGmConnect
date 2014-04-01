@@ -1,12 +1,10 @@
-﻿
-App.HomeRoute = Ember.Route.extend({
-
+﻿App.HomeRoute = Ember.Route.extend({
     model: function (params) {
-        //return Em.A();
+        return this.controllerFor('application').get('teams');
     },
     setupController: function (controller, model) {
-        //controller.setProperties({
-        //    teams: controller.get('appteams'),
-        //})
+        controller.set('isLoaded', false);
+        controller.set('content', this.controllerFor('application').get('teams'));
+        controller.set('isLoaded', true);
     }
 });

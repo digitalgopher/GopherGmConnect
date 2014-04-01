@@ -4,96 +4,96 @@
 
 
   <div class="row team-row-basic">
-    <div {{action "filterConference" "3"}} {{bind-attr class=":col-xs-2 :col-sm-1 :filterButton allFilter:active"}}>
+    <div {{action "filterConference" "3"}} {{bind-attr class=":small-2 :columns :filterButton allFilter:active"}}>
       <span>All</span>
     </div>
-    <div {{action "filterConference" "1"}} {{bind-attr class=":col-xs-2 :filterButton westFilter:active"}}>
+    <div {{action "filterConference" "1"}} {{bind-attr class=":small-2 :columns :filterButton westFilter:active"}}>
       <span>West</span>
 
     </div>
-    <div {{action "filterConference" "2"}} {{bind-attr class=":col-xs-2 :filterButton eastFilter:active"}}>
+    <div {{action "filterConference" "2"}} {{bind-attr class=":small-2 :columns :filterButton eastFilter:active"}}>
       <span>East</span>
     </div>
 
 
 
     
-    <div {{bind-attr class=":col-xs-1 :filterButton pointsSort:active"}} {{action "sort" "points"}}>
+    <div {{bind-attr class=":small-1 :columns :filterButton pointsSort:active"}} {{action "sort" "points"}}>
       P
     </div>
-    <div {{bind-attr class=":col-xs-1 :filterButton winsSort:active"}} {{action "sort" "wins"}}>
+    <div {{bind-attr class=":small-1 :columns :filterButton winsSort:active"}} {{action "sort" "wins"}}>
       W
     </div>
-    <div {{bind-attr class=":col-xs-1 :filterButton lossesSort:active"}} {{action "sort" "losses"}}>
+    <div {{bind-attr class=":small-1 :columns :filterButton lossesSort:active"}} {{action "sort" "losses"}}>
       L
     </div>
 
 
     
-    <div {{bind-attr class=":col-xs-1 :filterButton overtimeLossesSort:active"}} {{action "sort" "overtimeLosses"}}>
+    <div {{bind-attr class=":small-1 :columns :filterButton overtimeLossesSort:active"}} {{action "sort" "overtimeLosses"}}>
       OTL
     </div>
 
-    <div {{bind-attr class=":col-xs-1 :filterButton gamesPlayedSort:active"}} {{action "sort" "gamesPlayed"}}>
+    <div {{bind-attr class=":small-1 :columns :filterButton gamesPlayedSort:active"}} {{action "sort" "gamesPlayed"}}>
       GP
     </div>
 
-    <div class="col-xs-1 hidden-xs filterButton">
+    <div class="small-1 columns hide-for-small-only filterButton">
       Last 10
     </div>
   </div>
-  {{#each team in teams}}
-  RANK:{{team.rankConference}}
-  <div {{bind-attr class=":row :team-row team.idWithUnderscore"}}>
+  {{#if isLoaded}}
+  {{#each teams}}
+  <div {{bind-attr class=":row :team-row idWithUnderscore"}}>
     
-    <div class="col-xs-2 col-sm-1 logo-box">
-      {{#link-to "team.stats" team}}
-      <img style="width: 39px; height: 39px;"{{bind-attr src="team.imageUrl"}}></img>
+    <div class="small-2 columns logo-box">
+      {{#link-to "team.stats" this}}
+      <img style="width: 39px; height: 39px;" src="{{unbound imageUrl}}"></img>
       {{/link-to}}
     </div>
 
-    <div class="col-xs-4 team-name-box">
-      {{#link-to "team.stats" team}}
-      <h1>{{team.twitter}}</h1>
-      <p>{{team.teamname}}</p>
+    <div class="small-4 columns team-name-box">
+      {{#link-to "team.stats" this}}
+      <h1>{{unbound twitter}}</h1>
+      <p>{{unbound teamname}}</p>
       {{/link-to}}
     </div>
 
-    <div {{bind-attr class=":col-xs-1 :team-stat pointsSort:active"}}>
+    <div {{bind-attr class=":small-1 :columns :team-stat controllers.home.pointsSort:active"}}>
       <span>
-        {{team.points}}
+        {{unbound points}}
       </span>
     </div>
 
-    <div {{bind-attr class=":col-xs-1 :team-stat winsSort:active"}}>
+    <div {{bind-attr class=":small-1 :columns :team-stat controllers.home.winsSort:active"}}>
       <span>
-        {{team.wins}}
+        {{unbound wins}}
       </span>
     </div>
 
 
 
-    <div {{bind-attr class=":col-xs-1 :team-stat lossesSort:active"}}>
+    <div {{bind-attr class=":small-1 :columns :team-stat controllers.home.lossesSort:active"}}>
       <span>
-        {{team.losses}}
-      </span>
-    </div>
-    
-    <div {{bind-attr class=":col-xs-1 :team-stat overtimeLossesSort:active"}}>
-      <span>
-        {{team.overtimeLosses}}
-      </span>
-    </div>
-
-    <div {{bind-attr class=":col-xs-1 :team-stat gamesPlayedSort:active"}}>
-      <span>
-        {{team.gamesPlayed}}
+        {{unbound losses}}
       </span>
     </div>
     
-    <div class="col-xs-1 hidden-xs team-stat">
+    <div {{bind-attr class=":small-1 :columns :team-stat controllers.home.overtimeLossesSort:active"}}>
       <span>
-        {{team.lastTenRecord}}
+        {{unbound overtimeLosses}}
+      </span>
+    </div>
+
+    <div {{bind-attr class=":small-1 :columns :team-stat controllers.home.gamesPlayedSort:active"}}>
+      <span>
+        {{unbound gamesPlayed}}
+      </span>
+    </div>
+    
+    <div class="small-1 columns hide-for-small-only team-stat">
+      <span>
+        {{unbound lastTenRecord}}
       </span>
     </div>
 
@@ -106,5 +106,5 @@
   </div>
 
   {{/each}}
-
+{{/if}}
 </div>

@@ -1,33 +1,31 @@
 ﻿
 App.Player = Ember.Object.extend({
-    playerIsLoaded: false,
-
 });
 
 App.Player.reopenClass({
     find: function (pid) {
-        var yearlyStats = [];
-        var playerRates = Em.A();
-        var player = App.Player.create();
+        //var yearlyStats = [];
+        //var playerRates = Em.A();
+        //var player = App.Player.create();
         var data = {
             id: pid
         };
         return $.getJSON("/api/gopher/players", data).then(function (p) {
-            player.setProperties(p);
-            p.playerStats.forEach(function (stat) {
-                var playerStat = App.Yearlystats.create();
-                playerStat.setProperties(stat);
-                yearlyStats.pushObject(playerStat);
-            });
-            for (var r in p.playerRatings) {
-                if (p.playerRatings.hasOwnProperty(r)) {
-                    var playerRate = App.Playerrating.create({ name: r, rating: p.playerRatings[r] });
-                    playerRate.setProperties(r);
-                    playerRates.pushObject(playerRate);
-                }
-            }
-            player.set('playerRates', playerRates);
-            return player;
+            //player.setProperties(p);
+            //p.playerStats.forEach(function (stat) {
+            //    var playerStat = App.Yearlystats.create();
+            //    playerStat.setProperties(stat);
+            //    yearlyStats.pushObject(playerStat);
+            //});
+            //for (var r in p.playerRatings) {
+            //    if (p.playerRatings.hasOwnProperty(r)) {
+            //        var playerRate = App.Playerrating.create({ name: r, rating: p.playerRatings[r] });
+            //        playerRate.setProperties(r);
+            //        playerRates.pushObject(playerRate);
+            //    }
+            //}
+            //player.set('playerRates', playerRates);
+            return p;
         });       
     },
     findAll: function (teamId) {

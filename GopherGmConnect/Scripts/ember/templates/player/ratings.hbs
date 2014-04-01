@@ -1,0 +1,180 @@
+﻿
+
+{{#if isGoalie}}
+
+<div class="row">
+  <div class="small-12 columns rating-header">
+    Goalie Ratings
+  </div>
+</div>
+<div class="row player-ratings-row">
+  <div class="small-8 medium-4 columns rating-label">Aggressiveness</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.aggressiveness}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Vision</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.vision}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Poke Check</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.pokeCheck}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">ShotRecovery</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.shotRecovery}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">ReboundControl</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.reboundControl}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">PuckPlayingFreq</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.puckPlayingFreq}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">StickLow</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.stickHigh}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">StickHigh</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.stickHigh}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">GloveLow</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.gloveLow}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">GloveHigh</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.gloveHigh}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Angles</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.angles}}</div>
+
+
+  <div class="small-8 medium-4 columns rating-label">FiveHole</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.fiveHole}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Breakaways</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.breakaways}}</div>
+
+
+  <div class="small-8 medium-4 columns rating-label">Puck Control</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.puckControl}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Passing</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.passing}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Aggressiveness</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.aggressiveness}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Speed</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.speed}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Agility</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.agility}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Endurance</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.endurance}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Durability</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.durability}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Poise</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.poise}}</div>
+</div>
+{{else}}
+
+
+<div class="row">
+  <div class="small-12 columns rating-header">
+    Offensive
+  </div>
+</div>
+
+<div class="row player-ratings-row">
+  <div class="small-8 medium-4 columns rating-label">Wrist Shot Power</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.wristShotPower}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Wrist Shot Accuracy</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.wristShotAccuracy}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Slap Shot Power</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.slapShotPower}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Slap Shot Accuracy</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.slapShotAccuracy}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Puck Control</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.puckControl}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Offensive Awareness</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.offAwareness}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Hand Eye</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.handEye}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Deking</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.deking}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Passing</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.passing}}</div>
+</div>
+
+
+<div class="row">
+  <div class="small-12 columns rating-header">
+    Defensive
+  </div>
+</div>
+<div class="row player-ratings-row">
+
+  <div class="small-8 medium-4 columns rating-label">Faceoffs</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.faceoffs}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Discipline</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.discipline}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Defensive Awareness</div>
+  <div class="small-4 medium-2 columns rating-number"> {{stat playerRatings.defAwareness}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Body Checking</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.bodyChecking}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Fighting</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.fighting}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Shot Blocking</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.shotBlocking}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Stick Checking</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.stickChecking}}</div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns rating-header">
+    Athletic
+  </div>
+</div>
+
+<div class="row player-ratings-row">
+  <div class="small-8 medium-4 columns rating-label">Speed</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.speed}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Agility</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.agility}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Endurance</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.endurance}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Durability</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.durability}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Acceleration</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.acceleration}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Strength</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.strength}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Poise</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.poise}}</div>
+
+  <div class="small-8 medium-4 columns rating-label">Balance</div>
+  <div class="small-4 medium-2 columns rating-number">{{stat playerRatings.balance}}</div>
+</div>
+
+{{/if}}
+
+
+
+

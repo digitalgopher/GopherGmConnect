@@ -19,51 +19,132 @@ namespace GopherGmConnect.Controllers
     public class GopherController : ApiController
     {
 
-
-        private string DownloadFromServer(string url)
+        private string GetValidToken()
         {
-            bool isValidToken = false;
             string token = (string)System.Web.HttpContext.Current.Cache["Token"];
-
-            using (var wb = new WebClient())
+            if (string.IsNullOrEmpty(token))
             {
-                ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
-                if (string.IsNullOrEmpty(token))
+                token = GetEASWToken();
+                System.Web.HttpContext.Current.Cache.Insert("Token", token);
+                System.Web.HttpContext.Current.Cache.Insert("LastUpdated", DateTime.UtcNow);
+            }
+            else
+            {
+                var lastUpdated = (DateTime)System.Web.HttpContext.Current.Cache["LastUpdated"];
+                DateTime now = DateTime.UtcNow;
+                TimeSpan span = now - lastUpdated;
+                if (span.TotalMinutes > 30)
                 {
                     token = GetEASWToken();
                     System.Web.HttpContext.Current.Cache.Insert("Token", token);
                     System.Web.HttpContext.Current.Cache.Insert("LastUpdated", DateTime.UtcNow);
-                    isValidToken = true;
                 }
-                else
-                {
-                    var lastUpdated = (DateTime)System.Web.HttpContext.Current.Cache["LastUpdated"];
-                    DateTime now = DateTime.UtcNow;
-                    TimeSpan span = now - lastUpdated;
-                    if (span.TotalMinutes > 30)
-                    {
-                        token = GetEASWToken();
-                        System.Web.HttpContext.Current.Cache.Insert("Token", token);
-                        System.Web.HttpContext.Current.Cache.Insert("LastUpdated", DateTime.UtcNow);
-                        isValidToken = true;
-                    }
-                    else
-                    {
-                        isValidToken = true;
-                    }
-                }
+            }
+            return token;
+        }
 
-                if (isValidToken)
+        private string DownloadFromServer(string url)
+        {
+            var token = GetValidToken();
+            using (var wb = new WebClient())
+            {
+                ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
+
+                try
                 {
                     wb.Headers.Add(HttpRequestHeader.Cookie, "EASW-Token=" + token);
                     return wb.DownloadString(url);
                 }
+                catch (Exception ex)
+                {
+                    return ex.Message;
+                }
+            }
+        }
+
+
+        private Team[] BuildTestRosterUrlList()
+        {
+            var leagueID = WebConfigurationManager.AppSettings["leagueid"];
+            int[] teamIds = new int[30];
+            Team[] teamArray = new Team[30];
+            Dictionary<string, string> playerUrls = new Dictionary<string, string>();
+            for (int i = 0; i < 30; i++)
+            {
+                var team = new Team();
+                team.id = i.ToString();
+                teamArray[i] = team;
+            }
+            return teamArray;
+        }
+
+
+        private HttpClient GetAsyncClient()
+        {
+            var token = GetValidToken();
+            HttpClientHandler handler = new HttpClientHandler();
+            Cookie cookie = new Cookie();
+            cookie.Name = "EASW-Token";
+            cookie.Value = token;
+            cookie.Domain = "nhl.service.easports.com";
+            handler.CookieContainer.Add(cookie);
+            HttpClient client = new HttpClient(handler);
+            return client;
+        }
+
+        private async Task<List<Team>> DownloadTeamSalaryAndLineupInformation()
+        {
+            var client = GetAsyncClient();
+            var teamList = BuildTestRosterUrlList();
+            IEnumerable<Task<Team>> downloadTasksQuery =
+               from team in teamList select ProcessTeamURL(team, client);
+
+            Task<Team>[] downloadTasks = downloadTasksQuery.ToArray();
+            Team[] teams = await Task.WhenAll(downloadTasks);
+            return teams.ToList();
+        }
+
+        private async Task<Team> ProcessTeamURL(Team team, HttpClient client)
+        {
+            var leagueID = WebConfigurationManager.AppSettings["leagueid"];
+            var fullRosterUrl = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + leagueID + "/team/" + team.id + "/roster/mobile";
+            var mainRosterUrl = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + leagueID + "/team/" + team.id + "/roster";
+            var fullRosterTask = client.GetStringAsync(fullRosterUrl);
+            var mainRosterTask = client.GetStringAsync(mainRosterUrl);
+
+            var fullRosterResult = await fullRosterTask;
+            var mainRosterResult = await mainRosterTask;
+
+            JObject fullRoster = JObject.Parse(fullRosterResult);
+            JObject mainRosterIdList = JObject.Parse(mainRosterResult);
+            var jsonRosterArray = mainRosterIdList.Value<JArray>("playerID").ToObject<List<string>>();
+            team.Lines = ParseLines(mainRosterIdList);
+
+            var players = fullRoster.GetValue("v") as JArray;
+            var salaryMin = 1500000;
+            var teamSalary = 0;
+            foreach (var player in players)
+            {
+                var playerSalary = Player.FixContractNumber(player[5].Value<int>());
+                var playerID = player[0].ToString();
+                bool isOnMainRoster = jsonRosterArray.Contains(playerID);
+                if (isOnMainRoster)
+                {
+                    teamSalary += playerSalary;
+                }
                 else
                 {
-                    throw new Exception("Cant get a valid token for some reason!");
+                    if (player[9].ToString() == "0")
+                    {
+                        if (playerSalary >= salaryMin)
+                        {
+                            teamSalary += playerSalary;
+                        }
+                    }
                 }
-
             }
+            team.SalaryCapSpent = teamSalary;
+            return team;
         }
 
         private Player FetchPlayer(string id, bool fullInfo)
@@ -119,6 +200,149 @@ namespace GopherGmConnect.Controllers
         {
             //var token = GetEASWToken();
             return FetchPlayer(id, true);
+        }
+
+
+        private Dictionary<string, List<string>> ParseLines(JObject lineupObject)
+        {
+            var lineDict = new Dictionary<string, List<string>>();
+
+            //Fowrads
+            var fw1 = new List<string>();
+            fw1.Add(lineupObject.Value<string>("l1lw"));
+            fw1.Add(lineupObject.Value<string>("l1c"));
+            fw1.Add(lineupObject.Value<string>("l1rw"));
+            
+            var fw2 = new List<string>();
+            fw2.Add(lineupObject.Value<string>("l2lw"));
+            fw2.Add(lineupObject.Value<string>("l2c"));
+            fw2.Add(lineupObject.Value<string>("l2rw"));
+
+            var fw3 = new List<string>();
+            fw3.Add(lineupObject.Value<string>("l3lw"));
+            fw3.Add(lineupObject.Value<string>("l3c"));
+            fw3.Add(lineupObject.Value<string>("l3rw"));
+
+            var fw4 = new List<string>();
+            fw4.Add(lineupObject.Value<string>("l4lw"));
+            fw4.Add(lineupObject.Value<string>("l4c"));
+            fw4.Add(lineupObject.Value<string>("l4rw"));
+
+            //D PAIRS
+            var dPair1 = new List<string>();
+            dPair1.Add(lineupObject.Value<string>("l1ld"));
+            dPair1.Add(lineupObject.Value<string>("l1rd"));
+
+            var dPair2 = new List<string>();
+            dPair2.Add(lineupObject.Value<string>("l2ld"));
+            dPair2.Add(lineupObject.Value<string>("l2rd"));
+
+            var dPair3 = new List<string>();
+            dPair3.Add(lineupObject.Value<string>("l3ld"));
+            dPair3.Add(lineupObject.Value<string>("l3rd"));
+
+            var goalies = new List<string>();
+            goalies.Add(lineupObject.Value<string>("g1"));
+            goalies.Add(lineupObject.Value<string>("g2"));
+
+            lineDict.Add("topLine", fw1);
+            lineDict.Add("secondLine", fw2);
+            lineDict.Add("thirdLine", fw3);
+            lineDict.Add("fourthLine", fw4);
+
+            lineDict.Add("topPair", dPair1);
+            lineDict.Add("secondPair", dPair2);
+            lineDict.Add("bottomPair", dPair3);
+
+            lineDict.Add("goalies", goalies);
+
+            return lineDict;
+
+            ////PK 3 Man
+            //var pk31 = new List<string>();
+            //       pk31.Add(lineupObject.Value<string>("pk3_1c"));
+            //       pk31.Add(lineupObject.Value<string>("pk3_1ld"));
+            //       pk31.Add(lineupObject.Value<string>("pk3_1rd"));
+
+
+            //var pk32 = new JObject(
+            //       new JProperty("name", "3Man PK 2"),
+            //       new JProperty("c", lineupObject.Value<string>("pk3_2c")),
+            //       new JProperty("ld", lineupObject.Value<string>("pk3_2ld")),
+            //       new JProperty("rd", lineupObject.Value<string>("pk3_2rd"))
+            //   );
+
+            //var pk3Array = new JArray(pk31, pk32);
+
+
+            ////PK 4 Man
+            //var pk41 = new JObject(
+            //       new JProperty("name", "4Man PK 1"),
+            //       new JProperty("c", lineupObject.Value<string>("pk4_1c")),
+            //       new JProperty("lw", lineupObject.Value<string>("pk4_1lw")),
+            //       new JProperty("ld", lineupObject.Value<string>("pk4_1ld")),
+            //       new JProperty("rd", lineupObject.Value<string>("pk4_1rd"))
+            //   );
+
+            //var pk42 = new JObject(
+            //       new JProperty("name", "4Man PK 2"),
+            //       new JProperty("c", lineupObject.Value<string>("pk4_2c")),
+            //       new JProperty("lw", lineupObject.Value<string>("pk4_2lw")),
+            //       new JProperty("ld", lineupObject.Value<string>("pk4_2ld")),
+            //       new JProperty("rd", lineupObject.Value<string>("pk4_2rd"))
+            //   );
+            //var pk4Array = new JArray(pk41, pk42);
+
+
+            ////PP 5
+
+            //var pp51 = new JObject(
+            //       new JProperty("name", "First Unit PP"),
+            //       new JProperty("c", lineupObject.Value<string>("pp1c")),
+            //       new JProperty("rw", lineupObject.Value<string>("pp1rw")),
+            //       new JProperty("lw", lineupObject.Value<string>("pp1lw")),
+            //       new JProperty("ld", lineupObject.Value<string>("pp1ld")),
+            //       new JProperty("rd", lineupObject.Value<string>("pp1rd"))
+            //   );
+
+            //var pp52 = new JObject(
+            //       new JProperty("name", "Second Unit PP"),
+            //       new JProperty("c", lineupObject.Value<string>("pp2c")),
+            //       new JProperty("rw", lineupObject.Value<string>("pp2rw")),
+            //       new JProperty("lw", lineupObject.Value<string>("pp2lw")),
+            //       new JProperty("ld", lineupObject.Value<string>("pp2ld")),
+            //       new JProperty("rd", lineupObject.Value<string>("pp2rd"))
+            //   );
+
+            //var pp5Array = new JArray(pp51, pp52);
+
+
+            //var pp41 = new JObject(
+            //       new JProperty("name", "4Man PP 1"),
+            //       new JProperty("c", lineupObject.Value<string>("pp4_1c")),
+            //       new JProperty("lw", lineupObject.Value<string>("pp4_1lw")),
+            //       new JProperty("ld", lineupObject.Value<string>("pp4_1ld")),
+            //       new JProperty("rd", lineupObject.Value<string>("pp4_1rd"))
+            //   );
+
+            //var pp42 = new JObject(
+            //       new JProperty("name", "4Man PP 1"),
+            //       new JProperty("c", lineupObject.Value<string>("pp4_2c")),
+            //       new JProperty("lw", lineupObject.Value<string>("pp_2lw")),
+            //       new JProperty("ld", lineupObject.Value<string>("pp4_2ld")),
+            //       new JProperty("rd", lineupObject.Value<string>("pp4_2rd"))
+            //   );
+
+            //var pp4Array = new JArray(pp41, pp42);
+
+            //var realLines = new JObject(
+            //    new JProperty("forwardLines", fwdArray),
+            //    new JProperty("defensePairs", dArray),
+            //    new JProperty("penaltyKillers3", pk3Array),
+            //    new JProperty("penaltyKillers", pk4Array),
+            //    new JProperty("powerPlays", pp5Array),
+            //    new JProperty("powerPlays4", pp4Array));
+            //return realLines;
         }
 
         [HttpGet]
@@ -318,44 +542,96 @@ namespace GopherGmConnect.Controllers
             return realLines;
         }
 
-
-
-
-
-
-        private int TeamSalary(int id)
+        [HttpGet]
+        public async Task<List<Player>> Roster(string id)
         {
-            var leagueID = WebConfigurationManager.AppSettings["leagueid"];
-            var url = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + leagueID + "/team/" + id + "/roster/mobile";
-            var rosterUrl = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + leagueID + "/team/" + id + "/roster";
-
-            string rawJson = DownloadFromServer(url);
-            string fullRosterJson = DownloadFromServer(rosterUrl);
-
-            JObject rosterJson = JObject.Parse(fullRosterJson);
-            var mainRosterIds = rosterJson.Value<JArray>("playerID").ToObject<List<string>>();
-
-            JObject fullJson = JObject.Parse(rawJson);
-            var jsonPlayers = fullJson.GetValue("v");
-            var players = jsonPlayers as JArray;
-
-            var team = new Team();
-            var cPlayers = new ConcurrentBag<Player>();
-            Parallel.ForEach(players, p =>
-            {
-                var player = new Player();
-                player.id = p[0].ToString();
-                player.Salary = Convert.ToInt32(p[5].ToString());
-                player.IsOnMainRoster = mainRosterIds.Contains(player.id);
-                cPlayers.Add(player);
-            });
-
-            team.Players = cPlayers.ToList();
-            return doSomeMath(team);
+            var x = await GetPlayersAsync(id);
+            return x;
         }
 
+
+        private async Task<List<Player>> GetPlayersAsync(string teamId)
+        {
+            var leagueID = WebConfigurationManager.AppSettings["leagueid"];
+            var client = GetAsyncClient();
+            var fullRosterUrl = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + leagueID + "/team/" + teamId + "/roster/mobile";
+            var mainRosterUrl = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + leagueID + "/team/" + teamId + "/roster";
+            var statsUrl = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + leagueID + "/stats/team/" + teamId + "/player/periodType/season/mobile";
+
+
+            var fullRosterTask = client.GetStringAsync(fullRosterUrl);
+            var mainRosterTask = client.GetStringAsync(mainRosterUrl);
+            var statsTask = client.GetStringAsync(statsUrl);
+
+            var fullRosterJSON = await fullRosterTask;
+            var mainRosterJSON = await mainRosterTask;
+            var statsJSON = await statsTask;
+
+
+            JObject fullRoster = JObject.Parse(fullRosterJSON);
+            var everyPlayer = fullRoster.GetValue("v").Where(p => p[9].ToString() == "0").ToList();
+
+            var mainRosterJsonObject = JObject.Parse(mainRosterJSON);
+            var mainRosterIdList = mainRosterJsonObject.Value<JArray>("playerID").ToObject<List<string>>();
+
+            var statsJsonObject = JObject.Parse(statsJSON);
+            var playerStatsArray = statsJsonObject.GetValue("s").ToObject<JObject>().GetValue("v");
+            var goalieStatsArray = statsJsonObject.GetValue("g").ToObject<JObject>().GetValue("v");
+
+
+
+            var urlStart = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + leagueID + "/player/";
+            var fullUrlEnd = "/info";
+            var mobileUrlEnd = "/info/mobile";
+
+            IEnumerable<Task<Player>> downloadQuery =
+                from p in everyPlayer select ProcessPlayerAsyncURL(client, p[0].ToString(), string.Format("{0}{1}{2}", urlStart, p[0].ToString(), fullUrlEnd), string.Format("{0}{1}{2}", urlStart, p[0].ToString(), mobileUrlEnd), playerStatsArray, goalieStatsArray, mainRosterIdList);
+
+
+            Task<Player>[] downloadTasks = downloadQuery.ToArray();
+            Player[] players = await Task.WhenAll(downloadTasks);
+            return players.ToList();
+        }
+
+
+        private async Task<Player> ProcessPlayerAsyncURL(HttpClient client, string playerid, string fullURL, string mobileURL, JToken playerStatsArray, JToken goalieStatsArray, List<string> mainRosterIdList)
+        {
+            var fullPlayerTask = client.GetStringAsync(fullURL);
+            var mobilePlayerTask = client.GetStringAsync(mobileURL);
+
+            var singleYearStats = new PlayerStats();
+            if (playerStatsArray.Any(x => x[2].ToString() == playerid))
+            {
+                var correctStatArray = playerStatsArray.First(x => x[2].ToString() == playerid);
+                singleYearStats = new PlayerStats(correctStatArray as JArray, true);
+            }
+            else if (goalieStatsArray.Any(x => x[2].ToString() == playerid))
+            {
+                var correctStatArray = goalieStatsArray.First(x => x[2].ToString() == playerid);
+                singleYearStats = new PlayerStats(correctStatArray as JArray, false);
+            }
+
+            bool isOnMainRoster = mainRosterIdList.Contains(playerid);
+
+            var mobilePlayerJSON = await mobilePlayerTask;
+            var fullPlayerJSON = await fullPlayerTask;
+
+            JObject mobileJson = JObject.Parse(mobilePlayerJSON);
+            JObject fullJson = JObject.Parse(fullPlayerJSON);
+            JObject bioJson = fullJson.GetValue("bio") as JObject;
+
+            var player = new Player(mobileJson, bioJson);
+
+            player.SingleYearStats = singleYearStats;
+            player.IsOnMainRoster = isOnMainRoster;
+            return player;
+        }
+
+
+
+
         [HttpGet]
-        public List<Player> Roster(string id)
+        public List<Player> RosterOLD(string id)
         {
             var leagueID = WebConfigurationManager.AppSettings["leagueid"];
             var rosterUrl = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + leagueID + "/team/" + id + "/roster";
@@ -394,8 +670,8 @@ namespace GopherGmConnect.Controllers
             Parallel.ForEach(players, p =>
             {
                 System.Web.HttpContext.Current = httpContext;
-                
-                
+
+
 
                 var player = FetchPlayer(p[0].ToString(), false);
 
@@ -471,35 +747,37 @@ namespace GopherGmConnect.Controllers
         }
 
         [HttpGet]
-        public object Teams()
+        public async Task<List<Team>> Teams()
         {
-            
+            var teamListWithSalaryTask = DownloadTeamSalaryAndLineupInformation();
             var url = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + WebConfigurationManager.AppSettings["leagueid"] + "/standings/periodType/season/mobile";
             string rawJson = DownloadFromServer(url);
             var fullJson = JObject.Parse(rawJson);
             var teams = fullJson.GetValue("v");
             var teamsArray = teams as JArray;
-            //var teamList = new ConcurrentBag<Team>();
-            //Parallel.ForEach(teamsArray, team =>
-            //    {
-            //        var t = new Team();
-            //        t.GetTeamStats(team as JArray);
-            //        teamList.Add(t);
-            //    });
-            //return teamList.ToList();
 
             var teamList = new List<Team>();
             foreach (var team in teamsArray)
             {
                 var t = new Team();
                 t.GetTeamStats(team as JArray);
-                int id = int.Parse(t.id);
-                //t.SalaryCapSpent = TeamSalary(id);
                 teamList.Add(t);
             }
-            return teamList;
 
+            var teamListWithSalary = await teamListWithSalaryTask;
+
+            foreach (var t in teamList)
+            {
+                var properTeam = teamListWithSalary.First(x => x.id == t.id);
+                t.SalaryCapSpent = properTeam.SalaryCapSpent;
+                t.Lines = properTeam.Lines;
+                //var salary = teamListWithSalary.First(x => x.id == t.id).SalaryCapSpent;
+                //t.SalaryCapSpent = salary;
+            }
+
+            return teamList;
         }
+
 
 
 
@@ -569,59 +847,33 @@ namespace GopherGmConnect.Controllers
             return topplayers.ToList();
         }
 
-        [HttpGet]
-        public object Teams(string id)
-        {
-            var url = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + WebConfigurationManager.AppSettings["leagueid"] + "/standings/periodType/season/mobile";
-            string rawJson = DownloadFromServer(url);
-            var fullJson = JObject.Parse(rawJson);
-            var teams = fullJson.GetValue("v");
-            var teamsArray = teams as JArray;
-            var correctTeam = new JArray();
-            foreach (var team in teamsArray)
-            {
-                if (team[2].ToString() == id)
-                {
-                    correctTeam = team as JArray;
-                    break;
-                }
-            }
-            var returnTeam = new Team();
-            returnTeam.GetTeamStats(correctTeam);
-
-            //var MobileUrl = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + WebConfigurationManager.AppSettings["leagueid"] + "/team/" + id + "/info/mobile";
-            //string mobileRawJson = DownloadFromServer(MobileUrl);
-            //var mobileFullJson = JObject.Parse(mobileRawJson);
-
-            //int[] capnums = GetSalary(mobileFullJson);
-            //returnTeam.SalaryCapSpent = capnums[0];
-            //returnTeam.SalaryCapTotal = capnums[1];
-            //returnTeam.SalaryCapRemaining = capnums[1] - capnums[0];
-            returnTeam.Players = Roster(id);
-            //returnTeam.CalculateFutureSalaryCap();
-            //doSomeMath(returnTeam);
-
-            returnTeam.SalaryCapSpent = doSomeMath(returnTeam);
-            return returnTeam;
-        }
+        //[HttpGet]
+        //public async Task<Team> Teams(string id)
+        //{
+        //    var returnTeam = new Team();
+        //    returnTeam.id = id;
+        //    returnTeam.Players = await Roster(id);
+        //    return returnTeam;
+        //}
 
 
-        private int doSomeMath(Team x)
+        private int doSomeMath(List<Player> roster)
         {
             int leagueMin = 1500000;
             int totalSalary = 0;
-            foreach (var p in x.Players)
+
+            foreach (var player in roster)
             {
-                if (!p.IsOnMainRoster)
+                if (!player.IsOnMainRoster)
                 {
-                    if (p.SalaryReadable >= leagueMin)
+                    if (player.SalaryReadable >= leagueMin)
                     {
-                        totalSalary += p.SalaryReadable;
+                        totalSalary += player.SalaryReadable;
                     }
                 }
                 else
                 {
-                    totalSalary += p.SalaryReadable;
+                    totalSalary += player.SalaryReadable;
                 }
             }
 
@@ -961,7 +1213,7 @@ namespace GopherGmConnect.Controllers
         //        var twts = Tweetinvi.Timeline.GetUserTimeline(username);
         //        var lobTweets = twts.Where(tweet => tweet.Hashtags.Any(tag => tag.Text.ToLower() == "lobnhl")).Take(5);
         //        return lobTweets;
-                
+
         //    }
         //    catch (Exception ex)
         //    {

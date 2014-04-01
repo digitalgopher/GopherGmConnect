@@ -4,5 +4,6 @@
     },
     setupController: function (controller, model) {
         this._super(controller, model);
+        controller.set('showStats', true);
     }
 })

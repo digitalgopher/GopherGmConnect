@@ -7,8 +7,14 @@
 }
 body {
   /*background-color: #070E1A;*/
-  color: #333333;
-  background-color: #F5F6F8;
+  color: rgba(240, 240, 240, 0.9);
+  background-color: #1c1d22;
+  font-family: "Roboto";
+  /*background: url("http://i.imgur.com/kefwgCE.jpg") no-repeat center center fixed;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;*/
 }
 .twitter-typeahead {
   width: 100%;
@@ -71,14 +77,14 @@ body {
 }
 .initial-load {
   text-align: center;
-  font-family: "Oswald";
+  font-family: "Roboto";
   font-weight: 700;
 }
 .filterButton {
   Height: 40px;
   cursor: pointer;
   line-height: 3.1;
-  font-family: "Oswald";
+  font-family: "Roboto";
   font-weight: normal;
 }
 .filterButton.active {
@@ -93,7 +99,7 @@ body {
   font-size: 14px;
 }
 .loading-text {
-  font-family: "Oswald" !important;
+  font-family: "Roboto" !important;
 }
 .team-row-basic {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -124,7 +130,7 @@ body {
   text-align: center;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -163,14 +169,14 @@ body {
   color: #fff;
 }
 .player-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .player-header h1.small-name .big-name {
   font-weight: 900;
 }
 .player-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -206,15 +212,17 @@ body {
   background-repeat: no-repeat;
 }
 .stats-box {
-  background-color: #fff;
+  background-color: rgba(240, 240, 240, 0.9);
   border: 1px solid #e5e5e5;
   border-radius: 2px;
-  font-family: Oswald;
+  /*font-family: Oswald;*/
   margin-bottom: 20px;
   text-align: center;
 }
 .stats-box .title {
-  font: 300 20px Oswald, arial, sans-serif;
+  /*font: 300 20px Oswald,arial,sans-serif;*/
+  font-weight: 300;
+  font-size: 20px;
   display: block;
   margin-left: 10px;
 }
@@ -364,7 +372,7 @@ body {
 .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -376,7 +384,7 @@ body {
   width: 0;
   margin-left: -15px;
   border-right: 25px solid transparent;
-  border-top: 25px solid #333333;
+  border-top: 25px solid rgba(240, 240, 240, 0.9);
 }
 .triangle.is-current-push {
   border-top: 25px solid #4dbfd9;
@@ -397,10 +405,10 @@ body {
 }
 .team-summary-box {
   text-align: center;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
 }
 .team-summary-box .team-stats-box .number {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(240, 240, 240, 0.9);
   width: 100%;
   font-weight: 900;
   font-size: 2.2em;
@@ -414,7 +422,7 @@ body {
 .team-summary-box .team-stats-box .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
   font-size: 1.2em;
@@ -529,10 +537,11 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-number {
   line-height: 2rem;
-  font-weight: 700;
+  font-weight: 300;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-number-label {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1rem;
   text-align: center;
   font-weight: 400;
@@ -560,11 +569,92 @@ ul[data-pie-id] li:nth-child(6) {
 .player-image-list {
   padding: 0;
 }
+.small-progress {
+  height: 1px;
+  background-color: rgba(50, 50, 50, 0.7);
+  content: '';
+  width: 100%;
+  margin-bottom: 0.33333333rem;
+  margin-top: 2px;
+}
+.small-progress .value-meter {
+  display: block;
+  height: 100%;
+  background-color: #4dbfd9;
+}
+.star-container {
+  font-size: .7rem;
+  margin: 0;
+  padding: 0;
+}
+.star-container .green {
+  color: #8cc474;
+}
+.star-container .yellow {
+  color: #fbcb43;
+}
+.star-container .white {
+  color: rgba(240, 240, 240, 0.9);
+}
+.star-container .red {
+  color: #e46f61;
+}
+.star-dash {
+  width: 18%;
+  padding: 0;
+  content: '';
+  height: 1px;
+  background-color: rgba(50, 50, 50, 0.7);
+  margin-bottom: 0.11111rem;
+  display: inline-block;
+}
+.star-dash .full-star {
+  height: 100%;
+  display: block;
+  width: 100%;
+}
+.star-dash .full-star .green {
+  color: #8cc474;
+}
+.star-dash .full-star .yellow {
+  color: #fbcb43;
+}
+.star-dash .full-star .white {
+  color: rgba(240, 240, 240, 0.9);
+}
+.star-dash .full-star .red {
+  color: #e46f61;
+}
+.star-dash .half-star {
+  width: 50%;
+  height: 100%;
+  display: block;
+}
+.star-dash .half-star .green {
+  color: #8cc474;
+}
+.star-dash .half-star .yellow {
+  color: #fbcb43;
+}
+.star-dash .half-star .white {
+  color: rgba(240, 240, 240, 0.9);
+}
+.star-dash .half-star .red {
+  color: #e46f61;
+}
 .roster-player-row {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   line-height: 2.8rem;
   font-size: 1.2rem;
   border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+.roster-player-row .flag-container {
+  line-height: 0;
+  padding-right: 0.2rem;
+  margin: 0 0 3px 0;
+}
+.roster-player-row .value-container {
+  padding-left: 0;
 }
 .roster-player-row .progress {
   margin: 0;
@@ -573,8 +663,16 @@ ul[data-pie-id] li:nth-child(6) {
   height: 1rem;
 }
 .roster-player-row .player-name {
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.7rem;
+  font-weight: 300;
+}
+.roster-player-row .player-name .first-name {
+  font-size: 1rem;
+  letter-spacing: 0px;
+}
+.roster-player-row .player-name .last-name {
+  font-weight: 400;
 }
 .roster-player-row .columns {
   /*padding: 0;*/
@@ -582,8 +680,8 @@ ul[data-pie-id] li:nth-child(6) {
 .roster-player-row .stat {
   font-weight: 900;
   font-size: 1.7rem;
-  background-color: #303a53;
-  color: #f5f6f8;
+  background-color: rgba(240, 240, 240, 0.9);
+  color: #1c1d22;
   text-align: center;
 }
 .roster-player-row .salary {
@@ -593,7 +691,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-size: 1rem;
 }
 .roster-player-row .salary .salaryNumber {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .roster-player-row .salary .rfa {
   color: #e46f61;
@@ -601,12 +699,20 @@ ul[data-pie-id] li:nth-child(6) {
 .roster-player-row .salary .ufa {
   color: #8cc474;
 }
+.rating-label {
+  line-height: 1.8rem;
+  font-size: 1.5rem;
+}
+.rating-number {
+  line-height: 1.8rem;
+  font-size: 1.5rem;
+}
 .chart-container .chart-main {
   max-height: 230px;
   margin-top: -1.4rem;
 }
 .chart-container h2 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   text-align: center;
 }
 .team-tab-button {
@@ -622,8 +728,8 @@ ul[data-pie-id] li:nth-child(6) {
 .player-basic-block .jersey {
   font-weight: 900;
   font-size: 1.7rem;
-  background-color: #303a53;
-  color: #f5f6f8;
+  background-color: rgba(240, 240, 240, 0.9);
+  color: #1c1d22;
   text-align: center;
   padding: 0;
   font-size: 4rem;
@@ -644,7 +750,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .roster-seperator {
   background-color: rgba(0, 0, 0, 0.7);
-  font-family: "Oswald";
+  font-family: "Roboto";
   font-weight: 500;
   padding: 3px 0;
   line-height: 1.4;
@@ -662,7 +768,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._29 .team-minibar {
   background-color: #cf132b;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -735,14 +841,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._29 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._29 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._29 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -755,7 +861,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._29 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -801,8 +907,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._29 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -897,7 +1003,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._29 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -909,7 +1015,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._28 .team-minibar {
   background-color: #07346f;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -982,14 +1088,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._28 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._28 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._28 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -1002,7 +1108,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._28 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -1048,8 +1154,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._28 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -1144,7 +1250,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._28 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -1156,7 +1262,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._27 .team-minibar {
   background-color: #003777;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -1229,14 +1335,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._27 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._27 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._27 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -1249,7 +1355,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._27 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -1295,8 +1401,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._27 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -1391,7 +1497,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._27 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -1403,7 +1509,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._26 .team-minibar {
   background-color: #013e7d;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -1476,14 +1582,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._26 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._26 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._26 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -1496,7 +1602,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._26 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -1542,8 +1648,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._26 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -1638,7 +1744,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._26 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -1650,7 +1756,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._25 .team-minibar {
   background-color: #05535d;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -1723,14 +1829,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._25 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._25 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._25 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -1743,7 +1849,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._25 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -1789,8 +1895,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._25 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -1885,7 +1991,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._25 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -1897,7 +2003,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._24 .team-minibar {
   background-color: #0546a0;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -1970,14 +2076,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._24 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._24 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._24 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -1990,7 +2096,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._24 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -2036,8 +2142,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._24 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -2132,7 +2238,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._24 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -2144,7 +2250,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._23 .team-minibar {
   background-color: #d1bd80;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -2217,14 +2323,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._23 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._23 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._23 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -2237,7 +2343,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._23 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -2283,8 +2389,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._23 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -2379,7 +2485,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._23 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -2391,7 +2497,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._22 .team-minibar {
   background-color: #8e0028;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -2464,14 +2570,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._22 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._22 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._22 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -2484,7 +2590,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._22 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -2530,8 +2636,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._22 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -2626,7 +2732,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._22 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -2638,7 +2744,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._21 .team-minibar {
   background-color: #f47940;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -2711,14 +2817,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._21 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._21 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._21 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -2731,7 +2837,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._21 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -2777,8 +2883,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._21 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -2873,7 +2979,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._21 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -2885,7 +2991,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._20 .team-minibar {
   background-color: #e4173e;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -2958,14 +3064,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._20 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._20 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._20 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -2978,7 +3084,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._20 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -3024,8 +3130,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._20 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -3120,7 +3226,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._20 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -3132,7 +3238,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._19 .team-minibar {
   background-color: #0161ab;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -3205,14 +3311,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._19 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._19 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._19 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -3225,7 +3331,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._19 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -3271,8 +3377,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._19 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -3367,7 +3473,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._19 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -3379,7 +3485,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._18 .team-minibar {
   background-color: #f57d31;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -3452,14 +3558,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._18 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._18 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._18 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -3472,7 +3578,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._18 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -3518,8 +3624,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._18 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -3614,7 +3720,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._18 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -3626,7 +3732,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._17 .team-minibar {
   background-color: #e03a3e;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -3699,14 +3805,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._17 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._17 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._17 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -3719,7 +3825,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._17 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -3765,8 +3871,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._17 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -3861,7 +3967,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._17 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -3873,7 +3979,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._16 .team-minibar {
   background-color: #fdbb2f;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -3946,14 +4052,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._16 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._16 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._16 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -3966,7 +4072,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._16 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -4012,8 +4118,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._16 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -4108,7 +4214,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._16 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -4120,7 +4226,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._15 .team-minibar {
   background-color: #bf2f38;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -4193,14 +4299,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._15 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._15 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._15 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -4213,7 +4319,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._15 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -4259,8 +4365,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._15 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -4355,7 +4461,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._15 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -4367,7 +4473,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._14 .team-minibar {
   background-color: #025736;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -4440,14 +4546,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._14 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._14 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._14 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -4460,7 +4566,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._14 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -4506,8 +4612,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._14 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -4602,7 +4708,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._14 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -4614,7 +4720,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._13 .team-minibar {
   background-color: #000000;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -4687,14 +4793,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._13 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._13 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._13 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -4707,7 +4813,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._13 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -4753,8 +4859,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._13 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -4849,7 +4955,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._13 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -4861,7 +4967,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._12 .team-minibar {
   background-color: #c8213f;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -4934,14 +5040,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._12 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._12 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._12 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -4954,7 +5060,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._12 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -5000,8 +5106,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._12 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -5096,7 +5202,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._12 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -5108,7 +5214,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._11 .team-minibar {
   background-color: #e66a20;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -5181,14 +5287,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._11 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._11 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._11 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -5201,7 +5307,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._11 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -5247,8 +5353,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._11 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -5343,7 +5449,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._11 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -5355,7 +5461,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._10 .team-minibar {
   background-color: #ec1f26;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -5428,14 +5534,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._10 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._10 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._10 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -5448,7 +5554,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._10 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -5494,8 +5600,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._10 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -5590,7 +5696,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._10 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -5602,7 +5708,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._9 .team-minibar {
   background-color: #006a4e;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -5675,14 +5781,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._9 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._9 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._9 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -5695,7 +5801,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._9 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -5741,8 +5847,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._9 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -5837,7 +5943,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._9 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -5849,7 +5955,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._8 .team-minibar {
   background-color: #00285c;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -5922,14 +6028,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._8 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._8 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._8 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -5942,7 +6048,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._8 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -5988,8 +6094,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._8 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -6084,7 +6190,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._8 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -6096,7 +6202,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._7 .team-minibar {
   background-color: #8b2942;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -6169,14 +6275,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._7 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._7 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._7 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -6189,7 +6295,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._7 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -6235,8 +6341,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._7 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -6331,7 +6437,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._7 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -6343,7 +6449,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._6 .team-minibar {
   background-color: #e3263a;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -6416,14 +6522,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._6 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._6 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._6 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -6436,7 +6542,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._6 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -6482,8 +6588,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._6 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -6578,7 +6684,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._6 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -6590,7 +6696,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._5 .team-minibar {
   background-color: #e03a3e;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -6663,14 +6769,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._5 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._5 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._5 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -6683,7 +6789,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._5 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -6729,8 +6835,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._5 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -6825,7 +6931,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._5 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -6837,7 +6943,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._4 .team-minibar {
   background-color: #e03a3e;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -6910,14 +7016,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._4 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._4 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._4 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -6930,7 +7036,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._4 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -6976,8 +7082,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._4 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -7072,7 +7178,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._4 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -7084,7 +7190,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._3 .team-minibar {
   background-color: #fdbb2f;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -7157,14 +7263,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._3 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._3 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._3 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -7177,7 +7283,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._3 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -7223,8 +7329,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._3 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -7319,7 +7425,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._3 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -7331,7 +7437,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._2 .team-minibar {
   background-color: #ffc422;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -7404,14 +7510,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._2 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._2 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._2 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -7424,7 +7530,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._2 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -7470,8 +7576,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._2 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -7566,7 +7672,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._2 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -7578,7 +7684,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._1 .team-minibar {
   background-color: #0168ab;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -7651,14 +7757,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._1 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._1 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._1 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -7671,7 +7777,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._1 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -7717,8 +7823,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._1 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -7813,7 +7919,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._1 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
@@ -7825,7 +7931,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._0 .team-minibar {
   background-color: #ef5225;
   padding: 10px 0;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-size: 1.5em;
   color: #fff;
   -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -7898,14 +8004,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fff;
 }
 .team-container._0 .team-header h1.small-name {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
 }
 .team-container._0 .team-header h1.small-name .big-name {
   font-weight: 900;
 }
 .team-container._0 .team-header p {
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   line-height: 1.5;
   font-size: 1.4em;
@@ -7918,7 +8024,7 @@ ul[data-pie-id] li:nth-child(6) {
 }
 .team-container._0 .player-profile {
   text-align: left;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   padding: 4px 0;
   color: white;
   -webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -7964,8 +8070,8 @@ ul[data-pie-id] li:nth-child(6) {
   margin: 0;
   padding: 0;
   display: inline-block;
-  font-family: "Oswald";
-  color: #333333;
+  /*font-family: "Oswald";*/
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-container._0 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -8060,30 +8166,31 @@ ul[data-pie-id] li:nth-child(6) {
 .team-container._0 a.team-info-button .value-label {
   width: 100%;
   font-size: 1.4em;
-  font-family: "Oswald";
+  /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
 }
 .team-row._29 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._29 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._29 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._29 .logo-box {
   text-align: center;
-  background-color: #eb2a42;
-  padding: 3px 0;
+  background-color: #a00f21;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #cf132b;
 }
 .team-row._29 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._29 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -8105,39 +8212,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._29 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._29 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._29:active {
   background-color: #cf132b;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._29:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._28 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._28 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._28 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._28 .logo-box {
   text-align: center;
-  background-color: #0a4a9f;
-  padding: 3px 0;
+  background-color: #041e3f;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #07346f;
 }
 .team-row._28 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._28 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -8159,39 +8268,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._28 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._28 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._28:active {
   background-color: #07346f;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._28:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._27 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._27 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._27 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._27 .logo-box {
   text-align: center;
-  background-color: #004faa;
-  padding: 3px 0;
+  background-color: #001f44;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #003777;
 }
 .team-row._27 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._27 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -8213,39 +8324,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._27 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._27 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._27:active {
   background-color: #003777;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._27:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._26 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._26 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._26 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._26 .logo-box {
   text-align: center;
-  background-color: #0157b0;
-  padding: 3px 0;
+  background-color: #01254a;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #013e7d;
 }
 .team-row._26 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._26 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -8267,39 +8380,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._26 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._26 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._26:active {
   background-color: #013e7d;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._26:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._25 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._25 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._25 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._25 .logo-box {
   text-align: center;
-  background-color: #087e8d;
-  padding: 3px 0;
+  background-color: #02282d;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #05535d;
 }
 .team-row._25 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._25 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -8321,39 +8436,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._25 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._25 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._25:active {
   background-color: #05535d;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._25:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._24 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._24 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._24 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._24 .logo-box {
   text-align: center;
-  background-color: #075cd1;
-  padding: 3px 0;
+  background-color: #03306f;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #0546a0;
 }
 .team-row._24 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._24 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -8375,39 +8492,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._24 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._24 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._24:active {
   background-color: #0546a0;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._24:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._23 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._23 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._23 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._23 .logo-box {
   text-align: center;
-  background-color: #dfd0a5;
-  padding: 3px 0;
+  background-color: #c3aa5b;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #d1bd80;
 }
 .team-row._23 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._23 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -8429,39 +8548,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._23 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._23 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._23:active {
   background-color: #d1bd80;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._23:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._22 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._22 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._22 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._22 .logo-box {
   text-align: center;
-  background-color: #c10036;
-  padding: 3px 0;
+  background-color: #5b001a;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #8e0028;
 }
 .team-row._22 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._22 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -8483,39 +8604,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._22 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._22 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._22:active {
   background-color: #8e0028;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._22:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._21 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._21 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._21 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._21 .logo-box {
   text-align: center;
-  background-color: #f79b70;
-  padding: 3px 0;
+  background-color: #f15710;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #f47940;
 }
 .team-row._21 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._21 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -8537,39 +8660,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._21 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._21 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._21:active {
   background-color: #f47940;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._21:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._20 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._20 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._20 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._20 .logo-box {
   text-align: center;
-  background-color: #ec4262;
-  padding: 3px 0;
+  background-color: #b61231;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #e4173e;
 }
 .team-row._20 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._20 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -8591,39 +8716,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._20 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._20 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._20:active {
   background-color: #e4173e;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._20:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._19 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._19 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._19 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._19 .logo-box {
   text-align: center;
-  background-color: #017ede;
-  padding: 3px 0;
+  background-color: #014478;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #0161ab;
 }
 .team-row._19 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._19 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -8645,39 +8772,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._19 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._19 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._19:active {
   background-color: #0161ab;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._19:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._18 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._18 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._18 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._18 .logo-box {
   text-align: center;
-  background-color: #f79c62;
-  padding: 3px 0;
+  background-color: #e8610b;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #f57d31;
 }
 .team-row._18 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._18 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -8699,39 +8828,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._18 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._18 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._18:active {
   background-color: #f57d31;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._18:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._17 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._17 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._17 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._17 .logo-box {
   text-align: center;
-  background-color: #e76669;
-  padding: 3px 0;
+  background-color: #c81f23;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #e03a3e;
 }
 .team-row._17 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._17 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -8753,39 +8884,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._17 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._17 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._17:active {
   background-color: #e03a3e;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._17:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._16 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._16 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._16 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._16 .logo-box {
   text-align: center;
-  background-color: #fdcc62;
-  padding: 3px 0;
+  background-color: #f7a802;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #fdbb2f;
 }
 .team-row._16 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._16 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -8807,39 +8940,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._16 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._16 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._16:active {
   background-color: #fdbb2f;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._16:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._15 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._15 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._15 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._15 .logo-box {
   text-align: center;
-  background-color: #d34e56;
-  padding: 3px 0;
+  background-color: #96252c;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #bf2f38;
 }
 .team-row._15 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._15 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -8861,39 +8996,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._15 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._15 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._15:active {
   background-color: #bf2f38;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._15:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._14 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._14 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._14 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._14 .logo-box {
   text-align: center;
-  background-color: #038955;
-  padding: 3px 0;
+  background-color: #012517;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #025736;
 }
 .team-row._14 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._14 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -8915,39 +9052,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._14 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._14 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._14:active {
   background-color: #025736;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._14:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._13 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._13 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._13 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._13 .logo-box {
   text-align: center;
-  background-color: #1a1a1a;
-  padding: 3px 0;
+  background-color: #000000;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #000000;
 }
 .team-row._13 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._13 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -8969,39 +9108,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._13 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._13 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._13:active {
   background-color: #000000;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._13:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._12 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._12 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._12 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._12 .logo-box {
   text-align: center;
-  background-color: #df3d5a;
-  padding: 3px 0;
+  background-color: #9c1a31;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #c8213f;
 }
 .team-row._12 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._12 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -9023,39 +9164,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._12 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._12 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._12:active {
   background-color: #c8213f;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._12:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._11 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._11 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._11 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._11 .logo-box {
   text-align: center;
-  background-color: #eb894e;
-  padding: 3px 0;
+  background-color: #be5415;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #e66a20;
 }
 .team-row._11 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._11 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -9077,39 +9220,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._11 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._11 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._11:active {
   background-color: #e66a20;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._11:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._10 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._10 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._10 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._10 .logo-box {
   text-align: center;
-  background-color: #f04e54;
-  padding: 3px 0;
+  background-color: #c71117;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #ec1f26;
 }
 .team-row._10 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._10 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -9131,39 +9276,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._10 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._10 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._10:active {
   background-color: #ec1f26;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._10:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._9 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._9 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._9 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._9 .logo-box {
   text-align: center;
-  background-color: #009d74;
-  padding: 3px 0;
+  background-color: #003728;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #006a4e;
 }
 .team-row._9 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._9 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -9185,39 +9332,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._9 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._9 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._9:active {
   background-color: #006a4e;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._9:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._8 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._8 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._8 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._8 .logo-box {
   text-align: center;
-  background-color: #003e8f;
-  padding: 3px 0;
+  background-color: #001229;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #00285c;
 }
 .team-row._8 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._8 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -9239,39 +9388,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._8 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._8 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._8:active {
   background-color: #00285c;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._8:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._7 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._7 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._7 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._7 .logo-box {
   text-align: center;
-  background-color: #b23555;
-  padding: 3px 0;
+  background-color: #641d2f;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #8b2942;
 }
 .team-row._7 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._7 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -9293,39 +9444,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._7 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._7 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._7:active {
   background-color: #8b2942;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._7:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._6 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._6 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._6 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._6 .logo-box {
   text-align: center;
-  background-color: #e95363;
-  padding: 3px 0;
+  background-color: #be182a;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #e3263a;
 }
 .team-row._6 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._6 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -9347,39 +9500,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._6 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._6 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._6:active {
   background-color: #e3263a;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._6:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._5 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._5 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._5 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._5 .logo-box {
   text-align: center;
-  background-color: #e76669;
-  padding: 3px 0;
+  background-color: #c81f23;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #e03a3e;
 }
 .team-row._5 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._5 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -9401,39 +9556,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._5 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._5 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._5:active {
   background-color: #e03a3e;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._5:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._4 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._4 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._4 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._4 .logo-box {
   text-align: center;
-  background-color: #e76669;
-  padding: 3px 0;
+  background-color: #c81f23;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #e03a3e;
 }
 .team-row._4 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._4 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -9455,39 +9612,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._4 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._4 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._4:active {
   background-color: #e03a3e;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._4:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._3 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._3 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._3 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._3 .logo-box {
   text-align: center;
-  background-color: #fdcc62;
-  padding: 3px 0;
+  background-color: #f7a802;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #fdbb2f;
 }
 .team-row._3 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._3 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -9509,39 +9668,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._3 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._3 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._3:active {
   background-color: #fdbb2f;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._3:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._2 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._2 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._2 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._2 .logo-box {
   text-align: center;
-  background-color: #ffd255;
-  padding: 3px 0;
+  background-color: #eeae00;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #ffc422;
 }
 .team-row._2 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._2 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -9563,39 +9724,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._2 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._2 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._2:active {
   background-color: #ffc422;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._2:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._1 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._1 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._1 .logo-box {
   text-align: center;
-  background-color: #0187de;
-  padding: 3px 0;
+  background-color: #014978;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #0168ab;
 }
 .team-row._1 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._1 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -9617,39 +9780,41 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._1 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._1 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._1:active {
   background-color: #0168ab;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._1:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._0 {
-  font-family: "Oswald";
+  font-family: "Roboto";
 }
 .team-row._0 a {
-  color: #333333;
+  color: rgba(240, 240, 240, 0.9);
 }
 .team-row._0 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .team-row._0 .logo-box {
   text-align: center;
-  background-color: #f27855;
-  padding: 3px 0;
+  background-color: #d23b0f;
+  padding: 6px 0;
   margin: 0;
+  border-bottom: 1px solid #ef5225;
 }
 .team-row._0 .team-name-box {
-  padding: 0;
+  padding: 1px;
 }
 .team-row._0 .team-name-box h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   line-height: 1.1;
   font-size: 17px;
   margin: 0;
@@ -9671,16 +9836,17 @@ ul[data-pie-id] li:nth-child(6) {
   }
 }
 .team-row._0 .team-stat {
-  text-align: right;
+  text-align: left;
   line-height: 3.2;
+  padding-left: 4px;
 }
 .team-row._0 .active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 .team-row._0:active {
   background-color: #ef5225;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 .team-row._0:active a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }

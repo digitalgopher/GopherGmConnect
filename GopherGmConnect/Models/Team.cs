@@ -12,6 +12,22 @@ namespace GopherGmConnect.Models
         //public string abr { get; set; }
         //public string city { get; set; }
         //public string fullName { get; set; }
+
+        /// <summary>
+        /// key == name of the line
+        /// value == list of player ids.
+        /// Alwyas C, LW, RW
+        /// Allows me to do something like this in the UI
+        /// --- --CT-- ---
+        /// --LW--  --RW--
+        /// "Forwad 1" 
+        /// "LWID", "CID", "RWID"
+        /// "DPair 1"
+        /// "LDID", "RDID", 
+        /// "Gs"
+        /// "G1", "G2"
+        /// </summary>
+        public Dictionary<string, List<string>> Lines { get; set; }
         public int SalaryCapSpent { get; set; }
         public int SalaryCapRemaining { get; set; }
         public int SalaryCapTotal { get; set; }
@@ -25,19 +41,20 @@ namespace GopherGmConnect.Models
         public int RegulationOvertimeWins { get; set; }
 
         public double GoalsAgainstPerGame { get; set; }
+        
         public double GoalsForPerGame { get; set; }
-        private List<Player> _players { get; set; }
-        public List<Player> Players
-        {
-            get
-            {
-                return _players == null ? new List<Player>() : _players;
-            }
-            set
-            {
-                _players = value;
-            }
-        }
+        //private List<Player> _players { get; set; }
+        //public List<Player> Players
+        //{
+        //    get
+        //    {
+        //        return _players == null ? new List<Player>() : _players;
+        //    }
+        //    set
+        //    {
+        //        _players = value;
+        //    }
+        //}
         public double PowerPlayPercent { get; set; }
         public double PenaltyKillPercent { get; set; }
         public int GoalsFor { get; set; }
@@ -78,28 +95,5 @@ namespace GopherGmConnect.Models
             GoalsForPerGame = Convert.ToDouble(teamToken[10].ToString());
 
         }
-
-        public void CalculateFutureSalaryCap()
-        {
-            var rosterToEdit = Players;
-            var year = 0;
-            while (year < 5)
-            {
-                var thisYearSalary = 0;
-                
-                foreach (var player in rosterToEdit)
-                {
-                    var yearsLeft = player.YearsLeft;
-                    if (yearsLeft > 0 && player.IsOnMainRoster)
-                    {
-                        thisYearSalary += player.SalaryReadable;
-                        yearsLeft--;
-                    }
-                }
-                FutureSalaries[year] = thisYearSalary;
-                year++;
-            }
-        }
-
     }
 }

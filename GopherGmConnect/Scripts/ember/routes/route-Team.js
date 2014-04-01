@@ -14,14 +14,16 @@
         var isDownloadTeam = model.get('isLoaded');
         if (isDownloadTeam) {
             var team = this.controllerFor('application').get('teams').findBy('id', model.get('id'));
-            model.setProperties
-                ({
-                    city: team.get('city'),
-                    name: team.get('name'),
-                    abr: team.get('abr'),
-                    twitter: team.get('twitter'),
-                    isFullyLoaded: true,
-                });
+            model.setProperties(team);
+            //model.setProperties
+            //    ({
+            //        city: team.get('city'),
+            //        name: team.get('name'),
+            //        abr: team.get('abr'),
+            //        twitter: team.get('twitter'),
+            //        isFullyLoaded: true,
+            //    });
+            
             NProgress.done();
         }
         else {
@@ -31,6 +33,7 @@
                 NProgress.done();
             });
         }
+        
         controller.set('model', model);
     },
 

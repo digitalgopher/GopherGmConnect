@@ -34,71 +34,6 @@
 
 
 
-    lastTenWins: function () {
-        return this.get('lastTenRecord').split('-')[0];
-    }.property(),
-
-    lastTenLosses: function () {
-        return this.get('lastTenRecord').split('-')[1];
-    }.property(),
-
-    lastTenOvertimeLosses: function () {
-        return this.get('lastTenRecord').split('-')[2];
-    }.property(),
-
-
-    salary: function () {
-        return numberWithCommas(this.get('salaryCapSpent'));
-    }.property('salaryCapSpent'),
-
-    //isLoaded: function () {
-    //    return Ember.computed.and('linesIsLoaded', 'rosterIsLoaded', 'scheduleIsLoaded', 'statsIsLoaded');
-    //},
-
-    idWithUnderscore: function () {
-        return "_" + this.get('id');
-    }.property(),
-
-    teamjsname: function () {
-        return "team_" + this.get('id');
-    }.property(),
-
-    twitterLink: function () {
-        return "http://twitter.com/" + this.get('twitter');
-    }.property(),
-
-    teamname: function () {
-        return this.get('name');
-    }.property(),
-
-    capSpace: function () {
-        return numberWithCommas(this.get('salaryCapRemaining'));
-    }.property('salaryCapRemaining'),
-
-    dasherizeName: function () {
-        var t = this.get('teamjsname');
-        var c = this.get('city');
-        var n = this.get('teamname');
-        c = c.toLowerCase();
-        c = c.replace(/ /g, "-");
-        n = n.replace(/ /g, "-");
-        return full = c + "-" + n;
-    },
-
-    imageUrl: function () {
-        var full = this.dasherizeName();
-        return "/content/images/logos/59/" + full + ".png";
-    }.property('teamname', 'city', 'name'),
-
-    imageUrlMedium: function () {
-        var full = this.dasherizeName();
-        return "/content/images/logos/90/" + full + ".png";
-    }.property('teamname', 'city', 'name'),
-
-    imageUrlLarge: function () {
-        var full = this.dasherizeName();
-        return "/content/images/logos/200/" + full + ".png";
-    }.property('teamname', 'city', 'name')
 });
 
 
@@ -121,48 +56,30 @@ App.Team.reopenClass({
 
 
     find: function (id) {
-        var team = App.Team.create();
+        //var team = App.Team.create();
         return Ember.RSVP.hash({
-            //roster: App.Player.findAll(id),
-            //lines: App.Line.findAll(id),
-            team: App.Team.findTeam(id),
-            schedule: App.Team.findSchedule(id),
-            //tweets: App.Tweet.findAll(twittername)
+            roster: App.Team.findRoster(id),
+
+            //schedule: App.Team.findSchedule(id),
         }).then(function (results) {
-
-            //var allPlayers = Em.A();
-            //results.team.players.forEach(function (p) {
-            //    var player = App.Player.create();
-            //    player.setProperties(p);
-            //    allPlayers.pushObject(player);
-            //});
-
-            //var allPlayers = results.team.players.map(function (player) {
-            //    return App.Player.create().setProperties(player);
-            //});
-
-            //var rosterController = App.PlayersController.create({
-            //    content: allPlayers
-            //});
-
-            //var filteredRosterController = App.PlayersController.create({
-            //    content: allPlayers
-            //});
-
-            //allPlayers = allPlayers.sortBy('overall').reverse();
-
-            
-            //team.set('roster', allPlayers);
-            //team.set('rosterFull', allPlayers);
-            //team.set('schedule', results.schedule);           
-            team.setProperties(results.team);
-            //team.set('players', allPlayers);
+            var team = App.Team.create();
+            team.set("players", results.roster);
             team.set('isLoaded', true);
+            team.set('id', id);
             return team;
         }).fail(function () {
             alert('something failed;');
         });
 
+    },
+
+    findRoster: function (id) {
+        var data = {
+            id: id
+        }
+        return $.getJSON('/api/gopher/roster', data).then(function (roster) {
+            return roster;
+        });
     },
 
 

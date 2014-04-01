@@ -1,0 +1,30 @@
+﻿<div class="row roster-player-row">
+  <div class="small-10 columns">
+    <div class="row">
+      <div class="small-12 columns player-name">
+        <span class="first-name">{{unbound firstName}}</span>
+        <span class="last-name">{{unbound lastName}} </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-4 columns salary">
+        {{unbound salarySmall}}
+      </div>
+    <div class="small-2 columns">
+        {{unbound yearsLeft}}
+    </div>
+    <div class="small-2 columns">
+      {{unbound overall}}
+    </div>
+    <div class="small-2 columns">
+      {{unbound potential}}
+    </div>
+    <div class="small-2 columns">
+      {{unbound position}}
+    </div>
+    </div>
+  </div>
+  <div class="small-2 large-1 columns link-arrow">
+    {{#link-to 'player' this}}<i class="fa fa-chevron-right"></i>{{/link-to}}
+  </div>
+</div>
