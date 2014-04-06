@@ -168,3 +168,4 @@ pip-log.txt
 .DS_Store
 GopherGmConnect/Scripts/Grunt/node_modules/
 
+GopherGmConnect/Web.config
