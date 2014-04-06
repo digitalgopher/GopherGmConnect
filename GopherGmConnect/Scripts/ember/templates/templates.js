@@ -114,7 +114,11 @@ function program2(depth0,data) {
   
   var buffer = '';
   data.buffer.push("\r\n            ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "firstName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push(" ");
   data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "lastName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n            ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "potential", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
   data.buffer.push("\r\n            ");
   return buffer;
   }
@@ -125,10 +129,71 @@ function program2(depth0,data) {
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortByProperty", "overall", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["ID","STRING"],data:data})));
   data.buffer.push(">overall</button>\r\n<button ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortByProperty", "age", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["ID","STRING"],data:data})));
-  data.buffer.push(">age</button>\r\n\r\n\r\n    <ul>\r\n        ");
-  stack1 = helpers.each.call(depth0, {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],data:data});
+  data.buffer.push(">age</button>\r\n\r\n\r\n    <ul>\r\n\r\n        ");
+  stack1 = helpers.each.call(depth0, {hash:{
+    'iteamController': ("player")
+  },hashTypes:{'iteamController': "STRING"},hashContexts:{'iteamController': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\r\n    </ul>\r\n");
+  return buffer;
+  
+});
+
+Ember.TEMPLATES["_salaries"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', stack1, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
+
+function program1(depth0,data) {
+  
+  var buffer = '', helper, options;
+  data.buffer.push("\r\n");
+  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "salaryrow", options) : helperMissing.call(depth0, "partial", "salaryrow", options))));
+  data.buffer.push("\r\n");
+  return buffer;
+  }
+
+  stack1 = helpers.each.call(depth0, {hash:{
+    'itemController': ("player")
+  },hashTypes:{'itemController': "STRING"},hashContexts:{'itemController': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n\r\n\r\n");
+  return buffer;
+  
+});
+
+Ember.TEMPLATES["_salaryrow"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', stack1, helper, options, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
+
+function program1(depth0,data) {
+  
+  var buffer = '';
+  data.buffer.push("\r\n        <span class=\"last-name\">\r\n            ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "lastName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n        </span>\r\n        ");
+  return buffer;
+  }
+
+function program3(depth0,data) {
+  
+  var buffer = '';
+  data.buffer.push("\r\n    <div class=\"small-2 columns\">\r\n        <span class=\"contractStatus ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "year.salaryClass", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\">\r\n            ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "year.salarySmall", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n        </span>\r\n    </div>\r\n    ");
+  return buffer;
+  }
+
+  data.buffer.push("<div class=\"row\">\r\n    <div class=\"small-2 columns\">\r\n        ");
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "player", "", options) : helperMissing.call(depth0, "link-to", "player", "", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n    </div>\r\n\r\n    ");
+  stack1 = helpers.each.call(depth0, "year", "in", "salaryYears", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n\r\n\r\n</div>");
   return buffer;
   
 });
@@ -683,7 +748,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = '', helper, options;
-  data.buffer.push("\r\n        ");
+  data.buffer.push("\r\n            ");
   data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "lineup", options) : helperMissing.call(depth0, "partial", "lineup", options))));
   data.buffer.push("\r\n        ");
   return buffer;
@@ -692,21 +757,35 @@ function program1(depth0,data) {
 function program3(depth0,data) {
   
   var buffer = '', helper, options;
-  data.buffer.push("\r\n        ");
+  data.buffer.push("\r\n            ");
   data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "roster", options) : helperMissing.call(depth0, "partial", "roster", options))));
+  data.buffer.push("\r\n        ");
+  return buffer;
+  }
+
+function program5(depth0,data) {
+  
+  var buffer = '', helper, options;
+  data.buffer.push("\r\n            ");
+  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "salaries", options) : helperMissing.call(depth0, "partial", "salaries", options))));
   data.buffer.push("\r\n        ");
   return buffer;
   }
 
   data.buffer.push("\r\n\r\n\r\n\r\n\r\n<div class=\"row\">\r\n    <div class=\"medium-8 small-12 columns\">\r\n        <button ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "toggleTest", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
-  data.buffer.push(">test</button>\r\n        ");
+  data.buffer.push(">test</button>\r\n        <button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "toggleTestAgain", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
+  data.buffer.push(">salaries</button>\r\n        ");
   stack1 = helpers['if'].call(depth0, "showLineup", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\r\n\r\n        ");
   stack1 = helpers['if'].call(depth0, "showRoster", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\r\n    </div>\r\n\r\n\r\n\r\n\r\n    <div class=\"medium-4 small-12 columns player-details-container\">\r\n        outlet \r\n        ");
+  data.buffer.push("\r\n\r\n        ");
+  stack1 = helpers['if'].call(depth0, "showSalaries", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n        \r\n    </div>\r\n\r\n\r\n\r\n\r\n    <div class=\"medium-4 small-12 columns player-details-container\">\r\n        outlet \r\n        ");
   stack1 = helpers._triageMustache.call(depth0, "outlet", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\r\n    </div>\r\n\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n");

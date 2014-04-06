@@ -6,13 +6,19 @@
 <div class="row">
     <div class="medium-8 small-12 columns">
         <button {{action 'toggleTest'}}>test</button>
+        <button {{action 'toggleTestAgain' }}>salaries</button>
         {{#if showLineup}}
-        {{partial "lineup"}}
+            {{partial "lineup"}}
         {{/if}}
 
         {{#if showRoster}}
-        {{partial "roster"}}
+            {{partial "roster"}}
         {{/if}}
+
+        {{#if showSalaries}}
+            {{partial "salaries"}}
+        {{/if}}
+        
     </div>
 
 

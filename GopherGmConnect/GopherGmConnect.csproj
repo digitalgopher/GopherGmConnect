@@ -447,6 +447,7 @@
     <Content Include="Scripts\ember\routes\route-Team.js" />
     <Content Include="Scripts\ember\routes\route-Topplayers.js" />
     <Content Include="Scripts\ember\routes\route-Trade.js" />
+    <None Include="Scripts\ember\templates\_salaryrow.hbs" />
     <Content Include="Scripts\ember\views\view-rosterlistitem.js" />
     <Content Include="Scripts\ember\views\view-Home.js" />
     <Content Include="Scripts\ember\views\view-homelist-view.js" />
@@ -481,6 +482,7 @@
     </Content>
     <Content Include="Scripts\ember\templates\_lineup.hbs" />
     <Content Include="Scripts\ember\templates\_roster.hbs" />
+    <Content Include="Scripts\ember\templates\_salaries.hbs" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />

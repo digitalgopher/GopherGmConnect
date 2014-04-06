@@ -5,11 +5,13 @@
 
 
     <ul>
-        {{#each}}
+
+        {{#each iteamController="player"}}
 
         <li>
             {{#link-to 'player' this}}
-            {{unbound lastName}}
+            {{unbound firstName}} {{unbound lastName}}
+            {{unbound potential}}
             {{/link-to}}
         </li>
 

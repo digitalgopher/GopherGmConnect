@@ -8,6 +8,7 @@
 
     showLineup: true,
     showRoster: false,
+    showSalaries: false,
 
 
 
@@ -19,21 +20,17 @@
     goalies: Ember.computed.filterBy('arrangedContent', 'isGoalie', true),
     defence: Ember.computed.filterBy('arrangedContent', 'isDefence', true),
     forwards: Ember.computed.filterBy('arrangedContent', 'isForward', true),
+    nonroster: Ember.computed.filterBy('arrangedContent', 'isOnMainRoster', false),
 
-    propertySort: function () {
+    propertySort: function (property) {
         var self = this;
-        var property = self.get('currentSortProperty');
         if (property == 'potential') {
             self.set('sortProperties', ['potential', 'potentialColor']);
-            //self.set('roster', this.get('rosterFull').sortBy('potential', 'potentialColor').reverse());
         }
         else {
             self.set('sortProperties', [property]);
-            //self.get('roster').sortBy(property).reverse();
-            //self.set('roster', this.get('rosterFull').sortBy(property).reverse());
         }
-
-    }.observes('currentSortProperty'),
+    },
 
     onContentChange: function () {
         console.log('changed');
@@ -52,7 +49,8 @@
         },
 
         sortByProperty: function (property) {
-            this.set('currentSortProperty', property);
+            //this.set('currentSortProperty', property);
+            Ember.run.once(this, this.propertySort, property);
         },
 
         toggleView: function () {
@@ -61,8 +59,15 @@
         },
 
         toggleTest: function () {
-            this.toggleProperty('showLineup');
-            this.toggleProperty('showRoster');
+            this.set('showLineup', false);
+            this.set('showRoster', true);
+            this.set('showSalaries', false);;
+        },
+
+        toggleTestAgain: function () {
+            this.set('showLineup', false);
+            this.set('showRoster', false);
+            this.set('showSalaries', true);
         }
 
 

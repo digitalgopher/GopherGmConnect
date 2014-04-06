@@ -40,6 +40,7 @@
         }
         return 'ufa';
     }.property(),
+
     salaryYears: function () {
         var years = Em.A();
         var yearsLeft = this.get('yearsLeft');
@@ -47,6 +48,20 @@
         if (yearsLeft > 5) {
             yearsLeft = 5;
             moreThanFive = true;
+        }
+        if (yearsLeft == 0) {
+            var status = "ufa";
+            if (this.get('isTwoWay')) {
+                status = "rfa";
+            }
+            var contractExpired = {
+                salary: status.toUpperCase(),
+                salaryClass: status,
+                salarySmall: status.toUpperCase()
+
+            }
+            years.pushObject(contractExpired);
+            return years;
         }
 
         for (var i = 1; i <= yearsLeft ; i++) {

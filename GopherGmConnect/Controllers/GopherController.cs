@@ -569,7 +569,8 @@ namespace GopherGmConnect.Controllers
 
 
             JObject fullRoster = JObject.Parse(fullRosterJSON);
-            var everyPlayer = fullRoster.GetValue("v").Where(p => p[9].ToString() == "0").ToList();
+            //var everyPlayer = fullRoster.GetValue("v").Where(p => p[9].ToString() == "0").ToList();
+            var everyPlayer = fullRoster.GetValue("v").ToList();
 
             var mainRosterJsonObject = JObject.Parse(mainRosterJSON);
             var mainRosterIdList = mainRosterJsonObject.Value<JArray>("playerID").ToObject<List<string>>();
@@ -585,7 +586,13 @@ namespace GopherGmConnect.Controllers
             var mobileUrlEnd = "/info/mobile";
 
             IEnumerable<Task<Player>> downloadQuery =
-                from p in everyPlayer select ProcessPlayerAsyncURL(client, p[0].ToString(), string.Format("{0}{1}{2}", urlStart, p[0].ToString(), fullUrlEnd), string.Format("{0}{1}{2}", urlStart, p[0].ToString(), mobileUrlEnd), playerStatsArray, goalieStatsArray, mainRosterIdList);
+                from p in everyPlayer select ProcessPlayerAsyncURL(client, 
+                                                                   p[0].ToString(), 
+                                                                   string.Format("{0}{1}{2}", urlStart, p[0].ToString(), fullUrlEnd), 
+                                                                   string.Format("{0}{1}{2}", urlStart, p[0].ToString(), mobileUrlEnd), 
+                                                                   playerStatsArray, 
+                                                                   goalieStatsArray, 
+                                                                   mainRosterIdList);
 
 
             Task<Player>[] downloadTasks = downloadQuery.ToArray();
