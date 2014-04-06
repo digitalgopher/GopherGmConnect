@@ -59,43 +59,51 @@
     },
 
     forwardLines: function () {
-        var self = this;
-        var linesArray = Em.A();
-        
-        var populatedLines = Em.A();
-        var topLine = this.get('lines.topLine');
-        var secondLine = this.get('lines.secondLine');
-        var thirdLine = this.get('lines.thirdLine');
-        var fourthLine = this.get('lines.fourthLine');
-         
-        linesArray.pushObject(topLine);
-        linesArray.pushObject(secondLine);
-        linesArray.pushObject(thirdLine);
-        linesArray.pushObject(fourthLine);
+        try {
 
         
-        linesArray.forEach(function (line) {
-            var players = Em.A();
-            line.forEach(function (player, idx) {                               
-                var p = (self.get('players').findBy('id', player));
-                switch (idx) {
-                    case 0:
-                        p['linePosition'] = "LW";
-                        break;
-                    case 1:
-                        p['linePosition'] = 'C';
-                        break;
-                    case 2:
-                        p['linePosition'] = 'RW';
-                        break;
-                    default:
-                        throw new Error('something went wrong when setting the lines. Index not 0, 1, or 2');
-                }
-                players.pushObject(p);
-            });
-            populatedLines.pushObject(players);
-        })
-        return populatedLines;
+            var self = this;
+            var linesArray = Em.A();
+        
+            var populatedLines = Em.A();
+            var topLine = this.get('lines.topLine');
+            var secondLine = this.get('lines.secondLine');
+            var thirdLine = this.get('lines.thirdLine');
+            var fourthLine = this.get('lines.fourthLine');
+         
+            linesArray.pushObject(topLine);
+            linesArray.pushObject(secondLine);
+            linesArray.pushObject(thirdLine);
+            linesArray.pushObject(fourthLine);
+
+        
+            linesArray.forEach(function (line) {
+                var players = Em.A();
+                line.forEach(function (player, idx) {                               
+                    var p = (self.get('players').findBy('id', player));
+                    switch (idx) {
+                        case 0:
+                            p['linePosition'] = 'LW';
+                            break;
+                        case 1:
+                            p['linePosition'] = "C";
+                            break;
+                        case 2:
+                            p['linePosition'] = 'RW';
+                            break;
+                        default:
+                            throw new Error('something went wrong when setting the lines. Index not 0, 1, or 2');
+                    }
+                    players.pushObject(p);
+                });
+                populatedLines.pushObject(players);
+            })
+            return populatedLines;
+        }
+        catch (ex) {
+            console.error('Error loading lines...');
+            console.error(ex);
+        }
     }.property('id'),
 
 

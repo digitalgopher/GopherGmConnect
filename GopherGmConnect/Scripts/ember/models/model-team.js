@@ -67,7 +67,7 @@ App.Team.reopenClass({
             team.set('isLoaded', true);
             team.set('id', id);
             return team;
-        }).fail(function () {
+        }).catch(function () {
             alert('something failed;');
         });
 

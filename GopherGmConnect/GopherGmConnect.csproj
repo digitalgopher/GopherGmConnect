@@ -227,19 +227,29 @@
     <Content Include="Content\images\flags\SVK.png" />
     <Content Include="Content\images\flags\SWE.png" />
     <Content Include="Content\images\flags\USA.png" />
+    <Content Include="Content\less\compiled\styles.css" />
+    <Content Include="Content\less\styles.css">
+      <DependentUpon>styles.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\styles.less" />
+    <Content Include="Content\less\styles.min.css">
+      <DependentUpon>styles.less</DependentUpon>
+    </Content>
     <Content Include="Scripts\ember\components\component-app-modal.js" />
     <Content Include="Scripts\ember\components\component-player-listitemrating.js" />
     <Content Include="Scripts\ember\components\component-player-listitemstat.js" />
-    <Content Include="Scripts\ember\components\component-team-calendar.js" />
+    <Content Include="Scripts\ember\controllers\controller-TeamRoster.js" />
     <Content Include="Scripts\ember\controllers\controller-modal.js" />
+    <Content Include="Scripts\ember\controllers\controller-PlayersPlayer.js" />
     <Content Include="Scripts\ember\controllers\controller-PlayerStats.js" />
     <Content Include="Scripts\ember\helpers\ember-cloaking.js" />
     <Content Include="Scripts\ember\helpers\helper-RankSuffix.js" />
+    <Content Include="Scripts\ember\routes\route-Player.js" />
     <Content Include="Scripts\ember\routes\route-PlayerStats.js" />
     <Content Include="Scripts\ember\templates\components\app-modal.hbs" />
-    <Content Include="Scripts\ember\controllers\controller-TeamPlayers.js" />
+    <Content Include="Scripts\ember\controllers\controller-Players.js" />
     <Content Include="Scripts\ember\controllers\controller-TeamStats.js" />
-    <Content Include="Scripts\ember\routes\route-TeamPlayers.js" />
+    <Content Include="Scripts\ember\routes\route-Players.js" />
     <Content Include="Scripts\ember\routes\route-TeamStats.js" />
     <Content Include="Scripts\ember\components\component-team-rosterlistratings.js" />
     <Content Include="Scripts\ember\components\component-team-rosterliststats.js" />
@@ -357,18 +367,12 @@
     <Content Include="Content\img\glyphicons-halflings-white.png" />
     <Content Include="Content\img\glyphicons-halflings.png" />
     <Content Include="Content\loader.css" />
-    <Content Include="Content\style.css">
-      <DependentUpon>style.less</DependentUpon>
-    </Content>
     <Content Include="Content\style.less" />
-    <Content Include="Content\style.min.css">
-      <DependentUpon>style.less</DependentUpon>
-    </Content>
-    <Content Include="Content\teamColors.css">
+    <Content Include="Content\less\teamColors.css">
       <DependentUpon>teamColors.less</DependentUpon>
     </Content>
-    <Content Include="Content\teamColors.less" />
-    <Content Include="Content\teamColors.min.css">
+    <Content Include="Content\less\teamColors.less" />
+    <Content Include="Content\less\teamColors.min.css">
       <DependentUpon>teamColors.less</DependentUpon>
     </Content>
     <Content Include="Scripts\ember\components\component-team-teamleaders.js" />
@@ -389,7 +393,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Scripts\ember\templates\navbar.hbs" />
-    <Content Include="Scripts\ember\templates\team.hbs">
+    <Content Include="Scripts\ember\templates\team\index.hbs">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Scripts\ember\templates\components\app-loader.hbs" />
@@ -400,14 +404,12 @@
     <Content Include="Scripts\ember\components\component-player-listitem.js" />
     <Content Include="Scripts\ember\components\component-player-salarylistitem.js" />
     <Content Include="Scripts\ember\components\component-team-big-button.js" />
-    <Content Include="Scripts\ember\components\component-team-circularstat.js" />
     <Content Include="Scripts\ember\components\component-team-rosterlist.js" />
     <Content Include="Scripts\ember\components\component-team-salaryrosterlist.js" />
     <Content Include="Scripts\ember\components\component-team-smallplayer.js" />
     <Content Include="Scripts\ember\components\component-team-stats.js" />
     <Content Include="Scripts\ember\components\component-team-tweet.js" />
     <Content Include="Scripts\ember\controllers\controller-application.js" />
-    <Content Include="Scripts\ember\controllers\controller-fwdline.js" />
     <Content Include="Scripts\ember\controllers\controller-game.js" />
     <Content Include="Scripts\ember\controllers\controller-home.js" />
     <Content Include="Scripts\ember\controllers\controller-line.js" />
@@ -415,7 +417,6 @@
     <Content Include="Scripts\ember\controllers\controller-playercompare.js" />
     <Content Include="Scripts\ember\controllers\controller-playersearch.js" />
     <Content Include="Scripts\ember\controllers\controller-ppunit.js" />
-    <Content Include="Scripts\ember\controllers\controller-players.js" />
     <Content Include="Scripts\ember\controllers\controller-schedule.js" />
     <Content Include="Scripts\ember\controllers\controller-team.js" />
     <Content Include="Scripts\ember\controllers\controller-teams.js" />
@@ -442,12 +443,11 @@
     <Content Include="Scripts\ember\routes\route-Application.js" />
     <Content Include="Scripts\ember\routes\route-Home.js" />
     <Content Include="Scripts\ember\routes\route-Index.js" />
-    <Content Include="Scripts\ember\routes\route-Player.js" />
-    <Content Include="Scripts\ember\routes\route-Playercompare.js" />
     <Content Include="Scripts\ember\routes\Router.js" />
     <Content Include="Scripts\ember\routes\route-Team.js" />
     <Content Include="Scripts\ember\routes\route-Topplayers.js" />
     <Content Include="Scripts\ember\routes\route-Trade.js" />
+    <Content Include="Scripts\ember\views\view-rosterlistitem.js" />
     <Content Include="Scripts\ember\views\view-Home.js" />
     <Content Include="Scripts\ember\views\view-homelist-view.js" />
     <Content Include="Scripts\ember\views\view-modal.js" />
@@ -464,12 +464,23 @@
     <Content Include="Scripts\ember\views\view-tradeRosterListItem.js" />
     <Content Include="Scripts\ember\views\view-Tradeteamselect.js" />
     <Content Include="Scripts\ember\templates\team\stats.hbs" />
-    <Content Include="Scripts\ember\templates\team\players.hbs" />
+    <Content Include="Scripts\ember\templates\players.hbs" />
     <Content Include="Scripts\ember\templates\modal.hbs" />
     <Content Include="Scripts\ember\templates\player\stats.hbs" />
     <Content Include="Scripts\ember\templates\player\ratings.hbs" />
-    <Content Include="Scripts\ember\templates\player.hbs" />
-    <Content Include="Scripts\ember\templates\teamplayersitem.hbs" />
+    <Content Include="Scripts\ember\templates\player.hbs">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\ember\templates\components\team-fullrosteritem.hbs" />
+    <Content Include="Scripts\ember\templates\lineup\index.hbs" />
+    <Content Include="Scripts\ember\templates\lineup\playerdetail.hbs" />
+    <Content Include="Scripts\ember\templates\team.hbs" />
+    <Content Include="Scripts\ember\templates\team\roster.hbs" />
+    <Content Include="Scripts\ember\templates\team\player.hbs">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\ember\templates\_lineup.hbs" />
+    <Content Include="Scripts\ember\templates\_roster.hbs" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
@@ -519,6 +530,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\App_LocalResources\" />
+    <Folder Include="Scripts\ember\templates\players\" />
     <Folder Include="Scripts\Grunt\" />
   </ItemGroup>
   <ItemGroup>

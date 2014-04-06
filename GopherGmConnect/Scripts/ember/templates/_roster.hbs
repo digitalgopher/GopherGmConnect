@@ -1,0 +1,17 @@
+﻿
+<button {{action sortByProperty "potential" }}>Pot</button>
+<button {{action sortByProperty "overall" }}>overall</button>
+<button {{action sortByProperty "age" }}>age</button>
+
+
+    <ul>
+        {{#each}}
+
+        <li>
+            {{#link-to 'player' this}}
+            {{unbound lastName}}
+            {{/link-to}}
+        </li>
+
+        {{/each}}
+    </ul>

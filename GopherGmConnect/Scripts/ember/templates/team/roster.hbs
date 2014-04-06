@@ -1,0 +1,110 @@
+﻿
+
+
+
+
+<div class="row">
+    <div class="medium-8 small-12 columns">
+        <h1>lineup template</h1>
+        
+
+        <div class="line-sep">
+            <div class="row">
+                <div class="small-12 columns">
+                    <h2>Forward Lines</h2>
+                </div>
+            </div>
+
+            {{#each controllers.team.forwardLines}}
+            <div class="row">
+
+                {{#each itemController="player"}}
+                {{#link-to 'team.player' this}}
+                <div class="small-4 columns lineup-container">
+                    <span class="last-name">
+
+                        {{unbound lastName}}
+
+                    </span>
+
+                    <div class="star-container">
+                        {{#each potentialStars}}
+                        <i class="fa {{unbound starClass}} {{unbound color}}"></i>
+                        {{/each}}
+                    </div>
+
+                    <div class="small-progress">
+                        <span class="value-meter" style="width: {{unbound tradeValuePercent}}%"></span>
+                    </div>
+                </div>
+
+                {{/link-to}}
+                {{/each}}
+            </div>
+            {{/each}}
+        </div>
+
+        <div class="line-sep">
+            <div class="row">
+                <div class="small-12 columns">
+                    <h2>Defensive Pairs</h2>
+                </div>
+            </div>
+            {{#each controllers.team.dpairs}}
+            <div class="row">
+                {{#each itemController="player"}}
+                <div class="small-6 columns">
+                    <span class="overall-box">
+                        {{unbound overall}}
+                    </span>
+                    <span class="first-name">
+                        {{#link-to 'player' this}}
+                        {{unbound lastName}}
+                        {{/link-to}}
+                    </span>
+                    <span>
+                        {{unbound linePosition}}
+                    </span>
+                    <div class="star-container">
+                        {{#each potentialStars}}
+                        <i class="fa {{unbound starClass}} {{unbound color}}"></i>
+                        {{/each}}
+                    </div>
+
+
+                    <div class="small-progress">
+                        <span class="value-meter" style="width: {{unbound tradeValuePercent}}%"></span>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            {{/each}}
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+    <div class="medium-4 small-12 columns player-details-container">
+        <h1>team > player</h1>
+        {{outlet}}
+    </div>
+
+</div>
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 ﻿App.ApplicationRoute = Ember.Route.extend({
-    events: {
+    actions: {
         selectTab: function (name) {
             this.controllerFor('team').set('activeTab', name);
             this.render(name, {

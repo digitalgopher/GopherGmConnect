@@ -1,20 +1,17 @@
 ﻿App.Router.map(function () {
     this.route('home');
     this.resource("team", { path: "/team/:team_id" }, function () {
-        this.route("players");
+        this.resource('players', { path: '/players' }, function () {
+            this.resource('player', { path: '/:player_id' });
+        });       
+        //this.resource('players', { path: '/players' }, function () {
+        //    //this.route('player', { path: '/:player_id' });
+        //    this.route('test');
+            
+        //    this.route('roster');
+        //});       
         this.route('stats');
         this.route('games');
     });
-
-    this.resource('player', { path: '/player/:player_id' }, function () {
-        this.route('stats');
-        this.route('ratings');
-    })
-
-    //this.resource('player', { path: '/player/:player_id' });
-    //this.resource("player", { path: "/players/:player_id" });
-    //this.resource("playercompare", { path: "/compare/:aplayer_id/:bplayer_id" });
-    //this.route("topplayers");
-    //this.route("trade");
-    //this.route("childViewTest");
+    
 });

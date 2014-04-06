@@ -1,0 +1,32 @@
+﻿
+
+
+
+
+<div class="row">
+    <div class="medium-8 small-12 columns">
+        <button {{action 'toggleTest'}}>test</button>
+        {{#if showLineup}}
+        {{partial "lineup"}}
+        {{/if}}
+
+        {{#if showRoster}}
+        {{partial "roster"}}
+        {{/if}}
+    </div>
+
+
+
+
+    <div class="medium-4 small-12 columns player-details-container">
+        outlet 
+        {{outlet}}
+    </div>
+
+</div>
+
+
+
+
+
+

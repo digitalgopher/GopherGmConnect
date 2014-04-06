@@ -28,7 +28,11 @@
             starArray[totalStars - 1].starClass = 'fa-star-half';
         }
         return starArray;
-    }.property(),
+    }.property('id'),
+
+    backgroundImage: function () {
+        return 'background-image: url("' + this.get('imageUrl') + '");';
+    }.property('id'),
 
     contractTypeString: function (){
         if (this.get('isTwoWay')) {
@@ -81,7 +85,7 @@
     salarySmall: function () {
         var amt = this.get('salaryReadable');
         return amt / 1000000;
-    }.property('salaryReadable'),
+    }.property('id'),
 
     handed: function () {
         var shoots = this.get('shoots');
@@ -89,7 +93,7 @@
             return "L";
         }
         return "R";
-    }.property('shoots'),
+    }.property('id'),
 
     //readPotential: Ember.computed.alias('potential'),
 
@@ -107,25 +111,25 @@
 
     salaryString: function () {
         return numberWithCommas(this.get('salaryReadable'));
-    }.property('salaryReadable'),
+    }.property('id'),
 
     tradeValuePercent: function () {
         return (this.get('tradeValue') / 1000) * 100;
         //return "width: " + (this.get('tradeValue') / 1000) * 100 + "%;";
-    }.property('tradeValue'),
+    }.property('id'),
 
     contractType: function () {
         if (this.get('isTwoWay')) {
             return "Two";
         }
         return "One";
-    }.property("isTwoWay"),
+    }.property("id"),
 
 
     flagImage: function () {
         var country = this.get('country');
         return '/content/images/flags/' + country + '.png';
-    }.property('country'),
+    }.property('id'),
 
 
 

@@ -42,7 +42,7 @@ namespace GopherGmConnect
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/style").Include(
-                        "~/Content/style.css"));
+                        "~/Content/less/compiled/styles.css"));
 
             bundles.Add(new StyleBundle("~/Content/Pizza").Include(
                         "~/Scripts/Pizza/css/pizza.css"));

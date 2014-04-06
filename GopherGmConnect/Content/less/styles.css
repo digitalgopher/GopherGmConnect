@@ -1,13 +1,13 @@
-﻿html {
+html {
   /*background: url(images/kronner.png) no-repeat center center fixed; 
     -moz-background-size: cover;
     -o-background-size: cover;
-    -webkit-background-size: cover;
+    -webkit-background-size: cover; 
     background-size: cover;*/
 }
 body {
   /*background-color: #070E1A;*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
   background-color: #1c1d22;
   font-family: "Roboto";
   /*background: url("http://i.imgur.com/kefwgCE.jpg") no-repeat center center fixed;
@@ -15,6 +15,9 @@ body {
     -o-background-size: cover;
     -webkit-background-size: cover;
     background-size: cover;*/
+}
+.row {
+  background-color: white;
 }
 .twitter-typeahead {
   width: 100%;
@@ -54,8 +57,8 @@ body {
   color: #666;
 }
 .tt-dropdown-menu .tt-dataset-playersearch .tt-suggestions {
-  
-}@potential Color;
+  color: salmon;
+}
 .navbar {
   margin-bottom: 0;
 }
@@ -90,6 +93,11 @@ body {
 .filterButton.active {
   background-color: rgba(150, 150, 150, 0.1);
   border-bottom: 2px solid #fbcb43;
+}
+.lineup-container {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .salary-explanation {
   font-weight: 300;
@@ -212,7 +220,7 @@ body {
   background-repeat: no-repeat;
 }
 .stats-box {
-  background-color: rgba(240, 240, 240, 0.9);
+  background-color: rgba(0, 0, 0, 0.9);
   border: 1px solid #e5e5e5;
   border-radius: 2px;
   /*font-family: Oswald;*/
@@ -384,7 +392,7 @@ body {
   width: 0;
   margin-left: -15px;
   border-right: 25px solid transparent;
-  border-top: 25px solid rgba(240, 240, 240, 0.9);
+  border-top: 25px solid rgba(0, 0, 0, 0.9);
 }
 .triangle.is-current-push {
   border-top: 25px solid #4dbfd9;
@@ -408,7 +416,7 @@ body {
   /*font-family: "Oswald";*/
 }
 .team-summary-box .team-stats-box .number {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
   width: 100%;
   font-weight: 900;
   font-size: 2.2em;
@@ -538,7 +546,7 @@ ul[data-pie-id] li:nth-child(6) {
 .team-number {
   line-height: 2rem;
   font-weight: 300;
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-number-label {
   /*font-family: "Oswald";*/
@@ -569,6 +577,15 @@ ul[data-pie-id] li:nth-child(6) {
 .player-image-list {
   padding: 0;
 }
+.player-details-container {
+  /* max-width 640px, mobile-only styles, use when QAing mobile issues */
+}
+@media only screen and (max-width: 40em) {
+  .player-details-container {
+    position: fixed;
+    bottom: 0;
+  }
+}
 .small-progress {
   height: 1px;
   background-color: rgba(50, 50, 50, 0.7);
@@ -594,7 +611,7 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fbcb43;
 }
 .star-container .white {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .star-container .red {
   color: #e46f61;
@@ -620,7 +637,7 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fbcb43;
 }
 .star-dash .full-star .white {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .star-dash .full-star .red {
   color: #e46f61;
@@ -637,7 +654,7 @@ ul[data-pie-id] li:nth-child(6) {
   color: #fbcb43;
 }
 .star-dash .half-star .white {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .star-dash .half-star .red {
   color: #e46f61;
@@ -680,7 +697,7 @@ ul[data-pie-id] li:nth-child(6) {
 .roster-player-row .stat {
   font-weight: 900;
   font-size: 1.7rem;
-  background-color: rgba(240, 240, 240, 0.9);
+  background-color: rgba(0, 0, 0, 0.9);
   color: #1c1d22;
   text-align: center;
 }
@@ -691,7 +708,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-size: 1rem;
 }
 .roster-player-row .salary .salaryNumber {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .roster-player-row .salary .rfa {
   color: #e46f61;
@@ -728,7 +745,7 @@ ul[data-pie-id] li:nth-child(6) {
 .player-basic-block .jersey {
   font-weight: 900;
   font-size: 1.7rem;
-  background-color: rgba(240, 240, 240, 0.9);
+  background-color: rgba(0, 0, 0, 0.9);
   color: #1c1d22;
   text-align: center;
   padding: 0;
@@ -908,7 +925,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._29 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -1006,6 +1023,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._29 .team-toprow {
+  color: wheat;
 }
 .team-container._28 {
   /*.roster-seperator {
@@ -1155,7 +1175,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._28 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -1253,6 +1273,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._28 .team-toprow {
+  color: wheat;
 }
 .team-container._27 {
   /*.roster-seperator {
@@ -1402,7 +1425,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._27 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -1500,6 +1523,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._27 .team-toprow {
+  color: wheat;
 }
 .team-container._26 {
   /*.roster-seperator {
@@ -1649,7 +1675,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._26 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -1747,6 +1773,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._26 .team-toprow {
+  color: wheat;
 }
 .team-container._25 {
   /*.roster-seperator {
@@ -1896,7 +1925,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._25 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -1994,6 +2023,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._25 .team-toprow {
+  color: wheat;
 }
 .team-container._24 {
   /*.roster-seperator {
@@ -2143,7 +2175,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._24 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -2241,6 +2273,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._24 .team-toprow {
+  color: wheat;
 }
 .team-container._23 {
   /*.roster-seperator {
@@ -2390,7 +2425,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._23 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -2488,6 +2523,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._23 .team-toprow {
+  color: wheat;
 }
 .team-container._22 {
   /*.roster-seperator {
@@ -2637,7 +2675,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._22 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -2735,6 +2773,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._22 .team-toprow {
+  color: wheat;
 }
 .team-container._21 {
   /*.roster-seperator {
@@ -2884,7 +2925,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._21 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -2982,6 +3023,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._21 .team-toprow {
+  color: wheat;
 }
 .team-container._20 {
   /*.roster-seperator {
@@ -3131,7 +3175,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._20 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -3229,6 +3273,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._20 .team-toprow {
+  color: wheat;
 }
 .team-container._19 {
   /*.roster-seperator {
@@ -3378,7 +3425,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._19 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -3476,6 +3523,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._19 .team-toprow {
+  color: wheat;
 }
 .team-container._18 {
   /*.roster-seperator {
@@ -3625,7 +3675,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._18 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -3723,6 +3773,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._18 .team-toprow {
+  color: wheat;
 }
 .team-container._17 {
   /*.roster-seperator {
@@ -3872,7 +3925,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._17 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -3970,6 +4023,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._17 .team-toprow {
+  color: wheat;
 }
 .team-container._16 {
   /*.roster-seperator {
@@ -4119,7 +4175,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._16 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -4217,6 +4273,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._16 .team-toprow {
+  color: wheat;
 }
 .team-container._15 {
   /*.roster-seperator {
@@ -4366,7 +4425,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._15 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -4464,6 +4523,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._15 .team-toprow {
+  color: wheat;
 }
 .team-container._14 {
   /*.roster-seperator {
@@ -4613,7 +4675,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._14 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -4711,6 +4773,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._14 .team-toprow {
+  color: wheat;
 }
 .team-container._13 {
   /*.roster-seperator {
@@ -4860,7 +4925,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._13 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -4958,6 +5023,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._13 .team-toprow {
+  color: wheat;
 }
 .team-container._12 {
   /*.roster-seperator {
@@ -5107,7 +5175,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._12 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -5205,6 +5273,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._12 .team-toprow {
+  color: wheat;
 }
 .team-container._11 {
   /*.roster-seperator {
@@ -5354,7 +5425,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._11 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -5452,6 +5523,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._11 .team-toprow {
+  color: wheat;
 }
 .team-container._10 {
   /*.roster-seperator {
@@ -5601,7 +5675,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._10 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -5699,6 +5773,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._10 .team-toprow {
+  color: wheat;
 }
 .team-container._9 {
   /*.roster-seperator {
@@ -5848,7 +5925,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._9 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -5946,6 +6023,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._9 .team-toprow {
+  color: wheat;
 }
 .team-container._8 {
   /*.roster-seperator {
@@ -6095,7 +6175,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._8 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -6193,6 +6273,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._8 .team-toprow {
+  color: wheat;
 }
 .team-container._7 {
   /*.roster-seperator {
@@ -6342,7 +6425,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._7 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -6440,6 +6523,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._7 .team-toprow {
+  color: wheat;
 }
 .team-container._6 {
   /*.roster-seperator {
@@ -6589,7 +6675,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._6 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -6687,6 +6773,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._6 .team-toprow {
+  color: wheat;
 }
 .team-container._5 {
   /*.roster-seperator {
@@ -6836,7 +6925,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._5 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -6934,6 +7023,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._5 .team-toprow {
+  color: wheat;
 }
 .team-container._4 {
   /*.roster-seperator {
@@ -7083,7 +7175,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._4 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -7181,6 +7273,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._4 .team-toprow {
+  color: wheat;
 }
 .team-container._3 {
   /*.roster-seperator {
@@ -7330,7 +7425,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._3 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -7428,6 +7523,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._3 .team-toprow {
+  color: wheat;
 }
 .team-container._2 {
   /*.roster-seperator {
@@ -7577,7 +7675,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._2 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -7675,6 +7773,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._2 .team-toprow {
+  color: wheat;
 }
 .team-container._1 {
   /*.roster-seperator {
@@ -7824,7 +7925,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._1 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -7922,6 +8023,9 @@ ul[data-pie-id] li:nth-child(6) {
   /*font-family: "Oswald";*/
   font-weight: 100;
   padding-bottom: 5px;
+}
+.team-container._1 .team-toprow {
+  color: wheat;
 }
 .team-container._0 {
   /*.roster-seperator {
@@ -8071,7 +8175,7 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
   display: inline-block;
   /*font-family: "Oswald";*/
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-container._0 .team-basic-box h3.city-name {
   font-size: 1.5em;
@@ -8170,11 +8274,14 @@ ul[data-pie-id] li:nth-child(6) {
   font-weight: 100;
   padding-bottom: 5px;
 }
+.team-container._0 .team-toprow {
+  color: wheat;
+}
 .team-row._29 {
   font-family: "Roboto";
 }
 .team-row._29 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._29 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -8230,7 +8337,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._28 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._28 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -8286,7 +8393,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._27 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._27 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -8342,7 +8449,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._26 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._26 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -8398,7 +8505,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._25 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._25 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -8454,7 +8561,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._24 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._24 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -8510,7 +8617,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._23 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._23 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -8566,7 +8673,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._22 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._22 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -8622,7 +8729,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._21 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._21 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -8678,7 +8785,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._20 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._20 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -8734,7 +8841,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._19 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._19 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -8790,7 +8897,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._18 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._18 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -8846,7 +8953,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._17 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._17 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -8902,7 +9009,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._16 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._16 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -8958,7 +9065,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._15 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._15 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -9014,7 +9121,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._14 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._14 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -9070,7 +9177,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._13 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._13 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -9126,7 +9233,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._12 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._12 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -9182,7 +9289,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._11 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._11 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -9238,7 +9345,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._10 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._10 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -9294,7 +9401,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._9 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._9 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -9350,7 +9457,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._8 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._8 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -9406,7 +9513,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._7 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._7 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -9462,7 +9569,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._6 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._6 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -9518,7 +9625,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._5 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._5 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -9574,7 +9681,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._4 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._4 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -9630,7 +9737,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._3 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._3 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -9686,7 +9793,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._2 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._2 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -9742,7 +9849,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._1 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._1 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -9798,7 +9905,7 @@ ul[data-pie-id] li:nth-child(6) {
   font-family: "Roboto";
 }
 .team-row._0 a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .team-row._0 > div:nth-of-type(n+2) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);

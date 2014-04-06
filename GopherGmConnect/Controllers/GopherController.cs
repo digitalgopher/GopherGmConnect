@@ -775,6 +775,7 @@ namespace GopherGmConnect.Controllers
                 //t.SalaryCapSpent = salary;
             }
 
+
             return teamList;
         }
 

@@ -185,9 +185,8 @@ GARANK {{unbound controllers.team.rankGoalsAgainstPerGame}}
         <img class="player-image-crop" {{bind-attr src="startingGoalie.imageUrl" }} />
     </div>
     <div class="small-6 columns">
-        {{#link-to 'player' startingGoalie}}
         {{unbound startingGoalie.lastName}}
-        {{/link-to}}
+    
     </div>
     <div class="small-4 columns">
         {{unbound startingGoalie.singleYearStats.goalsAgainstAverage}}

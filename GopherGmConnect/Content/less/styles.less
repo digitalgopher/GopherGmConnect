@@ -1,0 +1,1325 @@
+﻿@import "teamColors.less";
+
+html {
+    /*background: url(images/kronner.png) no-repeat center center fixed; 
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover; 
+    background-size: cover;*/
+}
+
+body {
+    /*background-color: #070E1A;*/
+    color: @baseFontColor;
+    background-color: @background-color;
+    font-family: @siteFont;
+    /*background: url("http://i.imgur.com/kefwgCE.jpg") no-repeat center center fixed;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;*/
+}
+
+.row {
+    background-color: white;
+}
+
+@background-color: #1c1d22;
+
+
+@green: #8cc474;
+@red: #e46f61;
+@blue: #4dbfd9;
+@yellow: #fbcb43;
+@pink: #FA516;
+@teal: #70CBAA;
+@darkblue: #6270AB;
+@linghtgreen: #6CC131;
+
+@baseFontColor: rgba(0, 0, 0, .9);
+@secondaryFontColor: #333;
+@textShadow: 0 2px 0 rgba(100,100,100,.4);
+@siteFont: "Roboto";
+@lightBorder: rgba(100,100,100,.4);
+
+
+
+
+.hideForMobile() {
+    @media only screen and (max-width: 720px) {
+        display: none;
+    }
+}
+
+
+
+
+.twitter-typeahead {
+    width: 100%;
+
+    .tt-hint {
+        display: block;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.428571429;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: #fff !important;
+        width: 100%;
+    }
+
+    .hint-small {
+        height: 30px;
+        padding: 5px 10px;
+        font-size: 12px;
+        border-radius: 3px;
+        line-height: 1.5;
+    }
+
+    .hint-large {
+        height: 45px;
+        padding: 10px 16px;
+        font-size: 18px;
+        border-radius: 6px;
+        line-height: 1.33;
+    }
+}
+
+
+.tt-dropdown-menu {
+    background-color: #fff;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding: 0 5px;
+
+    .tt-dataset-playersearch {
+        color: #666;
+
+        .tt-suggestions {
+            color: salmon;
+
+            .tt-suggestion {
+            }
+        }
+    }
+}
+
+.navbar {
+    margin-bottom: 0;
+
+    .search-query {
+    }
+}
+
+.home-team-container {
+}
+
+.logo-container {
+    @size: 100%;
+    @borderWidth: 3px;
+    width: @size;
+    height: @size;
+    border-radius: @size/2;
+    padding: @size/2;
+    border-width: @borderWidth;
+    border-style: solid;
+    overflow: hidden;
+    -moz-transition: all linear .2s;
+    -o-transition: all linear .2s;
+    -webkit-transition: all linear .2s;
+    transition: all linear .2s;
+
+    img {
+        margin: 0 auto;
+    }
+}
+
+.team-background-colors (@myTeamColor) {
+    background-color: @myTeamColor;
+}
+
+
+.initial-load {
+    text-align: center;
+    font-family: @siteFont;
+    font-weight: 700;
+}
+
+.filterButton {
+    Height: 40px;
+    cursor: pointer;
+    line-height: 3.1;
+    font-family: @siteFont;
+    font-weight: normal;
+
+    &.active {
+        .active();
+        border-bottom: 2px solid @yellow;
+    }
+}
+
+
+.lineup-container {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.salary-explanation {
+    font-weight: 300;
+    color: rgba(255, 255, 255, .7);
+    -webkit-text-shadow: 2px 2px 2px @textShadow;
+    text-shadow: 2px 2px 2px @textShadow;
+    font-size: 14px;
+}
+
+.loading-text {
+    font-family: @siteFont !important;
+}
+
+.team-row-basic {
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.team-row(@myTeamColor) {
+    a {
+        color: @baseFontColor;
+    }
+
+    font-family: @siteFont;
+
+    > div:nth-of-type(n+2) {
+        border-bottom: 1px solid rgba(0, 0, 0, .2);
+    }
+
+    .logo-box {
+        text-align: center;
+        background-color: darken(@myTeamColor, 10%);
+        padding: 6px 0;
+        margin: 0;
+        border-bottom: 1px solid @myTeamColor;
+    }
+
+    .team-name-box {
+        .team-name-box();
+    }
+
+    .team-stat {
+        .team-stat();
+    }
+
+    .active {
+        .active();
+    }
+
+    &:active {
+        background-color: @myTeamColor;
+        color: lighten(@baseFontColor, 100%);
+
+        a {
+            color: lighten(@baseFontColor, 100%);
+        }
+    }
+}
+
+
+.leaders {
+    line-height: 1.8;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.team-stat() {
+    text-align: left;
+    line-height: 3.2;
+    padding-left: 4px;
+}
+
+.active () {
+    background-color: rgba(150, 150, 150, .1);
+}
+
+
+.team-name-box () {
+    padding: 1px;
+
+    h1 {
+
+        @media only screen and (max-width: 720px) {
+            font-size: 14px;
+        }
+
+        font-family: @siteFont;
+        line-height: 1.1;
+        font-size: 17px;
+        margin: 0;
+        padding: 4px 0 0 4px;
+    }
+
+    p {
+        @media only screen and (max-width: 720px) {
+            padding-bottom: 5px;
+        }
+
+        margin: 0;
+        padding: 0 0 2px 4px;
+        font-weight: 300;
+    }
+}
+
+.team-name {
+    &.city {
+        font-size: x-large;
+    }
+
+    &.name {
+        font-size: small;
+    }
+}
+
+
+
+
+.player-header {
+    .team-header(@darkblue);
+    .player-profile(@darkblue);
+    text-align: left;
+}
+
+
+.stats-box {
+    background-color: @baseFontColor;
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+    /*font-family: Oswald;*/
+    margin-bottom: 20px;
+    text-align: center;
+
+    .title {
+        /*font: 300 20px Oswald,arial,sans-serif;*/
+        font-weight: 300;
+        font-size: 20px;
+        display: block;
+        margin-left: 10px;
+    }
+
+    &.contract {
+        border-top: 5px solid @blue;
+    }
+
+    &.basicinfo {
+        border-top: 5px solid @red;
+    }
+
+    &.careerstats {
+        border-top: 5px solid @yellow;
+    }
+
+    .numberBox {
+        width: 14%;
+        height: 100%;
+        display: inline-block;
+        /*border: 1px solid green;*/
+        margin-right: -4px;
+        text-align: center;
+        margin: 0 8px;
+        line-height: normal;
+        white-space: nowrap;
+        padding: 10px 0 10px 0;
+
+        .numberBoxValue {
+            font-weight: 300;
+            font-size: xx-large;
+            position: relative;
+            height: 100%;
+            display: block;
+            color: @secondaryFontColor;
+            /*color: rgba(255, 255, 255, .9);*/
+            //background-color: rgba(0, 0, 0, .6)4443;
+            border: 1px solid rgba(0, 0, 0, .3);
+            border-radius: 4px;
+
+            &.player-okay {
+                background-color: @darkblue;
+                color: white;
+            }
+
+            &.player-white-potential {
+                background-color: rgba(0, 0, 0, .6);
+                color: white;
+            }
+
+            &.player-age-young, &.player-good {
+                background-color: @blue;
+                color: white;
+            }
+
+            &.player-age-prime, &.player-green-potential, &.player-great {
+                background-color: @green;
+                color: white;
+            }
+
+            &.player-age-medium, &.player-yellow-potential, &.player-caution {
+                background-color: @yellow;
+                color: white;
+            }
+
+            &.player-age-old, &.player-red-potential, &.player-bad {
+                background-color: @red;
+                color: white;
+            }
+        }
+
+        &.salary {
+            width: 30%;
+        }
+
+        &.contracttype {
+            width: 26%;
+        }
+
+        &.numberBox.points {
+            width: 20%;
+        }
+    }
+}
+
+
+.loading {
+    background-color: rgba(0,0,0,0);
+    opacity: .8;
+    border-radius: 50px;
+    margin: 5% auto;
+    -o-animation: loading .5s infinite linear;
+    -moz-animation: loading .5s infinite linear;
+    -webkit-animation: loading .5s infinite linear;
+    animation: loading .5s infinite linear;
+
+    &.spin-2 {
+        @border: 10px;
+        @size: 70px;
+        border: @border solid rgba(0, 0, 0, .3);
+        border-top: @border solid rgba(0,0,0,0);
+        border-left: @border solid rgba(0,0,0,0);
+        width: @size;
+        height: @size;
+    }
+}
+
+@keyframes loading {
+    0% {
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes loading {
+    0% {
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes loading {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.team-basic-box (@myTeamColor) {
+    background-color: @myTeamColor;
+    text-align: center;
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+
+    h3 {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+        /*font-family: "Oswald";*/
+        color: @baseFontColor;
+
+        &.city-name {
+            font-size: 1.5em;
+            font-weight: 100;
+        }
+
+        &.team-name {
+            font-size: 2.4em;
+            font-weight: 900;
+        }
+    }
+}
+
+.recordAfter {
+    font-weight: lighter;
+    font-size: x-small;
+    line-height: 0;
+    white-space: pre;
+}
+
+.value-label {
+    width: 100%;
+    font-size: 1.4em;
+    /*font-family: "Oswald";*/
+    font-weight: 100;
+    padding-bottom: 5px;
+}
+
+.schedule-logo-holder {
+    display: block;
+}
+
+.triangle {
+    @triangleSize: 25px;
+    height: 0;
+    width: 0;
+    margin-left: -15px;
+    border-right: @triangleSize solid transparent;
+    border-top: @triangleSize solid @baseFontColor;
+
+    &.is-current-push {
+        border-top: @triangleSize solid @blue;
+    }
+
+    &.is-estimated-next-push {
+        border-top: @triangleSize solid @yellow;
+    }
+}
+
+.schedule {
+}
+
+.schedule-game {
+    &:nth-of-type(4n+1) {
+        border-left: 1px solid rgba(0, 0, 0, .3);
+    }
+
+    border-top: 1px solid rgba(0, 0, 0, .3);
+    border-right: 1px solid rgba(0, 0, 0, .3);
+    text-align: center;
+
+    > div {
+        display: block;
+    }
+}
+
+.team-summary-box {
+    text-align: center;
+    /*font-family: "Oswald";*/
+    .team-stats-box {
+        .number {
+            @media only screen and (max-width: 720px) {
+                font-size: 1.5em;
+                font-weight: 400px;
+            }
+
+            color: @baseFontColor;
+            width: 100%;
+            font-weight: 900;
+            font-size: 2.2em;
+        }
+
+        .value-label {
+            .value-label;
+            font-size: 1.2em;
+        }
+    }
+
+    .inner {
+        font-size: 40px;
+        font-weight: 300;
+        background-color: white;
+        border: 1px solid rgba(0, 0, 0, .2);
+
+        & .win-box {
+            color: @green;
+        }
+
+        & .loss-box {
+            color: @red;
+        }
+
+        & .overtimeloss-box {
+            color: @yellow;
+        }
+
+        & .points-box {
+            color: @blue;
+        }
+
+        & .percent-box {
+            font-size: 35px;
+        }
+    }
+}
+
+.team-banner {
+    /*background-color: @team-10;*/
+    &:after {
+        position: absolute;
+        display: block;
+        content: "";
+        width: 100%;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url(images/fabric.png);
+        background-repeat: repeat-x;
+        opacity: .5;
+    }
+}
+
+ul[data-pie-id] li:nth-child(1) {
+    color: @green;
+}
+
+ul[data-pie-id] li:nth-child(2) {
+    color: @red;
+}
+
+ul[data-pie-id] li:nth-child(3) {
+    color: @yellow;
+}
+
+ul[data-pie-id] li:nth-child(4) {
+    color: @pink;
+}
+
+ul[data-pie-id] li:nth-child(5) {
+    color: @lightBorder;
+}
+
+ul[data-pie-id] li:nth-child(6) {
+    color: @teal;
+}
+
+.player-image-crop {
+    margin-bottom: -11%;
+}
+
+
+
+
+.stats-bar-container {
+    display: block;
+    width: 100%;
+    height: auto;
+    line-height: 12px;
+    white-space: nowrap;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    overflow: hidden;
+
+    .stats-bar {
+        &.wins {
+            background-color: @green;
+        }
+
+        &.losses {
+            background-color: @red;
+        }
+
+        &.otl {
+            background-color: @yellow;
+        }
+    }
+}
+
+
+.circle-image {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    margin: .5em auto;
+    -moz-background-size: 5rem;
+    -o-background-size: 5rem;
+    -webkit-background-size: 5rem;
+    background-size: 5rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-border-radius: 99em;
+    -moz-border-radius: 99em;
+    border-radius: 99em;
+    border: 3px solid #eee;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+.subtle-number () {
+    font-family: "Roboto";
+    font-weight: 400;
+    line-height: 1rem;
+    font-size: 1rem;
+}
+
+
+.stat-row {
+    border-bottom: 1px solid @lightBorder;
+
+    .stat-box {
+        font-family: "Roboto";
+        font-size: 2rem;
+        line-height: 3rem;
+        text-align: center;
+        color: #525254;
+        border-right: 1px solid @lightBorder;
+
+        &:last-child {
+            border-right: none;
+        }
+    }
+}
+
+.team-number {
+    line-height: 2rem;
+    font-weight: 300;
+    color: @baseFontColor;
+}
+
+.team-number-label {
+    /*font-family: "Oswald";*/
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 400;
+    line-height: 1rem;
+    text-transform: uppercase;
+    color: @linghtgreen;
+    padding: 0 0 5px 0;
+    margin-top: 5px;
+}
+
+.potentialColor {
+    line-height: 1rem;
+
+    .fa {
+        &.green {
+            color: @green;
+        }
+
+        &.red {
+            color: @red;
+        }
+
+        &.yellow {
+            color: @yellow;
+        }
+
+        &.white {
+            color: rgba(0, 0, 0, 0.4);
+        }
+    }
+}
+
+
+.player-image-list {
+    padding: 0;
+}
+
+
+.player-details-container {
+    /* max-width 640px, mobile-only styles, use when QAing mobile issues */
+    @media only screen and (max-width: 40em) {
+        position: fixed;
+        bottom: 0;
+    }
+}
+
+.small-progress {
+    height: 1px;
+    background-color: rgba(50, 50, 50, 0.7);
+    content: '';
+    width: 100%;
+    margin-bottom: 0.33333333rem;
+    margin-top: 2px;
+
+    .value-meter {
+        display: block;
+        height: 100%;
+        background-color: @blue;
+    }
+}
+
+.star-container {
+    .four-colors();
+    font-size: .7rem;
+    margin: 0;
+    padding: 0;
+}
+
+.star-dash {
+    width: 18%;
+    padding: 0;
+    content: '';
+    height: 1px;
+    background-color: rgba(50, 50, 50, 0.7);
+    margin-bottom: 0.11111rem;
+    display: inline-block;
+
+    .full-star {
+        .base-star-dash();
+        .four-colors();
+        width: 100%;
+    }
+
+    .half-star {
+        width: 50%;
+        .base-star-dash();
+        .four-colors();
+    }
+}
+
+.base-star-dash() {
+    height: 100%;
+    display: block;
+}
+
+.four-colors() {
+    .green {
+        color: @green;
+    }
+
+    .yellow {
+        color: @yellow;
+    }
+
+    .white {
+        color: @baseFontColor;
+    }
+
+    .red {
+        color: @red;
+    }
+}
+
+.roster-player-row {
+    /*font-family: "Oswald";*/
+    line-height: 2.8rem;
+    font-size: 1.2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+
+    .flag-container {
+        line-height: 0;
+        padding-right: 0.2rem;
+        margin: 0 0 3px 0;
+    }
+
+    .value-container {
+        padding-left: 0;
+    }
+
+    .progress {
+        margin: 0;
+        padding: 0;
+        line-height: 1rem;
+        height: 1rem;
+    }
+
+    .player-name {
+        font-size: 1.2rem;
+        line-height: 1.7rem;
+        font-weight: 300;
+
+        .first-name {
+            font-size: 1rem;
+            letter-spacing: 0px;
+        }
+
+        .last-name {
+            font-weight: 400;
+        }
+    }
+
+    .columns {
+        /*padding: 0;*/
+    }
+
+    .stat {
+        .block-stat();
+    }
+
+    .salary {
+        .subtle-number();
+
+        .salaryNumber {
+            color: @baseFontColor;
+        }
+
+        .rfa {
+            color: @red;
+        }
+
+        .ufa {
+            color: @green;
+        }
+    }
+}
+
+
+.rating() {
+    line-height: 1.8rem;
+    font-size: 1.5rem;
+}
+
+.rating-label {
+    .rating();
+}
+
+.rating-number {
+    .rating();
+}
+
+
+.chart-container {
+    .chart-main {
+        .chart-main();
+    }
+
+    h2 {
+        font-family: @siteFont;
+        text-align: center;
+    }
+}
+
+.chart-main () {
+    max-height: 230px;
+    margin-top: -1.4rem;
+}
+
+.block-stat() {
+    font-weight: 900;
+    font-size: 1.7rem;
+    background-color: @baseFontColor;
+    color: @background-color;
+    text-align: center;
+}
+
+.team-tab-button {
+    @color: rgba(100, 100, 100, .5);
+    background-color: @color;
+    color: rgba(255, 255, 255, .6);
+    font-size: 1.9rem;
+    font-size: 59px; //Same size as the logo image...
+    &.active {
+        background-color: rgba(100, 100, 100, 1);
+        color: rgba(255, 255, 255, .8);
+    }
+}
+
+.player-basic-block {
+    .jersey {
+        .block-stat();
+        .zero-column-padding();
+        font-size: 4rem;
+    }
+
+    .name {
+        .zero-column-padding();
+
+        .first-name {
+            font-weight: 100;
+            font-size: 1.2rem;
+        }
+
+        .last-name {
+            font-weight: 900;
+            font-size: 1.9rem;
+        }
+    }
+}
+
+.zero-column-padding () {
+    padding: 0;
+}
+
+
+.player-image {
+    background-color: red;
+}
+
+
+.transitions (@sec) {
+    -moz-transition: all @sec;
+    -o-transition: all @sec;
+    -webkit-transition: all @sec;
+    transition: all @sec;
+}
+
+.team-info-button (@myTeamColor) {
+    > div {
+        background-color: #3E3B43;
+        /*.transitions(.4s);*/
+    }
+    //color: @baseFontColor;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+
+    > div.is-current {
+        background-color: teal;
+    }
+
+    > div:active {
+        color: @myTeamColor;
+    }
+    /*>div:hover {
+        background-color: transparent;
+        color: @myTeamColor;
+        text-decoration: none;
+    }*/
+    /*.roster
+    {
+        background-color: @rosterColor;
+    }
+
+    .schedule
+    {
+        background-color: @scheduleColor;
+    }
+
+    .lines
+    {
+        background-color: @linesColor;
+    }
+
+    .salaries
+    {
+        background-color: @salariesColor;
+    }*/
+    .icon {
+        width: 100%;
+        font-size: 4em;
+    }
+
+    .value-label {
+        .value-label;
+    }
+}
+
+.best-player-box (@color) {
+    background-color: @color;
+}
+
+.tweet (@teamColor) {
+    background-color: rgba(255, 255, 255, .1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 1em;
+    vertical-align: middle;
+    padding: 3px 0;
+
+    > .tweet-logo {
+        color: @teamColor;
+        font-size: xx-large;
+        display: inline-block;
+        width: 5%;
+
+        .tweet-icon {
+        }
+    }
+
+    .tweet-link a {
+        -moz-transition: all .3s;
+        -o-transition: all .3s;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+        padding-top: 6px;
+        color: rgba(0, 0, 0, 0);
+    }
+
+    &:hover .tweet-link a {
+        color: @teamColor;
+    }
+
+    .tweet-text {
+        text-align: left;
+        vertical-align: middle;
+        padding-top: 6px;
+
+        .tweet-date {
+            color: rgba(0, 0, 0, 0.3);
+            font-size: .8em;
+            padding-left: 10px;
+        }
+    }
+}
+
+.player-profile (@myTeam) {
+    text-align: left;
+    /*font-family: "Oswald";*/
+    padding: 4px 0;
+    color: white;
+    -webkit-text-shadow: 0 2px 0 rgba(0,0,0,.2);
+    text-shadow: 0 2px 0 rgba(0,0,0,.2);
+    line-height: 1em;
+
+    h1, h3, h4 {
+        padding: 0;
+        margin: 0;
+    }
+
+    .image-container {
+        max-width: 100%;
+        border-radius: 50%;
+        border: 5px solid @myTeam;
+        overflow: hidden;
+        display: inline-block;
+        background-image: url(images/fabric.png);
+
+        @media (min-width: 970px) {
+            max-width: 70%;
+        }
+
+        & img {
+            @cropAmount: 10%;
+            max-width: 100%;
+            margin-top: -@cropAmount;
+            margin-bottom: -@cropAmount;
+            padding-top: @cropAmount;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    }
+}
+
+.team-minibar (@teamColor) {
+    background-color: @teamColor;
+    padding: 10px 0;
+    /*font-family: "Oswald";*/
+    font-size: 1.5em;
+    color: #fff;
+    -webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
+    text-shadow: 0 1px 0 rgba(0,0,0,.15);
+    text-align: center;
+
+    @media (min-width: 768px) {
+        font-size: 21px;
+        text-align: left;
+
+        h1 {
+            font-size: 60px;
+            line-height: 1;
+        }
+    }
+
+    @media (min-width: 992px) {
+        h1, p {
+            margin-right: 380px;
+        }
+    }
+}
+
+.team-header (@teamColor) {
+
+    @media (min-width: 768px) {
+        font-size: 21px;
+        text-align: left;
+
+        h1 {
+            font-size: 60px;
+            line-height: 1;
+        }
+    }
+
+    @media (min-width: 992px) {
+        h1, p {
+            margin-right: 380px;
+        }
+    }
+
+    background-color: @teamColor;
+    background-image: url(images/kesbg.jpg);
+    background-position: center;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+
+    &:after {
+        background-color: @teamColor;
+        opacity: .8;
+        content: " ";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -3;
+    }
+
+    color: white;
+    padding: 30px 15px 40px; /* side padding builds on .container 15px, so 30px */
+    font-size: 16px;
+    text-align: center;
+    -webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
+    text-shadow: 0 1px 0 rgba(0,0,0,.15);
+
+    h1 {
+        color: #fff;
+
+        &.small-name {
+            /*font-family: "Oswald";*/
+            font-weight: 100;
+
+            .big-name {
+                font-weight: 900;
+            }
+        }
+    }
+
+    p {
+        /*font-family: "Oswald";*/
+        font-weight: 100;
+        line-height: 1.5;
+        font-size: 1.4em;
+    }
+
+    .container {
+        position: relative;
+    }
+}
+
+
+.roster-seperator {
+    background-color: rgba(0, 0, 0, .7);
+    font-family: @siteFont;
+    font-weight: 500;
+    padding: 3px 0;
+    line-height: 1.4;
+    font-size: 1em;
+    color: white;
+    /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
+    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
+    /*margin: 0;*/
+}
+
+
+
+
+
+.team-container (@theTeamColor) {
+
+    .team-minibar {
+        .team-minibar(@theTeamColor)
+    }
+
+    .team-header {
+        /*.team-header (@theTeamColor)*/
+        .team-header(#333)
+    }
+    /*.roster-seperator {
+        .roster-seperator(@theTeamColor)
+    }*/
+    .progress-bar {
+        background-color: lighten(@theTeamColor, 5%);
+    }
+
+    .player-profile {
+        .player-profile(@theTeamColor);
+    }
+
+    .team-basic-box {
+        .team-basic-box(@theTeamColor);
+    }
+
+    .tweet {
+        .tweet(@theTeamColor);
+    }
+
+    .best-player-box {
+        .best-player-box(@theTeamColor);
+    }
+
+    a.team-info-button {
+        .team-info-button(@theTeamColor);
+    }
+
+    .team-toprow {
+        color: wheat;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.team-conatiner-loop (@index) when (@index > -1) {
+    .team-container._@{index} {
+        .team(@index); //yay for return values!
+        .team-container(@teamColor);
+    }
+
+    .team-conatiner-loop (@index - 1);
+}
+
+.team-conatiner-loop (29);
+
+.team-conatiner-loop (-1) {
+}
+
+
+.team-row-loop (@index) when (@index > -1) {
+    .team-row._@{index} {
+        .team(@index);
+        .team-row(@teamColor);
+    }
+
+    .team-row-loop (@index - 1);
+}
+
+.team-row-loop (29);
+
+.team-row-loop(-1) {
+}
