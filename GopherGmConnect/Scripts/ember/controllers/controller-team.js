@@ -48,39 +48,42 @@
     },
 
     populateLines: function () {
-        var topLine     = this.get('lines.topLine');
-        var secondLine  = this.get('lines.secondLine');
-        var thirdLine   = this.get('lines.thirdLine');
-        var fourthLine  = this.get('lines.fourthLine');
-        var topPair     = this.get('lines.topPair');
-        var secondPair  = this.get('lines.secondPair');
-        var bottomPair  = this.get('lines.bottomPair');
-        var goalies     = this.get('lines.goalies');
+        var topLine = this.get('lines.topLine');
+        var secondLine = this.get('lines.secondLine');
+        var thirdLine = this.get('lines.thirdLine');
+        var fourthLine = this.get('lines.fourthLine');
+        var topPair = this.get('lines.topPair');
+        var secondPair = this.get('lines.secondPair');
+        var bottomPair = this.get('lines.bottomPair');
+        var goalies = this.get('lines.goalies');
     },
 
     forwardLines: function () {
         try {
 
-        
+
             var self = this;
             var linesArray = Em.A();
-        
+
             var populatedLines = Em.A();
             var topLine = this.get('lines.topLine');
             var secondLine = this.get('lines.secondLine');
             var thirdLine = this.get('lines.thirdLine');
             var fourthLine = this.get('lines.fourthLine');
-         
+
             linesArray.pushObject(topLine);
             linesArray.pushObject(secondLine);
             linesArray.pushObject(thirdLine);
             linesArray.pushObject(fourthLine);
 
-        
+
             linesArray.forEach(function (line) {
                 var players = Em.A();
-                line.forEach(function (player, idx) {                               
+                line.forEach(function (player, idx) {
                     var p = (self.get('players').findBy('id', player));
+                    if (typeof p === 'undefined') {
+                        return;
+                    }
                     switch (idx) {
                         case 0:
                             p['linePosition'] = 'LW';
@@ -101,7 +104,7 @@
             return populatedLines;
         }
         catch (ex) {
-            console.error('Error loading lines...');
+            console.error('Error loading forward lines...');
             console.error(ex);
         }
     }.property('id'),
@@ -110,37 +113,45 @@
 
 
     dpairs: function () {
+        try {
+
+
         var self = this;
         var linesArray = Em.A();
 
         var populatedLines = Em.A();
-        var topLine = this.get('lines.topPair');       
+        var topLine = this.get('lines.topPair');
         var secondLine = this.get('lines.secondPair');
         var thirdLine = this.get('lines.bottomPair');
 
         linesArray.pushObject(topLine);
         linesArray.pushObject(secondLine);
         linesArray.pushObject(thirdLine);
-
-        linesArray.forEach(function (line) {
-            var players = Em.A();
-            line.forEach(function (player, idx) {
-                var p = (self.get('players').findBy('id', player));
-                switch (idx) {
-                    case 0:
-                        p['linePosition'] = "LD";
-                        break;
-                    case 1:
-                        p['linePosition'] = 'RD';
-                        break;
-                    default:
-                        throw new Error('something went wrong when setting the lines. Index not 0, 1, or 2');
-                }
-                players.pushObject(p);
-            });
-            populatedLines.pushObject(players);
-        })
-        return populatedLines;
+        
+            linesArray.forEach(function (line) {
+                var players = Em.A();
+                line.forEach(function (player, idx) {
+                    var p = (self.get('players').findBy('id', player));
+                    switch (idx) {
+                        case 0:
+                            p['linePosition'] = "LD";
+                            break;
+                        case 1:
+                            p['linePosition'] = 'RD';
+                            break;
+                        default:
+                            throw new Error('something went wrong when setting the lines. Index not 0, 1, or 2');
+                    }
+                    players.pushObject(p);
+                });
+                populatedLines.pushObject(players);
+            })
+            return populatedLines;
+        }
+        catch (ex) {
+            console.error(ex);
+            console.error('couldnt parse d pairs');
+        }
     }.property('id'),
 
     imageUrl: function () {
@@ -189,7 +200,7 @@
     //},
 
     rankOverall: function () {
-        return this.rank('points');  
+        return this.rank('points');
     }.property('id'),
 
     rankConference: function () {
