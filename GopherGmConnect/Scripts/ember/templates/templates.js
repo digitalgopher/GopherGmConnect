@@ -147,7 +147,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = '', helper, options;
-  data.buffer.push("\r\n");
+  data.buffer.push("\r\n    ");
   data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "salaryrow", options) : helperMissing.call(depth0, "partial", "salaryrow", options))));
   data.buffer.push("\r\n");
   return buffer;
@@ -176,24 +176,10 @@ function program1(depth0,data) {
   return buffer;
   }
 
-function program3(depth0,data) {
-  
-  var buffer = '';
-  data.buffer.push("\r\n    <div class=\"small-2 columns\">\r\n        <span class=\"contractStatus ");
-  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "year.salaryClass", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
-  data.buffer.push("\">\r\n            ");
-  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "year.salarySmall", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
-  data.buffer.push("\r\n        </span>\r\n    </div>\r\n    ");
-  return buffer;
-  }
-
   data.buffer.push("<div class=\"row\">\r\n    <div class=\"small-2 columns\">\r\n        ");
   stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "player", "", options) : helperMissing.call(depth0, "link-to", "player", "", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\r\n    </div>\r\n\r\n    ");
-  stack1 = helpers.each.call(depth0, "year", "in", "salaryYears", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\r\n\r\n\r\n</div>");
+  data.buffer.push("\r\n    </div>\r\n\r\n\r\n\r\n\r\n</div>");
   return buffer;
   
 });
