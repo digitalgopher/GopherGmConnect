@@ -32,8 +32,11 @@
         {{/each}}
 
 <h4>nonroster</h4>
+<button {{action 'togglenonroster'}}>toggle</button>
+{{#if shownonroster}}
 {{#each nonroster itemController="player"}}
             {{partial "rosteritem"}}
         {{/each}}
+{{/if}}
 
 

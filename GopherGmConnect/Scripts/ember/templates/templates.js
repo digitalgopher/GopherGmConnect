@@ -110,6 +110,18 @@ function program1(depth0,data) {
   return buffer;
   }
 
+function program3(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\r\n");
+  stack1 = helpers.each.call(depth0, "nonroster", {hash:{
+    'itemController': ("player")
+  },hashTypes:{'itemController': "STRING"},hashContexts:{'itemController': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n");
+  return buffer;
+  }
+
   data.buffer.push("\r\n<button ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortbyproperty", "potential", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["ID","STRING"],data:data})));
   data.buffer.push(">Pot</button>\r\n<button ");
@@ -131,10 +143,10 @@ function program1(depth0,data) {
     'itemController': ("player")
   },hashTypes:{'itemController': "STRING"},hashContexts:{'itemController': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\r\n\r\n<h4>nonroster</h4>\r\n");
-  stack1 = helpers.each.call(depth0, "nonroster", {hash:{
-    'itemController': ("player")
-  },hashTypes:{'itemController': "STRING"},hashContexts:{'itemController': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
+  data.buffer.push("\r\n\r\n<h4>nonroster</h4>\r\n<button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "togglenonroster", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
+  data.buffer.push(">toggle</button>\r\n");
+  stack1 = helpers['if'].call(depth0, "shownonroster", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\r\n\r\n\r\n");
   return buffer;

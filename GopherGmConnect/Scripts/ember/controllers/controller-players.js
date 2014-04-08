@@ -9,6 +9,7 @@
     showLineup: true,
     showRoster: false,
     showSalaries: false,
+    shownonroster: false,
 
 
 
@@ -40,7 +41,7 @@
 
     onContentChange: function () {
         console.log('changed');
-    }.observes('content'),
+    }.observes('arrangedContent'),
 
 
 
@@ -74,6 +75,10 @@
             this.set('showLineup', false);
             this.set('showRoster', false);
             this.set('showSalaries', true);
+        },
+
+        togglenonroster: function () {
+            this.toggleProperty('shownonroster');
         }
 
 
