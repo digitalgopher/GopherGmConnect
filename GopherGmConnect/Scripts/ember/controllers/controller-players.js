@@ -11,6 +11,8 @@
     showSalaries: false,
     shownonroster: false,
 
+    rosterButtonText: "Non-Roster",
+
 
 
     showUnsigned: false,
@@ -27,7 +29,9 @@
     forwards: Ember.computed.filter('arrangedContent', function (p) {
         return p.isOnMainRoster && p.isForward;
     }),
-    nonroster: Ember.computed.filterBy('arrangedContent', 'isOnMainRoster', false),
+    nonroster: Ember.computed.filter('arrangedContent', function (p) {
+            return !p.isOnMainRoster;
+    }),
 
     propertySort: function (property) {
         var self = this;
@@ -79,6 +83,17 @@
 
         togglenonroster: function () {
             this.toggleProperty('shownonroster');
+        },
+
+        switchRosterView: function () {
+            this.toggleProperty('shownonroster');
+            if (this.get('shownonroster')) {
+                this.set('rosterButtonText', 'Roster');
+            }
+            else {
+                this.set('rosterButtonText', 'Non-Roster');
+            }
+
         }
 
 

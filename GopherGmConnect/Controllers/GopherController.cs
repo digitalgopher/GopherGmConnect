@@ -754,12 +754,19 @@ namespace GopherGmConnect.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Team>> Teams()
+        public async Task<HttpResponseMessage> Teams()
         {
+            
             var teamListWithSalaryTask = DownloadTeamSalaryAndLineupInformation();
             var url = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + WebConfigurationManager.AppSettings["leagueid"] + "/standings/periodType/season/mobile";
             string rawJson = DownloadFromServer(url);
             var fullJson = JObject.Parse(rawJson);
+
+            if (fullJson.GetValue("type") != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, "Push is happending.");
+            }
+
             var teams = fullJson.GetValue("v");
             var teamsArray = teams as JArray;
 
@@ -783,7 +790,7 @@ namespace GopherGmConnect.Controllers
             }
 
 
-            return teamList;
+            return Request.CreateResponse(HttpStatusCode.OK, teamList);
         }
 
 

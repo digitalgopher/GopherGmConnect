@@ -4,6 +4,12 @@
 <button {{action sortbyproperty "age" }}>age</button>
 
 
+
+
+
+        <button {{action 'switchRosterView'}}>{{rosterButtonText}}</button>
+
+
 <div class="row">
     <div class="small-4 columns">
         Name
@@ -18,6 +24,16 @@
         S
     </div>
 </div>
+{{#if shownonroster}}
+
+<h4>nonroster</h4>
+
+{{#each nonroster itemController="player"}}
+            {{partial "rosteritem"}}
+        {{/each}}
+{{else}}
+
+
 <h4>Forwards</h4>
 {{#each forwards itemController="player"}}
             {{partial "rosteritem"}}
@@ -31,12 +47,7 @@
             {{partial "rosteritem"}}
         {{/each}}
 
-<h4>nonroster</h4>
-<button {{action 'togglenonroster'}}>toggle</button>
-{{#if shownonroster}}
-{{#each nonroster itemController="player"}}
-            {{partial "rosteritem"}}
-        {{/each}}
+
 {{/if}}
 
 
