@@ -17,9 +17,15 @@
     showBasicInfo: false,
     forwardLines: Ember.computed.oneWay('controllers.team.forwardLines'),
 
-    goalies: Ember.computed.filterBy('arrangedContent', 'isGoalie', true),
-    defence: Ember.computed.filterBy('arrangedContent', 'isDefence', true),
-    forwards: Ember.computed.filterBy('arrangedContent', 'isForward', true),
+    goalies: Ember.computed.filter('arrangedContent', function (p) {
+        return p.isOnMainRoster && p.isGoalie;
+    }),
+    defence: Ember.computed.filter('arrangedContent', function (p) {
+        return p.isOnMainRoster && p.isDefence;
+    }),
+    forwards: Ember.computed.filter('arrangedContent', function (p) {
+        return p.isOnMainRoster && p.isForward;
+    }),
     nonroster: Ember.computed.filterBy('arrangedContent', 'isOnMainRoster', false),
 
     propertySort: function (property) {
@@ -48,7 +54,7 @@
             self.set('currentSortRating', rating);
         },
 
-        sortByProperty: function (property) {
+        sortbyproperty: function (property) {
             //this.set('currentSortProperty', property);
             Ember.run.once(this, this.propertySort, property);
         },

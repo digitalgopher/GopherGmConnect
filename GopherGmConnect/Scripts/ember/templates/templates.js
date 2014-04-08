@@ -99,42 +99,72 @@ function program8(depth0,data) {
 Ember.TEMPLATES["_roster"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
+  var buffer = '', stack1, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
-  var buffer = '', stack1, helper, options;
-  data.buffer.push("\r\n\r\n        <li>\r\n            ");
-  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "player", "", options) : helperMissing.call(depth0, "link-to", "player", "", options));
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\r\n        </li>\r\n\r\n        ");
-  return buffer;
-  }
-function program2(depth0,data) {
-  
-  var buffer = '';
+  var buffer = '', helper, options;
   data.buffer.push("\r\n            ");
-  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "firstName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
-  data.buffer.push(" ");
-  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "lastName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
-  data.buffer.push("\r\n            ");
-  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "potential", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
-  data.buffer.push("\r\n            ");
+  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "rosteritem", options) : helperMissing.call(depth0, "partial", "rosteritem", options))));
+  data.buffer.push("\r\n        ");
   return buffer;
   }
 
   data.buffer.push("\r\n<button ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortByProperty", "potential", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["ID","STRING"],data:data})));
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortbyproperty", "potential", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["ID","STRING"],data:data})));
   data.buffer.push(">Pot</button>\r\n<button ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortByProperty", "overall", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["ID","STRING"],data:data})));
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortbyproperty", "overall", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["ID","STRING"],data:data})));
   data.buffer.push(">overall</button>\r\n<button ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortByProperty", "age", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["ID","STRING"],data:data})));
-  data.buffer.push(">age</button>\r\n\r\n\r\n    <ul>\r\n\r\n        ");
-  stack1 = helpers.each.call(depth0, {hash:{
-    'iteamController': ("player")
-  },hashTypes:{'iteamController': "STRING"},hashContexts:{'iteamController': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],data:data});
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sortbyproperty", "age", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["ID","STRING"],data:data})));
+  data.buffer.push(">age</button>\r\n\r\n\r\n<div class=\"row\">\r\n    <div class=\"small-4 columns\">\r\n        Name\r\n    </div>\r\n    <div class=\"small-2 columns\">\r\n        O\r\n    </div>\r\n    <div class=\"small-3 columns\">\r\n        P\r\n    </div>\r\n    <div class=\"small-3 columns\">\r\n        S\r\n    </div>\r\n</div>\r\n<h4>Forwards</h4>\r\n");
+  stack1 = helpers.each.call(depth0, "forwards", {hash:{
+    'itemController': ("player")
+  },hashTypes:{'itemController': "STRING"},hashContexts:{'itemController': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\r\n    </ul>\r\n");
+  data.buffer.push("\r\n<h4>Def</h4>\r\n");
+  stack1 = helpers.each.call(depth0, "defence", {hash:{
+    'itemController': ("player")
+  },hashTypes:{'itemController': "STRING"},hashContexts:{'itemController': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n<h4>goalies</h4>\r\n        ");
+  stack1 = helpers.each.call(depth0, "goalies", {hash:{
+    'itemController': ("player")
+  },hashTypes:{'itemController': "STRING"},hashContexts:{'itemController': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n\r\n<h4>nonroster</h4>\r\n");
+  stack1 = helpers.each.call(depth0, "nonroster", {hash:{
+    'itemController': ("player")
+  },hashTypes:{'itemController': "STRING"},hashContexts:{'itemController': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n\r\n\r\n");
+  return buffer;
+  
+});
+
+Ember.TEMPLATES["_rosteritem"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', stack1, helper, options, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
+
+function program1(depth0,data) {
+  
+  var buffer = '';
+  data.buffer.push("\r\n        ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "lastName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n        ");
+  return buffer;
+  }
+
+  data.buffer.push("<div class=\"row\">\r\n    <div class=\"small-4 columns\">\r\n        ");
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "player", "", options) : helperMissing.call(depth0, "link-to", "player", "", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n    </div>\r\n    <div class=\"small-2 columns\">\r\n        ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "overall", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n    </div>\r\n    <div class=\"small-3 columns\">\r\n        ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "potential", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n    </div>\r\n    <div class=\"small-3 columns\">\r\n        ");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "salarySmall", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\r\n    </div>\r\n</div>");
   return buffer;
   
 });
@@ -142,9 +172,21 @@ function program2(depth0,data) {
 Ember.TEMPLATES["_salaries"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
+  var buffer = '', stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this, functionType="function", blockHelperMissing=helpers.blockHelperMissing;
 
 function program1(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\r\n");
+  stack1 = helpers.each.call(depth0, {hash:{
+    'itemController': ("player"),
+    'groupedRows': (true)
+  },hashTypes:{'itemController': "STRING",'groupedRows': "BOOLEAN"},hashContexts:{'itemController': depth0,'groupedRows': depth0},inverse:self.noop,fn:self.program(2, program2, data),contexts:[],types:[],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n");
+  return buffer;
+  }
+function program2(depth0,data) {
   
   var buffer = '', helper, options;
   data.buffer.push("\r\n    ");
@@ -153,9 +195,10 @@ function program1(depth0,data) {
   return buffer;
   }
 
-  stack1 = helpers.each.call(depth0, {hash:{
-    'itemController': ("player")
-  },hashTypes:{'itemController': "STRING"},hashContexts:{'itemController': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],data:data});
+  options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],data:data}
+  if (helper = helpers.group) { stack1 = helper.call(depth0, options); }
+  else { helper = (depth0 && depth0.group); stack1 = typeof helper === functionType ? helper.call(depth0, options) : helper; }
+  if (!helpers.group) { stack1 = blockHelperMissing.call(depth0, 'group', {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],data:data}); }
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\r\n\r\n\r\n");
   return buffer;
@@ -179,7 +222,7 @@ function program1(depth0,data) {
   data.buffer.push("<div class=\"row\">\r\n    <div class=\"small-2 columns\">\r\n        ");
   stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "player", "", options) : helperMissing.call(depth0, "link-to", "player", "", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\r\n    </div>\r\n\r\n\r\n\r\n\r\n</div>");
+  data.buffer.push("\r\n    </div>\r\n\r\n    \r\n\r\n\r\n</div>");
   return buffer;
   
 });

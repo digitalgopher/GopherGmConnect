@@ -1,19 +1,39 @@
 ﻿
-<button {{action sortByProperty "potential" }}>Pot</button>
-<button {{action sortByProperty "overall" }}>overall</button>
-<button {{action sortByProperty "age" }}>age</button>
+<button {{action sortbyproperty "potential" }}>Pot</button>
+<button {{action sortbyproperty "overall" }}>overall</button>
+<button {{action sortbyproperty "age" }}>age</button>
 
 
-    <ul>
-
-        {{#each iteamController="player"}}
-
-        <li>
-            {{#link-to 'player' this}}
-            {{unbound firstName}} {{unbound lastName}}
-            {{unbound potential}}
-            {{/link-to}}
-        </li>
-
+<div class="row">
+    <div class="small-4 columns">
+        Name
+    </div>
+    <div class="small-2 columns">
+        O
+    </div>
+    <div class="small-3 columns">
+        P
+    </div>
+    <div class="small-3 columns">
+        S
+    </div>
+</div>
+<h4>Forwards</h4>
+{{#each forwards itemController="player"}}
+            {{partial "rosteritem"}}
         {{/each}}
-    </ul>
+<h4>Def</h4>
+{{#each defence itemController="player"}}
+            {{partial "rosteritem"}}
+        {{/each}}
+<h4>goalies</h4>
+        {{#each goalies itemController="player"}}
+            {{partial "rosteritem"}}
+        {{/each}}
+
+<h4>nonroster</h4>
+{{#each nonroster itemController="player"}}
+            {{partial "rosteritem"}}
+        {{/each}}
+
+
