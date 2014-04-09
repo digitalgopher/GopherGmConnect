@@ -5,8 +5,8 @@
 
 <div class="row">
     <div class="medium-8 small-12 columns">
-        <button {{action 'toggleTest'}}>test</button>
-        <button {{action 'toggleTestAgain' }}>salaries</button>
+        <button class="tiny alert" {{action 'toggleTest'}}>test</button>
+        <button class="tiny alert" {{action 'toggleTestAgain' }}>salaries</button>
         {{#if showLineup}}
             {{partial "lineup"}}
         {{/if}}
@@ -24,8 +24,7 @@
 
 
 
-    <div class="medium-4 small-12 columns player-details-container">
-        outlet 
+    <div class="medium-4 small-12 columns">
         {{outlet}}
     </div>
 

@@ -212,7 +212,7 @@ namespace GopherGmConnect.Controllers
             fw1.Add(lineupObject.Value<string>("l1lw"));
             fw1.Add(lineupObject.Value<string>("l1c"));
             fw1.Add(lineupObject.Value<string>("l1rw"));
-            
+
             var fw2 = new List<string>();
             fw2.Add(lineupObject.Value<string>("l2lw"));
             fw2.Add(lineupObject.Value<string>("l2c"));
@@ -586,13 +586,14 @@ namespace GopherGmConnect.Controllers
             var mobileUrlEnd = "/info/mobile";
 
             IEnumerable<Task<Player>> downloadQuery =
-                from p in everyPlayer select ProcessPlayerAsyncURL(client, 
-                                                                   p[0].ToString(), 
-                                                                   string.Format("{0}{1}{2}", urlStart, p[0].ToString(), fullUrlEnd), 
-                                                                   string.Format("{0}{1}{2}", urlStart, p[0].ToString(), mobileUrlEnd), 
-                                                                   playerStatsArray, 
-                                                                   goalieStatsArray, 
-                                                                   mainRosterIdList);
+                from p in everyPlayer
+                select ProcessPlayerAsyncURL(client,
+                                             p[0].ToString(),
+                                             string.Format("{0}{1}{2}", urlStart, p[0].ToString(), fullUrlEnd),
+                                             string.Format("{0}{1}{2}", urlStart, p[0].ToString(), mobileUrlEnd),
+                                             playerStatsArray,
+                                             goalieStatsArray,
+                                             mainRosterIdList);
 
 
             Task<Player>[] downloadTasks = downloadQuery.ToArray();
@@ -756,8 +757,9 @@ namespace GopherGmConnect.Controllers
         [HttpGet]
         public async Task<HttpResponseMessage> Teams()
         {
-            
+
             var teamListWithSalaryTask = DownloadTeamSalaryAndLineupInformation();
+            var pushdateTask = GetCurrentPushDate();
             var url = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + WebConfigurationManager.AppSettings["leagueid"] + "/standings/periodType/season/mobile";
             string rawJson = DownloadFromServer(url);
             var fullJson = JObject.Parse(rawJson);
@@ -789,8 +791,14 @@ namespace GopherGmConnect.Controllers
                 //t.SalaryCapSpent = salary;
             }
 
+            var pushDateDict = await pushdateTask;
+            
 
-            return Request.CreateResponse(HttpStatusCode.OK, teamList);
+            return Request.CreateResponse(HttpStatusCode.OK,
+                                          new {
+                                              teams = teamList,
+                                              pushDate = pushDateDict
+                                          });
         }
 
 
@@ -921,7 +929,7 @@ namespace GopherGmConnect.Controllers
 
 
         [HttpGet]
-        public object GetCurrentPushDate()
+        public async Task<Dictionary<string, DateTime>> GetCurrentPushDate()
         {
             DateTime pushStart = new DateTime();
             DateTime pushEnd = new DateTime();
@@ -943,7 +951,13 @@ namespace GopherGmConnect.Controllers
             {
                 var leagueID = WebConfigurationManager.AppSettings["leagueid"];
                 var url = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + leagueID + "/info";
-                string rawJson = DownloadFromServer(url);
+
+                var client = GetAsyncClient();
+                var pushDateTask = client.GetStringAsync(url);
+
+                string rawJson = await pushDateTask;
+
+                //string rawJson = DownloadFromServer(url);
                 var fullJson = JObject.Parse(rawJson);
 
                 int pushStartYear = fullJson.Value<int>("tickStartYear");
@@ -962,20 +976,6 @@ namespace GopherGmConnect.Controllers
                 pushStart = new DateTime(pushStartYear, pushStartMonth, pushStartDay);
                 pushEnd = new DateTime(pushEndYear, pushEndMonth, pushEndDay);
 
-                //pushStart = new DateTime(fullJson.Value<int>("tickStartYear"),
-                //                         fullJson.Value<int>("tickStartMonth"),
-                //                         fullJson.Value<int>("tickStartDay"));
-
-                //pushEnd = new DateTime(fullJson.Value<int>("tickEndYear"),
-                //                           fullJson.Value<int>("tickEndMonth"),
-                //                           fullJson.Value<int>("tickEndDay"));
-                //because ea dates are 0 indexed
-                //pushEnd = pushEnd.AddDays(1);
-                //pushEnd = pushEnd.AddMonths(1);
-
-                //pushStart = pushStart.AddMonths(1);
-                //pushStart = pushStart.AddDays(1);
-
                 System.Web.HttpContext.Current.Cache.Insert("pushDateStart", pushStart);
                 System.Web.HttpContext.Current.Cache.Insert("pushDateEnd", pushEnd);
                 System.Web.HttpContext.Current.Cache.Insert("pushDateSet", true);
@@ -988,19 +988,24 @@ namespace GopherGmConnect.Controllers
                 pushEnd = (DateTime)System.Web.HttpContext.Current.Cache["pushDateEnd"];
             }
 
-            return new JObject(
-            new JProperty("pushStartDay",
-                new JValue(pushStart.Day)),
-            new JProperty("pushStartMonth",
-                new JValue(pushStart.Month)),
-            new JProperty("pushStartYear",
-                new JValue(pushStart.Year)),
-            new JProperty("pushEndDay",
-                new JValue(pushEnd.Day)),
-            new JProperty("pushEndMonth",
-                new JValue(pushEnd.Month)),
-            new JProperty("pushEndYear",
-                new JValue(pushEnd.Year)));
+            var dict = new Dictionary<string, DateTime>();
+            dict.Add("pushStart", pushStart);
+            dict.Add("pushEnd", pushEnd);
+            return dict;
+
+            //return new JObject(
+            //new JProperty("pushStartDay",
+            //    new JValue(pushStart.Day)),
+            //new JProperty("pushStartMonth",
+            //    new JValue(pushStart.Month)),
+            //new JProperty("pushStartYear",
+            //    new JValue(pushStart.Year)),
+            //new JProperty("pushEndDay",
+            //    new JValue(pushEnd.Day)),
+            //new JProperty("pushEndMonth",
+            //    new JValue(pushEnd.Month)),
+            //new JProperty("pushEndYear",
+            //    new JValue(pushEnd.Year)));
 
         }
 

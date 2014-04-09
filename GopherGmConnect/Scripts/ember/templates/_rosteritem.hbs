@@ -1,16 +1,24 @@
-﻿<div class="row">
+﻿
+<div class="row roster-player-row">
+    {{#link-to 'player' this}}
     <div class="small-4 columns">
-        {{#link-to 'player' this}}
+        
         {{unbound lastName}}
-        {{/link-to}}
+        
     </div>
     <div class="small-2 columns">
         {{unbound overall}}
     </div>
-    <div class="small-3 columns">
-        {{unbound potential}}
+    <div class="small-3 columns potentialColor">
+        <i class="fa fa-star {{unbound potentialColorString}}"></i> {{unbound potential}}
     </div>
     <div class="small-3 columns">
         {{unbound salarySmall}}
     </div>
+    <div class="small-12 columns">
+        <div class="small-progress">
+            <span class="value-meter" style="width: {{unbound tradeValuePercent}}%"></span>
+        </div>
+    </div>
+    {{/link-to}}
 </div>

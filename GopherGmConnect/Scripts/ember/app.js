@@ -47,7 +47,7 @@ Ember.Application.initializer({
             NProgress.inc();
             Ember.RSVP.hash({
                 teams: App.Team.findAll(),
-                pushdate: App.Pushdate.find()
+                //pushdate: App.Pushdate.find()
             }).then(function (results) {
 
                 basicTeams.forEach(function (_team, idx) {
@@ -65,7 +65,7 @@ Ember.Application.initializer({
 
                 App.ApplicationController.reopen({
                     teams: results.teams,
-                    pushdate: results.pushdate,
+                    //pushdate: results.pushdate,
                     teamsIsLoaded: true,
                 });
 

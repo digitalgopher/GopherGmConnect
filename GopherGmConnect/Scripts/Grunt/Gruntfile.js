@@ -24,7 +24,7 @@
             emberTemplates: {
                 files: '../ember/templates/**/*.hbs',
                 tasks: ['emberTemplates']
-            },
+             },
             css: {
                 files: ['../../Content/less/**/*.less'],
                 tasks: ['less'],

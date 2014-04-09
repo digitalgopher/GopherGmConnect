@@ -1,9 +1,12 @@
 ﻿
 
 
-
 <div class="row">
-
+      <div class="small-3 small-centered columns" {{action 'playerContainerShow' target="view"}}>
+          <i class="fa fa-chevron-up"></i>
+      </div>
+</div>
+<div class="row">
   <div class="small-8 medium-12 columns player-basic-block">
     <div class="row name">
       <div class="small-12 columns">
@@ -28,6 +31,153 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="small-6 columns">
+    <div class="stats-box contract">
+      <span class="title">Contract</span>
+      <div class="numberBox">
+        <span>Years</span>
+        <div class="numberBoxValueContainer">
+          <span class="numberBoxValue">{{yearsLeft}}</span>
+        </div>
+      </div>
+      <div class="numberBox salary">
+        <span>Salary</span>
+        <div class="numberBoxValueContainer">
+          <span class="numberBoxValue">${{unbound salarySmall}}</span>
+        </div>
+      </div>
+
+      <div class="numberBox contracttype">
+        <span>Type</span>
+        <div class="numberBoxValueContainer">
+          <span class="numberBoxValue">{{unbound contractType}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="small-6 columns">
+    <div class="stats-box basicinfo">
+      <span class="title">Info</span>
+      <div class="numberBox">
+        <span>Overall</span>
+        <div class="numberBoxValueContainer">
+          {{playeroverall overall}}
+        </div>
+      </div>
+      <div class="numberBox">
+        <span>Potential</span>
+        <div class="numberBoxValueContainer">
+          {{playerpotential potential potentialColorString}}
+        </div>
+      </div>
+      <div class="numberBox">
+        <span>Age</span>
+        <div class="numberBoxValueContainer">
+          {{playerage age}}
+        </div>
+      </div>
+
+      <div class="numberBox">
+        <span>Position</span>
+        <div class="numberBoxValueContainer">
+          <span class="numberBoxValue">{{position}}</span>
+        </div>
+      </div>
+
+      <div class="numberBox">
+        <span>Shoots</span>
+        <div class="numberBoxValueContainer">
+          <span class="numberBoxValue">{{handed}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row">
+  {{#each yearStat in playerStats}}
+  <div class="small-4 columns">
+    <div class="stats-box careerstats">
+      <span class="title">{{yearStat.year}} Stats</span>
+      {{#if isGoalie}}
+
+      <div class="numberBox">
+        <span>Wins</span>
+        <div class="numberBoxValueContainer">
+          <span class="numberBoxValue">{{yearStat.wins}}</span>
+        </div>
+      </div>
+
+      <div class="numberBox">
+        <span>Losses</span>
+        <div class="numberBoxValueContainer">
+          <span class="numberBoxValue">{{yearStat.losses}}</span>
+        </div>
+      </div>
+
+      <div class="numberBox">
+        <span>GAA</span>
+        <div class="numberBoxValueContainer">
+          <span class="numberBoxValue">{{yearStat.goalsAgainstAverage}}</span>
+        </div>
+      </div>
+
+
+
+
+      {{else}}
+
+      <div class="numberBox">
+        <span>Goals</span>
+        <div class="numberBoxValueContainer">
+          <span class="numberBoxValue">{{yearStat.goals}}</span>
+        </div>
+      </div>
+
+      <div class="numberBox">
+        <span>Assists</span>
+        <div class="numberBoxValueContainer">
+          <span class="numberBoxValue">{{yearStat.assists}}</span>
+        </div>
+      </div>
+
+      <div class="numberBox points">
+        <span>Points</span>
+        <div class="numberBoxValueContainer">
+          <span class="numberBoxValue">{{yearStat.points}}</span>
+        </div>
+      </div>
+
+      {{/if}}
+      <div class="numberBox">
+        <span>Games</span>
+        <div class="numberBoxValueContainer">
+          <span class="numberBoxValue">{{yearStat.gamesPlayed}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+
+
 
 
 

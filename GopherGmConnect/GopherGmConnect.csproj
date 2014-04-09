@@ -448,6 +448,7 @@
     <Content Include="Scripts\ember\routes\route-Topplayers.js" />
     <Content Include="Scripts\ember\routes\route-Trade.js" />
     <Content Include="Scripts\ember\templates\_rosteritem.hbs" />
+    <Content Include="Scripts\ember\templates\_rosteritemsep.hbs" />
     <None Include="Scripts\ember\templates\_salaryrow.hbs" />
     <Content Include="Scripts\ember\views\view-rosterlistitem.js" />
     <Content Include="Scripts\ember\views\view-Home.js" />

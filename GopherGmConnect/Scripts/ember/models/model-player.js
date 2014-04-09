@@ -3,7 +3,7 @@ App.Player = Ember.Object.extend({
 });
 
 App.Player.reopenClass({
-    find: function (pid) {
+    findy: function (pid) {
         //var yearlyStats = [];
         //var playerRates = Em.A();
         //var player = App.Player.create();

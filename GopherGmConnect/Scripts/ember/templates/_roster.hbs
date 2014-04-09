@@ -1,32 +1,31 @@
-﻿
-<button {{action sortbyproperty "potential" }}>Pot</button>
-<button {{action sortbyproperty "overall" }}>overall</button>
-<button {{action sortbyproperty "age" }}>age</button>
-
-
-
-
-
-        <button {{action 'switchRosterView'}}>{{rosterButtonText}}</button>
-
-
-<div class="row">
-    <div class="small-4 columns">
-        Name
-    </div>
-    <div class="small-2 columns">
-        O
-    </div>
-    <div class="small-3 columns">
-        P
-    </div>
-    <div class="small-3 columns">
-        S
-    </div>
+﻿<div class="button-bar">
+    <ul class="button-group">
+        <li>
+            <button class="tiny" {{action sortbyproperty "potential" }}>PT</button>
+        </li>
+        <li>
+            <button class="tiny" {{action sortbyproperty "overall" }}>OV</button>
+        </li>
+        <li>
+            <button class="tiny" {{action sortbyproperty "age" }}>age</button>
+        </li>
+        <li>
+            <button class="tiny" {{action 'switchRosterView' }}>{{rosterButtonText}}</button>
+        </li>
+    </ul>
 </div>
+
+
+
+
 {{#if shownonroster}}
 
-<h4>nonroster</h4>
+<div class="row roster-seperator">
+    <div class="small-4 columns">
+        Non-Roster
+    </div>
+    {{partial "rosteritemsep"}}
+</div>
 
 {{#each nonroster itemController="player"}}
             {{partial "rosteritem"}}
@@ -34,15 +33,32 @@
 {{else}}
 
 
-<h4>Forwards</h4>
+<div class="row roster-seperator">
+    <div class="small-4 columns">
+        Forwards
+    </div>
+    {{partial "rosteritemsep"}}
+</div>
 {{#each forwards itemController="player"}}
             {{partial "rosteritem"}}
         {{/each}}
-<h4>Def</h4>
+
+<div class="row roster-seperator">
+    <div class="small-4 columns">
+        Defence
+    </div>
+    {{partial "rosteritemsep"}}
+</div>
+
 {{#each defence itemController="player"}}
             {{partial "rosteritem"}}
         {{/each}}
-<h4>goalies</h4>
+<div class="row roster-seperator">
+    <div class="small-4 columns">
+        Goalies
+    </div>
+    {{partial "rosteritemsep"}}
+</div>
         {{#each goalies itemController="player"}}
             {{partial "rosteritem"}}
         {{/each}}

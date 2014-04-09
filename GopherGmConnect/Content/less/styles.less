@@ -729,8 +729,6 @@ ul[data-pie-id] li:nth-child(6) {
 }
 
 .potentialColor {
-    line-height: 1rem;
-
     .fa {
         &.green {
             color: @green;
@@ -757,12 +755,29 @@ ul[data-pie-id] li:nth-child(6) {
 
 
 .player-details-container {
+    .transitions(1s);
     /* max-width 640px, mobile-only styles, use when QAing mobile issues */
     @media only screen and (max-width: 40em) {
         position: fixed;
         bottom: 0;
+        -webkit-transform: translateY(28rem);
+        -moz-transform: translateY(28rem);
+        -ms-transform: translateY(28rem);
+        -o-transform: translateY(28rem);
+        transform: translateY(28rem);
     }
 }
+
+.showFullPlayerProfile {
+    @media only screen and (max-width: 40em) {
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
 
 .small-progress {
     height: 1px;
@@ -832,10 +847,14 @@ ul[data-pie-id] li:nth-child(6) {
 }
 
 .roster-player-row {
-    /*font-family: "Oswald";*/
-    line-height: 2.8rem;
-    font-size: 1.2rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+    line-height: 2rem;
+    font-size: 1rem;
+    font-weight: 400;
+    /*border-top: 1px solid rgba(0, 0, 0, 0.3);*/
+    a {
+        color: @baseFontColor;
+    }
 
     .flag-container {
         line-height: 0;
@@ -954,15 +973,14 @@ ul[data-pie-id] li:nth-child(6) {
 
     .name {
         .zero-column-padding();
-
         .first-name {
-            font-weight: 100;
-            font-size: 1.2rem;
+            font-weight: 400;
+            font-size: 1rem;
         }
 
         .last-name {
             font-weight: 900;
-            font-size: 1.9rem;
+            font-size: 1.4rem;
         }
     }
 }
@@ -1223,16 +1241,20 @@ ul[data-pie-id] li:nth-child(6) {
 
 
 .roster-seperator {
-    background-color: rgba(0, 0, 0, .7);
+    background-color: rgba(0, 0, 0, .5);
     font-family: @siteFont;
     font-weight: 500;
-    padding: 3px 0;
-    line-height: 1.4;
-    font-size: 1em;
+    line-height: 2.5rem;
+    font-size: 0.8rem;
     color: white;
-    /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-    /*margin: 0;*/
+    text-align: left;  
+
+    div:hover  {
+        background-color: rgba(0, 0, 0, .9);
+    }
+    div:active  {
+        background-color: rgba(0, 0, 0, .9);
+    }
 }
 
 

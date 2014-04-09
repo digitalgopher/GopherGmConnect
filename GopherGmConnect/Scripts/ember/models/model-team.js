@@ -44,7 +44,7 @@ App.Team.reopenClass({
     findAll: function () {
         return $.getJSON("/api/gopher/teams").then(function (response) {
             var teamsArray = Em.A();
-            response.forEach(function (team) {
+            response.teams.forEach(function (team) {
                 var _t = App.Team.create();
                 _t.setProperties(team);
                 teamsArray.pushObject(_t);

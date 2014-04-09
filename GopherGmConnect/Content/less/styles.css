@@ -559,9 +559,6 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0 0 5px 0;
   margin-top: 5px;
 }
-.potentialColor {
-  line-height: 1rem;
-}
 .potentialColor .fa.green {
   color: #8cc474;
 }
@@ -578,12 +575,30 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
 }
 .player-details-container {
+  -moz-transition: all 1s;
+  -o-transition: all 1s;
+  -webkit-transition: all 1s;
+  transition: all 1s;
   /* max-width 640px, mobile-only styles, use when QAing mobile issues */
 }
 @media only screen and (max-width: 40em) {
   .player-details-container {
     position: fixed;
     bottom: 0;
+    -webkit-transform: translateY(28rem);
+    -moz-transform: translateY(28rem);
+    -ms-transform: translateY(28rem);
+    -o-transform: translateY(28rem);
+    transform: translateY(28rem);
+  }
+}
+@media only screen and (max-width: 40em) {
+  .showFullPlayerProfile {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
   }
 }
 .small-progress {
@@ -660,10 +675,14 @@ ul[data-pie-id] li:nth-child(6) {
   color: #e46f61;
 }
 .roster-player-row {
-  /*font-family: "Oswald";*/
-  line-height: 2.8rem;
-  font-size: 1.2rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  line-height: 2rem;
+  font-size: 1rem;
+  font-weight: 400;
+  /*border-top: 1px solid rgba(0, 0, 0, 0.3);*/
+}
+.roster-player-row a {
+  color: rgba(0, 0, 0, 0.9);
 }
 .roster-player-row .flag-container {
   line-height: 0;
@@ -755,27 +774,30 @@ ul[data-pie-id] li:nth-child(6) {
   padding: 0;
 }
 .player-basic-block .name .first-name {
-  font-weight: 100;
-  font-size: 1.2rem;
+  font-weight: 400;
+  font-size: 1rem;
 }
 .player-basic-block .name .last-name {
   font-weight: 900;
-  font-size: 1.9rem;
+  font-size: 1.4rem;
 }
 .player-image {
   background-color: red;
 }
 .roster-seperator {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   font-family: "Roboto";
   font-weight: 500;
-  padding: 3px 0;
-  line-height: 1.4;
-  font-size: 1em;
+  line-height: 2.5rem;
+  font-size: 0.8rem;
   color: white;
-  /*-webkit-text-shadow: 0 1px 0 rgba(0,0,0,.15);
-    text-shadow: 0 1px 0 rgba(0,0,0,.15);*/
-  /*margin: 0;*/
+  text-align: left;
+}
+.roster-seperator div:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+.roster-seperator div:active {
+  background-color: rgba(0, 0, 0, 0.9);
 }
 .team-container._29 {
   /*.roster-seperator {
