@@ -106,44 +106,53 @@ namespace GopherGmConnect.Controllers
 
         private async Task<Team> ProcessTeamURL(Team team, HttpClient client)
         {
-            var leagueID = WebConfigurationManager.AppSettings["leagueid"];
-            var fullRosterUrl = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + leagueID + "/team/" + team.id + "/roster/mobile";
-            var mainRosterUrl = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + leagueID + "/team/" + team.id + "/roster";
-            var fullRosterTask = client.GetStringAsync(fullRosterUrl);
-            var mainRosterTask = client.GetStringAsync(mainRosterUrl);
-
-            var fullRosterResult = await fullRosterTask;
-            var mainRosterResult = await mainRosterTask;
-
-            JObject fullRoster = JObject.Parse(fullRosterResult);
-            JObject mainRosterIdList = JObject.Parse(mainRosterResult);
-            var jsonRosterArray = mainRosterIdList.Value<JArray>("playerID").ToObject<List<string>>();
-            team.Lines = ParseLines(mainRosterIdList);
-
-            var players = fullRoster.GetValue("v") as JArray;
-            var salaryMin = 1500000;
-            var teamSalary = 0;
-            foreach (var player in players)
+            try
             {
-                var playerSalary = Player.FixContractNumber(player[5].Value<int>());
-                var playerID = player[0].ToString();
-                bool isOnMainRoster = jsonRosterArray.Contains(playerID);
-                if (isOnMainRoster)
+
+
+                var leagueID = WebConfigurationManager.AppSettings["leagueid"];
+                var fullRosterUrl = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + leagueID + "/team/" + team.id + "/roster/mobile";
+                var mainRosterUrl = "https://nhl.service.easports.com/nhl14_hm/2014/protected/competition/" + leagueID + "/team/" + team.id + "/roster";
+                var fullRosterTask = client.GetStringAsync(fullRosterUrl);
+                var mainRosterTask = client.GetStringAsync(mainRosterUrl);
+
+                var fullRosterResult = await fullRosterTask;
+                var mainRosterResult = await mainRosterTask;
+
+                JObject fullRoster = JObject.Parse(fullRosterResult);
+                JObject mainRosterIdList = JObject.Parse(mainRosterResult);
+                var jsonRosterArray = mainRosterIdList.Value<JArray>("playerID").ToObject<List<string>>();
+                team.Lines = ParseLines(mainRosterIdList);
+
+                var players = fullRoster.GetValue("v") as JArray;
+                var salaryMin = 1500000;
+                var teamSalary = 0;
+                foreach (var player in players)
                 {
-                    teamSalary += playerSalary;
-                }
-                else
-                {
-                    if (player[9].ToString() == "0")
+                    var playerSalary = Player.FixContractNumber(player[5].Value<int>());
+                    var playerID = player[0].ToString();
+                    bool isOnMainRoster = jsonRosterArray.Contains(playerID);
+                    if (isOnMainRoster)
                     {
-                        if (playerSalary >= salaryMin)
+                        teamSalary += playerSalary;
+                    }
+                    else
+                    {
+                        if (player[9].ToString() == "0")
                         {
-                            teamSalary += playerSalary;
+                            if (playerSalary >= salaryMin)
+                            {
+                                teamSalary += playerSalary;
+                            }
                         }
                     }
                 }
+                team.SalaryCapSpent = teamSalary;
             }
-            team.SalaryCapSpent = teamSalary;
+            catch (Exception ex)
+            {
+                Console.WriteLine("TRY CATCH! " + ex.Message);
+            }
             return team;
         }
 
